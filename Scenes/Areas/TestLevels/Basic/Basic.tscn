@@ -20,10 +20,9 @@ sky_custom_fov = 90.0
 [node name="Basic" type="Node3D"]
 
 [node name="Camera" parent="." instance=ExtResource("1_gy6hv")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_i4puo")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 4.37114e-08, 1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
 
 [node name="Map" type="Sprite3D" parent="."]
 

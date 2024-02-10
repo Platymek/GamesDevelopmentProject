@@ -19,26 +19,28 @@ _data = {
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
+_horizontalDeceleration = 8.0
+_fallingMaxSpeed = 8.0
+_rotationSpeed = 0.25
 
 [node name="Model" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="TankBase" type="Node3D" parent="Model"]
 
 [node name="TankBaseModel" parent="Model/TankBase" instance=ExtResource("1_gbn4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8, 0)
 
 [node name="TankTurret" type="Node3D" parent="Model/TankBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 
 [node name="TankTurretModel" parent="Model/TankBase/TankTurret" instance=ExtResource("3_mno7v")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 
 [node name="LoveBird" type="Node3D" parent="Model/TankBase/TankTurret"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="LoveBirdModel" parent="Model/TankBase/TankTurret/LoveBird" instance=ExtResource("2_htqs3")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
