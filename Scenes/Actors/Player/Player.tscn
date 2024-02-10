@@ -1,23 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=8 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/Player/Model/tankBase.glb" id="1_gbn4w"]
+[ext_resource type="Script" path="res://Scenes/Actors/Player/Player.cs" id="1_gojm8"]
 [ext_resource type="PackedScene" uid="uid://dy1dx8bldgvb6" path="res://Scenes/Actors/Player/Model/loveBird.glb" id="2_htqs3"]
 [ext_resource type="PackedScene" uid="uid://gn2qoe3v15i6" path="res://Scenes/Actors/Player/Model/tankTurret.glb" id="3_mno7v"]
 
-[node name="Player" type="Node3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_seomg"]
+height = 1.5
+radius = 0.75
+
+[sub_resource type="Animation" id="Animation_3fxqu"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eumyy"]
+_data = {
+"idle": SubResource("Animation_3fxqu")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_gojm8")
 
 [node name="Model" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
 
-[node name="tankBa" type="Node3D" parent="Model"]
+[node name="TankBase" type="Node3D" parent="Model"]
 
-[node name="tankBaseModel" parent="Model/tankBa" instance=ExtResource("1_gbn4w")]
+[node name="TankBaseModel" parent="Model/TankBase" instance=ExtResource("1_gbn4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
-[node name="tankTurret" parent="Model/tankBa/tankBaseModel" instance=ExtResource("3_mno7v")]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 6, 0)
+[node name="TankTurret" type="Node3D" parent="Model/TankBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 
-[node name="loveBird" parent="Model/tankBa/tankBaseModel/tankTurret" instance=ExtResource("2_htqs3")]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -4.37109e-08, -3)
+[node name="TankTurretModel" parent="Model/TankBase/TankTurret" instance=ExtResource("3_mno7v")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.8093, 27, 25.2418)
+[node name="LoveBird" type="Node3D" parent="Model/TankBase/TankTurret"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="LoveBirdModel" parent="Model/TankBase/TankTurret/LoveBird" instance=ExtResource("2_htqs3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CylinderShape3D_seomg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eumyy")
+}
