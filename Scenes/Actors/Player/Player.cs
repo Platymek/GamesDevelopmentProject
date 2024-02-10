@@ -3,15 +3,6 @@ using System;
 
 // TODO: 
 
-// add properties to stats resource file:
-// - add max horizontal speed
-// - add max falling speed
-// - add fall acceleration
-// - add car rotation speed
-// - add shot knock back strength (which will also be used for reload)
-// - add ammo count
-// - add launch height
-
 // add properties to attack stats file:
 // - add cancellable boolean
 
@@ -38,6 +29,14 @@ using System;
 public partial class Player : CharacterBody3D
 {
 	// Properties //
+
+	[Export] private float _maxHorizontalSpeed = 4;
+	[Export] private float _maxFallingSpeed = 4;
+	[Export] private float _fallAcceleration = 16;
+	[Export] private float _rotationSpeed = 1;
+	[Export] private float _knockbackStrength = 2;
+	[Export] private int _maxAmmoCount = 2;
+	[Export] private float _launchHeight = 4;
 
 	private Node3D _turret;
 	
