@@ -7,9 +7,6 @@ using System;
 // - add cancellable boolean
 
 // add ability to launch:
-// - add animation
-// - add launching physics
-// - add upwards launch
 // - remove ammo
 
 // add ability to fire a shell:
@@ -22,6 +19,10 @@ using System;
 // - add sliding forwards
 // - add ammo (using reload function)
 // - double strength of gravity
+
+// all actions:
+// - add input buffer
+// - add cancellable frames
 
 public partial class Player : CharacterBody3D
 {
@@ -42,7 +43,71 @@ public partial class Player : CharacterBody3D
 	[Export] private int _maxAmmoCount = 2;
 	[Export] private float _launchHeight = 4;
 
+	private string _state;
+
+	[Export] private string State
+	{
+		get => _state;
+
+		set
+		{
+			if (_animationPlayer.HasAnimation(value))
+			{
+				_animationPlayer.Play(value);
+			}
+
+			switch (value)
+			{
+				case "launch":
+
+					var moveVector = MoveVector;
+					
+					if (moveVector.Length() > 0)
+					{
+						Jump(_launchHeight);
+						
+						// launch player in direction of tank
+						var horizontalVelocity 
+							= (Vector2.Up * _horizontalMaxSpeed * 3)
+								.Rotated(Rotation.Y);
+						
+						GD.Print(horizontalVelocity.Length());
+						
+						// calculate vertical velocity using desired height
+						// u = -sqrt(2as)
+						var verticalVelocity
+							= MathF.Sqrt(
+								2 * _fallingAcceleration * _launchHeight);
+						
+						// apply velocity
+						Velocity = new Vector3(-horizontalVelocity.X, 
+							verticalVelocity, horizontalVelocity.Y);
+						
+					}
+					else
+					{
+						// calculate vertical velocity using desired height
+						// which is double launch height
+						// u = -sqrt(2a 2s)
+						var verticalVelocity
+							= MathF.Sqrt(
+								4 * _fallingAcceleration * _launchHeight);
+						
+						// apply velocity
+						Velocity = new Vector3(0, 
+							verticalVelocity, 0);
+					}
+					
+					break;
+			}
+			
+			_state = value;
+		}
+	}
+
 	private Node3D _turret;
+	private AnimationPlayer _animationPlayer;
+	private Label3D _velocityLabel;
 
 	private bool _accelerating = false;
 	
@@ -73,9 +138,15 @@ public partial class Player : CharacterBody3D
 	{
 		base._Ready();
 
-		_turret = GetNode<Node3D>("Model/TankBase/TankTurret");
+		_turret = GetNode<Node3D>
+			("Model/TankBase/TankTurret");
+		_animationPlayer = GetNode<AnimationPlayer>
+			("AnimationPlayer");
+		_velocityLabel = GetNode<Label3D>
+			("VelocityLabel");
 
 		_accelerating = false;
+		_state = "idle";
 	}
 
 	// Called every frame. 'delta' is the elapsed time
@@ -165,6 +236,34 @@ public partial class Player : CharacterBody3D
 		{
 			Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
 		}
+		
+		
+		// States //
+
+		// swap state back to idle once landed
+		if (State == "falling" && IsOnFloorOnly())
+		{
+			State = "idle";
+		}
+		
+		if (Input.IsActionJustPressed("Launch"))
+		{
+			State = "launch";
+		}
+		else if (Input.IsActionJustPressed("Fire"))
+		{
+			State = "fire";
+		}
+		else if (Input.IsActionJustPressed("Reload"))
+		{
+			State = "reload";
+		}
+		
+		// Debug //
+			
+		_velocityLabel.Text = "Velocity:\n" 
+		                      +  new Vector2(Velocity.X, Velocity.Z)
+			                      .Length();
 	}
 	
 	
@@ -220,5 +319,10 @@ public partial class Player : CharacterBody3D
 			Rotation.X,
 			newAngle,
 			Rotation.Z);
+	}
+
+	private void Jump(float magnitude)
+	{
+		Velocity += Vector3.Up * magnitude;
 	}
 }
