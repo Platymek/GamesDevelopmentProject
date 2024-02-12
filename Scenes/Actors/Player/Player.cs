@@ -10,19 +10,13 @@ using System;
 // - remove ammo
 
 // add ability to fire a shell:
-// - add animation
 // - rotate in direction of aim immediately
 
 // add reload:
-// - add animation
-// - rotate in direction of reload immediately
-// - add sliding forwards
 // - add ammo (using reload function)
-// - double strength of gravity
 
 // all actions:
 // - add input buffer
-// - add cancellable frames
 
 public partial class Player : CharacterBody3D
 {
@@ -42,6 +36,7 @@ public partial class Player : CharacterBody3D
 	[Export] private float _knockBackStrength = 2;
 	[Export] private int _maxAmmoCount = 2;
 	[Export] private float _launchHeight = 4;
+	[Export] private float _launchSpeedMultiplier = 2;
 
 	private string _state;
 
@@ -51,71 +46,105 @@ public partial class Player : CharacterBody3D
 
 		set
 		{
-			if (_animationPlayer.HasAnimation(value))
-			{
-				_animationPlayer.Play(value);
-			}
+            RefreshPrivileges();
 
-			switch (value)
+            switch (value)
 			{
-				case "launch":
+				case "idle":
 
-					var moveVector = MoveVector;
-					
-					if (moveVector.Length() > 0)
+                    // if not on floor, change state to falling instead
+                    if (!IsOnFloor())
 					{
-						Jump(_launchHeight);
-						
-						// launch player in direction of tank
-						var horizontalVelocity 
-							= (Vector2.Up * _horizontalMaxSpeed * 3)
-								.Rotated(Rotation.Y);
-						
-						GD.Print(horizontalVelocity.Length());
-						
-						// calculate vertical velocity using desired height
-						// u = -sqrt(2as)
-						var verticalVelocity
-							= MathF.Sqrt(
-								2 * _fallingAcceleration * _launchHeight);
-						
-						// apply velocity
-						Velocity = new Vector3(-horizontalVelocity.X, 
-							verticalVelocity, horizontalVelocity.Y);
-						
+						State = "falling";
 					}
 					else
 					{
-						// calculate vertical velocity using desired height
-						// which is double launch height
-						// u = -sqrt(2a 2s)
-						var verticalVelocity
-							= MathF.Sqrt(
-								4 * _fallingAcceleration * _launchHeight);
-						
-						// apply velocity
-						Velocity = new Vector3(0, 
-							verticalVelocity, 0);
+						_canReload = true;
+                    }
+
+					break;
+
+
+				case "launch":
+
+					var moveVector = StickAngle;
+
+                    _canDecelerate = false;
+
+                    if (Moving)
+					{
+						Jump(_launchHeight);
+						Push(_horizontalMaxSpeed * _launchSpeedMultiplier);
 					}
+					else
+                    {
+                        Jump(_launchHeight * 1.5f);
+						Halt();
+                    }
 					
 					break;
+
+				case "reload":
+
+                    // snap angle in direction of stick
+                    Angle = StickAngle;
+
+					_canMove = false;
+					_canDecelerate = false;
+                    _canReload = false;
+
+                    Halt();
+
+                    break;
+
+				case "fire":
+
+                    // snap angle in direction of stick
+                    Angle = StickAngle;
+                    _canMove = false;
+                    _canFall = false;
+					_canDecelerate = false;
+
+                    Halt();
+					HaltFall();
+                    Push(-_knockBackStrength);
+
+                    break;
 			}
-			
-			_state = value;
+
+			// play state animation if it exists
+            if (_animationPlayer != null)
+            {
+                if (_animationPlayer.HasAnimation(value))
+                {
+                    _animationPlayer.Play(value);
+                }
+            }
+
+            _state = value;
 		}
 	}
 
 	private Node3D _turret;
 	private AnimationPlayer _animationPlayer;
-	private Label3D _velocityLabel;
 
-	private bool _accelerating = false;
-	
-	
-	// Node Functions //
-	
-	// get movement vector rotated relative to camera
-	private Vector2 MoveVector
+	private Label3D _velocityLabel;
+	private Label3D _stateLabel;
+
+    private bool _accelerating = false;
+
+    // privileges
+    private bool _canMove;
+    private bool _canDecelerate;
+	private bool _canTurn;
+	private bool _canFall;
+
+    private bool _canReload;
+
+    // Node Functions //
+
+    // get movement vector rotated relative to camera
+    private float StickAngle
 	{
 		get
 		{
@@ -126,7 +155,31 @@ public partial class Player : CharacterBody3D
 			Vector2 rotatedMove = move.Rotated(
 				GetViewport().GetCamera3D().GlobalRotation.Y);
 
-			return rotatedMove;
+			return rotatedMove.Angle();
+		}
+	}
+
+	private bool Moving
+	{
+		get
+		{
+			return Input.GetVector(
+				"Down", "Up",
+				"Right", "Left").Length() > 0;
+		}
+	}
+
+	private float Angle
+	{
+		set
+		{
+			Rotation = new Vector3(
+				Rotation.X, value, Rotation.Z);
+		}
+
+		get
+		{
+			return Rotation.Y;
 		}
 	}
 	
@@ -142,12 +195,20 @@ public partial class Player : CharacterBody3D
 			("Model/TankBase/TankTurret");
 		_animationPlayer = GetNode<AnimationPlayer>
 			("AnimationPlayer");
-		_velocityLabel = GetNode<Label3D>
-			("VelocityLabel");
 
-		_accelerating = false;
+        // for debug
+        _velocityLabel = GetNode<Label3D>
+            ("Debug/VelocityLabel");
+        _stateLabel = GetNode<Label3D>
+            ("Debug/StateLabel");
+
+        _accelerating = false;
 		_state = "idle";
-	}
+
+		_canReload = true;
+
+        RefreshPrivileges();
+    }
 
 	// Called every frame. 'delta' is the elapsed time
 	// since the previous frame.
@@ -161,30 +222,38 @@ public partial class Player : CharacterBody3D
 		
 		// Horizontal Movement //
 
-		Vector2 move = MoveVector;
 		_accelerating = false;
-		
-		// if the stick is being moved
-		if (move != Vector2.Zero)
+
+        // get horizontal velocity
+        var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
+
+        // get current speed
+        float currentSpeed = currentVelocity.Length();
+
+        // get angle of stick
+        float turretRotation = StickAngle;
+
+        // if the stick is being moved
+        if (Moving && _canMove && currentSpeed < _horizontalMaxSpeed)
 		{
-			// get angle of stick
-			float turretRotation = MoveVector.Angle();
 			
 			// rotate turret in direction of stick
 			_turret.Rotation = new Vector3(
-				0, turretRotation - Rotation.Y, 0);
+				0, turretRotation - Angle, 0);
 
 			Accelerate(turretRotation, delta);
-		}
-	
-		// get horizontal velocity
-		var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
-		
-		// get current speed
-		float currentSpeed = currentVelocity.Length();
+        }
 
-		// if going faster than max speed or not accelerating, decelerate
-		if (currentSpeed > _horizontalMaxSpeed || !_accelerating)
+        if (Moving && _canTurn)
+        {
+            TurnTowards(StickAngle, delta);
+        }
+
+		// refresh current speed
+        currentSpeed = currentVelocity.Length();
+
+        // if going faster than max speed or not accelerating, decelerate
+        if ((currentSpeed > _horizontalMaxSpeed || !_accelerating) && _canDecelerate)
 		{
 			// decelerate
 			float newSpeed = currentSpeed 
@@ -218,7 +287,7 @@ public partial class Player : CharacterBody3D
 		
 		// Vertical Movement //
 
-		if (!IsOnFloor())
+		if (!IsOnFloor() && _canFall)
 		{
 			float fallingSpeed = -Velocity.Y;
 
@@ -241,7 +310,7 @@ public partial class Player : CharacterBody3D
 		// States //
 
 		// swap state back to idle once landed
-		if (State == "falling" && IsOnFloorOnly())
+		if (State == "falling" && IsOnFloor())
 		{
 			State = "idle";
 		}
@@ -254,17 +323,20 @@ public partial class Player : CharacterBody3D
 		{
 			State = "fire";
 		}
-		else if (Input.IsActionJustPressed("Reload"))
+		else if (Input.IsActionJustPressed("Reload") && _canReload)
 		{
 			State = "reload";
 		}
-		
-		// Debug //
-			
-		_velocityLabel.Text = "Velocity:\n" 
-		                      +  new Vector2(Velocity.X, Velocity.Z)
-			                      .Length();
-	}
+
+        // Debug //
+
+        _velocityLabel.Text = "Velocity:"
+                              + new Vector2(Velocity.X, Velocity.Z)
+                                  .Length();
+
+
+        _stateLabel.Text = $"State: {State}";
+    }
 	
 	
 	// Other Functions //
@@ -272,19 +344,17 @@ public partial class Player : CharacterBody3D
 	private void Accelerate(float angle, double delta)
 	{
 		// accelerate forwards regardless of stick angle
-		Velocity += Vector3.Forward.Rotated(Vector3.Up, Rotation.Y)
+		Velocity += Vector3.Forward.Rotated(Vector3.Up, Angle)
 					* (float)delta * (IsOnFloor() 
 						? _horizontalAcceleration
 						: _horizontalAirAcceleration);
 
 		_accelerating = true;
-
-		TurnTowards(angle, delta);
 	}
 
 	private void TurnTowards(float targetAngle, double delta)
 	{
-		float currentAngle = Rotation.Y;
+		float currentAngle = Angle;
 		
 		// get angle difference from current angle to new angle
 		float angleDifference = Mathf.AngleDifference(
@@ -300,10 +370,7 @@ public partial class Player : CharacterBody3D
 		if (MathF.Abs(angleDifference) < rotationSpeed)
 		{
 			// apply rotation
-			Rotation = new Vector3(
-				Rotation.X,
-				targetAngle,
-				Rotation.Z);
+			Angle = targetAngle;
 
 			return;
 		}
@@ -315,14 +382,51 @@ public partial class Player : CharacterBody3D
 							   : rotationSpeed);
 		
 		// apply rotation
-		Rotation = new Vector3(
-			Rotation.X,
-			newAngle,
-			Rotation.Z);
+		Angle = newAngle;
 	}
 
 	private void Jump(float magnitude)
+    {
+        // calculate vertical velocity using desired height
+        // u = -sqrt(2as)
+        var verticalVelocity
+            = MathF.Sqrt(
+                2 * _fallingAcceleration * magnitude);
+
+        // apply velocity
+        Velocity = new Vector3(-Velocity.X,
+            verticalVelocity, Velocity.Y);
+    }
+
+    // push directly forwards
+    private void Push(float force)
 	{
-		Velocity += Vector3.Up * magnitude;
+        // launch player in direction of tank
+        var velocity
+            = (Vector2.Up * force)
+                .Rotated(Angle);
+
+        // apply velocity
+        Velocity = new Vector3(-velocity.X,
+            Velocity.Y, velocity.Y);
+    }
+
+	// halts all horizontal velocity
+	private void Halt()
+	{
+		Velocity = new Vector3(0, Velocity.Y, 0);
 	}
+
+	private void HaltFall()
+    {
+        Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
+    }
+
+	private void RefreshPrivileges()
+    {
+        _canMove = true;
+        _canDecelerate = true;
+        _canTurn = true;
+		_canFall = true;
+    }
 }
