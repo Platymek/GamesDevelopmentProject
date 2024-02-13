@@ -3,17 +3,8 @@ using System;
 
 // TODO: 
 
-// add properties to attack stats file:
-// - add cancellable boolean
-
-// add ability to launch:
-// - remove ammo
-
 // add ability to fire a shell:
-// - rotate in direction of aim immediately
-
-// add reload:
-// - add ammo (using reload function)
+// - fire a shell
 
 // all actions:
 // - add input buffer
@@ -56,7 +47,8 @@ public partial class Player : CharacterBody3D
                     if (!IsOnFloor())
 					{
 						State = "falling";
-					}
+                        return;
+                    }
 					else
 					{
 						_canReload = true;
@@ -86,9 +78,6 @@ public partial class Player : CharacterBody3D
 
 				case "reload":
 
-                    // snap angle in direction of stick
-                    Angle = StickAngle;
-
 					_canMove = false;
 					_canDecelerate = false;
                     _canReload = false;
@@ -110,6 +99,16 @@ public partial class Player : CharacterBody3D
                     Push(-_knockBackStrength);
 
                     break;
+
+				case "reload_quick":
+
+					if (!Input.IsActionPressed("Reload"))
+					{
+						State = "idle";
+						return;
+                    }
+
+					break;
 			}
 
 			// play state animation if it exists
@@ -121,7 +120,26 @@ public partial class Player : CharacterBody3D
                 }
             }
 
+            GD.Print(_state);
             _state = value;
+		}
+	}
+
+	private int _ammo;
+	private int _ammoLimit = 2;
+
+	public int Ammo
+	{
+		get => _ammo;
+
+		set
+		{
+			// keep ammo within bounds
+			_ammo = value < 0
+				? 0
+				: value > _ammoLimit
+				? _ammoLimit
+				: value;
 		}
 	}
 
@@ -129,7 +147,8 @@ public partial class Player : CharacterBody3D
 	private AnimationPlayer _animationPlayer;
 
 	private Label3D _velocityLabel;
-	private Label3D _stateLabel;
+    private Label3D _stateLabel;
+    private Label3D _ammoLabel;
 
     private bool _accelerating = false;
 
@@ -138,7 +157,6 @@ public partial class Player : CharacterBody3D
     private bool _canDecelerate;
 	private bool _canTurn;
 	private bool _canFall;
-
     private bool _canReload;
 
     // Node Functions //
@@ -196,18 +214,20 @@ public partial class Player : CharacterBody3D
 		_animationPlayer = GetNode<AnimationPlayer>
 			("AnimationPlayer");
 
+        _accelerating = false;
+		_state = "idle";
+		_canReload = true;
+		Ammo = _ammoLimit;
+
+        RefreshPrivileges();
+
         // for debug
         _velocityLabel = GetNode<Label3D>
             ("Debug/VelocityLabel");
         _stateLabel = GetNode<Label3D>
             ("Debug/StateLabel");
-
-        _accelerating = false;
-		_state = "idle";
-
-		_canReload = true;
-
-        RefreshPrivileges();
+        _ammoLabel = GetNode<Label3D>
+            ("Debug/AmmoLabel");
     }
 
 	// Called every frame. 'delta' is the elapsed time
@@ -309,19 +329,39 @@ public partial class Player : CharacterBody3D
 		
 		// States //
 
-		// swap state back to idle once landed
-		if (State == "falling" && IsOnFloor())
+		switch (State)
 		{
-			State = "idle";
+			case "falling":
+
+				if (IsOnFloor())
+                {
+                    State = "idle";
+                }
+
+				break;
+
+			case "reload":
+			case "reload_quick":
+
+                // snap angle in direction of stick
+                Angle = StickAngle;
+
+                break;
 		}
 		
 		if (Input.IsActionJustPressed("Launch"))
 		{
-			State = "launch";
+			if (HasAndUseAmmo())
+            {
+                State = "launch";
+            }
 		}
 		else if (Input.IsActionJustPressed("Fire"))
-		{
-			State = "fire";
+        {
+			if (HasAndUseAmmo())
+			{
+				State = "fire";
+			}
 		}
 		else if (Input.IsActionJustPressed("Reload") && _canReload)
 		{
@@ -336,6 +376,8 @@ public partial class Player : CharacterBody3D
 
 
         _stateLabel.Text = $"State: {State}";
+
+		_ammoLabel.Text = $"Ammo: {Ammo}";
     }
 	
 	
@@ -429,4 +471,22 @@ public partial class Player : CharacterBody3D
         _canTurn = true;
 		_canFall = true;
     }
+
+	// reload a shell
+	private void Reload()
+	{
+		Ammo++;
+	}
+
+	// check have any ammo and remove accordingly
+	private bool HasAndUseAmmo()
+	{
+		if (Ammo > 0)
+		{
+			Ammo--;
+			return true;
+		}
+
+		return false;
+	}
 }
