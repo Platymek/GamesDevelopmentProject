@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 
 // TODO: 
 
@@ -54,12 +55,13 @@ public partial class Player : CharacterBody3D
 						_canReload = true;
                     }
 
-					break;
+                    // rotate turret in direction of stick
+                    _turret.Rotation = Vector3.Up * (AimAngle - Angle);
+
+                    break;
 
 
 				case "launch":
-
-					var moveVector = StickAngle;
 
                     _canDecelerate = false;
 
@@ -67,14 +69,17 @@ public partial class Player : CharacterBody3D
 					{
 						Jump(_launchHeight);
 						Push(_horizontalMaxSpeed * _launchSpeedMultiplier);
-					}
+                    }
 					else
                     {
                         Jump(_launchHeight * 1.5f);
 						Halt();
                     }
-					
-					break;
+
+                    // fire a shell
+                    _shellEmitterLaunch.Emit();
+
+                    break;
 
 				case "reload":
 
@@ -82,26 +87,32 @@ public partial class Player : CharacterBody3D
 					_canDecelerate = false;
                     _canReload = false;
 
-                    // snap angle in direction of stick
-                    Angle = StickAngle;
-
-                    Halt();
-					HaltFall();
-
 					if (Moving)
-                    {
-                        Push(_knockBackStrength);
-                    }
+					{
+						// snap angle in direction of stick
+						Angle = AimAngle;
+					}
+
+					//if (IsOnFloor())
+                    //{
+                    //    Halt();
+                    //}
+
+					HaltFall();
 
                     break;
 
 				case "fire":
 
                     // snap angle in direction of stick
-                    Angle = StickAngle;
+                    Angle = AimAngle;
+
                     _canMove = false;
                     _canFall = false;
 					_canDecelerate = false;
+
+					// fire a shell
+					_shellEmitter.Emit();
 
                     Halt();
 					HaltFall();
@@ -129,7 +140,6 @@ public partial class Player : CharacterBody3D
                 }
             }
 
-            GD.Print(_state);
             _state = value;
 		}
 	}
@@ -154,6 +164,9 @@ public partial class Player : CharacterBody3D
 
 	private Node3D _turret;
 	private AnimationPlayer _animationPlayer;
+    private Emitter _shellEmitter;
+    private Emitter _shellEmitterLaunch;
+    private Node3D _pointer;
 
 	private Label3D _velocityLabel;
     private Label3D _stateLabel;
@@ -168,9 +181,11 @@ public partial class Player : CharacterBody3D
 	private bool _canFall;
     private bool _canReload;
 
-    // Node Functions //
+	// Node Functions //
 
-    // get movement vector rotated relative to camera
+	// get movement vector rotated relative to camera
+	private float AimAngle;
+
     private float StickAngle
 	{
 		get
@@ -236,6 +251,12 @@ public partial class Player : CharacterBody3D
 			("Model/TankBase/TankTurret");
 		_animationPlayer = GetNode<AnimationPlayer>
 			("AnimationPlayer");
+        _shellEmitter = GetNode<Emitter>
+            ("ShellEmitter");
+        _shellEmitterLaunch = GetNode<Emitter>
+            ("ShellEmitterLaunch");
+        _pointer = GetNode<Node3D>
+			("Pointer");
 
         _accelerating = false;
 		_state = "idle";
@@ -261,11 +282,18 @@ public partial class Player : CharacterBody3D
 		
 		// move based on velocity from previous frame
 		MoveAndSlide();
-		
-		
-		// Horizontal Movement //
 
-		_accelerating = false;
+		if (Moving)
+        {
+			AimAngle = StickAngle;
+        }
+
+        _pointer.Rotation = Vector3.Up * (AimAngle - Angle);
+
+
+        // Horizontal Movement //
+
+        _accelerating = false;
 
         // get horizontal velocity
         var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
@@ -273,24 +301,19 @@ public partial class Player : CharacterBody3D
         // get current speed
         float currentSpeed = currentVelocity.Length();
 
-        // get angle of stick
-        float turretRotation = StickAngle;
-
         // if the stick is being moved
         if (Moving && _canMove && currentSpeed < _horizontalMaxSpeed)
 		{
-			
-			// rotate turret in direction of stick
-			_turret.Rotation = new Vector3(
-				0, turretRotation - Angle, 0);
+            // rotate turret in direction of stick
+            _turret.Rotation = Vector3.Up * (AimAngle - Angle);
 
-			Accelerate(turretRotation, delta);
+			Accelerate(AimAngle, delta);
         }
 
 		// turn towards stick angle
         if (Moving && _canTurn)
         {
-            TurnTowards(StickAngle, delta);
+            TurnTowards(AimAngle, delta);
         }
 
 		// refresh current speed
@@ -367,8 +390,11 @@ public partial class Player : CharacterBody3D
 			case "reload":
 			case "reload_quick":
 
-                // snap angle in direction of stick
-                Angle = StickAngle;
+				if (Moving)
+				{
+					// snap angle in direction of stick
+					Angle = AimAngle;
+				}
 
                 break;
 		}
@@ -391,6 +417,7 @@ public partial class Player : CharacterBody3D
 		{
 			State = "reload";
 		}
+
 
         // Debug //
 

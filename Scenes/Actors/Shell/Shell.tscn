@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnvtchxc244r"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Shell/Shell.cs" id="1_gm1ie"]
+[ext_resource type="PackedScene" uid="uid://eel5effjnnru" path="res://Scenes/Actors/Shell/shell.glb" id="1_v8mqc"]
+
+[node name="Shell" type="Node3D"]
+script = ExtResource("1_gm1ie")
+_speed = 8.0
+_distance = 8.0
+
+[node name="shell" parent="." instance=ExtResource("1_v8mqc")]
+transform = Transform3D(-4.37114e-09, -0.1, -4.37114e-09, 0, -4.37114e-09, 0.1, -0.1, 4.37114e-09, 1.91069e-16, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

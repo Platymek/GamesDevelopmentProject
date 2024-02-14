@@ -6,6 +6,6 @@
 script = ExtResource("1_hl84t")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 10, 14)
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 15, 12.5)
 current = true
 fov = 45.0
