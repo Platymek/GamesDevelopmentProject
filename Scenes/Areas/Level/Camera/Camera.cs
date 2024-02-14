@@ -16,7 +16,7 @@ public partial class Camera : Node3D
 		if (_target != null)
 		{
 			Position = new Vector3(
-				_target.Position.X, 0, 0);
+				_target.Position.X, 0, _target.Position.Z);
 		}
 	}
 	

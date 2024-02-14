@@ -82,7 +82,16 @@ public partial class Player : CharacterBody3D
 					_canDecelerate = false;
                     _canReload = false;
 
+                    // snap angle in direction of stick
+                    Angle = StickAngle;
+
                     Halt();
+					HaltFall();
+
+					if (Moving)
+                    {
+                        Push(_knockBackStrength);
+                    }
 
                     break;
 
@@ -173,7 +182,21 @@ public partial class Player : CharacterBody3D
 			Vector2 rotatedMove = move.Rotated(
 				GetViewport().GetCamera3D().GlobalRotation.Y);
 
-			return rotatedMove.Angle();
+			float halfPi = Mathf.Pi / 2;
+			float quarPi = Mathf.Pi / 4;
+
+            // snap angle in 4 cardinal directions as well as where the character is pointing
+            return SnapAngle(rotatedMove.Angle(), 
+				new float[] { 
+					0, // N
+					quarPi,	// NE
+					halfPi, // E
+					halfPi + quarPi, // SE
+					halfPi * 2, // S
+					halfPi * 2 + quarPi, // SW
+                    halfPi * 3, // W
+                    halfPi * 3 + quarPi, // NW
+                }, 0.15f);
 		}
 	}
 
@@ -264,6 +287,7 @@ public partial class Player : CharacterBody3D
 			Accelerate(turretRotation, delta);
         }
 
+		// turn towards stick angle
         if (Moving && _canTurn)
         {
             TurnTowards(StickAngle, delta);
@@ -488,5 +512,22 @@ public partial class Player : CharacterBody3D
 		}
 
 		return false;
+	}
+
+	// snap an angle if it is near to any angle in a list of angles
+	private float SnapAngle(float angle, float[] snapAngles, float tolerance = 0.1f)
+	{
+		// this foreach loop means that angles listed first have more priority
+		foreach (float snapAngle in snapAngles)
+		{
+			float angleDifference = Mathf.Abs(Mathf.AngleDifference(snapAngle, angle));
+
+			if (angleDifference < tolerance)
+			{
+				return snapAngle;
+			}
+		}
+
+		return angle;
 	}
 }
