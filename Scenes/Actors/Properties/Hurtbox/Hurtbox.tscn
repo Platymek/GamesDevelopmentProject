@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxqrkvflqlplr"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.cs" id="1_bobsx"]
+
+[node name="Hitbox" type="Area3D"]
+monitoring = false
+script = ExtResource("1_bobsx")

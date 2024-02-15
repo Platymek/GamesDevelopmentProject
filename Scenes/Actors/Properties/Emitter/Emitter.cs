@@ -3,7 +3,7 @@ using System;
 
 public partial class Emitter : Node3D
 {
-    [Export] PackedScene _sceneToEmit;
+    [Export] private PackedScene _sceneToEmit;
 
     // emit the packed scene
     public void Emit()

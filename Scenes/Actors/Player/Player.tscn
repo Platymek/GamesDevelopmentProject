@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=22 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/Player/Model/tankBase.glb" id="1_gbn4w"]
 [ext_resource type="Script" path="res://Scenes/Actors/Player/Player.cs" id="1_gojm8"]
 [ext_resource type="PackedScene" uid="uid://dy1dx8bldgvb6" path="res://Scenes/Actors/Player/Model/loveBird.glb" id="2_htqs3"]
 [ext_resource type="Texture2D" uid="uid://dx00fvs0ica0f" path="res://icon.svg" id="2_ll0se"]
 [ext_resource type="PackedScene" uid="uid://gn2qoe3v15i6" path="res://Scenes/Actors/Player/Model/tankTurret.glb" id="3_mno7v"]
-[ext_resource type="Script" path="res://Scenes/Actors/Properties/Emitter.cs" id="5_onyvv"]
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/Emitter/Emitter.cs" id="3_rlw2b"]
 [ext_resource type="PackedScene" uid="uid://cqnvtchxc244r" path="res://Scenes/Actors/Shell/Shell.tscn" id="6_6vglx"]
 [ext_resource type="PackedScene" uid="uid://cgkpgl5iuj7xw" path="res://Scenes/Actors/Player/Model/Pointer.glb" id="8_pbnn7"]
+[ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="9_dmpoc"]
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.cs" id="9_qcm6b"]
 
 [sub_resource type="Animation" id="Animation_usvlc"]
 length = 0.001
@@ -459,17 +461,25 @@ _data = {
 height = 1.5
 radius = 0.75
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ik2jv"]
+height = 1.0
+radius = 0.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gmgp2"]
+height = 0.5
+radius = 0.8
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
 _horizontalAcceleration = 8.0
 _horizontalDeceleration = 4.0
 _fallingMaxSpeed = 16.0
-_fallingAcceleration = 32.0
 _rotationSpeed = 0.3
 _knockBackStrength = 4.0
 _launchHeight = 2.25
 _launchSpeedMultiplier = 3.0
 State = "idle"
+FallingAcceleration = 32.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -479,13 +489,13 @@ libraries = {
 [node name="ShellEmitter" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.74846e-08, 1.4, -0.9)
 texture = ExtResource("2_ll0se")
-script = ExtResource("5_onyvv")
+script = ExtResource("3_rlw2b")
 _sceneToEmit = ExtResource("6_6vglx")
 
 [node name="ShellEmitterLaunch" type="Sprite3D" parent="."]
 transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 1.1, 0.9)
 texture = ExtResource("2_ll0se")
-script = ExtResource("5_onyvv")
+script = ExtResource("3_rlw2b")
 _sceneToEmit = ExtResource("6_6vglx")
 
 [node name="Model" type="Node3D" parent="."]
@@ -516,19 +526,19 @@ shape = SubResource("CylinderShape3D_seomg")
 
 [node name="VelocityLabel" type="Label3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
-billboard = 2
+billboard = 1
 text = "Velocity"
 font_size = 64
 
 [node name="StateLabel" type="Label3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
-billboard = 2
+billboard = 1
 text = "State"
 font_size = 64
 
 [node name="AmmoLabel" type="Label3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9, 0)
-billboard = 2
+billboard = 1
 text = "Ammo"
 font_size = 64
 
@@ -536,3 +546,15 @@ font_size = 64
 
 [node name="PointerModel" parent="Pointer" instance=ExtResource("8_pbnn7")]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
+
+[node name="Hitbox" parent="." instance=ExtResource("9_dmpoc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_ik2jv")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+script = ExtResource("9_qcm6b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CylinderShape3D_gmgp2")

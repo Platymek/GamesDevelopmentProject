@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbssrs0b63wo8"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/Emitter/Emitter.cs" id="1_qjt2p"]
+
+[node name="Emitter" type="Node3D"]
+script = ExtResource("1_qjt2p")

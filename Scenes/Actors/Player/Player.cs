@@ -1,16 +1,7 @@
 using Godot;
 using System;
-using System.Reflection;
 
-// TODO: 
-
-// add ability to fire a shell:
-// - fire a shell
-
-// all actions:
-// - add input buffer
-
-public partial class Player : CharacterBody3D
+public partial class Player : Actor
 {
 	// Properties //
 
@@ -21,7 +12,6 @@ public partial class Player : CharacterBody3D
 	[Export] private float _horizontalAirDeceleration = 4;
 	
 	[Export] private float _fallingMaxSpeed = 4;
-	[Export] private float _fallingAcceleration = 16;
 	[Export] private float _fallingDeceleration = 16;
 	
 	[Export] private float _rotationSpeed = 1;
@@ -48,6 +38,8 @@ public partial class Player : CharacterBody3D
                     if (!IsOnFloor())
 					{
 						State = "falling";
+						_canDecelerate = false;
+						_canAccelerate = false;
                         return;
                     }
 					else
@@ -56,7 +48,7 @@ public partial class Player : CharacterBody3D
                     }
 
                     // rotate turret in direction of stick
-                    _turret.Rotation = Vector3.Up * (AimAngle - Angle);
+                    _turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
                     break;
 
@@ -90,7 +82,7 @@ public partial class Player : CharacterBody3D
 					if (Moving)
 					{
 						// snap angle in direction of stick
-						Angle = AimAngle;
+						Angle = _aimAngle;
 					}
 
 					//if (IsOnFloor())
@@ -105,7 +97,7 @@ public partial class Player : CharacterBody3D
 				case "fire":
 
                     // snap angle in direction of stick
-                    Angle = AimAngle;
+                    Angle = _aimAngle;
 
                     _canMove = false;
                     _canFall = false;
@@ -177,6 +169,7 @@ public partial class Player : CharacterBody3D
     // privileges
     private bool _canMove;
     private bool _canDecelerate;
+    private bool _canAccelerate;
 	private bool _canTurn;
 	private bool _canFall;
     private bool _canReload;
@@ -184,7 +177,7 @@ public partial class Player : CharacterBody3D
 	// Node Functions //
 
 	// get movement vector rotated relative to camera
-	private float AimAngle;
+	private float _aimAngle;
 
     private float StickAngle
 	{
@@ -215,31 +208,23 @@ public partial class Player : CharacterBody3D
 		}
 	}
 
-	private bool Moving
-	{
-		get
-		{
-			return Input.GetVector(
-				"Down", "Up",
-				"Right", "Left").Length() > 0;
-		}
-	}
+	private bool Moving =>
+		Input.GetVector(
+			"Down", "Up",
+			"Right", "Left").Length() > 0;
 
 	private float Angle
 	{
-		set
-		{
+		set =>
 			Rotation = new Vector3(
 				Rotation.X, value, Rotation.Z);
-		}
 
-		get
-		{
-			return Rotation.Y;
-		}
+		get => Rotation.Y;
 	}
-	
-	
+
+	private float Speed => new Vector2(Velocity.X, Velocity.Z).Length();
+
+
 	// Node Functions //
 	
 	// Called when the node enters the scene tree for the first time.
@@ -285,10 +270,10 @@ public partial class Player : CharacterBody3D
 
 		if (Moving)
         {
-			AimAngle = StickAngle;
+			_aimAngle = StickAngle;
         }
 
-        _pointer.Rotation = Vector3.Up * (AimAngle - Angle);
+        _pointer.Rotation = Vector3.Up * (_aimAngle - Angle);
 
 
         // Horizontal Movement //
@@ -305,15 +290,15 @@ public partial class Player : CharacterBody3D
         if (Moving && _canMove && currentSpeed < _horizontalMaxSpeed)
 		{
             // rotate turret in direction of stick
-            _turret.Rotation = Vector3.Up * (AimAngle - Angle);
+            _turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
-			Accelerate(AimAngle, delta);
+			Accelerate(_aimAngle, delta);
         }
 
 		// turn towards stick angle
         if (Moving && _canTurn)
         {
-            TurnTowards(AimAngle, delta);
+            TurnTowards(_aimAngle, delta);
         }
 
 		// refresh current speed
@@ -358,7 +343,7 @@ public partial class Player : CharacterBody3D
 		{
 			float fallingSpeed = -Velocity.Y;
 
-			fallingSpeed += _fallingAcceleration * (float)delta;
+			fallingSpeed += FallingAcceleration * (float)delta;
 
 			if (fallingSpeed > _fallingMaxSpeed)
 			{
@@ -385,6 +370,14 @@ public partial class Player : CharacterBody3D
                     State = "idle";
                 }
 
+				if (Speed < _horizontalMaxSpeed
+				    || SnapAngle(_aimAngle, new[] { Angle },
+					    0.3f) != Angle)
+				{
+					_canAccelerate = true;
+					_canDecelerate = true;
+				}
+
 				break;
 
 			case "reload":
@@ -393,7 +386,7 @@ public partial class Player : CharacterBody3D
 				if (Moving)
 				{
 					// snap angle in direction of stick
-					Angle = AimAngle;
+					Angle = _aimAngle;
 				}
 
                 break;
@@ -477,19 +470,6 @@ public partial class Player : CharacterBody3D
 		// apply rotation
 		Angle = newAngle;
 	}
-
-	private void Jump(float magnitude)
-    {
-        // calculate vertical velocity using desired height
-        // u = -sqrt(2as)
-        var verticalVelocity
-            = MathF.Sqrt(
-                2 * _fallingAcceleration * magnitude);
-
-        // apply velocity
-        Velocity = new Vector3(-Velocity.X,
-            verticalVelocity, Velocity.Y);
-    }
 
     // push directly forwards
     private void Push(float force)
