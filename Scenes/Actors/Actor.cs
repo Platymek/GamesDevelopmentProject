@@ -7,9 +7,33 @@ public partial class Actor : CharacterBody3D
 	[Export] protected int MaxHealth;
 
 	protected int Health;
+	public bool Dying;
+
+	
+	// Node Functions //
+
+	public override void _Ready()
+	{
+		base._Ready();
+
+		Dying = false;
+	}
+
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+
+		if (Dying)
+		{
+			QueueFree();
+		}
+	}
+
+	
+	// Other Functions //
 	
 	// jump a specific height which is calculated using the falling
-	// acceleration of the acter
+	// acceleration of the actor
 	public void Jump(float height)
 	{
 		// calculate vertical velocity using desired height
@@ -31,7 +55,7 @@ public partial class Actor : CharacterBody3D
 		// if health 0 or below, kill
 		if (Health <= 0)
 		{
-			QueueFree();
+			Dying = true;
 		}
 	}
 

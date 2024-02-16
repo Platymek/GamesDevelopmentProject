@@ -1,11 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=21 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/Player/Model/tankBase.glb" id="1_gbn4w"]
 [ext_resource type="Script" path="res://Scenes/Actors/Player/Player.cs" id="1_gojm8"]
+[ext_resource type="PackedScene" uid="uid://cbssrs0b63wo8" path="res://Scenes/Actors/Properties/Emitter/Emitter.tscn" id="2_b1j4c"]
 [ext_resource type="PackedScene" uid="uid://dy1dx8bldgvb6" path="res://Scenes/Actors/Player/Model/loveBird.glb" id="2_htqs3"]
-[ext_resource type="Texture2D" uid="uid://dx00fvs0ica0f" path="res://icon.svg" id="2_ll0se"]
 [ext_resource type="PackedScene" uid="uid://gn2qoe3v15i6" path="res://Scenes/Actors/Player/Model/tankTurret.glb" id="3_mno7v"]
-[ext_resource type="Script" path="res://Scenes/Actors/Properties/Emitter/Emitter.cs" id="3_rlw2b"]
 [ext_resource type="PackedScene" uid="uid://cqnvtchxc244r" path="res://Scenes/Actors/Shell/Shell.tscn" id="6_6vglx"]
 [ext_resource type="PackedScene" uid="uid://cgkpgl5iuj7xw" path="res://Scenes/Actors/Player/Model/Pointer.glb" id="8_pbnn7"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="9_dmpoc"]
@@ -472,7 +471,7 @@ radius = 0.8
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
 _horizontalAcceleration = 8.0
-_horizontalDeceleration = 4.0
+_horizontalDeceleration = 6.0
 _fallingMaxSpeed = 16.0
 _rotationSpeed = 0.3
 _knockBackStrength = 4.0
@@ -486,17 +485,10 @@ libraries = {
 "": SubResource("AnimationLibrary_eumyy")
 }
 
-[node name="ShellEmitter" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.74846e-08, 1.4, -0.9)
-texture = ExtResource("2_ll0se")
-script = ExtResource("3_rlw2b")
+[node name="ShellEmitter" parent="." instance=ExtResource("2_b1j4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.9)
 _sceneToEmit = ExtResource("6_6vglx")
-
-[node name="ShellEmitterLaunch" type="Sprite3D" parent="."]
-transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 1.1, 0.9)
-texture = ExtResource("2_ll0se")
-script = ExtResource("3_rlw2b")
-_sceneToEmit = ExtResource("6_6vglx")
+_onDeath = true
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -542,6 +534,12 @@ billboard = 1
 text = "Ammo"
 font_size = 64
 
+[node name="BufferLabel" type="Label3D" parent="Debug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3, 0)
+billboard = 1
+text = "Buffer"
+font_size = 64
+
 [node name="Pointer" type="Node3D" parent="."]
 
 [node name="PointerModel" parent="Pointer" instance=ExtResource("8_pbnn7")]
@@ -558,3 +556,9 @@ script = ExtResource("9_qcm6b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("CylinderShape3D_gmgp2")
+
+[node name="InputBuffer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="InputBuffer" to="." method="OnInputBufferTimeout"]

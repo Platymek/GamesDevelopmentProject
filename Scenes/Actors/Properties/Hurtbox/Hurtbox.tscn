@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.cs" id="1_bobsx"]
 
-[node name="Hitbox" type="Area3D"]
+[node name="Hurtbox" type="Area3D"]
 monitoring = false
 script = ExtResource("1_bobsx")
