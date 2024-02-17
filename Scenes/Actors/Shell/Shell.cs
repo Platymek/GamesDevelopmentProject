@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Shell : Node3D
+public partial class Shell : Actor
 {
 	// Properties //
 

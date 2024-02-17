@@ -1,16 +1,7 @@
 using Godot;
 using System;
-using System.Reflection;
 
-// TODO: 
-
-// add ability to fire a shell:
-// - fire a shell
-
-// all actions:
-// - add input buffer
-
-public partial class Player : CharacterBody3D
+public partial class Player : Actor
 {
 	// Properties //
 
@@ -21,7 +12,6 @@ public partial class Player : CharacterBody3D
 	[Export] private float _horizontalAirDeceleration = 4;
 	
 	[Export] private float _fallingMaxSpeed = 4;
-	[Export] private float _fallingAcceleration = 16;
 	[Export] private float _fallingDeceleration = 16;
 	
 	[Export] private float _rotationSpeed = 1;
@@ -38,109 +28,112 @@ public partial class Player : CharacterBody3D
 
 		set
 		{
-            RefreshPrivileges();
+			RefreshPrivileges();
 
-            switch (value)
+			switch (value)
 			{
 				case "idle":
 
-                    // if not on floor, change state to falling instead
-                    if (!IsOnFloor())
+					// if not on floor, change state to falling instead
+					if (!IsOnFloor())
 					{
 						State = "falling";
-                        return;
-                    }
+						_canDecelerate = false;
+						_canAccelerate = false;
+						return;
+					}
 					else
 					{
 						_canReload = true;
-                    }
+					}
 
-                    // rotate turret in direction of stick
-                    _turret.Rotation = Vector3.Up * (AimAngle - Angle);
+					// rotate turret in direction of stick
+					_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
-                    break;
+					break;
 
 
 				case "launch":
 
-                    _canDecelerate = false;
+					_canDecelerate = false;
 
-                    if (Moving)
+					if (Moving)
 					{
 						Jump(_launchHeight);
 						Push(_horizontalMaxSpeed * _launchSpeedMultiplier);
-                    }
+					}
 					else
-                    {
-                        Jump(_launchHeight * 1.5f);
+					{
+						Jump(_launchHeight * 1.5f);
+
 						Halt();
-                    }
+					}
 
-                    // fire a shell
-                    _shellEmitterLaunch.Emit();
-
-                    break;
+					break;
 
 				case "reload":
 
 					_canMove = false;
 					_canDecelerate = false;
-                    _canReload = false;
+					_canReload = false;
 
 					if (Moving)
 					{
 						// snap angle in direction of stick
-						Angle = AimAngle;
+						Angle = _aimAngle;
 					}
 
 					//if (IsOnFloor())
-                    //{
-                    //    Halt();
-                    //}
+					//{
+					//    Halt();
+					//}
 
-					HaltFall();
+					if (Velocity.Y < 0)
+					{
+						HaltFall();
+					}
 
-                    break;
+					break;
 
 				case "fire":
 
-                    // snap angle in direction of stick
-                    Angle = AimAngle;
+					// snap angle in direction of stick
+					Angle = _aimAngle;
 
-                    _canMove = false;
-                    _canFall = false;
+					_canMove = false;
+					_canFall = false;
 					_canDecelerate = false;
 
 					// fire a shell
 					_shellEmitter.Emit();
 
-                    Halt();
+					Halt();
 					HaltFall();
-                    Push(-_knockBackStrength);
+					Push(-_knockBackStrength);
 
-                    break;
+					break;
 
 				case "reload_quick":
 
-					if (!Input.IsActionPressed("Reload"))
+					if (!Input.IsActionPressed("reload"))
 					{
 						State = "idle";
 						return;
-                    }
+					}
 
 					break;
 			}
 
 			// play state animation if it exists
-            if (_animationPlayer != null)
-            {
-                if (_animationPlayer.HasAnimation(value))
-                {
-                    _animationPlayer.Play(value);
-                }
-            }
+			if (_animationPlayer != null)
+			{
+				if (_animationPlayer.HasAnimation(value))
+				{
+					_animationPlayer.Play(value);
+				}
+			}
 
-            _state = value;
+			_state = value;
 		}
 	}
 
@@ -162,31 +155,35 @@ public partial class Player : CharacterBody3D
 		}
 	}
 
+	private string _inputBuffer;
+
 	private Node3D _turret;
 	private AnimationPlayer _animationPlayer;
-    private Emitter _shellEmitter;
-    private Emitter _shellEmitterLaunch;
-    private Node3D _pointer;
+	private Emitter _shellEmitter;
+	private Node3D _pointer;
+	private Timer _inputBufferTimer;
 
 	private Label3D _velocityLabel;
-    private Label3D _stateLabel;
-    private Label3D _ammoLabel;
+	private Label3D _stateLabel;
+	private Label3D _ammoLabel;
+	private Label3D _bufferLabel;
 
-    private bool _accelerating = false;
+	private bool _accelerating = false;
 
-    // privileges
-    private bool _canMove;
-    private bool _canDecelerate;
+	// privileges
+	private bool _canMove;
+	private bool _canDecelerate;
+	private bool _canAccelerate;
 	private bool _canTurn;
 	private bool _canFall;
-    private bool _canReload;
+	private bool _canReload;
 
 	// Node Functions //
 
 	// get movement vector rotated relative to camera
-	private float AimAngle;
+	private float _aimAngle;
 
-    private float StickAngle
+	private float StickAngle
 	{
 		get
 		{
@@ -200,8 +197,8 @@ public partial class Player : CharacterBody3D
 			float halfPi = Mathf.Pi / 2;
 			float quarPi = Mathf.Pi / 4;
 
-            // snap angle in 4 cardinal directions as well as where the character is pointing
-            return SnapAngle(rotatedMove.Angle(), 
+			// snap angle in 4 cardinal directions as well as where the character is pointing
+			return SnapAngle(rotatedMove.Angle(), 
 				new float[] { 
 					0, // N
 					quarPi,	// NE
@@ -209,37 +206,29 @@ public partial class Player : CharacterBody3D
 					halfPi + quarPi, // SE
 					halfPi * 2, // S
 					halfPi * 2 + quarPi, // SW
-                    halfPi * 3, // W
-                    halfPi * 3 + quarPi, // NW
-                }, 0.15f);
+					halfPi * 3, // W
+					halfPi * 3 + quarPi, // NW
+				}, 0.15f);
 		}
 	}
 
-	private bool Moving
-	{
-		get
-		{
-			return Input.GetVector(
-				"Down", "Up",
-				"Right", "Left").Length() > 0;
-		}
-	}
+	private bool Moving =>
+		Input.GetVector(
+			"Down", "Up",
+			"Right", "Left").Length() > 0;
 
 	private float Angle
 	{
-		set
-		{
+		set =>
 			Rotation = new Vector3(
 				Rotation.X, value, Rotation.Z);
-		}
 
-		get
-		{
-			return Rotation.Y;
-		}
+		get => Rotation.Y;
 	}
-	
-	
+
+	private float Speed => new Vector2(Velocity.X, Velocity.Z).Length();
+
+
 	// Node Functions //
 	
 	// Called when the node enters the scene tree for the first time.
@@ -251,28 +240,31 @@ public partial class Player : CharacterBody3D
 			("Model/TankBase/TankTurret");
 		_animationPlayer = GetNode<AnimationPlayer>
 			("AnimationPlayer");
-        _shellEmitter = GetNode<Emitter>
-            ("ShellEmitter");
-        _shellEmitterLaunch = GetNode<Emitter>
-            ("ShellEmitterLaunch");
-        _pointer = GetNode<Node3D>
+		_shellEmitter = GetNode<Emitter>
+			("ShellEmitter");
+		_pointer = GetNode<Node3D>
 			("Pointer");
+		_inputBufferTimer = GetNode<Timer>
+			("InputBuffer");
 
-        _accelerating = false;
+		_aimAngle = Angle;
+		_accelerating = false;
 		_state = "idle";
 		_canReload = true;
 		Ammo = _ammoLimit;
 
-        RefreshPrivileges();
+		RefreshPrivileges();
 
-        // for debug
-        _velocityLabel = GetNode<Label3D>
-            ("Debug/VelocityLabel");
-        _stateLabel = GetNode<Label3D>
-            ("Debug/StateLabel");
-        _ammoLabel = GetNode<Label3D>
-            ("Debug/AmmoLabel");
-    }
+		// for debug
+		_velocityLabel = GetNode<Label3D>
+			("Debug/VelocityLabel");
+		_stateLabel = GetNode<Label3D>
+			("Debug/StateLabel");
+		_ammoLabel = GetNode<Label3D>
+			("Debug/AmmoLabel");
+		_bufferLabel = GetNode<Label3D>
+			("Debug/BufferLabel");
+	}
 
 	// Called every frame. 'delta' is the elapsed time
 	// since the previous frame.
@@ -284,43 +276,58 @@ public partial class Player : CharacterBody3D
 		MoveAndSlide();
 
 		if (Moving)
-        {
-			AimAngle = StickAngle;
-        }
-
-        _pointer.Rotation = Vector3.Up * (AimAngle - Angle);
-
-
-        // Horizontal Movement //
-
-        _accelerating = false;
-
-        // get horizontal velocity
-        var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
-
-        // get current speed
-        float currentSpeed = currentVelocity.Length();
-
-        // if the stick is being moved
-        if (Moving && _canMove && currentSpeed < _horizontalMaxSpeed)
 		{
-            // rotate turret in direction of stick
-            _turret.Rotation = Vector3.Up * (AimAngle - Angle);
+			_aimAngle = StickAngle;
+		}
 
-			Accelerate(AimAngle, delta);
-        }
+		_pointer.Rotation = Vector3.Up * (_aimAngle - Angle);
+		
+		
+		// Input Buffer //
+
+		string[] actions = new[] { "reload", "launch", "fire" };
+
+		foreach (string action in actions)
+		{
+			if (Input.IsActionJustPressed(action))
+			{
+				_inputBuffer = action;
+				_inputBufferTimer.Start();
+				break;
+			}
+		}
+		
+
+		// Horizontal Movement //
+
+		_accelerating = false;
+
+		// get horizontal velocity
+		var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
+
+		// get current speed
+		float currentSpeed = currentVelocity.Length();
+
+		// if the stick is being moved
+		if (Moving && _canMove && currentSpeed < _horizontalMaxSpeed)
+		{
+			// rotate turret in direction of stick
+			_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
+
+			Accelerate(_aimAngle, delta);
+		}
 
 		// turn towards stick angle
-        if (Moving && _canTurn)
-        {
-            TurnTowards(AimAngle, delta);
-        }
+		if (Moving && _canTurn)
+		{
+			TurnTowards(_aimAngle, delta);
+		}
 
 		// refresh current speed
-        currentSpeed = currentVelocity.Length();
+		currentSpeed = currentVelocity.Length();
 
-        // if going faster than max speed or not accelerating, decelerate
-        if ((currentSpeed > _horizontalMaxSpeed || !_accelerating) && _canDecelerate)
+		// if going faster than max speed or not accelerating, decelerate
+		if ((currentSpeed > _horizontalMaxSpeed || !_accelerating) && _canDecelerate)
 		{
 			// decelerate
 			float newSpeed = currentSpeed 
@@ -358,7 +365,7 @@ public partial class Player : CharacterBody3D
 		{
 			float fallingSpeed = -Velocity.Y;
 
-			fallingSpeed += _fallingAcceleration * (float)delta;
+			fallingSpeed += FallingAcceleration * (float)delta;
 
 			if (fallingSpeed > _fallingMaxSpeed)
 			{
@@ -381,9 +388,18 @@ public partial class Player : CharacterBody3D
 			case "falling":
 
 				if (IsOnFloor())
-                {
-                    State = "idle";
-                }
+				{
+					State = "idle";
+				}
+
+				if (Speed < _horizontalMaxSpeed
+					|| SnapAngle(_aimAngle, new[] { Angle },
+						0.3f) != Angle
+					|| !Moving)
+				{
+					_canAccelerate = true;
+					_canDecelerate = true;
+				}
 
 				break;
 
@@ -393,43 +409,66 @@ public partial class Player : CharacterBody3D
 				if (Moving)
 				{
 					// snap angle in direction of stick
-					Angle = AimAngle;
+					Angle = _aimAngle;
 				}
 
-                break;
+				break;
 		}
-		
-		if (Input.IsActionJustPressed("Launch"))
+
+		if (_inputBuffer != null)
 		{
-			if (HasAndUseAmmo())
-            {
-                State = "launch";
-            }
-		}
-		else if (Input.IsActionJustPressed("Fire"))
-        {
-			if (HasAndUseAmmo())
+			bool bufferUsed = false;
+			
+			if (_inputBuffer == "launch")
 			{
-				State = "fire";
+				if (HasAndUseAmmo())
+				{
+					State = "launch";
+					bufferUsed = true;
+				}
+			}
+			else if (_inputBuffer == "fire")
+			{
+				if (HasAndUseAmmo())
+				{
+					State = "fire";
+					bufferUsed = true;
+				}
+			}
+			else if (_inputBuffer == "reload" && _canReload)
+			{
+				State = "reload";
+				bufferUsed = true;
+			}
+
+			if (bufferUsed)
+			{
+				_inputBuffer = null;
 			}
 		}
-		else if (Input.IsActionJustPressed("Reload") && _canReload)
-		{
-			State = "reload";
-		}
 
 
-        // Debug //
+		// Debug //
 
-        _velocityLabel.Text = "Velocity:"
-                              + new Vector2(Velocity.X, Velocity.Z)
-                                  .Length();
+		_velocityLabel.Text = "Velocity:"
+							  + new Vector2(Velocity.X, Velocity.Z)
+								  .Length();
 
 
-        _stateLabel.Text = $"State: {State}";
+		_stateLabel.Text = $"State: {State}";
 
 		_ammoLabel.Text = $"Ammo: {Ammo}";
-    }
+		
+		_bufferLabel.Text = $"Buffer: {_inputBuffer}";
+	}
+	
+	
+	// Signals //
+
+	private void OnInputBufferTimeout()
+	{
+		_inputBuffer = null;
+	}
 	
 	
 	// Other Functions //
@@ -478,31 +517,18 @@ public partial class Player : CharacterBody3D
 		Angle = newAngle;
 	}
 
-	private void Jump(float magnitude)
-    {
-        // calculate vertical velocity using desired height
-        // u = -sqrt(2as)
-        var verticalVelocity
-            = MathF.Sqrt(
-                2 * _fallingAcceleration * magnitude);
-
-        // apply velocity
-        Velocity = new Vector3(-Velocity.X,
-            verticalVelocity, Velocity.Y);
-    }
-
-    // push directly forwards
-    private void Push(float force)
+	// push directly forwards
+	private void Push(float force)
 	{
-        // launch player in direction of tank
-        var velocity
-            = (Vector2.Up * force)
-                .Rotated(Angle);
+		// launch player in direction of tank
+		var velocity
+			= (Vector2.Up * force)
+				.Rotated(Angle);
 
-        // apply velocity
-        Velocity = new Vector3(-velocity.X,
-            Velocity.Y, velocity.Y);
-    }
+		// apply velocity
+		Velocity = new Vector3(-velocity.X,
+			Velocity.Y, velocity.Y);
+	}
 
 	// halts all horizontal velocity
 	private void Halt()
@@ -511,17 +537,17 @@ public partial class Player : CharacterBody3D
 	}
 
 	private void HaltFall()
-    {
-        Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
-    }
+	{
+		Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
+	}
 
 	private void RefreshPrivileges()
-    {
-        _canMove = true;
-        _canDecelerate = true;
-        _canTurn = true;
+	{
+		_canMove = true;
+		_canDecelerate = true;
+		_canTurn = true;
 		_canFall = true;
-    }
+	}
 
 	// reload a shell
 	private void Reload()
