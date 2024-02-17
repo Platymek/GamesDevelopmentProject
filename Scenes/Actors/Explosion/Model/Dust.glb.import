@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2l5j6kqkpjw7"
-path="res://.godot/imported/tankBase.glb-b776e2c103738425b5b41effa1b7b771.scn"
+uid="uid://clafq6s6n5mdm"
+path="res://.godot/imported/Dust.glb-7ddbd29a13d12fad51b921818c7772e3.scn"
 
 [deps]
 
-source_file="res://Scenes/Actors/Player/Model/tankBase.glb"
-dest_files=["res://.godot/imported/tankBase.glb-b776e2c103738425b5b41effa1b7b771.scn"]
+source_file="res://Scenes/Actors/Explosion/Model/Dust.glb"
+dest_files=["res://.godot/imported/Dust.glb-7ddbd29a13d12fad51b921818c7772e3.scn"]
 
 [params]
 
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"tankBase": {
-"use_external/enabled": true,
-"use_external/path": "res://Scenes/Actors/Player/Model/tankBase.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnwmew2ye16ck"]
+
+[ext_resource type="Texture2D" uid="uid://b0y4ajidwvglj" path="res://Scenes/Actors/Player/Model/tankBase_tankBase.png" id="1_3wvbu"]
+
+[resource]
+resource_name = "tankBase"
+albedo_texture = ExtResource("1_3wvbu")
+roughness = 0.0
+texture_filter = 0

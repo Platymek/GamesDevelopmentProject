@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2l5j6kqkpjw7"
-path="res://.godot/imported/tankBase.glb-b776e2c103738425b5b41effa1b7b771.scn"
+uid="uid://n3errh542nv0"
+path="res://.godot/imported/Explosion.glb-bbc103758f4a488e022be083a88ca4be.scn"
 
 [deps]
 
-source_file="res://Scenes/Actors/Player/Model/tankBase.glb"
-dest_files=["res://.godot/imported/tankBase.glb-b776e2c103738425b5b41effa1b7b771.scn"]
+source_file="res://Scenes/Actors/Explosion/Model/Explosion.glb"
+dest_files=["res://.godot/imported/Explosion.glb-bbc103758f4a488e022be083a88ca4be.scn"]
 
 [params]
 
@@ -20,7 +20,7 @@ nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=1
+meshes/light_baking=0
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
@@ -31,9 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"tankBase": {
+"Explosion": {
 "use_external/enabled": true,
-"use_external/path": "res://Scenes/Actors/Player/Model/tankBase.tres"
+"use_external/path": "res://Scenes/Actors/Explosion/Model/Explosion.tres"
 }
 }
 }
