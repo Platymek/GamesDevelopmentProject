@@ -479,6 +479,7 @@ _launchHeight = 2.25
 _launchSpeedMultiplier = 3.0
 State = "idle"
 FallingAcceleration = 32.0
+MaxHealth = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -539,6 +540,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3, 0)
 billboard = 1
 text = "Buffer"
 font_size = 64
+
+[node name="AnglePointer" type="Node3D" parent="."]
+
+[node name="PointerModel" parent="AnglePointer" instance=ExtResource("8_pbnn7")]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
 
 [node name="Pointer" type="Node3D" parent="."]
 

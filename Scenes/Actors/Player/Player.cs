@@ -475,11 +475,22 @@ public partial class Player : Actor
 
 	private void Accelerate(float angle, double delta)
 	{
-		// accelerate forwards regardless of stick angle
-		Velocity += Vector3.Forward.Rotated(Vector3.Up, Angle)
-					* (float)delta * (IsOnFloor() 
-						? _horizontalAcceleration
-						: _horizontalAirAcceleration);
+		if (!IsOnFloor())
+        {
+            // accelerate forwards regardless of stick angle
+            Velocity += Vector3.Forward.Rotated(Vector3.Up, Angle)
+                        * (float)delta * _horizontalAirAcceleration;
+        }
+		else
+        {
+			// accelerate forwards regardless of stick angle
+			Push(Speed + (float)delta * _horizontalAcceleration);
+				
+		//		Vector3.Forward.Rotated(Vector3.Up, Angle)
+        //                * (float)delta * (IsOnFloor()
+        //                    ? _horizontalAcceleration
+        //                    : _horizontalAirAcceleration);
+        }
 
 		_accelerating = true;
 	}
