@@ -208,7 +208,7 @@ public partial class Player : Actor
 					halfPi * 2 + quarPi, // SW
 					halfPi * 3, // W
 					halfPi * 3 + quarPi, // NW
-				}, 0.15f);
+				}, 0.2f);
 		}
 	}
 
@@ -485,11 +485,6 @@ public partial class Player : Actor
         {
 			// accelerate forwards regardless of stick angle
 			Push(Speed + (float)delta * _horizontalAcceleration);
-				
-		//		Vector3.Forward.Rotated(Vector3.Up, Angle)
-        //                * (float)delta * (IsOnFloor()
-        //                    ? _horizontalAcceleration
-        //                    : _horizontalAirAcceleration);
         }
 
 		_accelerating = true;

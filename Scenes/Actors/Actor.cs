@@ -6,6 +6,16 @@ public partial class Actor : CharacterBody3D
 	[Export] protected float FallingAcceleration;
 	[Export] protected int MaxHealth;
 
+
+	public enum Teams
+	{
+		None,
+		Player,
+		Enemy
+	}
+
+	[Export] public Teams Team;
+
 	protected int Health;
 	public bool Dying;
 

@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5ffdafypp36a"]
+[gd_scene load_steps=9 format=3 uid="uid://c5ffdafypp36a"]
 
+[ext_resource type="Script" path="res://Scenes/Actors/Actor.cs" id="1_iivbo"]
 [ext_resource type="PackedScene" uid="uid://n3errh542nv0" path="res://Scenes/Actors/Explosion/Model/Explosion.glb" id="1_oofv6"]
+[ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="2_15smt"]
 [ext_resource type="PackedScene" uid="uid://clafq6s6n5mdm" path="res://Scenes/Actors/Explosion/Model/Dust.glb" id="2_loc6q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i26r1"]
+radius = 0.75
 
 [sub_resource type="Animation" id="Animation_142fb"]
 length = 0.001
@@ -104,6 +109,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.5, 0, 0.5)]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"Hurt"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uv81r"]
 _data = {
@@ -111,7 +130,13 @@ _data = {
 "explode": SubResource("Animation_vuey5")
 }
 
-[node name="Explosion" type="Node3D"]
+[node name="Explosion" type="CharacterBody3D"]
+script = ExtResource("1_iivbo")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_15smt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("SphereShape3D_i26r1")
 
 [node name="Explosion" parent="." instance=ExtResource("1_oofv6")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -135,3 +160,4 @@ transform = Transform3D(-0.0707107, 0, -0.0707107, 0, 0.1, 0, 0.0707107, 0, -0.0
 libraries = {
 "": SubResource("AnimationLibrary_uv81r")
 }
+autoplay = "explode"

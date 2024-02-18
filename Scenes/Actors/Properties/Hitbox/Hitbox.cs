@@ -4,6 +4,8 @@ using System;
 public partial class Hitbox : Area3D
 {
 	[Export] private int _bounceHeight = 0;
+	[Export] private bool _ignoreTeam = false;
+
 	private Actor _owner;
 
 	public override void _Ready()
@@ -23,7 +25,7 @@ public partial class Hitbox : Area3D
 		if (area is not Hurtbox hurtbox) return;
 		
 		// check that actor is not detecting itself
-		if (actor == _owner) return;
+		if (actor.Team == _owner.Team && !_ignoreTeam) return;
 
 		actor.Jump(_bounceHeight);
 
