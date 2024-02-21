@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GamesDevelopmentProject"
 config/tags=PackedStringArray("uni")
-run/main_scene="res://Scenes/Areas/TestLevels/Basic/Basic.tscn"
+run/main_scene="res://Scenes/Areas/TestLevels/GridMapTest/GridMapTest.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

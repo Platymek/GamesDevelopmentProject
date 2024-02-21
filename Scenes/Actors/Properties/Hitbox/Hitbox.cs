@@ -5,7 +5,11 @@ public partial class Hitbox : Area3D
 {
 	[Export] private int _bounceHeight = 0;
 	[Export] private bool _ignoreTeam = false;
+	[Export] private AnimationPlayer _animationPlayer;
+	[Export] private string _playAnimation;
+	[Export] private bool _playOnce;
 
+	private bool _played;
 	private Actor _owner;
 
 	public override void _Ready()
@@ -17,6 +21,12 @@ public partial class Hitbox : Area3D
 
 	private void OnAreaEntered(Area3D area)
 	{
+		if (_animationPlayer != null && (!_played || !_playOnce))
+        {
+            _played = true;
+            _animationPlayer.Play(_playAnimation);
+        }
+
 		// check that owner is actor
 		if (area.Owner is not Actor actor) return;
 		

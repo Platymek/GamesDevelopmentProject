@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cavwo54dab4w6"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/DropShadow/DropShadow.cs" id="1_e7m6d"]
+
+[node name="DropShadow" type="RayCast3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+debug_shape_thickness = 5
+script = ExtResource("1_e7m6d")

@@ -40,7 +40,7 @@ public partial class Emitter : Node3D
 
 		if (Owner is not Actor owner) return;
 		
-		if (owner.Dying)
+		if (owner.Dead)
 		
 		Emit();
 	}

@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5ffdafypp36a"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Actor.cs" id="1_7sa8p"]
+[ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="2_n6o3g"]
+[ext_resource type="PackedScene" uid="uid://n3errh542nv0" path="res://Scenes/Actors/GlobalActors/Explosion/Model/Explosion.glb" id="3_hhpdp"]
+[ext_resource type="PackedScene" uid="uid://clafq6s6n5mdm" path="res://Scenes/Actors/GlobalActors/Explosion/Model/Dust.glb" id="4_rpfsi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i26r1"]
+radius = 0.75
+
+[sub_resource type="Animation" id="Animation_142fb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dusts/Dust:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dusts/Dust3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dusts/Dust2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dusts/Dust4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vuey5"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dusts/Dust:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.5, 0, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dusts/Dust3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.5, 0, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dusts/Dust2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5, 0, -0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dusts/Dust4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5, 0, 0.5)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"Hurt"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uv81r"]
+_data = {
+"RESET": SubResource("Animation_142fb"),
+"explode": SubResource("Animation_vuey5")
+}
+
+[node name="Explosion" type="CharacterBody3D"]
+script = ExtResource("1_7sa8p")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_n6o3g")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("SphereShape3D_i26r1")
+
+[node name="Explosion" parent="." instance=ExtResource("3_hhpdp")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Dusts" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="Dust" parent="Dusts" instance=ExtResource("4_rpfsi")]
+transform = Transform3D(0.0707107, 0, 0.0707107, 0, 0.1, 0, -0.0707107, 0, 0.0707107, 0, 0, 0)
+
+[node name="Dust2" parent="Dusts" instance=ExtResource("4_rpfsi")]
+transform = Transform3D(-0.0707107, 0, 0.0707107, 0, 0.1, 0, -0.0707107, 0, -0.0707107, 0, 0, 0)
+
+[node name="Dust3" parent="Dusts" instance=ExtResource("4_rpfsi")]
+transform = Transform3D(0.0707107, 0, -0.0707107, 0, 0.1, 0, 0.0707107, 0, 0.0707107, 0, 0, 0)
+
+[node name="Dust4" parent="Dusts" instance=ExtResource("4_rpfsi")]
+transform = Transform3D(-0.0707107, 0, -0.0707107, 0, 0.1, 0, 0.0707107, 0, -0.0707107, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uv81r")
+}
+autoplay = "explode"

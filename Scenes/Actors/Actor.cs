@@ -5,7 +5,8 @@ public partial class Actor : CharacterBody3D
 {
 	[Export] protected float FallingAcceleration;
 	[Export] protected int MaxHealth;
-
+	[Export] protected bool PlayAnimationOnDeath;
+	[Export] protected string DeathAnimation;
 
 	public enum Teams
 	{
@@ -18,6 +19,8 @@ public partial class Actor : CharacterBody3D
 
 	protected int Health;
 	public bool Dying;
+	public bool Dead;
+	protected bool Collided;
 
 	
 	// Node Functions //
@@ -33,10 +36,13 @@ public partial class Actor : CharacterBody3D
 	{
 		base._Process(delta);
 
-		if (Dying)
+		if (Dead)
 		{
 			QueueFree();
 		}
+
+		// move based on velocity from previous frame
+		Collided = MoveAndSlide();
 	}
 
 	
@@ -65,6 +71,19 @@ public partial class Actor : CharacterBody3D
 		// if health 0 or below, kill
 		if (Health <= 0)
 		{
+			if (PlayAnimationOnDeath)
+			{
+				if (!Dying)
+				{
+					GetNode<AnimationPlayer>("AnimationPlayer")
+						.Play(DeathAnimation);
+				}
+			}
+			else
+			{
+				Kill();
+			}
+
 			Dying = true;
 		}
 	}
@@ -73,5 +92,10 @@ public partial class Actor : CharacterBody3D
 	protected virtual void OnHurt(int damage)
 	{
 		Health -= damage;
+	}
+
+	public void Kill()
+	{
+		Dead = true;
 	}
 }

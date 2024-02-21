@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0gv2ht51tw38"]
+
+[ext_resource type="PackedScene" uid="uid://8ppyokme3ayb" path="res://Scenes/Actors/Properties/Hint/Hint.tscn" id="1_b8xrn"]
+[ext_resource type="PackedScene" uid="uid://waas3t65t1y7" path="res://Scenes/Actors/ForestActors/TreeStump.glb" id="2_6613o"]
+[ext_resource type="PackedScene" uid="uid://8o48fxd044yn" path="res://Scenes/Actors/ForestActors/TreeTrunk.glb" id="2_r5wjn"]
+[ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="3_tgsi1"]
+
+[sub_resource type="Gradient" id="Gradient_xndid"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 1, 0.0627451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7jrw5"]
+gradient = SubResource("Gradient_xndid")
+width = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_374vy"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbcno"]
+size = Vector3(4, 16, 4)
+
+[sub_resource type="Animation" id="Animation_xqhwl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrunkCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 8, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrunkCollision:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5fhia"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrunkCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 8, 0), Vector3(2, 8, 0), Vector3(8, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrunkCollision:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2oe4"]
+_data = {
+"RESET": SubResource("Animation_xqhwl"),
+"fall": SubResource("Animation_5fhia")
+}
+
+[node name="BrokenTree" type="StaticBody3D"]
+
+[node name="Hint" parent="." instance=ExtResource("1_b8xrn")]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Hint"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 0, 0)
+pixel_size = 1.0
+texture = SubResource("GradientTexture1D_7jrw5")
+
+[node name="Hitbox" parent="." node_paths=PackedStringArray("_animationPlayer") instance=ExtResource("3_tgsi1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+_animationPlayer = NodePath("../AnimationPlayer")
+_playAnimation = "fall"
+_playOnce = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_374vy")
+
+[node name="TrunkCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+shape = SubResource("BoxShape3D_fbcno")
+
+[node name="TreeTrunk" parent="TrunkCollision" instance=ExtResource("2_r5wjn")]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -3.125, 0, 0.25, -1.36598e-07, 0, 1.7, 0)
+
+[node name="TreeStump" parent="TrunkCollision" instance=ExtResource("2_6613o")]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, -5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m2oe4")
+}

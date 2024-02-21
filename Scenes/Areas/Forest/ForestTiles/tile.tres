@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dud10qjf1wwfa"]
+
+[ext_resource type="Texture2D" uid="uid://bywhvsqvijpvm" path="res://Scenes/Areas/Forest/ForestTiles/11tile_11tile.png" id="1_ftujl"]
+
+[resource]
+resource_name = "11tile"
+albedo_texture = ExtResource("1_ftujl")
+texture_filter = 0

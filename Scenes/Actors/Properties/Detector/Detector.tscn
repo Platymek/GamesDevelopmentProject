@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpgrc0sckc2ky"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/Detector/Detector.cs" id="1_6m4u0"]
+
+[node name="Detector" type="Area3D"]
+monitorable = false
+script = ExtResource("1_6m4u0")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="." to="." method="OnAreaExited"]
