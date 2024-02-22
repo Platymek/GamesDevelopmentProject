@@ -35,15 +35,14 @@ public partial class Detector : Area3D
 	{
 		if (area is not Detectable detectable) return;
 
-		if (_teamToDetect == detectable.Team) return;
-
+		if (_teamToDetect != detectable.Team) return;
 
 		DetectedActors.Remove(detectable.GetOwner<Node3D>());
 
 		// if first actor detected, send a signal
 		if (DetectedActors.Count == 0)
 		{
-			EmitSignal(SignalName.Detected);
+			EmitSignal(SignalName.NotDetecting);
 		}
 	}
 }

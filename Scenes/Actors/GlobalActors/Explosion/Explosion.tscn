@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://clafq6s6n5mdm" path="res://Scenes/Actors/GlobalActors/Explosion/Model/Dust.glb" id="4_rpfsi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i26r1"]
-radius = 0.75
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_142fb"]
 length = 0.001

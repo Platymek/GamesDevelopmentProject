@@ -21,6 +21,9 @@ public partial class Hitbox : Area3D
 
 	private void OnAreaEntered(Area3D area)
 	{
+		// check that area is hurtbox
+		if (area is not Hurtbox hurtbox) return;
+		
 		if (_animationPlayer != null && (!_played || !_playOnce))
         {
             _played = true;
@@ -29,10 +32,6 @@ public partial class Hitbox : Area3D
 
 		// check that owner is actor
 		if (area.Owner is not Actor actor) return;
-		
-		// check that are is hurtbox
-		
-		if (area is not Hurtbox hurtbox) return;
 		
 		// check that actor is not detecting itself
 		if (actor.Team == _owner.Team && !_ignoreTeam) return;

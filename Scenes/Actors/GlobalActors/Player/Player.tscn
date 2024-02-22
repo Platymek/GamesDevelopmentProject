@@ -486,17 +486,17 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
-_horizontalAcceleration = 8.0
-_horizontalAirAcceleration = 6.0
-_horizontalDeceleration = 6.0
 _fallingMaxSpeed = 16.0
-_rotationSpeed = 0.3
 _knockBackStrength = 4.0
 _launchHeight = 2.25
 _launchSpeedMultiplier = 3.0
 State = "idle"
 FallingAcceleration = 32.0
 MaxHealth = 2
+RotationSpeed = 0.3
+HorizontalAcceleration = 8.0
+HorizontalAirAcceleration = 6.0
+HorizontalDeceleration = 32.0
 Team = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -583,6 +583,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("CylinderShape3D_gmgp2")
 
 [node name="Detectable" parent="." instance=ExtResource("10_75tex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 Team = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detectable"]
