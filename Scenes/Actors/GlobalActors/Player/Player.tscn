@@ -492,7 +492,7 @@ _launchHeight = 2.25
 _launchSpeedMultiplier = 3.0
 State = "idle"
 FallingAcceleration = 32.0
-MaxHealth = 2
+MaxHealth = 3
 RotationSpeed = 0.3
 HorizontalAcceleration = 8.0
 HorizontalAirAcceleration = 6.0
@@ -507,7 +507,6 @@ libraries = {
 [node name="ShellEmitter" parent="." instance=ExtResource("2_b1j4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.9)
 _sceneToEmit = ExtResource("6_6vglx")
-_onDeath = true
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

@@ -69,6 +69,7 @@ public partial class Actor : CharacterBody3D
 
 		Dying = false;
 		_accelerating = false;
+		Health = MaxHealth;
 	}
 
 	public override void _Process(double delta)
@@ -115,23 +116,22 @@ public partial class Actor : CharacterBody3D
 		OnHurt(damage);
 		
 		// if health 0 or below, kill
-		if (Health <= 0)
+		if (Health > 0) return;
+		
+		if (PlayAnimationOnDeath)
 		{
-			if (PlayAnimationOnDeath)
+			if (!Dying)
 			{
-				if (!Dying)
-				{
-					GetNode<AnimationPlayer>("AnimationPlayer")
-						.Play(DeathAnimation);
-				}
+				GetNode<AnimationPlayer>("AnimationPlayer")
+					.Play(DeathAnimation);
 			}
-			else
-			{
-				Kill();
-			}
-
-			Dying = true;
 		}
+		else
+		{
+			Kill();
+		}
+
+		Dying = true;
 	}
 
 	// an overridable function to allow actors to react to being hurt

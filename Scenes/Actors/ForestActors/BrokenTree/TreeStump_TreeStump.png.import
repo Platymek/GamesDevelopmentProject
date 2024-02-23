@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2ris4gc802ow"
-path="res://.godot/imported/TreeStump.png-f2fbd68c474954948029cd04a24d786d.ctex"
+uid="uid://nr6c4ti0tce"
+path="res://.godot/imported/TreeStump_TreeStump.png-bee9efc0652b059982d27e66c6bd6aad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Actors/ForestActors/Textures/TreeStump.png"
-dest_files=["res://.godot/imported/TreeStump.png-f2fbd68c474954948029cd04a24d786d.ctex"]
+source_file="res://Scenes/Actors/ForestActors/BrokenTree/TreeStump_TreeStump.png"
+dest_files=["res://.godot/imported/TreeStump_TreeStump.png-bee9efc0652b059982d27e66c6bd6aad.ctex"]
 
 [params]
 

@@ -3,8 +3,8 @@
 [ext_resource type="MeshLibrary" uid="uid://23vjgen63i8" path="res://Scenes/Areas/Forest/ForestTiles/ForestTiles.tres" id="1_0awo0"]
 [ext_resource type="PackedScene" uid="uid://b8a0k0kotmg6j" path="res://Scenes/Areas/Level/Camera/Camera.tscn" id="2_6y224"]
 [ext_resource type="PackedScene" uid="uid://cudu7cnjbdf0o" path="res://Scenes/Actors/GlobalActors/Player/Player.tscn" id="2_a5ko2"]
-[ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree.tscn" id="2_kxgfy"]
-[ext_resource type="PackedScene" uid="uid://dku13efnbw0ji" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.tscn" id="5_yi84n"]
+[ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_kxgfy"]
+[ext_resource type="PackedScene" uid="uid://brp2ublms7ifg" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.tscn" id="4_g3qi0"]
 
 [sub_resource type="Gradient" id="Gradient_w7u8t"]
 
@@ -59,8 +59,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 4, -2)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 3, -2)
 HorizontalAirDeceleration = 6.0
 
-[node name="TechnoCultist" parent="Actors" instance=ExtResource("5_yi84n")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -16.6872, 2, -1.80703)
+[node name="TechnoCultist" parent="Actors" instance=ExtResource("4_g3qi0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17, 2, -4)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_12vdf")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://b0gv2ht51tw38"]
 
 [ext_resource type="PackedScene" uid="uid://8ppyokme3ayb" path="res://Scenes/Actors/Properties/Hint/Hint.tscn" id="1_b8xrn"]
-[ext_resource type="PackedScene" uid="uid://waas3t65t1y7" path="res://Scenes/Actors/ForestActors/TreeStump.glb" id="2_6613o"]
-[ext_resource type="PackedScene" uid="uid://8o48fxd044yn" path="res://Scenes/Actors/ForestActors/TreeTrunk.glb" id="2_r5wjn"]
+[ext_resource type="PackedScene" uid="uid://waas3t65t1y7" path="res://Scenes/Actors/ForestActors/BrokenTree/TreeStump.glb" id="2_6613o"]
+[ext_resource type="PackedScene" uid="uid://8o48fxd044yn" path="res://Scenes/Actors/ForestActors/BrokenTree/TreeTrunk.glb" id="2_r5wjn"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="3_tgsi1"]
 
 [sub_resource type="Gradient" id="Gradient_xndid"]

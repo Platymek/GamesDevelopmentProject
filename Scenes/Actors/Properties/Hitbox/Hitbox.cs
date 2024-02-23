@@ -42,6 +42,6 @@ public partial class Hitbox : Area3D
 		
 		_owner.Hurt(hurtbox.Damage);
 		
-		GD.Print($"{_owner} was hurt by {actor}");
+		GD.Print($"{_owner} was hurt by {actor.Name} with {hurtbox.Damage} damage");
 	}
 }

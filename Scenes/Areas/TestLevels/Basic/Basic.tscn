@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8a0k0kotmg6j" path="res://Scenes/Areas/Level/Camera/Camera.tscn" id="1_gy6hv"]
 [ext_resource type="PackedScene" uid="uid://cudu7cnjbdf0o" path="res://Scenes/Actors/GlobalActors/Player/Player.tscn" id="1_i4puo"]
-[ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree.tscn" id="2_j470d"]
+[ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_j470d"]
 [ext_resource type="PackedScene" uid="uid://dku13efnbw0ji" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.tscn" id="3_7twrc"]
 [ext_resource type="PackedScene" uid="uid://cqnvtchxc244r" path="res://Scenes/Actors/GlobalActors/Shell/Shell.tscn" id="4_u1om1"]
 

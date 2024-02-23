@@ -1,32 +1,39 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class TechnoCultist : Actor
 {
 	// Properties //
 
-	AnimationPlayer _animationPlayer;
-	Detector _detector;
+	protected AnimationPlayer AnimationPlayer;
+	private Detector _chaseDetector;
+	private Detector _attackDetector;
+
+	private Label3D _debugLabel;
 
 	private string _state = "idle";
 
-	[Export] private string State
+	[Export] protected virtual string State
 	{
 		get => _state;
 
 		set
 		{
-			switch (value)
-			{
-				case "idle":
-
-					Halt();
-					
-					break;
-			}
+			Halt();
 			
-			_animationPlayer?.Play(value);
 			_state = value;
+
+			if (AnimationPlayer == null) return;
+
+			if (AnimationPlayer.HasAnimation(value))
+			{
+				AnimationPlayer.Play(value);
+			}
+			else
+			{
+				AnimationPlayer.Play("RESET");
+			}
 		}
 	}
 
@@ -37,8 +44,11 @@ public partial class TechnoCultist : Actor
 	{
 		base._Ready();
 
-		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		_detector = GetNode<Detector>("Detector");
+		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		_chaseDetector = GetNode<Detector>("Chase");
+		_attackDetector = GetNode<Detector>("Attack");
+
+		_debugLabel = GetNode<Label3D>("DebugLabel");
 
 		State = "idle";
 	}
@@ -51,7 +61,7 @@ public partial class TechnoCultist : Actor
 		{
 			case "run":
 
-				Node3D nodeToChase = _detector.DetectedActors[0];
+				Node3D nodeToChase = _chaseDetector.DetectedActors[0];
 
 				var chasePosition = new Vector2(
 					nodeToChase.Position.Z, nodeToChase.Position.X);
@@ -66,6 +76,8 @@ public partial class TechnoCultist : Actor
 
 				break;
 		}
+
+		_debugLabel.Text = $"State: {State}";
 	}
 
 
@@ -78,9 +90,13 @@ public partial class TechnoCultist : Actor
 
 	private void OnDetectorNotDetecting()
 	{
-		GD.Print("hi");
-		
 		State = "idle";
 	}
 
+	private void OnAttackDetected()
+	{
+		GD.Print("hi");
+
+		State = "attack";
+	}
 }
