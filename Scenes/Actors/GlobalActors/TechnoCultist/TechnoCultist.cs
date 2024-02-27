@@ -1,64 +1,102 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class TechnoCultist : Actor
 {
 	// Properties //
 
-	AnimationPlayer _animationPlayer;
-    Detector _detector;
+	protected AnimationPlayer AnimationPlayer;
+	private Detector _chaseDetector;
+	private Detector _attackDetector;
 
-    private string _state = "idle";
+	private Label3D _debugLabel;
 
-    [Export] private string State
-    {
-        get => _state;
+	private string _state = "idle";
 
-        set
-        {
-            _animationPlayer.Play(value);
-            _state = value;
-        }
-    }
+	[Export] protected virtual string State
+	{
+		get => _state;
 
+		set
+		{
+			Halt();
+			
+			_state = value;
 
-    // Node Functions //
+			if (AnimationPlayer == null) return;
 
-    public override void _Ready()
-    {
-        base._Ready();
-
-        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        _detector = GetNode<Detector>("Detector");
-
-        State = "idle";
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        switch (State)
-        {
-            case "run":
-
-                LookAt(_detector.DetectedActors[0].Position);
-
-                break;
-        }
-    }
+			if (AnimationPlayer.HasAnimation(value))
+			{
+				AnimationPlayer.Play(value);
+			}
+			else
+			{
+				AnimationPlayer.Play("RESET");
+			}
+		}
+	}
 
 
-    // Signals //
+	// Node Functions //
 
-    private void OnDetectorDetected()
-    {
-        State = "shock";
-    }
+	public override void _Ready()
+	{
+		base._Ready();
 
-    private void OnDetectorNotDetecting()
-    {
-        State = "idle";
-    }
+		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		_chaseDetector = GetNode<Detector>("Chase");
+		_attackDetector = GetNode<Detector>("Attack");
 
+		_debugLabel = GetNode<Label3D>("DebugLabel");
+
+		State = "idle";
+	}
+
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+
+		switch (State)
+		{
+			case "run":
+
+				Node3D nodeToChase = _chaseDetector.DetectedActors[0];
+
+				var chasePosition = new Vector2(
+					nodeToChase.Position.Z, nodeToChase.Position.X);
+				
+				var myPosition = new Vector2(
+					Position.Z, Position.X);
+				
+				TurnTowards(chasePosition.AngleToPoint(myPosition), 
+					delta);
+				
+				Accelerate(delta);
+
+				break;
+		}
+
+		_debugLabel.Text = $"State: {State}";
+	}
+
+
+	// Signals //
+
+	private void OnDetectorDetected()
+	{
+		State = "shock";
+	}
+
+	private void OnDetectorNotDetecting()
+	{
+		State = "idle";
+	}
+
+	private void OnAttackDetected()
+	{
+		GD.Print("hi");
+
+		State = "attack";
+	}
 }

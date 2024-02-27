@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://8o48fxd044yn"
-path="res://.godot/imported/TreeTrunk.glb-90f5bd6c54a06a80b151d23d33e96a0b.scn"
+path="res://.godot/imported/TreeTrunk.glb-8de50d8ddbaf3e34227505057a754848.scn"
 
 [deps]
 
-source_file="res://Scenes/Actors/ForestActors/TreeTrunk.glb"
-dest_files=["res://.godot/imported/TreeTrunk.glb-90f5bd6c54a06a80b151d23d33e96a0b.scn"]
+source_file="res://Scenes/Actors/ForestActors/BrokenTree/TreeTrunk.glb"
+dest_files=["res://.godot/imported/TreeTrunk.glb-8de50d8ddbaf3e34227505057a754848.scn"]
 
 [params]
 

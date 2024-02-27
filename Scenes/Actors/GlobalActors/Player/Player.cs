@@ -4,17 +4,10 @@ using System;
 public partial class Player : Actor
 {
 	// Properties //
-
-	[Export] private float _horizontalMaxSpeed = 4;
-	[Export] private float _horizontalAcceleration = 16;
-	[Export] private float _horizontalAirAcceleration = 4;
-	[Export] private float _horizontalDeceleration = 16;
-	[Export] private float _horizontalAirDeceleration = 4;
 	
 	[Export] private float _fallingMaxSpeed = 4;
 	[Export] private float _fallingDeceleration = 16;
 	
-	[Export] private float _rotationSpeed = 1;
 	[Export] private float _knockBackStrength = 2;
 	[Export] private int _maxAmmoCount = 2;
 	[Export] private float _launchHeight = 4;
@@ -38,7 +31,7 @@ public partial class Player : Actor
 					if (!IsOnFloor())
 					{
 						State = "falling";
-						_canDecelerate = false;
+						CanDecelerate = false;
 						_canAccelerate = false;
 						return;
 					}
@@ -55,12 +48,12 @@ public partial class Player : Actor
 
 				case "launch":
 
-					_canDecelerate = false;
+					CanDecelerate = false;
 
 					if (Moving)
 					{
 						Jump(_launchHeight);
-						Push(_horizontalMaxSpeed * _launchSpeedMultiplier);
+						Speed = HorizontalMaxSpeed * _launchSpeedMultiplier;
 					}
 					else
 					{
@@ -73,7 +66,7 @@ public partial class Player : Actor
 				case "reload":
 
 					_canMove = false;
-					_canDecelerate = false;
+					CanDecelerate = false;
 					_canReload = false;
 
 					if (Moving)
@@ -99,14 +92,14 @@ public partial class Player : Actor
 
 					_canMove = false;
 					_canFall = false;
-					_canDecelerate = false;
+					CanDecelerate = false;
 
 					// fire a shell
 					_shellEmitter.Emit();
 
 					Halt();
 					HaltFall();
-					Push(-_knockBackStrength);
+					Speed = -_knockBackStrength;
 
 					break;
 
@@ -165,11 +158,8 @@ public partial class Player : Actor
 	private Label3D _ammoLabel;
 	private Label3D _bufferLabel;
 
-	private bool _accelerating = false;
-
 	// privileges
 	private bool _canMove;
-	private bool _canDecelerate;
 	private bool _canAccelerate;
 	private bool _canTurn;
 	private bool _canFall;
@@ -214,17 +204,6 @@ public partial class Player : Actor
 			"Down", "Up",
 			"Right", "Left").Length() > 0;
 
-	private float Angle
-	{
-		set =>
-			Rotation = new Vector3(
-				Rotation.X, value, Rotation.Z);
-
-		get => Rotation.Y;
-	}
-
-	private float Speed => new Vector2(Velocity.X, Velocity.Z).Length();
-
 
 	// Node Functions //
 	
@@ -245,7 +224,6 @@ public partial class Player : Actor
 			("InputBuffer");
 
 		_aimAngle = Angle;
-		_accelerating = false;
 		_state = "idle";
 		_canReload = true;
 		Ammo = _ammoLimit;
@@ -294,8 +272,6 @@ public partial class Player : Actor
 
 		// Horizontal Movement //
 
-		_accelerating = false;
-
 		// get horizontal velocity
 		var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
 
@@ -303,12 +279,15 @@ public partial class Player : Actor
 		float currentSpeed = currentVelocity.Length();
 
 		// if the stick is being moved
-		if (Moving && _canMove && currentSpeed < _horizontalMaxSpeed)
+		if (Moving && _canMove)
 		{
 			// rotate turret in direction of stick
 			_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
-			Accelerate(_aimAngle, delta);
+			if (Speed < HorizontalMaxSpeed)
+			{
+				Accelerate(delta);
+			}
 		}
 
 		// turn towards stick angle
@@ -316,42 +295,6 @@ public partial class Player : Actor
 		{
 			TurnTowards(_aimAngle, delta);
 		}
-
-		// refresh current speed
-		currentSpeed = currentVelocity.Length();
-
-		// if going faster than max speed or not accelerating, decelerate
-		if ((currentSpeed > _horizontalMaxSpeed || !_accelerating) && _canDecelerate)
-		{
-			// decelerate
-			float newSpeed = currentSpeed 
-							 - _horizontalDeceleration
-							 * (float)delta * (IsOnFloor() 
-								 ? _horizontalDeceleration
-								 : _horizontalAirDeceleration);
-			
-			// if deceleration makes the value below max speed and the player
-			// is accelerating, cap to max speed
-			if (newSpeed < _horizontalMaxSpeed && _accelerating)
-			{
-				newSpeed = _horizontalMaxSpeed;
-			}
-			
-			// if deceleration reduced the new speed below 0, set to 0
-			if (newSpeed < 0)
-			{
-				newSpeed = 0;
-			}
-				
-			// normalise velocity and multiply by the new speed to
-			// retain angle
-			var newVelocity = currentVelocity.Normalized() 
-								  * newSpeed;
-
-			Velocity = new Vector3(newVelocity.X, Velocity.Y, 
-				newVelocity.Y);
-		}
-		
 		
 		// Vertical Movement //
 
@@ -386,13 +329,13 @@ public partial class Player : Actor
 					State = "idle";
 				}
 
-				if (Speed < _horizontalMaxSpeed
+				if (Speed < HorizontalMaxSpeed
 					|| SnapAngle(_aimAngle, new[] { Angle },
 						0.3f) != Angle
 					|| !Moving)
 				{
 					_canAccelerate = true;
-					_canDecelerate = true;
+					CanDecelerate = true;
 				}
 
 				break;
@@ -467,84 +410,10 @@ public partial class Player : Actor
 	
 	// Other Functions //
 
-	private void Accelerate(float angle, double delta)
-	{
-		if (!IsOnFloor())
-        {
-            // accelerate forwards regardless of stick angle
-            Velocity += Vector3.Forward.Rotated(Vector3.Up, Angle)
-                        * (float)delta * _horizontalAirAcceleration;
-        }
-		else
-        {
-			// accelerate forwards regardless of stick angle
-			Push(Speed + (float)delta * _horizontalAcceleration);
-        }
-
-		_accelerating = true;
-	}
-
-	private void TurnTowards(float targetAngle, double delta)
-	{
-		float currentAngle = Angle;
-		
-		// get angle difference from current angle to new angle
-		float angleDifference = Mathf.AngleDifference(
-			currentAngle, targetAngle);
-		
-		// if the difference is 0, no rotation is needed
-		if (angleDifference == 0) return;
-
-		float rotationSpeed = Mathf.Tau * _rotationSpeed * (float)delta;
-		
-		// if the difference in angle is smaller than the rotation speed
-		// snap to target angle and return
-		if (MathF.Abs(angleDifference) < rotationSpeed)
-		{
-			// apply rotation
-			Angle = targetAngle;
-
-			return;
-		}
-
-		// check direction of turning and turn in tha direction
-		float newAngle = currentAngle 
-						   + (angleDifference < 0
-							   ? -rotationSpeed
-							   : rotationSpeed);
-		
-		// apply rotation
-		Angle = newAngle;
-	}
-
-	// push directly forwards
-	private void Push(float force)
-	{
-		// launch player in direction of tank
-		var velocity
-			= (Vector2.Up * force)
-				.Rotated(Angle);
-
-		// apply velocity
-		Velocity = new Vector3(-velocity.X,
-			Velocity.Y, velocity.Y);
-	}
-
-	// halts all horizontal velocity
-	private void Halt()
-	{
-		Velocity = new Vector3(0, Velocity.Y, 0);
-	}
-
-	private void HaltFall()
-	{
-		Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
-	}
-
 	private void RefreshPrivileges()
 	{
 		_canMove = true;
-		_canDecelerate = true;
+		CanDecelerate = true;
 		_canTurn = true;
 		_canFall = true;
 	}
