@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://nu8onflr511e"]
+
+[ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_jxknd"]
+[ext_resource type="Theme" uid="uid://b5elv26uyd1hp" path="res://Scenes/Menus/Theme.tres" id="2_upvaa"]
+
+[node name="MainMenu" instance=ExtResource("1_jxknd")]
+theme = ExtResource("2_upvaa")
+
+[node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "Love Tank!"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "A Prototype by Hector Selby Reimundez"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="0"]
+layout_mode = 2
+text = "Play"
+
+[node name="CheckBox" type="CheckBox" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+text = "Timer"
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="2"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="3"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Play" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Exit" to="." method="OnExitPressed"]

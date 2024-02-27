@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bx43ulw7dthur"]
+[gd_scene load_steps=15 format=3 uid="uid://bx43ulw7dthur"]
 
 [ext_resource type="MeshLibrary" uid="uid://23vjgen63i8" path="res://Scenes/Areas/Forest/ForestTiles/ForestTiles.tres" id="1_0awo0"]
+[ext_resource type="Script" path="res://Scenes/Areas/Level.cs" id="1_yc0k4"]
 [ext_resource type="PackedScene" uid="uid://b8a0k0kotmg6j" path="res://Scenes/Areas/Level/Camera/Camera.tscn" id="2_6y224"]
 [ext_resource type="PackedScene" uid="uid://cudu7cnjbdf0o" path="res://Scenes/Actors/GlobalActors/Player/Player.tscn" id="2_a5ko2"]
 [ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_kxgfy"]
@@ -8,7 +9,7 @@
 
 [sub_resource type="Gradient" id="Gradient_w7u8t"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_a583p"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x4yui"]
 gradient = SubResource("Gradient_w7u8t")
 
 [sub_resource type="Gradient" id="Gradient_8jfr5"]
@@ -16,7 +17,7 @@ offsets = PackedFloat32Array(0.256809, 0.785992)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_innav"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2s8cj"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ebjc"]
 seamless = true
 color_ramp = SubResource("Gradient_8jfr5")
 noise = SubResource("FastNoiseLite_innav")
@@ -24,23 +25,24 @@ noise = SubResource("FastNoiseLite_innav")
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rdobl"]
 sky_top_color = Color(1, 1, 1, 1)
 sky_horizon_color = Color(1, 1, 1, 1)
-sky_cover = SubResource("NoiseTexture2D_2s8cj")
+sky_cover = SubResource("NoiseTexture2D_3ebjc")
 
-[sub_resource type="Sky" id="Sky_k2cmd"]
+[sub_resource type="Sky" id="Sky_5v376"]
 sky_material = SubResource("ProceduralSkyMaterial_rdobl")
 
 [sub_resource type="Environment" id="Environment_12vdf"]
 background_mode = 1
 background_color = Color(0.380392, 0.686275, 1, 1)
-sky = SubResource("Sky_k2cmd")
+sky = SubResource("Sky_5v376")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
 ssil_enabled = true
 sdfgi_use_occlusion = true
-adjustment_color_correction = SubResource("GradientTexture1D_a583p")
+adjustment_color_correction = SubResource("GradientTexture1D_x4yui")
 
 [node name="GridMapTest" type="Node3D"]
+script = ExtResource("1_yc0k4")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("_target") instance=ExtResource("2_6y224")]
 _target = NodePath("../Actors/Player")
@@ -57,17 +59,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 4, -2)
 
 [node name="Player" parent="Actors" instance=ExtResource("2_a5ko2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 3, -2)
-HorizontalAirDeceleration = 6.0
 
 [node name="TechnoCultist" parent="Actors" instance=ExtResource("4_g3qi0")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17, 2, -4)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_12vdf")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 0)
-visible = false
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 

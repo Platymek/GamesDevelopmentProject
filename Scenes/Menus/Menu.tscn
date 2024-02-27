@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsrhk4ar32lat"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Menu.cs" id="1_1us5f"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1us5f")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer"]
+layout_mode = 2

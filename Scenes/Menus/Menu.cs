@@ -1,0 +1,33 @@
+using Godot;
+using System;
+
+public partial class Menu : Control
+{
+	// Properties //
+
+	Global Global;
+
+
+	// Node Functions //
+
+	public override void _Ready()
+	{
+		base._Ready();
+
+		Global = GetNode<Global>("/root/Global");
+	}
+
+
+	// Signals //
+
+	private void OnPlayPressed()
+	{
+		// load ProtoLevel
+		Global.LoadLevel(0, 0);
+	}
+
+	private void OnExitPressed()
+	{
+		Global.Exit();
+	}
+}
