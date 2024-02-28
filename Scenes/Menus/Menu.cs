@@ -5,7 +5,8 @@ public partial class Menu : Control
 {
 	// Properties //
 
-	Global Global;
+	protected Global Global;
+	protected bool TimerOn;
 
 
 	// Node Functions //
@@ -22,6 +23,8 @@ public partial class Menu : Control
 
 	private void OnPlayPressed()
 	{
+		Global.TimerOn = TimerOn;
+
 		// load ProtoLevel
 		Global.LoadLevel(0, 0);
 	}
@@ -29,5 +32,10 @@ public partial class Menu : Control
 	private void OnExitPressed()
 	{
 		Global.Exit();
+	}
+
+	private void OnTimerToggled(bool toggledOn)
+	{
+		TimerOn = toggledOn;
 	}
 }

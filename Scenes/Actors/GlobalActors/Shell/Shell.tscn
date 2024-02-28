@@ -20,7 +20,7 @@ _distance = 8.0
 
 [node name="Hitbox" parent="." instance=ExtResource("2_cv878")]
 collision_layer = 2
-_bounceHeight = 2
+_bounceHeight = 3
 _ignoreTeam = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

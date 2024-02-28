@@ -49,15 +49,16 @@ public partial class Player : Actor
 				case "launch":
 
 					CanDecelerate = false;
+					_explosionEmitter.Emit();
 
-					if (Moving)
+                    if (Moving)
 					{
 						Jump(_launchHeight);
 						Speed = HorizontalMaxSpeed * _launchSpeedMultiplier;
 					}
 					else
 					{
-						Jump(_launchHeight * 1.5f);
+						Jump(_launchHeight * 2f);
 						Halt();
 					}
 
@@ -86,9 +87,9 @@ public partial class Player : Actor
 
 					// snap angle in direction of stick
 					if (Moving)
-                    {
-                        Angle = _aimAngle;
-                    }
+					{
+						Angle = _aimAngle;
+					}
 
 					_canMove = false;
 					_canFall = false;
@@ -146,12 +147,15 @@ public partial class Player : Actor
 	}
 
 	private string _inputBuffer;
+	private Vector3 _respawnPoint;
 
 	private Node3D _turret;
 	private AnimationPlayer _animationPlayer;
-	private Emitter _shellEmitter;
-	private Node3D _pointer;
+    private Emitter _shellEmitter;
+    private Emitter _explosionEmitter;
+    private Node3D _pointer;
 	private Timer _inputBufferTimer;
+	private Level _level;
 
 	private Label3D _velocityLabel;
 	private Label3D _stateLabel;
@@ -195,7 +199,7 @@ public partial class Player : Actor
 					halfPi * 2 + quarPi, // SW
 					halfPi * 3, // W
 					halfPi * 3 + quarPi, // NW
-				}, 0.2f);
+				}, quarPi * 0.25f);
 		}
 	}
 
@@ -216,9 +220,11 @@ public partial class Player : Actor
 			("Model/TankBase/TankTurret");
 		_animationPlayer = GetNode<AnimationPlayer>
 			("AnimationPlayer");
-		_shellEmitter = GetNode<Emitter>
-			("ShellEmitter");
-		_pointer = GetNode<Node3D>
+        _shellEmitter = GetNode<Emitter>
+            ("ShellEmitter");
+        _explosionEmitter = GetNode<Emitter>
+            ("ExplosionEmitter");
+        _pointer = GetNode<Node3D>
 			("Pointer");
 		_inputBufferTimer = GetNode<Timer>
 			("InputBuffer");
@@ -227,8 +233,9 @@ public partial class Player : Actor
 		_state = "idle";
 		_canReload = true;
 		Ammo = _ammoLimit;
+        _level = GetParent<Level>();
 
-		RefreshPrivileges();
+        RefreshPrivileges();
 
 		// for debug
 		_velocityLabel = GetNode<Label3D>
@@ -279,15 +286,23 @@ public partial class Player : Actor
 		float currentSpeed = currentVelocity.Length();
 
 		// if the stick is being moved
-		if (Moving && _canMove)
+		if (_canMove)
 		{
-			// rotate turret in direction of stick
-			_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
+			if (Moving)
+            {
+                // rotate turret in direction of stick
+                _turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
-			if (Speed < HorizontalMaxSpeed)
-			{
-				Accelerate(delta);
-			}
+                if (Speed < HorizontalMaxSpeed)
+                {
+                    Accelerate(delta);
+                }
+            }
+			else
+            {
+                // rotate turret in direction of stick
+                _turret.Rotation = Vector3.Up * 0;
+            }
 		}
 
 		// turn towards stick angle
@@ -406,6 +421,14 @@ public partial class Player : Actor
 	{
 		_inputBuffer = null;
 	}
+
+	private void OnSetRespawnTimerTimeout()
+    {
+        if (IsOnFloor())
+        {
+            _respawnPoint = Position;
+        }
+    }
 	
 	
 	// Other Functions //
@@ -452,4 +475,17 @@ public partial class Player : Actor
 
 		return angle;
 	}
+
+	// send the player back to the last place they were standing
+	public void Respawn()
+	{
+		Position = _respawnPoint;
+
+		Halt();
+	}
+
+    public override void Kill()
+    {
+		_level.Lose();
+    }
 }

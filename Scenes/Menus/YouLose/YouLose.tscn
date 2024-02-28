@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://sc8vhmaibusm"]
+
+[ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_51ibk"]
+
+[node name="Menu" instance=ExtResource("1_51ibk")]
+
+[node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "You Lose!"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="0"]
+layout_mode = 2
+text = "Retry"
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="2"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Retry" to="." method="OnPlayPressed"]

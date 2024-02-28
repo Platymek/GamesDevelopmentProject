@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=27 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/GlobalActors/Player/Model/tankBase.glb" id="1_gbn4w"]
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/Player/Player.cs" id="1_gojm8"]
 [ext_resource type="PackedScene" uid="uid://cbssrs0b63wo8" path="res://Scenes/Actors/Properties/Emitter/Emitter.tscn" id="2_b1j4c"]
 [ext_resource type="PackedScene" uid="uid://dy1dx8bldgvb6" path="res://Scenes/Actors/GlobalActors/Player/Model/loveBird.glb" id="2_htqs3"]
 [ext_resource type="PackedScene" uid="uid://gn2qoe3v15i6" path="res://Scenes/Actors/GlobalActors/Player/Model/tankTurret.glb" id="3_mno7v"]
+[ext_resource type="PackedScene" uid="uid://c5ffdafypp36a" path="res://Scenes/Actors/GlobalActors/Explosion/Explosion.tscn" id="4_jcyle"]
 [ext_resource type="PackedScene" uid="uid://cqnvtchxc244r" path="res://Scenes/Actors/GlobalActors/Shell/Shell.tscn" id="6_6vglx"]
 [ext_resource type="PackedScene" uid="uid://cgkpgl5iuj7xw" path="res://Scenes/Actors/GlobalActors/Player/Model/Pointer.glb" id="8_pbnn7"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="9_dmpoc"]
@@ -494,6 +495,7 @@ State = "idle"
 FallingAcceleration = 32.0
 MaxHealth = 3
 RotationSpeed = 0.25
+HorizontalAirAcceleration = 16.0
 Team = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -504,6 +506,10 @@ libraries = {
 [node name="ShellEmitter" parent="." instance=ExtResource("2_b1j4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.9)
 _sceneToEmit = ExtResource("6_6vglx")
+
+[node name="ExplosionEmitter" parent="." instance=ExtResource("2_b1j4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 1.6)
+_sceneToEmit = ExtResource("4_jcyle")
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -530,6 +536,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_seomg")
 
 [node name="Debug" type="Node3D" parent="."]
+visible = false
 
 [node name="VelocityLabel" type="Label3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
@@ -556,6 +563,7 @@ text = "Buffer"
 font_size = 64
 
 [node name="AnglePointer" type="Node3D" parent="."]
+visible = false
 
 [node name="PointerModel" parent="AnglePointer" instance=ExtResource("8_pbnn7")]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
@@ -598,4 +606,8 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 texture = SubResource("GradientTexture2D_4y7i8")
 
+[node name="SetRespawnTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="InputBuffer" to="." method="OnInputBufferTimeout"]
+[connection signal="timeout" from="SetRespawnTimer" to="." method="OnSetRespawnTimerTimeout"]

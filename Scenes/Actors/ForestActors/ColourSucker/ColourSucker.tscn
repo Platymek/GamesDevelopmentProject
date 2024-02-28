@@ -398,7 +398,11 @@ collision_mode = 2
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="TechnoCultist" instance=ExtResource("1_kap87")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("2_omsbt")
+
+[node name="Model" parent="." index="0"]
+transform = Transform3D(-0.1, 0, 2.53518e-07, 0, 0.1, 0, -2.53518e-07, 0, -0.1, 0, 0, 0)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -428,3 +432,6 @@ radius = 2.0
 
 [node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="GPUParticles3D/GPUParticlesAttractorSphere3D" index="0"]
 radius = 0.5
+
+[node name="DebugLabel" parent="." index="9"]
+visible = false

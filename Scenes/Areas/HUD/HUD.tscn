@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn5ni53d42opk"]
+
+[ext_resource type="Theme" uid="uid://b5elv26uyd1hp" path="res://Scenes/Menus/Theme.tres" id="1_mibo1"]
+[ext_resource type="Texture2D" uid="uid://dlocl6sohh4qj" path="res://Scenes/Areas/HUD/ShellEmpty.svg" id="2_acqir"]
+[ext_resource type="Texture2D" uid="uid://blfpu4ba5r3dh" path="res://Scenes/Areas/HUD/HealthEmpty.svg" id="2_c8k3b"]
+[ext_resource type="Script" path="res://Scenes/Areas/HUD/HUD.cs" id="2_yr6b1"]
+[ext_resource type="Texture2D" uid="uid://bewgqeruqjgwm" path="res://Scenes/Areas/HUD/Shell.svg" id="3_7qrqe"]
+[ext_resource type="Texture2D" uid="uid://1utstt2moydl" path="res://Scenes/Areas/HUD/Health.svg" id="3_aldx1"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mibo1")
+script = ExtResource("2_yr6b1")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -176.0
+offset_right = 368.0
+offset_bottom = -1.0
+grow_vertical = 0
+theme_type_variation = &"Title"
+text = "Time"
+
+[node name="Health" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 128.0
+max_value = 3.0
+value = 1.0
+texture_under = ExtResource("2_c8k3b")
+texture_progress = ExtResource("3_aldx1")
+
+[node name="Shells" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 256.0
+max_value = 2.0
+value = 1.0
+texture_under = ExtResource("2_acqir")
+texture_progress = ExtResource("3_7qrqe")

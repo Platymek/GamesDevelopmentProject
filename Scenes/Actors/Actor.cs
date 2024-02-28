@@ -26,7 +26,7 @@ public partial class Actor : CharacterBody3D
 
 	[Export] public Teams Team;
 
-	protected int Health;
+	public int Health;
 	public bool Dying;
 	public bool Dead;
 	protected bool Collided;
@@ -140,7 +140,7 @@ public partial class Actor : CharacterBody3D
 		Health -= damage;
 	}
 
-	public void Kill()
+	public virtual void Kill()
 	{
 		Dead = true;
 	}

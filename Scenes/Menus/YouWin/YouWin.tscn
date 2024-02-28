@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://86smsak8h86y"]
+
+[ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_n3ahl"]
+[ext_resource type="Script" path="res://Scenes/Menus/YouWin/YouWin.cs" id="2_xd48h"]
+
+[node name="YouWin" instance=ExtResource("1_n3ahl")]
+script = ExtResource("2_xd48h")
+
+[node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "You Win!"
+horizontal_alignment = 1
+
+[node name="YourTimeWas" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Your time was"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Seconds" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="3"]
+layout_mode = 2
+text = "seconds!"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="5"]
+layout_mode = 2
+text = "Can you get under 30 seconds?"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="6"]
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="0"]
+layout_mode = 2
+text = "Retry"
+
+[node name="CheckBox" type="CheckBox" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+text = "Timer"
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="2"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="3"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Retry" to="." method="OnPlayPressed"]
+[connection signal="toggled" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/CheckBox" to="." method="OnTimerToggled"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Exit" to="." method="OnExitPressed"]

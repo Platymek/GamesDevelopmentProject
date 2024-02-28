@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsrhk4ar32lat"]
+[gd_scene load_steps=3 format=3 uid="uid://bsrhk4ar32lat"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/Menu.cs" id="1_1us5f"]
+[ext_resource type="Theme" uid="uid://b5elv26uyd1hp" path="res://Scenes/Menus/Theme.tres" id="1_nymqi"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nymqi")
 script = ExtResource("1_1us5f")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]

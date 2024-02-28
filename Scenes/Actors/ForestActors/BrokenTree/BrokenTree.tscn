@@ -82,7 +82,6 @@ _data = {
 [node name="BrokenTree" type="StaticBody3D"]
 
 [node name="Hint" parent="." instance=ExtResource("1_b8xrn")]
-visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Hint"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 0, 0)

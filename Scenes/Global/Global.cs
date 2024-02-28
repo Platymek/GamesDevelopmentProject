@@ -9,11 +9,14 @@ public partial class Global : Node
 
     public LevelStats CurrentLevelStats;
     public bool TimerOn;
-    public double Time;
+    public double PreviousTime;
+    public double TimeRequirement;
 
     public enum Menus
     {
         MainMenu,
+        YouWin,
+        YouLose,
     }
 
 
@@ -41,19 +44,42 @@ public partial class Global : Node
                 ? DisplayServer.WindowMode.Fullscreen
                 : DisplayServer.WindowMode.Windowed);
         }
+
+        if(Input.IsActionJustPressed("Reset"))
+        {
+            TimerOn = true;
+            LoadLevel(0, 0);
+        }
     }
 
 
     // Other Functions //
 
-    public PackedScene GetScene(Menus menu)
+    public PackedScene GetMenu(Menus menu)
     {
         switch (menu)
         {
-            case Menus.MainMenu: return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/MainMenu/MainMenu.tscn");
-        }
+            case Menus.MainMenu: 
 
-        return null;
+                return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/MainMenu/MainMenu.tscn");
+
+            case Menus.YouWin:
+
+                return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/YouWin/YouWin.tscn");
+
+            case Menus.YouLose:
+
+                return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/YouLose/YouLose.tscn");
+
+            default:
+
+                return null;
+        }
+    }
+
+    public void LoadMenu(Menus menu)
+    {
+        GetTree().ChangeSceneToPacked(GetMenu(menu));
     }
 
     public LevelStats GetLevelStats(int area, int level)
@@ -65,6 +91,7 @@ public partial class Global : Node
     {
         LevelStats levelStats = GetLevelStats(area, level);
 
+        TimeRequirement = levelStats.Time;
         GetTree().ChangeSceneToPacked(levelStats.Level);
     }
 
