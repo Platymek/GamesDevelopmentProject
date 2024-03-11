@@ -12,28 +12,29 @@ horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "A Prototype by Hector Selby Reimundez"
+text = "A Prototype by 
+Hector Selby Reimundez"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="2"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="0"]
+[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
 layout_mode = 2
 text = "Play"
 
-[node name="CheckBox" type="CheckBox" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="1"]
+[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#CheckBox" type="CheckBox" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
 layout_mode = 2
 text = "Timer"
 alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="2"]
+[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
 layout_mode = 2
 
-[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons" index="3"]
+[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Play" to="." method="OnPlayPressed"]
-[connection signal="toggled" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/CheckBox" to="." method="OnTimerToggled"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer/Buttons/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Play" to="." method="OnPlayPressed"]
+[connection signal="toggled" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#CheckBox" to="." method="OnTimerToggled"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" to="." method="OnExitPressed"]

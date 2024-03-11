@@ -30,11 +30,11 @@ layout_mode = 2
 [node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="PanelContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="Buttons" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/Panel/MarginContainer"]
+[node name="Buttons" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2

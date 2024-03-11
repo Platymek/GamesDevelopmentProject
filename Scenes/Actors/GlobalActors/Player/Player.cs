@@ -13,6 +13,8 @@ public partial class Player : Actor
 	[Export] private float _launchHeight = 4;
 	[Export] private float _launchSpeedMultiplier = 2;
 
+	[Export] private Level _level;
+
 	private string _state;
 
 	[Export] private string State
@@ -51,7 +53,7 @@ public partial class Player : Actor
 					CanDecelerate = false;
 					_explosionEmitter.Emit();
 
-                    if (Moving)
+					if (Moving)
 					{
 						Jump(_launchHeight);
 						Speed = HorizontalMaxSpeed * _launchSpeedMultiplier;
@@ -151,11 +153,10 @@ public partial class Player : Actor
 
 	private Node3D _turret;
 	private AnimationPlayer _animationPlayer;
-    private Emitter _shellEmitter;
-    private Emitter _explosionEmitter;
-    private Node3D _pointer;
+	private Emitter _shellEmitter;
+	private Emitter _explosionEmitter;
+	private Node3D _pointer;
 	private Timer _inputBufferTimer;
-	private Level _level;
 
 	private Label3D _velocityLabel;
 	private Label3D _stateLabel;
@@ -220,11 +221,11 @@ public partial class Player : Actor
 			("Model/TankBase/TankTurret");
 		_animationPlayer = GetNode<AnimationPlayer>
 			("AnimationPlayer");
-        _shellEmitter = GetNode<Emitter>
-            ("ShellEmitter");
-        _explosionEmitter = GetNode<Emitter>
-            ("ExplosionEmitter");
-        _pointer = GetNode<Node3D>
+		_shellEmitter = GetNode<Emitter>
+			("ShellEmitter");
+		_explosionEmitter = GetNode<Emitter>
+			("ExplosionEmitter");
+		_pointer = GetNode<Node3D>
 			("Pointer");
 		_inputBufferTimer = GetNode<Timer>
 			("InputBuffer");
@@ -233,9 +234,8 @@ public partial class Player : Actor
 		_state = "idle";
 		_canReload = true;
 		Ammo = _ammoLimit;
-        _level = GetParent<Level>();
 
-        RefreshPrivileges();
+		RefreshPrivileges();
 
 		// for debug
 		_velocityLabel = GetNode<Label3D>
@@ -289,20 +289,20 @@ public partial class Player : Actor
 		if (_canMove)
 		{
 			if (Moving)
-            {
-                // rotate turret in direction of stick
-                _turret.Rotation = Vector3.Up * (_aimAngle - Angle);
+			{
+				// rotate turret in direction of stick
+				_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
-                if (Speed < HorizontalMaxSpeed)
-                {
-                    Accelerate(delta);
-                }
-            }
+				if (Speed < HorizontalMaxSpeed)
+				{
+					Accelerate(delta);
+				}
+			}
 			else
-            {
-                // rotate turret in direction of stick
-                _turret.Rotation = Vector3.Up * 0;
-            }
+			{
+				// rotate turret in direction of stick
+				_turret.Rotation = Vector3.Up * 0;
+			}
 		}
 
 		// turn towards stick angle
@@ -402,13 +402,10 @@ public partial class Player : Actor
 
 		// Debug //
 
-		_velocityLabel.Text = "Velocity:"
-							  + new Vector2(Velocity.X, Velocity.Z)
-								  .Length();
-
-
+		_velocityLabel.Text = $"Velocity:{Speed}";
+		
 		_stateLabel.Text = $"State: {State}";
-
+		
 		_ammoLabel.Text = $"Ammo: {Ammo}";
 		
 		_bufferLabel.Text = $"Buffer: {_inputBuffer}";
@@ -423,12 +420,12 @@ public partial class Player : Actor
 	}
 
 	private void OnSetRespawnTimerTimeout()
-    {
-        if (IsOnFloor())
-        {
-            _respawnPoint = Position;
-        }
-    }
+	{
+		if (IsOnFloor())
+		{
+			_respawnPoint = Position;
+		}
+	}
 	
 	
 	// Other Functions //
@@ -484,8 +481,8 @@ public partial class Player : Actor
 		Halt();
 	}
 
-    public override void Kill()
-    {
+	public override void Kill()
+	{
 		_level.Lose();
-    }
+	}
 }

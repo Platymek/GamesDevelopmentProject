@@ -4,8 +4,25 @@ using System;
 public partial class Level : Node3D
 {
 	private Global _global;
+	private Control _hud;
+	private Control _pause;
 
 	public double Time;
+
+	private bool _paused;
+	private bool Paused
+	{
+		get => _paused;
+
+		set
+		{
+			_hud.Visible = !value;
+			_pause.Visible = value;
+			GetTree().Paused = value;
+
+			_paused = value;
+		}
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,8 +30,11 @@ public partial class Level : Node3D
 		base._Ready();
 
 		_global = GetNode<Global>("/root/Global");
+		_hud = GetNode<HUD>("Hud");
+		_pause = GetNode<Menu>("Pause");
 
 		Time = 0;
+		Paused = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,7 +42,16 @@ public partial class Level : Node3D
 	{
 		base._Process(delta);
 
-		Time += delta;
+
+		if (Input.IsActionJustPressed("pause"))
+		{
+			Paused = !Paused;
+		}
+		
+		if (!Paused)
+		{
+		    Time += delta;
+		}
 	}
 
 	// Signals //

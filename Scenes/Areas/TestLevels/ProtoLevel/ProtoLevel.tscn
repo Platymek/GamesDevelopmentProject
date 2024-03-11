@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1orusuqy7qei"]
+[gd_scene load_steps=14 format=3 uid="uid://b1orusuqy7qei"]
 
 [ext_resource type="PackedScene" uid="uid://doo5228kix4jo" path="res://Scenes/Areas/Level.tscn" id="1_re5q8"]
 [ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_o7eag"]
 [ext_resource type="MeshLibrary" uid="uid://23vjgen63i8" path="res://Scenes/Areas/Forest/ForestTiles/ForestTiles.tres" id="3_5rqf8"]
+[ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Areas/DefaultEnvironment.tres" id="4_4l4q8"]
 [ext_resource type="PackedScene" uid="uid://brp2ublms7ifg" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.tscn" id="4_fc72e"]
 [ext_resource type="Texture2D" uid="uid://cpk5vmtehqbna" path="res://KennyInputPrompts/Keyboard & Mouse/Double/keyboard_space.png" id="5_ar1fh"]
 [ext_resource type="Texture2D" uid="uid://cuj8b03lsvyxa" path="res://KennyInputPrompts/Nintendo Switch/Double/switch_buttons_down.png" id="6_752ov"]
@@ -14,57 +15,17 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_voylx"]
 
-[sub_resource type="Gradient" id="Gradient_olv8n"]
-colors = PackedColorArray(0.0862745, 0, 0.14902, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_a583p"]
-gradient = SubResource("Gradient_olv8n")
-
-[sub_resource type="Gradient" id="Gradient_7ydwc"]
-offsets = PackedFloat32Array(0.256809, 0.785992)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_k8yek"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2s8cj"]
-seamless = true
-color_ramp = SubResource("Gradient_7ydwc")
-noise = SubResource("FastNoiseLite_k8yek")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3aeyo"]
-sky_top_color = Color(1, 1, 1, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-sky_cover = SubResource("NoiseTexture2D_2s8cj")
-
-[sub_resource type="Sky" id="Sky_k2cmd"]
-sky_material = SubResource("ProceduralSkyMaterial_3aeyo")
-
-[sub_resource type="Environment" id="Environment_70ylr"]
-background_mode = 1
-background_color = Color(0.380392, 0.686275, 1, 1)
-sky = SubResource("Sky_k2cmd")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-reflected_light_source = 2
-ssil_enabled = true
-sdfgi_use_occlusion = true
-adjustment_enabled = true
-adjustment_saturation = 0.9
-adjustment_color_correction = SubResource("GradientTexture1D_a583p")
-
 [node name="Level" instance=ExtResource("1_re5q8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 176, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_voylx")
 
-[node name="Hurtbox" parent="." index="2"]
+[node name="Hurtbox" parent="." index="3"]
 monitoring = true
 
-[node name="Camera" parent="." index="3"]
+[node name="Camera" parent="." index="4"]
 _trackY = true
-
-[node name="Player" parent="." index="4"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
 
 [node name="BrokenTree" parent="Actors" index="0" instance=ExtResource("2_o7eag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 2, 0)
@@ -85,7 +46,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 168, 6
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 166, 6, 1)
 
 [node name="WorldEnvironment" parent="." index="6"]
-environment = SubResource("Environment_70ylr")
+environment = ExtResource("4_4l4q8")
 
 [node name="GridMap" parent="." index="7"]
 mesh_library = ExtResource("3_5rqf8")

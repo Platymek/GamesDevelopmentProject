@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjyh4d4koleoq"]
+
+[ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_274gp"]
+
+[node name="Pause" instance=ExtResource("1_274gp")]
+
+[node name="Label" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Restart" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+text = "Restart
+"
+
+[node name="LevelSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+layout_mode = 2
+text = "Level Select
+"
+
+[node name="Splitter" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
+layout_mode = 2
+text = "Exit"

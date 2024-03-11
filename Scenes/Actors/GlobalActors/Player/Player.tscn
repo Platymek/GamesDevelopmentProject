@@ -536,7 +536,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_seomg")
 
 [node name="Debug" type="Node3D" parent="."]
-visible = false
 
 [node name="VelocityLabel" type="Label3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
@@ -563,7 +562,6 @@ text = "Buffer"
 font_size = 64
 
 [node name="AnglePointer" type="Node3D" parent="."]
-visible = false
 
 [node name="PointerModel" parent="AnglePointer" instance=ExtResource("8_pbnn7")]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)

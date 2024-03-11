@@ -1,10 +1,10 @@
 [gd_resource type="Environment" load_steps=8 format=3 uid="uid://b0trs8a13sm7c"]
 
-[sub_resource type="Gradient" id="Gradient_olv8n"]
-colors = PackedColorArray(0.0941176, 0, 0.254902, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_pud48"]
+colors = PackedColorArray(0.223372, 0.000168722, 0.288537, 1, 0.968627, 0.945098, 0.792157, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a583p"]
-gradient = SubResource("Gradient_olv8n")
+gradient = SubResource("Gradient_pud48")
 
 [sub_resource type="Gradient" id="Gradient_7ydwc"]
 offsets = PackedFloat32Array(0.256809, 0.785992)

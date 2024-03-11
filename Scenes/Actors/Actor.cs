@@ -170,9 +170,9 @@ public partial class Actor : CharacterBody3D
 
 		// check direction of turning and turn in tha direction
 		float newAngle = currentAngle 
-		                 + (angleDifference < 0
-			                 ? -rotationSpeed
-			                 : rotationSpeed);
+						 + (angleDifference < 0
+							 ? -rotationSpeed
+							 : rotationSpeed);
 		
 		// apply rotation
 		Angle = newAngle;
@@ -194,7 +194,7 @@ public partial class Actor : CharacterBody3D
 		{
 			// accelerate forwards regardless of stick angle
 			Velocity += Vector3.Forward.Rotated(Vector3.Up, Angle)
-			            * (float)delta * HorizontalAirAcceleration;
+						* (float)delta * HorizontalAirAcceleration;
 		}
 		else
 		{
@@ -219,7 +219,7 @@ public partial class Actor : CharacterBody3D
 		{
 			// accelerate forwards regardless of stick angle
 			Velocity -= Vector3.Forward.Rotated(Vector3.Up, Angle)
-			            * (float)delta * HorizontalAirDeceleration;
+						* (float)delta * HorizontalAirDeceleration;
 		}
 		else
 		{
@@ -228,7 +228,7 @@ public partial class Actor : CharacterBody3D
 
 		// if decelerated in opposite direction
 		if (positivex && Velocity.X < 0
-		    || !positivex && Velocity.X > 0)
+			|| !positivex && Velocity.X > 0)
 		{
 			Velocity = new Vector3(
 				0,
@@ -238,7 +238,7 @@ public partial class Actor : CharacterBody3D
 
 		// if decelerated in opposite direction
 		if (positivez && Velocity.Z < 0
-		    || !positivez && Velocity.Z > 0)
+			|| !positivez && Velocity.Z > 0)
 		{
 			Velocity = new Vector3(
 				Velocity.X,
