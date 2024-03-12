@@ -10,8 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8tl5"]
 shader = ExtResource("7_rvbtt")
-shader_parameter/color = null
-shader_parameter/dropOffPoint = 0.1
+shader_parameter/dropOffPoint = 0.5
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -22,6 +21,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mibo1")
 script = ExtResource("2_yr6b1")
+
+[node name="Top" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v8tl5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1080.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, -1)
+color = Color(0.258824, 0.752941, 0.984314, 0.25098)
+
+[node name="Bottom" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v8tl5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.372549, 0.14902, 0.513726, 0.25098)
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
@@ -65,13 +87,3 @@ value = 1.0
 fill_mode = 1
 texture_under = ExtResource("2_acqir")
 texture_progress = ExtResource("3_7qrqe")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_v8tl5")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.372549, 0.14902, 0.513726, 1)

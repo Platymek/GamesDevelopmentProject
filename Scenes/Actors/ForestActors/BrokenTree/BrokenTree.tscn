@@ -11,13 +11,13 @@ colors = PackedColorArray(0, 0, 1, 0.0627451)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7jrw5"]
 gradient = SubResource("Gradient_xndid")
-width = 16
+width = 14
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_374vy"]
-size = Vector3(4, 4, 4)
+size = Vector3(4, 14, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fbcno"]
-size = Vector3(4, 16, 4)
+size = Vector3(4, 14, 4)
 
 [sub_resource type="Animation" id="Animation_xqhwl"]
 length = 0.001
@@ -84,7 +84,7 @@ _data = {
 [node name="Hint" parent="." instance=ExtResource("1_b8xrn")]
 
 [node name="Sprite3D" type="Sprite3D" parent="Hint"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 7, 0, 0)
 pixel_size = 1.0
 texture = SubResource("GradientTexture1D_7jrw5")
 
@@ -95,7 +95,7 @@ _playAnimation = "fall"
 _playOnce = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 shape = SubResource("BoxShape3D_374vy")
 
 [node name="TrunkCollision" type="CollisionShape3D" parent="."]
@@ -103,10 +103,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 shape = SubResource("BoxShape3D_fbcno")
 
 [node name="TreeTrunk" parent="TrunkCollision" instance=ExtResource("2_r5wjn")]
-transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -3.125, 0, 0.25, -1.36598e-07, 0, 1.7, 0)
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -2.875, 0, 0.25, -1.2567e-07, 0, 1.3, 0)
 
 [node name="TreeStump" parent="TrunkCollision" instance=ExtResource("2_6613o")]
-transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, -5, 0)
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, -4, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

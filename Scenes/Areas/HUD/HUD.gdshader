@@ -1,10 +1,10 @@
 shader_type canvas_item;
 
-uniform vec4 color : source_color;
-uniform float dropOffPoint = 0.1f;
+uniform float dropOffPoint : hint_range(0, 1) = 0.1f;
 
 void fragment() {
 	
-	vec4 c = COLOR;
+	float percentage = min((UV.y - 1. + dropOffPoint) / dropOffPoint, 1.f);
 	
+	COLOR *= percentage;
 }

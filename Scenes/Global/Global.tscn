@@ -25,4 +25,3 @@ Time = 30.0
 script = ExtResource("2_yrkcy")
 Time = 120.0
 Title = "1-1: Tree Trunk Trip"
-NumberOfCollectables = 2

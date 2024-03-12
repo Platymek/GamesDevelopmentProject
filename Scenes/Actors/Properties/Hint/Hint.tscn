@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://8ppyokme3ayb"]
+[gd_scene load_steps=2 format=3 uid="uid://8ppyokme3ayb"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Properties/Hint/Hint.cs" id="1_pctct"]
 
 [node name="Hint" type="Node3D"]
+script = ExtResource("1_pctct")

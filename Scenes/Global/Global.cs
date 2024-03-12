@@ -8,6 +8,8 @@ public partial class Global : Node
     private Node AreasNode;
 
     public LevelStats CurrentLevelStats;
+    public int CurrentLevel;
+    public int CurrentArea;
     public bool TimerOn;
     public double PreviousTime;
     public double TimeRequirement;
@@ -92,6 +94,10 @@ public partial class Global : Node
         LevelStats levelStats = GetLevelStats(area, level);
 
         TimeRequirement = levelStats.Time;
+
+        CurrentLevel = level;
+        CurrentArea = area;
+
         GetTree().ChangeSceneToPacked(levelStats.Level);
     }
 

@@ -50,5 +50,7 @@ _level = NodePath("../..")
 
 [node name="Checkpoint1" type="Node3D" parent="Checkpoints"]
 
+[node name="ColourJars" type="Node3D" parent="."]
+
 [connection signal="Detected" from="Goal" to="." method="OnGoalAreaEntered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="OnPitEntered"]
