@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ljdswjbvvdf6"]
+[gd_scene load_steps=6 format=3 uid="uid://ljdswjbvvdf6"]
 
 [ext_resource type="Script" path="res://Scenes/Global/Global.cs" id="1_gnunq"]
 [ext_resource type="Script" path="res://Scenes/Global/Areas.cs" id="2_xd3vq"]
 [ext_resource type="Script" path="res://Scenes/Global/LevelStats.cs" id="2_yrkcy"]
-[ext_resource type="PackedScene" uid="uid://b1orusuqy7qei" path="res://Scenes/Areas/TestLevels/ProtoLevel/ProtoLevel.tscn" id="3_tks3j"]
+[ext_resource type="PackedScene" uid="uid://b1orusuqy7qei" path="res://Scenes/Levels/TestLevels/ProtoLevel/ProtoLevel.tscn" id="3_tks3j"]
+[ext_resource type="PackedScene" uid="uid://c8cfdbvvldwov" path="res://Scenes/Levels/Forest/Levels/1-1.tscn" id="5_8xvpc"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_gnunq")
@@ -23,5 +24,6 @@ Time = 30.0
 
 [node name="Broken Tree" type="Node" parent="Areas/Woodland"]
 script = ExtResource("2_yrkcy")
-Time = 120.0
+Level = ExtResource("5_8xvpc")
+Time = 45.0
 Title = "1-1: Tree Trunk Trip"

@@ -4,7 +4,8 @@
 
 [resource]
 resource_name = "Explosion"
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_ws3un")
 roughness = 0.5
 texture_filter = 0
+billboard_mode = 2
+billboard_keep_scale = true

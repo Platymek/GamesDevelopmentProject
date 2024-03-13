@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://doo5228kix4jo"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Level.cs" id="1_dedyj"]
+[ext_resource type="PackedScene" uid="uid://cn5ni53d42opk" path="res://Scenes/Levels/HUD/HUD.tscn" id="2_0bp4c"]
+[ext_resource type="PackedScene" uid="uid://bjyh4d4koleoq" path="res://Scenes/Menus/Pause/Pause.tscn" id="3_h3nho"]
+[ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="4_ychb6"]
+[ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="5_xx2r5"]
+[ext_resource type="PackedScene" uid="uid://b8a0k0kotmg6j" path="res://Scenes/Actors/GlobalActors/Camera/Camera.tscn" id="6_ostv1"]
+[ext_resource type="PackedScene" uid="uid://cudu7cnjbdf0o" path="res://Scenes/Actors/GlobalActors/Player/Player.tscn" id="7_m4tha"]
+[ext_resource type="Script" path="res://Scenes/Levels/CameraHint.cs" id="8_i4j7t"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dav2k"]
+
+[node name="Level" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_dedyj")
+
+[node name="Hud" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_0bp4c")]
+_player = NodePath("../Actors/Player")
+
+[node name="Pause" parent="." instance=ExtResource("3_h3nho")]
+process_mode = 2
+visible = false
+
+[node name="Goal" parent="." instance=ExtResource("4_ychb6")]
+_teamToDetect = 1
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_xx2r5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+shape = SubResource("WorldBoundaryShape3D_dav2k")
+
+[node name="Camera" parent="." node_paths=PackedStringArray("_target") instance=ExtResource("6_ostv1")]
+_target = NodePath("../Actors/Player")
+
+[node name="Actors" type="Node3D" parent="."]
+process_mode = 1
+
+[node name="Player" parent="Actors" node_paths=PackedStringArray("_level") instance=ExtResource("7_m4tha")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
+_level = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="GridMap" type="GridMap" parent="."]
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="Checkpoint1" type="Node3D" parent="Checkpoints"]
+
+[node name="ColourJars" type="Node3D" parent="."]
+
+[node name="CameraHints" type="Node3D" parent="."]
+
+[node name="Detector" parent="CameraHints" node_paths=PackedStringArray("camera") instance=ExtResource("4_ychb6")]
+script = ExtResource("8_i4j7t")
+camera = NodePath("../../Camera")
+TrackX = false
+TrackY = false
+TrackZ = false
+_teamToDetect = 1
+
+[connection signal="JarCollected" from="." to="Hud" method="OnLevelJarCollected"]
+[connection signal="Detected" from="Goal" to="." method="OnGoalAreaEntered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="OnPitEntered"]
+[connection signal="NotDetecting" from="CameraHints/Detector" to="CameraHints/Detector" method="OnNotDetecting"]

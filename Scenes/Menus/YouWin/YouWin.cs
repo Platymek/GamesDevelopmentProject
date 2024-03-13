@@ -9,9 +9,12 @@ public partial class YouWin : Menu
 		base._Ready();
 
 		GetNode<Label>("AspectRatioContainer/CenterContainer/VBoxContainer/Time").Text 
-			= "" + Mathf.Round(Global.PreviousTime);
+			= $"{Mathf.Round(Global.PreviousTime)}s";
 
-		GetNode<Node3D>("AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle")
-			.Visible = Global.PreviousTime > Global.TimeRequirement;
+		GetNode<Control>("AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle")
+			.Visible = Global.PreviousTime > Global.CurrentLevelStats.Time;
+
+		GetNode<Label>("AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle/TimeRequirement").Text
+			= $"{Mathf.Round(Global.CurrentLevelStats.Time)}s?";
 	}
 }

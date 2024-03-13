@@ -26,7 +26,7 @@ public partial class Menu : Control
 		Global.TimerOn = TimerOn;
 
 		// load ProtoLevel
-		Global.LoadLevel(0, 0);
+		Global.LoadLevel(1, 0);
 	}
 
 	private void OnExitPressed()

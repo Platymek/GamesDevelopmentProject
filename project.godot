@@ -21,6 +21,11 @@ config/icon="res://icon.svg"
 
 Global="*res://Scenes/Global/Global.tscn"
 
+[debug]
+
+shapes/navigation/geometry_edge_color=Color(0.709804, 0.160784, 0.321569, 1)
+shapes/collision/shape_color=Color(0.709804, 0.160784, 0.321569, 1)
+
 [display]
 
 window/size/viewport_width=1080

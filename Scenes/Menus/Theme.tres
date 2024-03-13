@@ -72,3 +72,4 @@ MarginContainer/constants/margin_top = 32
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_j4xt1")
 Title/base_type = &"Label"
 Title/font_sizes/font_size = 128
+VBoxContainer/constants/separation = 8

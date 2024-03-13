@@ -8,3 +8,5 @@ albedo_texture = ExtResource("1_vd57p")
 roughness = 0.5
 texture_filter = 0
 billboard_mode = 2
+billboard_keep_scale = true
+grow_amount = -0.413
