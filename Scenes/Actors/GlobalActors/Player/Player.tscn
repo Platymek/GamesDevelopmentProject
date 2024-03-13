@@ -494,7 +494,7 @@ _launchSpeedMultiplier = 3.0
 State = "idle"
 FallingAcceleration = 32.0
 MaxHealth = 3
-RotationSpeed = 0.25
+RotationSpeed = 0.5
 HorizontalAirAcceleration = 16.0
 Team = 1
 
