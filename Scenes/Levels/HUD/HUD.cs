@@ -30,7 +30,6 @@ public partial class HUD : Control
 			i < GetNode<Global>("/root/Global").CurrentLevelStats.NumberOfCollectables; 
 			i++)
 		{
-			GD.Print("hello");
 			_emptyJars.AddChild(_emptyJars.GetChild(0).Duplicate());
 			_fullJars .AddChild(_fullJars .GetChild(0).Duplicate());
 		}

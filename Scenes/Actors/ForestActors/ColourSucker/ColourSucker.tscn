@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://brp2ublms7ifg"]
+[gd_scene load_steps=16 format=3 uid="uid://brp2ublms7ifg"]
 
 [ext_resource type="PackedScene" uid="uid://dku13efnbw0ji" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.tscn" id="1_kap87"]
 [ext_resource type="Script" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.cs" id="2_omsbt"]
+[ext_resource type="PackedScene" uid="uid://dimrhge83roh1" path="res://Scenes/Actors/ForestActors/ColourSucker/Model/BackPack.glb" id="3_7qwon"]
 [ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="3_qlf0y"]
+[ext_resource type="PackedScene" uid="uid://bhh0mmoynvgmv" path="res://Scenes/Actors/ForestActors/ColourSucker/Model/Hoover.glb" id="4_swg8e"]
 
 [sub_resource type="Animation" id="Animation_ikhrj"]
 length = 0.001
@@ -125,6 +127,30 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["idle"]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Model/TechnoCultistBase/Hoover:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6, -0.999999, 2.00001)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.349066, 1.5708, 8.75002e-07)]
 }
 
 [sub_resource type="Animation" id="Animation_0gsbv"]
@@ -343,6 +369,7 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_p2xi7"]
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -350,10 +377,10 @@ tracks/0/path = NodePath("Suction:monitorable")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -362,10 +389,10 @@ tracks/1/path = NodePath("GPUParticles3D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -374,10 +401,34 @@ tracks/2/path = NodePath(".:State")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["run"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/TechnoCultistBase/Hoover:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 2, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-6, -0.999999, 2.00001), Vector3(-5.99998, -0.999998, 7.00002), Vector3(1.84274e-05, -0.999998, 8), Vector3(1.84274e-05, -0.999998, 8), Vector3(-5.99998, -0.999998, 7.00002), Vector3(-6, -0.999999, 2.00001)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 2, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.349066, 1.5708, 8.75002e-07), Vector3(1.5241e-06, 1.5708, 0.698132), Vector3(2.36199e-06, 1.5708, 1.5708), Vector3(2.36199e-06, 1.5708, 1.5708), Vector3(1.5241e-06, 1.5708, 0.698132), Vector3(-0.349066, 1.5708, 8.75002e-07)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74l3q"]
@@ -401,8 +452,11 @@ size = Vector3(0.1, 0.1, 0.1)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("2_omsbt")
 
-[node name="Model" parent="." index="0"]
-transform = Transform3D(-0.1, 0, 2.53518e-07, 0, 0.1, 0, -2.53518e-07, 0, -0.1, 0, 0, 0)
+[node name="BackPack" parent="Model/TechnoCultistBase" index="2" instance=ExtResource("3_7qwon")]
+transform = Transform3D(2, 0, -1.36424e-12, 0, 2, 0, 1.36424e-12, 0, 2, -7.34327e-06, -3, -3)
+
+[node name="Hoover" parent="Model/TechnoCultistBase" index="3" instance=ExtResource("4_swg8e")]
+transform = Transform3D(-5.87889e-06, -0.513031, 1.40954, 1.23335e-06, 1.40954, 0.513031, -1.5, 3.16967e-06, -5.10252e-06, -6, -0.999999, 2.00001)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -433,5 +487,5 @@ radius = 2.0
 [node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="GPUParticles3D/GPUParticlesAttractorSphere3D" index="0"]
 radius = 0.5
 
-[node name="DebugLabel" parent="." index="9"]
+[node name="DebugLabel" parent="." index="10"]
 visible = false

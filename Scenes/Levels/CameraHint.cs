@@ -5,27 +5,27 @@ public partial class CameraHint : Detector
 {
 	[Export] Camera camera;
 
-	[Export] private bool TrackX = false;
-	[Export] private bool TrackY = false;
-	[Export] private bool TrackZ = false;
+	[Export] public bool TrackX = false;
+	[Export] public bool TrackY = false;
+	[Export] public bool TrackZ = false;
 
-	private void OnNotDetecting()
+    public void OnNotDetecting()
 	{
 		camera.TrackX = TrackX;
 		camera.TrackY = TrackY;
 		camera.TrackZ = TrackZ;
 
-		if (TrackX)
+		if (!TrackX)
 		{
 			camera.X = Position.X;
 		}
 
-		if (TrackY)
+		if (!TrackY)
 		{
 			camera.Y = Position.Y;
 		}
 
-		if (TrackZ)
+		if (!TrackZ)
 		{
 			camera.Z = Position.Z;
 		}

@@ -9,6 +9,7 @@ public partial class Level : Node3D
 	private Global _global;
 	private Control _hud;
 	private Control _pause;
+	public Checkpoint LastCheckpoint;
 
 	public double Time;
 	public bool[] Collectables;
@@ -64,19 +65,18 @@ public partial class Level : Node3D
 
 	private void OnPitEntered(Area3D area)
 	{
-		GD.Print("hello");
-
 		if (area.Owner is not Actor actor) return;
 
 		if (actor is Player player)
 		{
-			player.Respawn();
+			player.Respawn(LastCheckpoint.Position);
 			player.Hurt();
+			LastCheckpoint._cameraHint.OnNotDetecting();
 		}
-		else
-		{
-			actor.Kill();
-		}
+		//else
+		//{
+		//	actor.Kill();
+		//}
 	}
 	
 	// when the goal collision has been entered, send the player to the win screen

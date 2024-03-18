@@ -61,3 +61,4 @@ _teamToDetect = 1
 shape = SubResource("SphereShape3D_fq1fe")
 
 [connection signal="Detected" from="Detector" to="." method="OnDetectorDetected"]
+[connection signal="NotDetecting" from="Detector" to="." method="OnDetectorNotDetecting"]

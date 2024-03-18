@@ -77,26 +77,33 @@ public partial class TechnoCultist : Actor
 				break;
 		}
 
-		_debugLabel.Text = $"State: {State}";
+		if (!IsOnFloor())
+		{
+			Fall(delta);
+		}
+
+        _debugLabel.Text = $"State: {State}";
 	}
 
 
 	// Signals //
 
 	private void OnDetectorDetected()
-	{
+    {
+        if (State != "idle") return;
+        
 		State = "shock";
 	}
 
 	private void OnDetectorNotDetecting()
 	{
+		if (State == "attack") return;
+
 		State = "idle";
 	}
 
 	private void OnAttackDetected()
 	{
-		GD.Print("hi");
-
 		State = "attack";
 	}
 }

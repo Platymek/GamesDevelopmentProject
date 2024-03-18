@@ -25,7 +25,8 @@ shape = SubResource("WorldBoundaryShape3D_voylx")
 monitoring = true
 
 [node name="Camera" parent="." index="4"]
-_trackY = true
+TrackX = true
+TrackY = true
 
 [node name="BrokenTree" parent="Actors" index="0" instance=ExtResource("2_o7eag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 2, 0)
@@ -38,12 +39,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, -6, 0)
 
 [node name="TechnoCultist" parent="Actors" index="3" instance=ExtResource("4_fc72e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 151, 6, -2)
+Team = 0
 
 [node name="TechnoCultist2" parent="Actors" index="4" instance=ExtResource("4_fc72e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 168, 6, -5)
+Team = 0
 
 [node name="TechnoCultist3" parent="Actors" index="5" instance=ExtResource("4_fc72e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 166, 6, 1)
+Team = 0
 
 [node name="WorldEnvironment" parent="." index="6"]
 environment = ExtResource("4_4l4q8")

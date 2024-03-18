@@ -16,6 +16,7 @@ public partial class Actor : CharacterBody3D
 	[Export] protected float HorizontalAirDeceleration = 4;
 	
 	[Export] protected float HorizontalMaxSpeed = 4;
+	[Export] protected float FallingMaxSpeed = 4;
 
 	public enum Teams
 	{
@@ -88,8 +89,9 @@ public partial class Actor : CharacterBody3D
 
 		_accelerating = false;
 
-		// move based on velocity from previous frame
-		Collided = MoveAndSlide();
+
+        // move based on velocity from previous frame
+        Collided = MoveAndSlide();
 	}
 
 	
@@ -257,4 +259,18 @@ public partial class Actor : CharacterBody3D
 	{
 		Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
 	}
+
+	protected void Fall(double delta)
+	{
+        float fallingSpeed = -Velocity.Y;
+
+        fallingSpeed += FallingAcceleration * (float)delta;
+
+        if (fallingSpeed > FallingMaxSpeed)
+        {
+            fallingSpeed = FallingMaxSpeed;
+        }
+
+        Velocity = new Vector3(Velocity.X, -fallingSpeed, Velocity.Z);
+    }
 }

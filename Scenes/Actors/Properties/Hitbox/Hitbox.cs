@@ -25,10 +25,10 @@ public partial class Hitbox : Area3D
 		if (area is not Hurtbox hurtbox) return;
 		
 		if (_animationPlayer != null && (!_played || !_playOnce))
-        {
-            _played = true;
-            _animationPlayer.Play(_playAnimation);
-        }
+		{
+			_played = true;
+			_animationPlayer.Play(_playAnimation);
+		}
 
 		// check that owner is actor
 		if (area.Owner is not Actor actor) return;

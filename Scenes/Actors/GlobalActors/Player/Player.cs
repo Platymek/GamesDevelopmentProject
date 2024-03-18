@@ -5,7 +5,6 @@ public partial class Player : Actor
 {
 	// Properties //
 	
-	[Export] private float _fallingMaxSpeed = 4;
 	[Export] private float _fallingDeceleration = 16;
 	
 	[Export] private float _knockBackStrength = 2;
@@ -315,16 +314,7 @@ public partial class Player : Actor
 
 		if (!IsOnFloor() && _canFall)
 		{
-			float fallingSpeed = -Velocity.Y;
-
-			fallingSpeed += FallingAcceleration * (float)delta;
-
-			if (fallingSpeed > _fallingMaxSpeed)
-			{
-				fallingSpeed = _fallingMaxSpeed;
-			}
-			
-			Velocity = new Vector3(Velocity.X, -fallingSpeed, Velocity.Z);
+			Fall(delta);
 		}
 
 		if (IsOnFloorOnly())
@@ -474,9 +464,9 @@ public partial class Player : Actor
 	}
 
 	// send the player back to the last place they were standing
-	public void Respawn()
+	public void Respawn(Vector3 respawnPoint)
 	{
-		Position = _respawnPoint;
+		Position = respawnPoint;
 
 		Halt();
 	}
