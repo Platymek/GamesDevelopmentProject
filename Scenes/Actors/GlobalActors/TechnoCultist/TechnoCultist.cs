@@ -61,6 +61,12 @@ public partial class TechnoCultist : Actor
 		{
 			case "run":
 
+				if (_chaseDetector.DetectedActors.Count <= 0)
+				{
+					State = "idle";
+					break;
+				}
+
 				Node3D nodeToChase = _chaseDetector.DetectedActors[0];
 
 				var chasePosition = new Vector2(

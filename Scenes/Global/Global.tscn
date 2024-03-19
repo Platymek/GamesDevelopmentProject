@@ -32,6 +32,6 @@ Title = "1-1: Tree Trunk Trip"
 [node name="1-2 - Colour Suckers" type="Node" parent="Areas/Woodland"]
 script = ExtResource("2_yrkcy")
 Level = ExtResource("6_qwlbx")
-Time = 45.0
-Title = "1-2: Tree Trunk Trip"
+Time = 30.0
+Title = "1-2: They're Coming for your Colours"
 NumberOfCollectables = 5
