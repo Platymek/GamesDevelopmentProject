@@ -5,6 +5,8 @@ public partial class Menu : Control
 {
 	// Properties //
 
+	[Signal] public delegate void PausePressedEventHandler();
+
 	protected Global Global;
 	protected bool TimerOn;
 
@@ -26,7 +28,7 @@ public partial class Menu : Control
 		Global.TimerOn = TimerOn;
 
 		// load ProtoLevel
-		Global.LoadLevel(1, 1);
+		Global.LoadLevel(1, 2);
 	}
 
 	private void OnExitPressed()
@@ -37,5 +39,10 @@ public partial class Menu : Control
 	private void OnTimerToggled(bool toggledOn)
 	{
 		TimerOn = toggledOn;
+	}
+
+	private void OnContinuePressed()
+	{
+		EmitSignal(SignalName.PausePressed);
 	}
 }

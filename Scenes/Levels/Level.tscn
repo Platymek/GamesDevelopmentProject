@@ -31,6 +31,7 @@ _target = NodePath("../Actors/Player")
 
 [node name="Hurtbox" parent="Camera" instance=ExtResource("5_xx2r5")]
 monitoring = true
+script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -16, 0)
@@ -66,6 +67,7 @@ TrackZ = false
 _teamToDetect = 1
 
 [connection signal="JarCollected" from="." to="Hud" method="OnLevelJarCollected"]
+[connection signal="PausePressed" from="Pause" to="." method="Pause"]
 [connection signal="Detected" from="Goal" to="." method="OnGoalAreaEntered"]
 [connection signal="area_entered" from="Camera/Hurtbox" to="." method="OnPitEntered"]
 [connection signal="Detected" from="Checkpoints/Checkpoint" to="Checkpoints/Checkpoint" method="OnDetected"]

@@ -359,7 +359,7 @@ height = 1.6
 radius = 0.7
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_57xtn"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g8suy"]
 radius = 2.0
@@ -419,7 +419,7 @@ shape = SubResource("CylinderShape3D_jqdiw")
 _teamToDetect = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 shape = SubResource("CylinderShape3D_57xtn")
 
 [node name="Attack" parent="." instance=ExtResource("7_owejp")]

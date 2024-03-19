@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://43vv82x14u0t"]
+[gd_scene load_steps=18 format=3 uid="uid://43vv82x14u0t"]
 
 [ext_resource type="Texture2D" uid="uid://ctacnd2jaflsy" path="res://Scenes/Levels/Forest/NewForestTiles/Ground_Ground.png" id="1_ul2p0"]
 
@@ -137,7 +137,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_70eae")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hq3wp"]
-size = Vector3(4.9, 1.5, 3)
+size = Vector3(4.9, 3, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tckxy"]
 resource_name = "color6"
@@ -230,9 +230,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ro6ui")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_iatc5"]
+size = Vector3(16, 16, 4)
+
 [node name="NewForestTiles" type="Node3D"]
 
 [node name="Ground" type="Node3D" parent="."]
+visible = false
 
 [node name="generated(Clone)" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
@@ -253,7 +257,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Bush/Bush"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bush/Bush/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.55, 0)
 shape = SubResource("BoxShape3D_hq3wp")
 
 [node name="TreeTrunk" type="Node3D" parent="."]
@@ -267,5 +271,4 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 5.68434e-14, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TreeTrunk/TreeTrunk/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.25, 0)
-shape = SubResource("BoxShape3D_hq3wp")
+shape = SubResource("BoxShape3D_iatc5")

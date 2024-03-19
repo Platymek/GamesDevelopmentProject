@@ -49,7 +49,7 @@ public partial class Global : Node
 		if(Input.IsActionJustPressed("Reset"))
 		{
 			TimerOn = true;
-			LoadLevel(1, 1);
+			LoadLevel(1, 2);
 		}
 	}
 

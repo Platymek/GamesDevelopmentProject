@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ljdswjbvvdf6"]
+[gd_scene load_steps=8 format=3 uid="uid://ljdswjbvvdf6"]
 
 [ext_resource type="Script" path="res://Scenes/Global/Global.cs" id="1_gnunq"]
 [ext_resource type="Script" path="res://Scenes/Global/Areas.cs" id="2_xd3vq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b1orusuqy7qei" path="res://Scenes/Levels/TestLevels/ProtoLevel/ProtoLevel.tscn" id="3_tks3j"]
 [ext_resource type="PackedScene" uid="uid://c8cfdbvvldwov" path="res://Scenes/Levels/Forest/Levels/1-1.tscn" id="5_8xvpc"]
 [ext_resource type="PackedScene" uid="uid://c7my482p3ulfo" path="res://Scenes/Levels/Forest/Levels/1-2.tscn" id="6_qwlbx"]
+[ext_resource type="PackedScene" uid="uid://cajpxsn4padqh" path="res://Scenes/Levels/Forest/Levels/1-3.tscn" id="7_pij7b"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_gnunq")
@@ -34,4 +35,11 @@ script = ExtResource("2_yrkcy")
 Level = ExtResource("6_qwlbx")
 Time = 30.0
 Title = "1-2: They're Coming for your Colours"
+NumberOfCollectables = 5
+
+[node name="1-3 - BT+CS" type="Node" parent="Areas/Woodland"]
+script = ExtResource("2_yrkcy")
+Level = ExtResource("7_pij7b")
+Time = 35.0
+Title = "1-3: Forest of Foes"
 NumberOfCollectables = 5

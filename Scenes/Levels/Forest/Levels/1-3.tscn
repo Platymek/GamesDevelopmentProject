@@ -1,0 +1,301 @@
+[gd_scene load_steps=15 format=3 uid="uid://cajpxsn4padqh"]
+
+[ext_resource type="PackedScene" uid="uid://doo5228kix4jo" path="res://Scenes/Levels/Level.tscn" id="1_6kdt0"]
+[ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_spou8"]
+[ext_resource type="PackedScene" uid="uid://brp2ublms7ifg" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.tscn" id="3_g14pw"]
+[ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="3_vrama"]
+[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/NewForestTiles/NewForestTiles.tres" id="4_he2eb"]
+[ext_resource type="PackedScene" uid="uid://b468lw6msex5x" path="res://Scenes/Actors/GlobalActors/ColourJar/ColourJar.tscn" id="5_2bs6e"]
+[ext_resource type="Script" path="res://Scenes/Levels/Checkpoint.cs" id="7_eq4l2"]
+[ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="7_tuu6q"]
+[ext_resource type="Script" path="res://Scenes/Levels/CameraHint.cs" id="8_1pqtq"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_symt8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wj68q"]
+size = Vector3(13, 5, 11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4hofl"]
+size = Vector3(9, 5, 11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kp3v"]
+size = Vector3(11, 4, 18)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u7dn5"]
+
+[node name="Level" instance=ExtResource("1_6kdt0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 229, -1, 0)
+shape = SubResource("WorldBoundaryShape3D_symt8")
+
+[node name="Camera" parent="." index="3"]
+TrackX = true
+
+[node name="BrokenTrees" type="Node3D" parent="Actors" index="1"]
+
+[node name="BrokenTree" parent="Actors/BrokenTrees" index="0" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="BrokenTree2" parent="Actors/BrokenTrees" index="1" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -4)
+
+[node name="BrokenTree3" parent="Actors/BrokenTrees" index="2" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, -4)
+
+[node name="BrokenTree4" parent="Actors/BrokenTrees" index="3" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 0, 3)
+
+[node name="BrokenTree5" parent="Actors/BrokenTrees" index="4" instance=ExtResource("2_spou8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 104, -2, 2)
+
+[node name="BrokenTree6" parent="Actors/BrokenTrees" index="5" instance=ExtResource("2_spou8")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 110, -2, 2)
+
+[node name="BrokenTree7" parent="Actors/BrokenTrees" index="6" instance=ExtResource("2_spou8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 116, -2, 2)
+
+[node name="BrokenTree8" parent="Actors/BrokenTrees" index="7" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, -2, -2)
+
+[node name="BrokenTree9" parent="Actors/BrokenTrees" index="8" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, -2, 2)
+
+[node name="BrokenTree10" parent="Actors/BrokenTrees" index="9" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, -2, 6)
+
+[node name="BrokenTree11" parent="Actors/BrokenTrees" index="10" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, -2, -2)
+
+[node name="BrokenTree12" parent="Actors/BrokenTrees" index="11" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164, -2, 2)
+
+[node name="BrokenTree13" parent="Actors/BrokenTrees" index="12" instance=ExtResource("2_spou8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 156, -2, 10)
+
+[node name="BrokenTree14" parent="Actors/BrokenTrees" index="13" instance=ExtResource("2_spou8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 188, -2, 10)
+
+[node name="BrokenTree15" parent="Actors/BrokenTrees" index="14" instance=ExtResource("2_spou8")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 196, -2, 4)
+
+[node name="ColourSuckers" type="Node3D" parent="Actors" index="2"]
+
+[node name="TechnoCultist" parent="Actors/ColourSuckers" index="0" instance=ExtResource("3_g14pw")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 56, 0, 4)
+
+[node name="TechnoCultist2" parent="Actors/ColourSuckers" index="1" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 58, 0, 0)
+
+[node name="TechnoCultist3" parent="Actors/ColourSuckers" index="2" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 58, 0, 3)
+
+[node name="TechnoCultist4" parent="Actors/ColourSuckers" index="3" instance=ExtResource("3_g14pw")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 82, 14, 3)
+
+[node name="TechnoCultist5" parent="Actors/ColourSuckers" index="4" instance=ExtResource("3_g14pw")]
+transform = Transform3D(1.78814e-07, 0, -1, 0, 1, 0, 1, 0, 1.78814e-07, 116, 12, 2)
+
+[node name="TechnoCultist6" parent="Actors/ColourSuckers" index="5" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, -0.906308, 108.8, 0, 27.5)
+
+[node name="TechnoCultist7" parent="Actors/ColourSuckers" index="6" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-0.766045, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766045, 110.2, 0, 27.5)
+
+[node name="TechnoCultist8" parent="Actors/ColourSuckers" index="7" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 107, -2, 2.2)
+
+[node name="TechnoCultist9" parent="Actors/ColourSuckers" index="8" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 113, -2, 2.2)
+
+[node name="TechnoCultist10" parent="Actors/ColourSuckers" index="9" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 119.837, -2, 2.2)
+
+[node name="TechnoCultist11" parent="Actors/ColourSuckers" index="10" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 137.837, 12, -1.8)
+
+[node name="TechnoCultist12" parent="Actors/ColourSuckers" index="11" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 138.837, 12, 2.2)
+
+[node name="TechnoCultist25" parent="Actors/ColourSuckers" index="12" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 139.837, 12, 6.2)
+
+[node name="TechnoCultist13" parent="Actors/ColourSuckers" index="13" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 159.837, 12, -1.8)
+
+[node name="TechnoCultist14" parent="Actors/ColourSuckers" index="14" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 163.837, 12, 2.2)
+
+[node name="TechnoCultist15" parent="Actors/ColourSuckers" index="15" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 155.837, 12, 10.2)
+
+[node name="TechnoCultist16" parent="Actors/ColourSuckers" index="16" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 163.837, 12, 6.2)
+
+[node name="TechnoCultist17" parent="Actors/ColourSuckers" index="17" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 187.837, 12, 10.2)
+
+[node name="TechnoCultist18" parent="Actors/ColourSuckers" index="18" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 195.837, 12, 4.2)
+
+[node name="TechnoCultist19" parent="Actors/ColourSuckers" index="19" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 191.837, 12, 6.2)
+
+[node name="TechnoCultist20" parent="Actors/ColourSuckers" index="20" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 191.837, 12, 2.2)
+
+[node name="TechnoCultist21" parent="Actors/ColourSuckers" index="21" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 192.837, 12, 4.2)
+
+[node name="TechnoCultist22" parent="Actors/ColourSuckers" index="22" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 183.837, 12, -1.8)
+
+[node name="TechnoCultist23" parent="Actors/ColourSuckers" index="23" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 176.837, 12, -1.8)
+
+[node name="TechnoCultist24" parent="Actors/ColourSuckers" index="24" instance=ExtResource("3_g14pw")]
+transform = Transform3D(-9.03991e-08, 0, 1, 0, 1, 0, -1, 0, -9.03991e-08, 171.837, 12, 10.2)
+
+[node name="WorldEnvironment" parent="." index="5"]
+environment = ExtResource("3_vrama")
+
+[node name="GridMap" parent="." index="6"]
+mesh_library = ExtResource("4_he2eb")
+data = {
+"cells": PackedInt32Array(0, 65535, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 0, 1, 0, 1, 1, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 3, 65535, 0, 3, 0, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65535, 65533, 0, 0, 65533, 0, 2, 65533, 0, 1, 65533, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65534, 65533, 0, 65534, 2, 0, 3, 2, 0, 3, 1, 0, 3, 65534, 0, 3, 65533, 0, 4, 65535, 0, 4, 0, 0, 5, 0, 0, 5, 65535, 0, 12, 65535, 0, 12, 0, 0, 13, 65535, 0, 13, 0, 0, 13, 65534, 0, 12, 65533, 0, 13, 65533, 0, 12, 1, 0, 12, 2, 0, 13, 1, 0, 13, 2, 0, 14, 2, 0, 14, 1, 0, 14, 0, 0, 14, 65535, 0, 14, 65534, 0, 14, 65533, 0, 15, 65533, 0, 15, 65534, 0, 15, 65535, 0, 15, 0, 0, 15, 1, 0, 15, 2, 0, 16, 2, 0, 16, 1, 0, 16, 0, 0, 16, 65535, 0, 16, 65534, 0, 16, 65533, 0, 17, 65533, 0, 17, 65534, 0, 17, 65535, 0, 17, 0, 0, 17, 1, 0, 17, 2, 0, 24, 65533, 0, 24, 65535, 0, 24, 0, 0, 24, 1, 0, 24, 2, 0, 25, 65533, 0, 25, 65534, 0, 25, 65535, 0, 25, 0, 0, 25, 1, 0, 25, 2, 0, 26, 65533, 0, 26, 65534, 0, 26, 65535, 0, 26, 0, 0, 26, 1, 0, 26, 2, 0, 27, 65533, 0, 27, 65534, 0, 27, 65535, 0, 27, 0, 0, 27, 1, 0, 27, 2, 0, 28, 65533, 0, 28, 65534, 0, 28, 65535, 0, 28, 0, 0, 28, 1, 0, 28, 2, 0, 29, 65533, 0, 29, 65534, 0, 29, 65535, 0, 29, 0, 0, 29, 1, 0, 29, 2, 0, 131075, 65531, 0, 131075, 65532, 0, 131074, 65532, 0, 131073, 65532, 0, 131072, 65532, 0, 196607, 65532, 0, 196606, 65532, 0, 196606, 65531, 0, 196607, 65531, 0, 131074, 65531, 0, 131073, 65531, 0, 131072, 65531, 1, 131071, 65531, 2, 65538, 65531, 2, 196623, 65533, 0, 196623, 65534, 0, 196622, 65534, 0, 196621, 65533, 0, 196621, 65534, 0, 196634, 65534, 0, 196635, 65534, 0, 11, 65533, 1, 11, 65534, 0, 10, 65534, 0, -262134, 65534, 0, -262134, 65533, 0, -262133, 65533, 0, -262133, 65534, 0, 21, 3, 0, 20, 3, 0, 20, 2, 0, 21, 2, 0, 196622, 65533, 0, 131086, 65532, 2, 196621, 65532, 1, 196622, 65532, 0, 196623, 65532, 1, 12, 65534, 0, 10, 65533, 0, 12, 65532, 2, 327692, 65532, 1, 24, 65534, 0, 196634, 65533, 0, 196635, 65533, 0, -65510, 2, 2, -196598, 65535, 0, -196597, 65535, 0, -196597, 0, 0, -196597, 1, 0, -196597, 2, 0, -196598, 2, 0, -196598, 1, 0, -196598, 0, 0, -65522, 2, 2, 262158, 2, 1, 196634, 2, 1, 20, 1, 0, 20, 0, 0, 21, 0, 0, 21, 1, 0, -65515, 0, 2, -65516, 1, 2, 20, 4, 0, 21, 4, 0, -65515, 4, 2, 262164, 1, 1, 262165, 0, 1, 20, 65535, 0, 21, 65535, 0, -131052, 65535, 2, 131075, 65533, 0, 131074, 65533, 0, 4, 65534, 0, 5, 65534, 0, 36, 65533, 0, 36, 65534, 0, 36, 65535, 0, 36, 0, 0, 36, 1, 0, 36, 2, 0, 37, 2, 0, 37, 1, 0, 37, 0, 0, 37, 65535, 0, 37, 65534, 0, 38, 65534, 0, 38, 65535, 0, 38, 0, 0, 38, 65533, 0, 37, 65533, 0, 38, 1, 0, 38, 2, 0, 39, 2, 0, 39, 1, 0, 39, 0, 0, 39, 65535, 0, 39, 65534, 0, 39, 65533, 0, 40, 65533, 0, 40, 65534, 0, 40, 65535, 0, 40, 0, 0, 40, 1, 0, 40, 2, 0, 41, 2, 0, 41, 1, 0, 41, 0, 0, 41, 65535, 0, 41, 65534, 0, 41, 65533, 0, -65500, 1, 2, -65499, 2, 2, 196645, 2, 1, 196644, 1, 1, -196595, 3, 1114113, -196592, 3, 1114113, -131073, 3, 1114113, -196606, 3, 1114113, -196587, 5, 1114113, -196582, 3, 1114113, -196579, 3, 1114113, -262138, 0, 393217, 262165, 4, 1, 458766, 65532, 1, 393218, 65531, 1, 458751, 65531, 1, -65500, 3, 1, 262183, 65534, 0, 262182, 65534, 0, 262184, 65534, 0, 262185, 65533, 0, 262185, 65534, 0, 54, 8, 0, 55, 8, 0, 55, 9, 0, 54, 9, 0, 53, 8, 0, 53, 9, 0, 53, 10, 0, 52, 10, 0, 52, 9, 0, 52, 8, 0, 53, 11, 0, 54, 11, 0, 54, 10, 0, 55, 10, 0, 52, 11, 0, 55, 11, 0, 56, 11, 0, 56, 10, 0, 56, 9, 0, 56, 8, 0, 57, 8, 0, 57, 9, 0, 57, 10, 0, 57, 11, 0, 52, 12, 0, 53, 12, 0, 54, 12, 0, 55, 12, 0, 56, 12, 0, 57, 12, 0, 57, 13, 0, 56, 13, 0, 55, 13, 0, 54, 13, 0, 53, 13, 0, 52, 13, 0, -65479, 13, 2, -65484, 13, 2, -65474, 0, 0, -65474, 1, 0, -65473, 1, 0, -65473, 0, 0, -65472, 0, 0, -65472, 1, 0, -65471, 1, 0, -65471, 0, 0, -65470, 0, 0, -65470, 1, 0, -65469, 1, 0, -65469, 0, 0, -65474, 65535, 0, -65474, 65534, 0, -65473, 65534, 0, -65473, 65535, 0, -65472, 65535, 0, -65472, 65534, 0, -65471, 65534, 0, -65471, 65535, 0, -65470, 65535, 0, -65470, 65534, 0, -65469, 65534, 0, -65469, 65535, 0, -65469, 2, 0, -65470, 2, 0, -65471, 2, 0, -65472, 2, 0, -65473, 2, 0, -65474, 2, 0, -65474, 3, 0, -65473, 3, 0, -65472, 3, 0, -65471, 3, 0, -65470, 3, 0, -65469, 3, 0, 262182, 65533, 0, 262183, 65533, 0, 262184, 65533, 0, -65485, 0, 0, -65485, 1, 0, -65486, 1, 0, -65486, 0, 0, -65481, 1, 0, -65481, 0, 0, -65482, 0, 0, -65482, 1, 0, -65477, 1, 0, -65477, 0, 0, -65478, 0, 0, -65478, 1, 0, -65487, 0, 0, -65487, 1, 0, -65488, 1, 0, -65488, 0, 0, -65484, 1, 0, -65483, 0, 0, -65483, 1, 0, -65484, 0, 0, -65479, 1, 0, -65480, 1, 0, -65479, 0, 0, -65480, 0, 0, -65476, 1, 0, -65476, 0, 0, -65475, 0, 0, -65475, 1, 0, -65468, 65534, 0, -65468, 65535, 0, -65468, 0, 0, -65468, 1, 0, -65468, 2, 0, -65468, 3, 0, -65467, 3, 0, -65467, 2, 0, -65467, 1, 0, -65467, 0, 0, -65467, 65535, 0, -65467, 65534, 0, -65459, 2, 0, -65459, 1, 0, -65459, 0, 0, -65459, 65535, 0, -65458, 65535, 0, -65458, 0, 0, -65458, 1, 0, -65458, 2, 0, -65459, 65534, 0, -65458, 65534, 0, -65460, 65534, 0, -65460, 65535, 0, 51, 8, 0, 50, 8, 0, 50, 9, 0, 51, 9, 0, 49, 8, 0, 48, 8, 0, 48, 9, 0, 49, 9, 0, -65459, 3, 0, -65458, 3, 0, -65457, 3, 0, -65457, 2, 0, -65457, 1, 0, -65457, 0, 0, -65456, 0, 0, -65456, 1, 0, -65456, 65535, 0, -65457, 65535, 0, -65457, 65534, 0, -65456, 65534, 0, -65455, 0, 0, -65454, 0, 0, -65455, 1, 0, -65454, 1, 0, -65456, 3, 0, -65455, 3, 0, -65455, 2, 0, -65456, 2, 0, 58, 8, 0, 58, 9, 0, 59, 9, 0, 60, 9, 0, 60, 8, 0, 59, 8, 0, -65454, 2, 0, -65454, 3, 0, -65453, 3, 0, -65453, 2, 0, -65459, 4, 0, -65459, 5, 0, -65458, 5, 0, -65458, 4, 0, -65452, 3, 0, -65452, 2, 0, -65451, 2, 0, -65451, 3, 0, -65450, 2, 0, -65450, 3, 0, -65450, 4, 0, -65451, 4, 0, -65451, 5, 0, -65450, 5, 0, -65449, 2, 0, -65449, 3, 0, -65448, 3, 0, -65448, 2, 0, -65447, 1, 0, -65447, 0, 0, -65447, 65535, 0, -65446, 65535, 0, -65446, 0, 0, -65446, 1, 0, -65446, 2, 0, -65446, 3, 0, -65447, 3, 0, -65447, 2, 0, -65449, 65535, 0, -65449, 65534, 0, -65448, 65534, 0, -65448, 65535, 0, -65447, 65534, 0, -65446, 65534, 0, -65445, 3, 0, -65444, 3, 0, -65443, 3, 0, -65442, 3, 0, -65442, 4, 0, -65443, 4, 0, -65443, 5, 0, -65442, 5, 0, -65445, 2, 0, -65444, 2, 0, -65443, 2, 0, -65442, 2, 0, -65443, 1, 0, -65442, 1, 0, -65442, 0, 0, -65443, 0, 0, -65444, 0, 0, -65445, 0, 0, -65445, 1, 0, -65445, 65535, 0, -65445, 65534, 0, -65444, 65534, 0, -65444, 65535, 0, -65444, 1, 0, -65441, 2, 0, -65441, 1, 0, -65440, 1, 0, -65440, 2, 0, -65441, 3, 0, -65440, 3, 0, -65441, 0, 0, -65440, 0, 0, -65425, 2, 0, -65424, 2, 0, -65424, 1, 0, -65425, 1, 0, -65423, 1, 0, -65423, 2, 0, -65422, 2, 0, -65422, 1, 0, -65431, 1, 0, -65431, 2, 0, -65430, 2, 0, -65429, 2, 0, -65429, 1, 0, -65428, 1, 0, -65427, 1, 0, -65426, 1, 0, -65428, 2, 0, -65430, 1, 0, -65427, 2, 0, -65426, 2, 0, -65439, 2, 0, -65438, 2, 0, -65438, 1, 0, -65439, 1, 0, -65460, 9, 0, -65461, 9, 0, -65461, 8, 0, -65460, 8, 0, -65462, 8, 0, -65463, 8, 0, -65463, 9, 0, -65462, 9, 0, 61, 9, 0, 61, 8, 0, 262201, 13, 1, 262196, 13, 1, -131003, 4, 1, -131020, 14, 786433, -131015, 14, 786433, -196523, 6, 786433, -196515, 6, 786433, -196534, 10, 786433, -131024, 10, 786433, -131010, 65534, 2, 196670, 65534, 1, -131010, 3, 2, 196670, 3, 1, -131007, 65534, 2, 196673, 65534, 1, -65427, 0, 0, -130963, 0, 2, 196717, 0, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="Checkpoint" parent="Checkpoints" index="0" node_paths=PackedStringArray("_cameraHint")]
+_cameraHint = NodePath("../../CameraHints/Detector")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+shape = SubResource("BoxShape3D_wj68q")
+
+[node name="Checkpoint2" parent="Checkpoints" index="1" node_paths=PackedStringArray("_cameraHint") instance=ExtResource("7_tuu6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 0, 1)
+script = ExtResource("7_eq4l2")
+_cameraHint = NodePath("../../CameraHints/Detector")
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+shape = SubResource("BoxShape3D_4hofl")
+
+[node name="Checkpoint3" parent="Checkpoints" index="2" node_paths=PackedStringArray("_cameraHint") instance=ExtResource("7_tuu6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, -2, 1)
+script = ExtResource("7_eq4l2")
+_cameraHint = NodePath("../../CameraHints/Detector")
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+shape = SubResource("BoxShape3D_wj68q")
+
+[node name="ColourJar" parent="ColourJars" index="0" instance=ExtResource("5_2bs6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -5, 1)
+
+[node name="ColourJar2" parent="ColourJars" index="1" instance=ExtResource("5_2bs6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 7, -4)
+
+[node name="ColourJar3" parent="ColourJars" index="2" instance=ExtResource("5_2bs6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 5, 18)
+_unlocked = false
+
+[node name="Detector2" parent="ColourJars/ColourJar3" index="2" instance=ExtResource("7_tuu6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+_teamToDetect = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColourJars/ColourJar3/Detector2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -3.5)
+shape = SubResource("BoxShape3D_2kp3v")
+
+[node name="ColourJar4" parent="ColourJars" index="3" instance=ExtResource("5_2bs6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 2, -11)
+
+[node name="ColourJar5" parent="ColourJars" index="4" instance=ExtResource("5_2bs6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, -1, 18)
+
+[node name="Detector" parent="CameraHints" index="0"]
+TrackX = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector" index="0"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 5, 1, 2)
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraHints/Detector" index="1"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1, 8.74228e-08, 1.91069e-15, 50, 6, 2)
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[node name="Detector4" parent="CameraHints" index="1" node_paths=PackedStringArray("camera") instance=ExtResource("7_tuu6q")]
+script = ExtResource("8_1pqtq")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = true
+TrackZ = false
+_teamToDetect = 1
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraHints/Detector4" index="0"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1.74846e-07, 1, 4.37114e-08, 1, -1.74846e-07, -5.73206e-15, 50, 9, 2)
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[node name="Detector2" parent="CameraHints" index="2" node_paths=PackedStringArray("camera") instance=ExtResource("7_tuu6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("8_1pqtq")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = false
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector2" index="0"]
+transform = Transform3D(-5.73206e-15, -1.31134e-07, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, 1.31134e-07, 2, 0, 1)
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[node name="Detector3" parent="CameraHints" index="3" node_paths=PackedStringArray("camera") instance=ExtResource("7_tuu6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("8_1pqtq")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = true
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector3" index="0"]
+transform = Transform3D(-5.73206e-15, -1.31134e-07, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, 1.31134e-07, 2, 0, 2)
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[node name="Detector5" parent="CameraHints" index="4" node_paths=PackedStringArray("camera") instance=ExtResource("7_tuu6q")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 210, 0, 4)
+script = ExtResource("8_1pqtq")
+camera = NodePath("../../Camera")
+TrackX = false
+TrackY = false
+TrackZ = false
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector5" index="0"]
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[node name="Detector6" parent="CameraHints" index="5" node_paths=PackedStringArray("camera") instance=ExtResource("7_tuu6q")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 208, 0, 4)
+script = ExtResource("8_1pqtq")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = false
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector6" index="0"]
+transform = Transform3D(1, -8.74228e-08, 3.82137e-15, -8.74228e-08, -1, 8.74228e-08, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_u7dn5")
+
+[connection signal="Detected" from="Checkpoints/Checkpoint2" to="Checkpoints/Checkpoint2" method="OnDetected"]
+[connection signal="Detected" from="Checkpoints/Checkpoint3" to="Checkpoints/Checkpoint3" method="OnDetected"]
+[connection signal="NotDetecting" from="ColourJars/ColourJar3/Detector2" to="ColourJars/ColourJar3" method="Unlock"]
+[connection signal="NotDetecting" from="CameraHints/Detector4" to="CameraHints/Detector4" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector2" to="CameraHints/Detector2" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector3" to="CameraHints/Detector3" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector5" to="CameraHints/Detector5" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector6" to="CameraHints/Detector6" method="OnNotDetecting"]

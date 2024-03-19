@@ -52,7 +52,7 @@ public partial class Level : Node3D
 
 		if (Input.IsActionJustPressed("pause"))
 		{
-			Paused = !Paused;
+			Pause();
 		}
 		
 		if (!Paused)
@@ -102,4 +102,10 @@ public partial class Level : Node3D
 
 		EmitSignal(SignalName.JarCollected, index);
 	}
+
+	public void Pause()
+	{
+		GD.Print("bruh");
+        Paused = !Paused;
+    }
 }

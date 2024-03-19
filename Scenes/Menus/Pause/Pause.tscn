@@ -19,14 +19,13 @@ layout_mode = 2
 text = "Restart
 "
 
-[node name="LevelSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
-layout_mode = 2
-text = "Level Select
-"
-
-[node name="Splitter" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
+[node name="Splitter" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
 layout_mode = 2
 
-[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
+[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
 layout_mode = 2
 text = "Exit"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue" to="." method="OnContinuePressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Restart" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Exit" to="." method="OnExitPressed"]
