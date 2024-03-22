@@ -1,0 +1,358 @@
+[gd_scene load_steps=10 format=3 uid="uid://blxyb0g3qhf6r"]
+
+[ext_resource type="PackedScene" uid="uid://doo5228kix4jo" path="res://Scenes/Levels/Level.tscn" id="1_p57k8"]
+[ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="2_6lf3g"]
+[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/NewForestTiles/NewForestTiles.tres" id="3_rn5x3"]
+[ext_resource type="PackedScene" uid="uid://bgdbeqpic0tj6" path="res://Scenes/Actors/ForestActors/BirdTrap/BirdTrap.tscn" id="4_431dy"]
+[ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="5_n6ax5"]
+[ext_resource type="Script" path="res://Scenes/Levels/CameraHint.cs" id="6_jmpjs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew7j6"]
+size = Vector3(93, 8, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fn2r4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h80q3"]
+size = Vector3(59, 12, 1)
+
+[node name="1-4" instance=ExtResource("1_p57k8")]
+
+[node name="Camera" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+TrackZ = true
+
+[node name="Player" parent="Actors" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0, 0)
+
+[node name="Section1,2,3" type="Node3D" parent="Actors" index="1"]
+
+[node name="BirdTrap" parent="Actors/Section1,2,3" index="0" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 50)
+
+[node name="BirdTrap2" parent="Actors/Section1,2,3" index="1" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, 50)
+
+[node name="BirdTrap3" parent="Actors/Section1,2,3" index="2" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 50)
+
+[node name="Section4pt1" type="Node3D" parent="Actors" index="2"]
+
+[node name="BirdTrap5" parent="Actors/Section4pt1" index="0" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 42)
+
+[node name="BirdTrap6" parent="Actors/Section4pt1" index="1" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 42)
+
+[node name="BirdTrap7" parent="Actors/Section4pt1" index="2" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 38)
+
+[node name="BirdTrap8" parent="Actors/Section4pt1" index="3" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 38)
+
+[node name="BirdTrap13" parent="Actors/Section4pt1" index="4" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 34)
+
+[node name="BirdTrap14" parent="Actors/Section4pt1" index="5" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 34)
+
+[node name="BirdTrap15" parent="Actors/Section4pt1" index="6" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 30)
+
+[node name="BirdTrap16" parent="Actors/Section4pt1" index="7" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 30)
+
+[node name="BirdTrap17" parent="Actors/Section4pt1" index="8" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 26)
+
+[node name="BirdTrap18" parent="Actors/Section4pt1" index="9" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 26)
+
+[node name="BirdTrap19" parent="Actors/Section4pt1" index="10" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 22)
+
+[node name="BirdTrap20" parent="Actors/Section4pt1" index="11" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 22)
+
+[node name="BirdTrap39" parent="Actors/Section4pt1" index="12" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 6)
+
+[node name="BirdTrap41" parent="Actors/Section4pt1" index="13" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 10)
+
+[node name="BirdTrap42" parent="Actors/Section4pt1" index="14" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 10)
+
+[node name="BirdTrap44" parent="Actors/Section4pt1" index="15" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 6)
+
+[node name="BirdTrap21" parent="Actors/Section4pt1" index="16" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 26)
+
+[node name="BirdTrap22" parent="Actors/Section4pt1" index="17" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 26)
+
+[node name="BirdTrap23" parent="Actors/Section4pt1" index="18" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 22)
+
+[node name="BirdTrap24" parent="Actors/Section4pt1" index="19" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 22)
+
+[node name="BirdTrap29" parent="Actors/Section4pt1" index="20" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 34)
+
+[node name="BirdTrap30" parent="Actors/Section4pt1" index="21" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 34)
+
+[node name="BirdTrap31" parent="Actors/Section4pt1" index="22" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 30)
+
+[node name="BirdTrap32" parent="Actors/Section4pt1" index="23" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 30)
+
+[node name="BirdTrap33" parent="Actors/Section4pt1" index="24" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 34)
+
+[node name="BirdTrap34" parent="Actors/Section4pt1" index="25" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 34)
+
+[node name="BirdTrap35" parent="Actors/Section4pt1" index="26" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 30)
+
+[node name="BirdTrap36" parent="Actors/Section4pt1" index="27" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 30)
+
+[node name="Section4pt2" type="Node3D" parent="Actors" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -16)
+
+[node name="BirdTrap5" parent="Actors/Section4pt2" index="0" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 42)
+
+[node name="BirdTrap6" parent="Actors/Section4pt2" index="1" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 42)
+
+[node name="BirdTrap7" parent="Actors/Section4pt2" index="2" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 38)
+
+[node name="BirdTrap8" parent="Actors/Section4pt2" index="3" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 38)
+
+[node name="BirdTrap13" parent="Actors/Section4pt2" index="4" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 34)
+
+[node name="BirdTrap14" parent="Actors/Section4pt2" index="5" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 34)
+
+[node name="BirdTrap15" parent="Actors/Section4pt2" index="6" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, 30)
+
+[node name="BirdTrap16" parent="Actors/Section4pt2" index="7" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 30)
+
+[node name="BirdTrap17" parent="Actors/Section4pt2" index="8" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 42)
+
+[node name="BirdTrap18" parent="Actors/Section4pt2" index="9" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 42)
+
+[node name="BirdTrap19" parent="Actors/Section4pt2" index="10" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 38)
+
+[node name="BirdTrap20" parent="Actors/Section4pt2" index="11" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 38)
+
+[node name="BirdTrap21" parent="Actors/Section4pt2" index="12" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 26)
+
+[node name="BirdTrap22" parent="Actors/Section4pt2" index="13" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 26)
+
+[node name="BirdTrap23" parent="Actors/Section4pt2" index="14" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 22)
+
+[node name="BirdTrap24" parent="Actors/Section4pt2" index="15" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 22)
+
+[node name="BirdTrap30" parent="Actors/Section4pt2" index="16" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 34)
+
+[node name="BirdTrap31" parent="Actors/Section4pt2" index="17" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 30)
+
+[node name="BirdTrap32" parent="Actors/Section4pt2" index="18" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0, 30)
+
+[node name="BirdTrap33" parent="Actors/Section4pt2" index="19" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 34)
+
+[node name="Section5,6" type="Node3D" parent="Actors" index="4"]
+
+[node name="BirdTrap31" parent="Actors/Section5,6" index="0" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174, 0, 6)
+
+[node name="BirdTrap45" parent="Actors/Section5,6" index="1" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 10)
+
+[node name="BirdTrap46" parent="Actors/Section5,6" index="2" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 0, 10)
+
+[node name="BirdTrap47" parent="Actors/Section5,6" index="3" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 6)
+
+[node name="BirdTrap48" parent="Actors/Section5,6" index="4" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 0, 6)
+
+[node name="BirdTrap33" parent="Actors/Section5,6" index="5" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174, 0, 10)
+
+[node name="BirdTrap34" parent="Actors/Section5,6" index="6" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178, 0, 10)
+
+[node name="BirdTrap36" parent="Actors/Section5,6" index="7" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178, 0, 6)
+
+[node name="BirdTrap38" parent="Actors/Section5,6" index="8" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182, 0, 10)
+
+[node name="BirdTrap40" parent="Actors/Section5,6" index="9" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182, 0, 6)
+
+[node name="BirdTrap42" parent="Actors/Section5,6" index="10" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182, 0, 10)
+
+[node name="BirdTrap50" parent="Actors/Section5,6" index="11" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 0, 6)
+
+[node name="BirdTrap51" parent="Actors/Section5,6" index="12" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 0, 10)
+
+[node name="Section7" type="Node3D" parent="Actors" index="5"]
+
+[node name="BirdTrap51" parent="Actors/Section7" index="0" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 26)
+
+[node name="BirdTrap52" parent="Actors/Section7" index="1" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 30)
+
+[node name="BirdTrap53" parent="Actors/Section7" index="2" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 34)
+
+[node name="BirdTrap54" parent="Actors/Section7" index="3" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 38)
+
+[node name="BirdTrap55" parent="Actors/Section7" index="4" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 42)
+
+[node name="BirdTrap56" parent="Actors/Section7" index="5" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 46)
+
+[node name="BirdTrap57" parent="Actors/Section7" index="6" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 50)
+
+[node name="BirdTrap58" parent="Actors/Section7" index="7" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 54)
+
+[node name="BirdTrap59" parent="Actors/Section7" index="8" instance=ExtResource("4_431dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 58)
+
+[node name="WorldEnvironment" parent="." index="5"]
+environment = ExtResource("2_6lf3g")
+
+[node name="GridMap" parent="." index="6"]
+mesh_library = ExtResource("3_rn5x3")
+data = {
+"cells": PackedInt32Array(1, 0, 0, 0, 0, 0, 0, 65535, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65535, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 3, 0, 0, 3, 65535, 0, 3, 1, 0, 3, 65534, 0, 3, 65533, 0, 2, 65533, 0, 1, 65533, 0, 0, 65533, 0, 65535, 65533, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 65534, 2, 0, 0, 3, 1441792, 0, 4, 1441792, 0, 5, 1441792, 1, 5, 1441792, 1, 4, 1441792, 1, 3, 1441792, 65536, 6, 1441792, 65537, 6, 1441792, 65537, 7, 1441792, 65537, 8, 1441792, 65536, 8, 1441792, 65536, 7, 1441792, 1, 9, 1441792, 0, 9, 1441792, 0, 10, 1441792, 0, 11, 1441792, 1, 11, 1441792, 1, 10, 1441792, 0, 12, 1441792, 0, 13, 1441792, 0, 14, 1441792, 1, 14, 1441792, 1, 13, 1441792, 1, 12, 1441792, 1, 18, 1441792, 1, 19, 1441792, 0, 19, 1441792, 0, 18, 1441792, 1, 17, 1441792, 0, 17, 1441792, 65534, 23, 1441792, 65534, 24, 1441792, 65534, 25, 1441792, 65534, 26, 1441792, 65535, 22, 1441792, 65535, 23, 1441792, 65535, 24, 1441792, 65535, 25, 1441792, 65535, 26, 1441792, 65535, 27, 1441792, 0, 22, 1441792, 0, 23, 1441792, 0, 24, 1441792, 0, 25, 1441792, 0, 26, 1441792, 0, 27, 1441792, 1, 22, 1441792, 1, 23, 1441792, 1, 24, 1441792, 1, 25, 1441792, 1, 26, 1441792, 1, 27, 1441792, 2, 22, 1441792, 2, 23, 1441792, 2, 24, 1441792, 2, 25, 1441792, 2, 26, 1441792, 2, 27, 1441792, 3, 23, 1441792, 3, 24, 1441792, 3, 25, 1441792, 3, 26, 1441792, 7, 24, 1441792, 7, 25, 1441792, 8, 24, 1441792, 8, 25, 1441792, 9, 24, 1441792, 9, 25, 1441792, 13, 24, 1441792, 13, 25, 1441792, 14, 24, 1441792, 14, 25, 1441792, 15, 24, 1441792, 15, 25, 1441792, 16, 24, 1441792, 16, 25, 1441792, 17, 24, 1441792, 17, 25, 1441792, 18, 24, 1441792, 18, 25, 1441792, 22, 24, 1441792, 22, 25, 1441792, 23, 24, 1441792, 23, 25, 1441792, 24, 24, 1441792, 24, 25, 1441792, 28, 24, 1441792, 28, 25, 1441792, 29, 24, 1441792, 29, 25, 1441792, 30, 24, 1441792, 30, 25, 1441792, 31, 24, 1441792, 31, 25, 1441792, 32, 24, 1441792, 32, 25, 1441792, 33, 24, 1441792, 33, 25, 1441792, 37, 24, 1441792, 37, 25, 1441792, 38, 25, 1441792, 38, 24, 1441792, 39, 24, 1441792, 39, 25, 1441792, 40, 25, 1441792, 40, 24, 1441792, 44, 24, 1441792, 44, 25, 1441792, 45, 25, 1441792, 45, 24, 1441792, 46, 24, 1441792, 46, 25, 1441792, 47, 24, 1441792, 47, 25, 1441792, 48, 24, 1441792, 49, 24, 1441792, 49, 25, 1441792, 48, 25, 1441792, 50, 24, 1441792, 50, 25, 1441792, 50, 23, 1441792, 50, 22, 1441792, 50, 21, 1441792, 51, 25, 1441792, 51, 24, 1441792, 51, 22, 1441792, 51, 21, 1441792, 51, 23, 1441792, 52, 25, 1441792, 52, 24, 1441792, 52, 23, 1441792, 52, 22, 1441792, 52, 21, 1441792, 53, 21, 1441792, 53, 22, 1441792, 53, 23, 1441792, 53, 24, 1441792, 53, 25, 1441792, 54, 21, 1441792, 55, 21, 1441792, 56, 21, 1441792, 57, 21, 1441792, 58, 21, 1441792, 59, 21, 1441792, 60, 21, 1441792, 61, 21, 1441792, 61, 20, 1441792, 61, 19, 1441792, 61, 18, 1441792, 60, 18, 1441792, 60, 19, 1441792, 60, 20, 1441792, 59, 20, 1441792, 59, 19, 1441792, 59, 18, 1441792, 59, 17, 1441792, 58, 19, 1441792, 58, 20, 1441792, 58, 18, 1441792, 58, 17, 1441792, 58, 16, 1441792, 58, 15, 1441792, 58, 14, 1441792, 58, 13, 1441792, 58, 12, 1441792, 59, 15, 1441792, 59, 16, 1441792, 59, 14, 1441792, 59, 13, 1441792, 59, 12, 1441792, 60, 14, 1441792, 60, 15, 1441792, 60, 16, 1441792, 60, 13, 1441792, 60, 12, 1441792, 60, 11, 1441792, 61, 13, 1441792, 61, 14, 1441792, 61, 15, 1441792, 61, 16, 1441792, 61, 17, 1441792, 60, 10, 1441792, 60, 17, 1441792, 61, 12, 1441792, 61, 11, 1441792, 61, 10, 1441792, 59, 10, 1441792, 58, 10, 1441792, 57, 10, 1441792, 57, 11, 1441792, 58, 11, 1441792, 59, 11, 1441792, 56, 11, 1441792, 55, 11, 1441792, 54, 11, 1441792, 54, 10, 1441792, 53, 10, 1441792, 53, 11, 1441792, 52, 11, 1441792, 51, 11, 1441792, 51, 10, 1441792, 50, 10, 1441792, 52, 10, 1441792, 55, 10, 1441792, 56, 10, 1441792, 53, 12, 1441792, 53, 13, 1441792, 53, 14, 1441792, 53, 15, 1441792, 53, 16, 1441792, 50, 11, 1441792, 50, 12, 1441792, 50, 13, 1441792, 50, 14, 1441792, 50, 15, 1441792, 50, 16, 1441792, 50, 17, 1441792, 50, 18, 1441792, 50, 19, 1441792, 50, 20, 1441792, 51, 12, 1441792, 51, 13, 1441792, 51, 14, 1441792, 51, 15, 1441792, 51, 16, 1441792, 51, 17, 1441792, 51, 18, 1441792, 51, 19, 1441792, 51, 20, 1441792, 52, 12, 1441792, 52, 13, 1441792, 52, 14, 1441792, 52, 15, 1441792, 52, 16, 1441792, 52, 17, 1441792, 52, 18, 1441792, 52, 19, 1441792, 52, 20, 1441792, 53, 17, 1441792, 53, 18, 1441792, 53, 19, 1441792, 53, 20, 1441792, 54, 18, 1441792, 54, 19, 1441792, 54, 20, 1441792, 55, 18, 1441792, 55, 19, 1441792, 55, 20, 1441792, 56, 18, 1441792, 56, 19, 1441792, 56, 20, 1441792, 57, 18, 1441792, 57, 19, 1441792, 57, 20, 1441792, 54, 12, 1441792, 54, 13, 1441792, 55, 12, 1441792, 55, 13, 1441792, 56, 12, 1441792, 56, 13, 1441792, 57, 12, 1441792, 57, 13, 1441792, 58, 9, 1441792, 58, 8, 1441792, 58, 7, 1441792, 59, 7, 1441792, 59, 8, 1441792, 59, 9, 1441792, 58, 6, 1441792, 59, 6, 1441792, 60, 6, 1441792, 60, 7, 1441792, 60, 8, 1441792, 60, 9, 1441792, 61, 7, 1441792, 61, 8, 1441792, 61, 9, 1441792, 61, 6, 1441792, 62, 13, 1441792, 62, 12, 1441792, 62, 11, 1441792, 62, 10, 1441792, 63, 11, 1441792, 63, 12, 1441792, 63, 13, 1441792, 63, 10, 1441792, 64, 10, 1441792, 64, 11, 1441792, 64, 12, 1441792, 64, 13, 1441792, 65, 11, 1441792, 65, 12, 1441792, 65, 13, 1441792, 65, 10, 1441792, 58, 2, 1441792, 58, 3, 1441792, 58, 4, 1441792, 58, 5, 1441792, 59, 2, 1441792, 59, 3, 1441792, 59, 4, 1441792, 59, 5, 1441792, 60, 2, 1441792, 60, 3, 1441792, 60, 4, 1441792, 60, 5, 1441792, 61, 2, 1441792, 61, 3, 1441792, 61, 4, 1441792, 61, 5, 1441792, 62, 2, 1441792, 62, 3, 1441792, 62, 4, 1441792, 62, 5, 1441792, 63, 2, 1441792, 63, 3, 1441792, 63, 4, 1441792, 63, 5, 1441792, 64, 2, 1441792, 64, 3, 1441792, 64, 4, 1441792, 64, 5, 1441792, 65, 2, 1441792, 65, 3, 1441792, 65, 4, 1441792, 65, 5, 1441792, 66, 2, 1441792, 66, 3, 1441792, 66, 4, 1441792, 66, 5, 1441792, 66, 6, 1441792, 66, 7, 1441792, 66, 8, 1441792, 66, 9, 1441792, 66, 10, 1441792, 66, 11, 1441792, 66, 12, 1441792, 66, 13, 1441792, 67, 2, 1441792, 67, 3, 1441792, 67, 4, 1441792, 67, 5, 1441792, 67, 6, 1441792, 67, 7, 1441792, 67, 8, 1441792, 67, 9, 1441792, 67, 10, 1441792, 67, 11, 1441792, 67, 12, 1441792, 67, 13, 1441792, 68, 2, 1441792, 68, 3, 1441792, 68, 4, 1441792, 68, 5, 1441792, 68, 6, 1441792, 68, 7, 1441792, 68, 8, 1441792, 68, 9, 1441792, 68, 10, 1441792, 68, 11, 1441792, 68, 12, 1441792, 68, 13, 1441792, 69, 2, 1441792, 69, 3, 1441792, 69, 4, 1441792, 69, 5, 1441792, 69, 6, 1441792, 69, 7, 1441792, 69, 8, 1441792, 69, 9, 1441792, 69, 10, 1441792, 69, 11, 1441792, 69, 12, 1441792, 69, 13, 1441792, 53, 5, 1441792, 52, 5, 1441792, 51, 5, 1441792, 50, 5, 1441792, 50, 4, 1441792, 51, 4, 1441792, 51, 3, 1441792, 51, 2, 1441792, 52, 3, 1441792, 52, 4, 1441792, 53, 4, 1441792, 53, 3, 1441792, 53, 2, 1441792, 52, 2, 1441792, 50, 3, 1441792, 50, 2, 1441792, 70, 2, 1441792, 70, 3, 1441792, 70, 4, 1441792, 70, 5, 1441792, 71, 2, 1441792, 71, 3, 1441792, 71, 4, 1441792, 71, 5, 1441792, 72, 2, 1441792, 72, 3, 1441792, 72, 4, 1441792, 72, 5, 1441792, 73, 2, 1441792, 73, 3, 1441792, 73, 4, 1441792, 73, 5, 1441792, 74, 2, 1441792, 74, 3, 1441792, 74, 4, 1441792, 74, 5, 1441792, 75, 2, 1441792, 75, 3, 1441792, 75, 4, 1441792, 75, 5, 1441792, 76, 2, 1441792, 76, 3, 1441792, 76, 4, 1441792, 76, 5, 1441792, 77, 2, 1441792, 77, 3, 1441792, 77, 4, 1441792, 77, 5, 1441792, 86, 2, 1441792, 86, 3, 1441792, 86, 4, 1441792, 86, 5, 1441792, 87, 2, 1441792, 87, 3, 1441792, 87, 4, 1441792, 87, 5, 1441792, 88, 2, 1441792, 88, 3, 1441792, 88, 4, 1441792, 88, 5, 1441792, 89, 2, 1441792, 89, 3, 1441792, 89, 4, 1441792, 89, 5, 1441792, 90, 2, 1441792, 90, 3, 1441792, 90, 4, 1441792, 90, 5, 1441792, 91, 2, 1441792, 91, 3, 1441792, 91, 4, 1441792, 91, 5, 1441792, 92, 2, 1441792, 92, 3, 1441792, 92, 4, 1441792, 92, 5, 1441792, 93, 2, 1441792, 93, 3, 1441792, 93, 5, 1441792, 131150, 2, 1441792, 131150, 3, 1441792, 131150, 4, 1441792, 131150, 5, 1441792, 131151, 5, 1441792, 131152, 5, 1441792, 131153, 5, 1441792, 131154, 5, 1441792, 131155, 5, 1441792, 131155, 4, 1441792, 131156, 4, 1441792, 131156, 3, 1441792, 131156, 5, 1441792, 131156, 2, 1441792, 131155, 2, 1441792, 131154, 2, 1441792, 131153, 2, 1441792, 131152, 2, 1441792, 131151, 2, 1441792, 131151, 3, 1441792, 131151, 4, 1441792, 131152, 4, 1441792, 131153, 4, 1441792, 131154, 3, 1441792, 131155, 3, 1441792, 131153, 3, 1441792, 131152, 3, 1441792, 131154, 4, 1441792, 131157, 2, 1441792, 131157, 3, 1441792, 131157, 4, 1441792, 131157, 5, 1441792, 131169, 2, 1441792, 131168, 2, 1441792, 131168, 3, 1441792, 131168, 4, 1441792, 131168, 5, 1441792, 131169, 5, 1441792, 131169, 4, 1441792, 131169, 3, 1441792, 93, 4, 1441792, 131167, 2, 1441792, 131166, 2, 1441792, 131166, 3, 1441792, 131166, 4, 1441792, 131166, 5, 1441792, 131167, 4, 1441792, 131167, 3, 1441792, 131167, 5, 1441792, 65630, 6, 1441792, 65631, 6, 1441792, 65632, 6, 1441792, 65633, 6, 1441792, 65633, 7, 1441792, 65632, 7, 1441792, 65631, 7, 1441792, 65630, 7, 1441792, 97, 8, 1441792, 96, 8, 1441792, 95, 8, 1441792, 94, 8, 1441792, 94, 9, 1441792, 95, 9, 1441792, 96, 9, 1441792, 97, 9, 1441792, 95, 10, 1441792, 94, 10, 1441792, 96, 10, 1441792, 97, 10, 1441792, 94, 11, 1441792, 95, 11, 1441792, 96, 11, 1441792, 97, 11, 1441792, 95, 12, 1441792, 95, 13, 1441792, 95, 14, 1441792, 95, 15, 1441792, 95, 16, 1441792, 96, 16, 1441792, 96, 15, 1441792, 96, 14, 1441792, 96, 13, 1441792, 96, 12, 1441792, 95, 25, 1441792, 95, 24, 1441792, 95, 23, 1441792, 95, 22, 1441792, 95, 21, 1441792, 95, 20, 1441792, 95, 19, 1441792, 95, 18, 1441792, 95, 17, 1441792, 96, 17, 1441792, 96, 18, 1441792, 96, 19, 1441792, 96, 20, 1441792, 96, 21, 1441792, 96, 22, 1441792, 96, 23, 1441792, 96, 24, 1441792, 96, 25, 1441792, 96, 26, 1441792, 95, 26, 1441792, 95, 27, 1441792, 96, 27, 1441792, 95, 28, 1441792, 95, 29, 1441792, 96, 29, 1441792, 96, 28, 1441792, 37, 18, 1441792, 38, 18, 1441792, 39, 18, 1441792, 40, 18, 1441792, 40, 17, 1441792, 39, 17, 1441792, 38, 17, 1441792, 37, 19, 1441792, 38, 19, 1441792, 39, 19, 1441792, 40, 19, 1441792, 39, 20, 1441792, 40, 20, 1441792, 38, 20, 1441792, 37, 20, 1441792, 37, 17, 1441792)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Detector" parent="CameraHints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 37.5)
+TrackZ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 1)
+shape = SubResource("BoxShape3D_ew7j6")
+
+[node name="Detector2" parent="CameraHints" index="1" node_paths=PackedStringArray("camera") instance=ExtResource("5_n6ax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 50)
+script = ExtResource("6_jmpjs")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = false
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector2" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 3.5, -6)
+shape = SubResource("WorldBoundaryShape3D_fn2r4")
+
+[node name="Detector3" parent="CameraHints" index="2" node_paths=PackedStringArray("camera") instance=ExtResource("5_n6ax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 0, 41.5)
+script = ExtResource("6_jmpjs")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = true
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 1)
+shape = SubResource("BoxShape3D_ew7j6")
+
+[node name="Detector4" parent="CameraHints" index="3" node_paths=PackedStringArray("camera") instance=ExtResource("5_n6ax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 12.5)
+script = ExtResource("6_jmpjs")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = false
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 3.5, 1)
+shape = SubResource("BoxShape3D_ew7j6")
+
+[node name="Detector5" parent="CameraHints" index="4" node_paths=PackedStringArray("camera") instance=ExtResource("5_n6ax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 13.5)
+script = ExtResource("6_jmpjs")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = true
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 3.5, 1)
+shape = SubResource("BoxShape3D_ew7j6")
+
+[node name="Detector6" parent="CameraHints" index="5" node_paths=PackedStringArray("camera") instance=ExtResource("5_n6ax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195, 4, 7.5)
+script = ExtResource("6_jmpjs")
+camera = NodePath("../../Camera")
+TrackX = false
+TrackY = false
+TrackZ = true
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector6" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 0.5, 23.5)
+shape = SubResource("BoxShape3D_h80q3")
+
+[node name="Detector7" parent="CameraHints" index="6" node_paths=PackedStringArray("camera") instance=ExtResource("5_n6ax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 4, 7.5)
+script = ExtResource("6_jmpjs")
+camera = NodePath("../../Camera")
+TrackX = true
+TrackY = false
+TrackZ = true
+_teamToDetect = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHints/Detector7" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0.5, 23.5)
+shape = SubResource("BoxShape3D_h80q3")
+
+[connection signal="NotDetecting" from="CameraHints/Detector2" to="CameraHints/Detector2" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector3" to="CameraHints/Detector3" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector4" to="CameraHints/Detector4" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector5" to="CameraHints/Detector5" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector6" to="CameraHints/Detector6" method="OnNotDetecting"]
+[connection signal="NotDetecting" from="CameraHints/Detector7" to="CameraHints/Detector7" method="OnNotDetecting"]

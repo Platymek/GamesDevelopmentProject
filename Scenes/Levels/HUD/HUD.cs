@@ -50,5 +50,5 @@ public partial class HUD : Control
 	{
 		_fullJars.GetChild<Control>((int)index).Visible = true;
 
-    }
+	}
 }

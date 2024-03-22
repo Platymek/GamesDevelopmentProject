@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dvdvoqo3lqeun"]
+
+[ext_resource type="Texture2D" uid="uid://c2cdvq04kw687" path="res://Scenes/Actors/ForestActors/BirdTrap/Model/Trap_Trap.png" id="1_i0e0m"]
+
+[resource]
+resource_name = "Trap"
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("1_i0e0m")
+roughness = 0.5
+texture_filter = 0

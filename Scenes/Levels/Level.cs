@@ -61,6 +61,7 @@ public partial class Level : Node3D
 		}
 	}
 
+
 	// Signals //
 
 	private void OnPitEntered(Area3D area)
@@ -105,7 +106,6 @@ public partial class Level : Node3D
 
 	public void Pause()
 	{
-		GD.Print("bruh");
         Paused = !Paused;
     }
 }
