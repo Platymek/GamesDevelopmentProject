@@ -3,14 +3,14 @@ using System;
 
 public partial class DropShadow : RayCast3D
 {
-	private Sprite3D _shadow;
+	private Node3D _shadow;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
 
-		_shadow = GetChild<Sprite3D>(0);
+		_shadow = GetChild<Node3D>(0);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

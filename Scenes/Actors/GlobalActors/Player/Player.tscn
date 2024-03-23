@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=28 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/GlobalActors/Player/Model/tankBase.glb" id="1_gbn4w"]
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/Player/Player.cs" id="1_gojm8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://gn2qoe3v15i6" path="res://Scenes/Actors/GlobalActors/Player/Model/tankTurret.glb" id="3_mno7v"]
 [ext_resource type="PackedScene" uid="uid://c5ffdafypp36a" path="res://Scenes/Actors/GlobalActors/Explosion/Explosion.tscn" id="4_jcyle"]
 [ext_resource type="PackedScene" uid="uid://cqnvtchxc244r" path="res://Scenes/Actors/GlobalActors/Shell/Shell.tscn" id="6_6vglx"]
+[ext_resource type="PackedScene" uid="uid://2ibwncah0bwg" path="res://Scenes/Actors/GlobalActors/Player/Model/Target.glb" id="7_jwp6q"]
 [ext_resource type="PackedScene" uid="uid://cgkpgl5iuj7xw" path="res://Scenes/Actors/GlobalActors/Player/Model/Pointer.glb" id="8_pbnn7"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="9_dmpoc"]
 [ext_resource type="Script" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.cs" id="9_qcm6b"]
@@ -474,12 +475,12 @@ radius = 0.7
 [sub_resource type="SphereShape3D" id="SphereShape3D_rsmlm"]
 radius = 1.5
 
-[sub_resource type="Gradient" id="Gradient_jiekd"]
+[sub_resource type="Gradient" id="Gradient_i24sj"]
 offsets = PackedFloat32Array(0.521311, 0.790164)
 colors = PackedColorArray(0.0784314, 0.188235, 0.266667, 0.658824, 0.0784314, 0.188235, 0.266667, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4y7i8"]
-gradient = SubResource("Gradient_jiekd")
+gradient = SubResource("Gradient_i24sj")
 width = 24
 height = 24
 fill = 1
@@ -521,6 +522,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8, 
 
 [node name="TankTurret" type="Node3D" parent="Model/TankBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+
+[node name="AimReticle" parent="Model/TankBase/TankTurret" instance=ExtResource("10_ko3ud")]
+transform = Transform3D(80, 0, 0, 0, -3.49691e-06, -80, 0, 80, -3.49691e-06, 0, 0, -12)
+
+[node name="Target" parent="Model/TankBase/TankTurret/AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(-4.37114e-09, -4.37114e-09, 0.1, -0.1, -4.37114e-09, -4.37114e-09, 4.37114e-09, -0.1, -4.37114e-09, 0, 0, 0)
 
 [node name="TankTurretModel" parent="Model/TankBase/TankTurret" instance=ExtResource("3_mno7v")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)

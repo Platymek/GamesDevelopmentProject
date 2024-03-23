@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ljdswjbvvdf6"]
+[gd_scene load_steps=16 format=3 uid="uid://ljdswjbvvdf6"]
 
 [ext_resource type="Script" path="res://Scenes/Global/Global.cs" id="1_gnunq"]
 [ext_resource type="Script" path="res://Scenes/Global/Areas.cs" id="2_xd3vq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="7_vawgg"]
 [ext_resource type="MeshLibrary" uid="uid://23vjgen63i8" path="res://Scenes/Levels/Forest/ForestTiles/ForestTiles.tres" id="8_082xj"]
 [ext_resource type="PackedScene" uid="uid://blxyb0g3qhf6r" path="res://Scenes/Levels/Forest/Levels/1-4.tscn" id="8_p4vnt"]
+[ext_resource type="PackedScene" uid="uid://d3hyf6rt2v3dv" path="res://Scenes/Levels/Forest/Levels/1-5.tscn" id="13_nl7us"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_voylx"]
 
@@ -78,6 +79,13 @@ NumberOfCollectables = 5
 [node name="1-4 - Bird Traps" type="Node" parent="Areas/Woodland"]
 script = ExtResource("2_yrkcy")
 Level = ExtResource("8_p4vnt")
-Time = 35.0
+Time = 30.0
 Title = "1-4: Trap Trail"
+NumberOfCollectables = 5
+
+[node name="1-5 - Finale" type="Node" parent="Areas/Woodland"]
+script = ExtResource("2_yrkcy")
+Level = ExtResource("13_nl7us")
+Time = 30.0
+Title = "1-5: The Final Trial"
 NumberOfCollectables = 5
