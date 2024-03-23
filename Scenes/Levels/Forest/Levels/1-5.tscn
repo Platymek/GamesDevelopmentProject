@@ -1,12 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3hyf6rt2v3dv"]
+[gd_scene load_steps=11 format=3 uid="uid://d3hyf6rt2v3dv"]
 
 [ext_resource type="PackedScene" uid="uid://doo5228kix4jo" path="res://Scenes/Levels/Level.tscn" id="1_a7a00"]
 [ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_8uj2k"]
 [ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="3_w4ldl"]
 [ext_resource type="PackedScene" uid="uid://bgdbeqpic0tj6" path="res://Scenes/Actors/ForestActors/BirdTrap/BirdTrap.tscn" id="3_w7dms"]
+[ext_resource type="PackedScene" uid="uid://brp2ublms7ifg" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.tscn" id="4_2fu5w"]
 [ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/NewForestTiles/NewForestTiles.tres" id="4_t4dah"]
+[ext_resource type="PackedScene" uid="uid://b468lw6msex5x" path="res://Scenes/Actors/GlobalActors/ColourJar/ColourJar.tscn" id="7_x3bxy"]
+[ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="8_c012k"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7rv67"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0sxo6"]
+size = Vector3(25, 7, 25)
 
 [node name="Level" instance=ExtResource("1_a7a00")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 234)
+shape = SubResource("WorldBoundaryShape3D_7rv67")
 
 [node name="Camera" parent="." index="3"]
 TrackX = true
@@ -14,7 +26,7 @@ TrackY = true
 TrackZ = true
 
 [node name="Player" parent="Actors" index="0"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 109, 7, 100)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 0, 0)
 
 [node name="Section1,2" type="Node3D" parent="Actors" index="1"]
 
@@ -59,6 +71,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 20)
 
 [node name="BirdTrap10" parent="Actors/Section1,2" index="13" instance=ExtResource("3_w7dms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 20)
+
+[node name="TechnoCultist" parent="Actors/Section1,2" index="14" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 14, 14, 0)
+
+[node name="TechnoCultist2" parent="Actors/Section1,2" index="15" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 14, -4)
+
+[node name="TechnoCultist3" parent="Actors/Section1,2" index="16" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 14, 4)
+
+[node name="TechnoCultist4" parent="Actors/Section1,2" index="17" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 14, 0)
+
+[node name="TechnoCultist5" parent="Actors/Section1,2" index="18" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, 18, 0)
 
 [node name="Section3" type="Node3D" parent="Actors" index="2"]
 
@@ -199,34 +226,319 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 4, 102)
 [node name="BirdTrap13" parent="Actors/Section6" index="3" instance=ExtResource("3_w7dms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 4, 102)
 
+[node name="TechnoCultist6" parent="Actors/Section6" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 96, 5, 102)
+
+[node name="TechnoCultist7" parent="Actors/Section6" index="5" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 88, 5, 102)
+
+[node name="TechnoCultist8" parent="Actors/Section6" index="6" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 80, 5, 102)
+
+[node name="TechnoCultist9" parent="Actors/Section6" index="7" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 72, 5, 102)
+
 [node name="Section7" type="Node3D" parent="Actors" index="7"]
 
 [node name="BrokenTree2" parent="Actors/Section7" index="0" instance=ExtResource("2_8uj2k")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 59, 4, 98)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 54, 4, 98)
 
 [node name="BrokenTree3" parent="Actors/Section7" index="1" instance=ExtResource("2_8uj2k")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 40, 4, 106)
 
 [node name="BrokenTree4" parent="Actors/Section7" index="2" instance=ExtResource("2_8uj2k")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 25, 4, 98)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 22, 4, 98)
 
 [node name="BrokenTree5" parent="Actors/Section7" index="3" instance=ExtResource("2_8uj2k")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 6, 4, 106)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 2, 4, 106)
 
 [node name="BirdTrap14" parent="Actors/Section7" index="4" instance=ExtResource("3_w7dms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 4, 98)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 4, 98)
 
-[node name="BirdTrap15" parent="Actors/Section7" index="5" instance=ExtResource("3_w7dms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 4, 98)
-
-[node name="BirdTrap16" parent="Actors/Section7" index="6" instance=ExtResource("3_w7dms")]
+[node name="BirdTrap16" parent="Actors/Section7" index="5" instance=ExtResource("3_w7dms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 4, 106)
 
-[node name="BirdTrap17" parent="Actors/Section7" index="7" instance=ExtResource("3_w7dms")]
+[node name="BirdTrap17" parent="Actors/Section7" index="6" instance=ExtResource("3_w7dms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 4, 106)
 
-[node name="BirdTrap18" parent="Actors/Section7" index="8" instance=ExtResource("3_w7dms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, 102)
+[node name="BirdTrap18" parent="Actors/Section7" index="7" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, 98)
+
+[node name="BirdTrap19" parent="Actors/Section7" index="8" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 4, 98)
+
+[node name="BirdTrap20" parent="Actors/Section7" index="9" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4, 98)
+
+[node name="TechnoCultist10" parent="Actors/Section7" index="10" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 54, 18, 98)
+
+[node name="TechnoCultist11" parent="Actors/Section7" index="11" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40, 18, 106)
+
+[node name="TechnoCultist12" parent="Actors/Section7" index="12" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 22, 18, 98)
+
+[node name="TechnoCultist13" parent="Actors/Section7" index="13" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 18, 106)
+
+[node name="Section8,9,10" type="Node3D" parent="Actors" index="8"]
+
+[node name="Square" type="Node3D" parent="Actors/Section8,9,10" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 136)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist13" parent="Actors/Section8,9,10/Square" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square2" type="Node3D" parent="Actors/Section8,9,10" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 172)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square2" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square2" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square2" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square2" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square2" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square3" type="Node3D" parent="Actors/Section8,9,10" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 172)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square3" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square3" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square3" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square3" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square3" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square4" type="Node3D" parent="Actors/Section8,9,10" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 172)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square4" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square4" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square4" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square4" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square4" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square5" type="Node3D" parent="Actors/Section8,9,10" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 200)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square5" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square5" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square5" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square5" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square5" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square6" type="Node3D" parent="Actors/Section8,9,10" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 200)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square6" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square6" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square6" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square6" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square6" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square7" type="Node3D" parent="Actors/Section8,9,10" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 216)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square7" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square7" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square7" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square7" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square7" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square8" type="Node3D" parent="Actors/Section8,9,10" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 216)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square8" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square8" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square8" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square8" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square8" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square9" type="Node3D" parent="Actors/Section8,9,10" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 208)
+
+[node name="BirdTrap19" parent="Actors/Section8,9,10/Square9" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/Section8,9,10/Square9" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/Section8,9,10/Square9" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/Section8,9,10/Square9" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/Section8,9,10/Square9" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="SectionCJ3" type="Node3D" parent="Actors" index="9"]
+
+[node name="BirdTrap10" parent="Actors/SectionCJ3" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, 136)
+
+[node name="BirdTrap11" parent="Actors/SectionCJ3" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4, 136)
+
+[node name="BirdTrap12" parent="Actors/SectionCJ3" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4, 136)
+
+[node name="BirdTrap13" parent="Actors/SectionCJ3" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 4, 136)
+
+[node name="BrokenTree5" parent="Actors/SectionCJ3" index="4" instance=ExtResource("2_8uj2k")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, 136)
+
+[node name="SectionCJ5" type="Node3D" parent="Actors" index="10"]
+
+[node name="BrokenTree3" parent="Actors/SectionCJ5" index="0" instance=ExtResource("2_8uj2k")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 30, 4, 208)
+
+[node name="Square" type="Node3D" parent="Actors/SectionCJ5" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4, 216)
+
+[node name="BirdTrap19" parent="Actors/SectionCJ5/Square" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/SectionCJ5/Square" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/SectionCJ5/Square" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/SectionCJ5/Square" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/SectionCJ5/Square" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square2" type="Node3D" parent="Actors/SectionCJ5" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4, 200)
+
+[node name="BirdTrap19" parent="Actors/SectionCJ5/Square2" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/SectionCJ5/Square2" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/SectionCJ5/Square2" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/SectionCJ5/Square2" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/SectionCJ5/Square2" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square3" type="Node3D" parent="Actors/SectionCJ5" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 4, 200)
+
+[node name="BirdTrap19" parent="Actors/SectionCJ5/Square3" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/SectionCJ5/Square3" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/SectionCJ5/Square3" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/SectionCJ5/Square3" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/SectionCJ5/Square3" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="Square4" type="Node3D" parent="Actors/SectionCJ5" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 4, 216)
+
+[node name="BirdTrap19" parent="Actors/SectionCJ5/Square4" index="0" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BirdTrap20" parent="Actors/SectionCJ5/Square4" index="1" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BirdTrap21" parent="Actors/SectionCJ5/Square4" index="2" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BirdTrap22" parent="Actors/SectionCJ5/Square4" index="3" instance=ExtResource("3_w7dms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TechnoCultist14" parent="Actors/SectionCJ5/Square4" index="4" instance=ExtResource("4_2fu5w")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
 
 [node name="WorldEnvironment" parent="." index="5"]
 environment = ExtResource("3_w4ldl")
@@ -234,6 +546,31 @@ environment = ExtResource("3_w4ldl")
 [node name="GridMap" parent="." index="6"]
 mesh_library = ExtResource("4_t4dah")
 data = {
-"cells": PackedInt32Array(65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 6, 65535, 0, 6, 0, 0, 7, 0, 0, 7, 65535, 0, 14, 65535, 0, 14, 0, 0, 15, 0, 0, 15, 65535, 0, 4, 0, 0, 4, 65535, 0, 5, 65535, 0, 5, 0, 0, 16, 65535, 0, 17, 65535, 0, 17, 0, 0, 16, 0, 0, 16, 65534, 0, 17, 65534, 0, 17, 1, 0, 16, 1, 0, 16, 65533, 0, 17, 65533, 0, 17, 2, 0, 16, 2, 0, 18, 2, 0, 18, 1, 0, 18, 0, 0, 18, 65535, 0, 19, 65535, 0, 19, 0, 0, 19, 1, 0, 19, 65534, 0, 19, 65533, 0, 18, 65533, 0, 18, 65534, 0, 19, 2, 0, 20, 1, 0, 20, 0, 0, 20, 65535, 0, 21, 65535, 0, 21, 0, 0, 21, 1, 0, 21, 2, 0, 20, 2, 0, 20, 65533, 0, 20, 65534, 0, 21, 65534, 0, 21, 65533, 0, 20, 9, 0, 21, 9, 0, 21, 10, 0, 20, 10, 0, 28, 0, 0, 28, 65535, 0, 29, 65535, 0, 29, 0, 0, 29, 9, 0, 29, 10, 0, 30, 10, 0, 30, 9, 0, 131102, 65535, 0, 131103, 65535, 0, 131102, 0, 0, 131103, 0, 0, 131110, 65535, 0, 131110, 0, 0, 131111, 65535, 0, 131111, 0, 0, 131109, 1, 0, 131110, 1, 0, 131111, 1, 0, 131112, 1, 0, 131112, 0, 0, 131112, 65535, 0, 131112, 65534, 0, 131111, 65534, 0, 131110, 65534, 0, 131109, 65534, 0, 37, 65535, 0, 37, 0, 0, 131109, 2, 0, 131110, 3, 0, 131110, 4, 0, 131110, 2, 0, 131109, 4, 0, 131111, 4, 0, 131111, 3, 0, 131112, 3, 0, 131111, 2, 0, 131112, 4, 0, 131112, 2, 0, 131111, 5, 0, 131110, 5, 0, 131110, 6, 0, 131109, 6, 0, 131110, 7, 0, 131111, 7, 0, 131111, 6, 0, 131112, 5, 0, 131112, 6, 0, 131112, 7, 0, 131109, 5, 0, 131109, 3, 0, 131109, 7, 0, 37, 8, 0, 37, 9, 0, 37, 10, 0, 37, 11, 0, 38, 11, 0, 38, 10, 0, 38, 9, 0, 38, 8, 0, 39, 8, 0, 39, 9, 0, 39, 10, 0, 39, 11, 0, 40, 10, 0, 40, 9, 0, 40, 11, 0, 40, 8, 0, 327721, 65533, 0, 327721, 65534, 0, 327721, 4, 0, 327721, 5, 0, 327721, 6, 0, 327721, 7, 0, 327722, 7, 0, 327723, 7, 0, 327724, 7, 0, 41, 8, 0, 41, 9, 0, 41, 10, 0, 42, 11, 0, 43, 11, 0, 43, 10, 0, 43, 9, 0, 43, 8, 0, 42, 8, 0, 42, 9, 0, 42, 10, 0, 41, 11, 0, 44, 10, 0, 44, 9, 0, 44, 8, 0, 44, 11, 0, 65577, 7, 0, 65578, 7, 0, 65579, 7, 0, 65580, 7, 0, 131117, 8, 0, 131117, 9, 0, 131117, 10, 0, 131117, 11, 0, 131118, 10, 0, 131118, 9, 0, 131118, 8, 0, 131118, 11, 0, 131119, 11, 0, 131119, 10, 0, 131119, 9, 0, 131119, 8, 0, 131120, 8, 0, 131120, 9, 0, 131120, 10, 0, 131120, 11, 0, 45, 12, 0, 45, 13, 0, 45, 14, 0, 46, 14, 0, 46, 13, 0, 47, 13, 0, 47, 12, 0, 46, 15, 0, 45, 15, 0, 47, 15, 0, 48, 15, 0, 48, 14, 0, 48, 13, 0, 47, 14, 0, 48, 12, 0, 46, 12, 0, 49, 12, 0, 50, 12, 0, 51, 12, 0, 52, 12, 0, 52, 13, 0, 52, 14, 0, 52, 15, 0, 51, 15, 0, 50, 15, 0, 50, 14, 0, 49, 14, 0, 49, 13, 0, 50, 13, 0, 51, 14, 0, 49, 15, 0, 51, 13, 0, 131125, 12, 0, 131125, 13, 0, 131125, 14, 0, 131126, 14, 0, 131126, 13, 0, 131126, 12, 0, 131126, 15, 0, 131125, 15, 0, 131127, 15, 0, 131127, 14, 0, 131128, 14, 0, 131128, 13, 0, 131128, 12, 0, 131128, 15, 0, 131127, 13, 0, 131127, 12, 0, 327725, 7, 0, 327726, 7, 0, 327727, 7, 0, 327728, 7, 0, 327729, 7, 0, 327729, 8, 0, 327729, 9, 0, 327729, 10, 0, 327729, 11, 0, 327730, 11, 0, 327731, 11, 0, 327732, 11, 0, 327733, 11, 0, 327734, 11, 0, 327735, 11, 0, 327736, 11, 0, 65585, 11, 0, 65586, 11, 0, 65587, 11, 0, 65588, 11, 0, 327721, 65535, 0, 327721, 0, 0, 327721, 1, 0, 327721, 2, 0, 327721, 3, 0, 327732, 21, 0, 327732, 22, 0, 327732, 23, 0, 327732, 24, 0, 327732, 25, 0, 327732, 26, 0, 327732, 27, 0, 131128, 18, 0, 327732, 28, 0, 327732, 29, 0, 327732, 30, 0, 327732, 31, 0, 327732, 32, 0, 327732, 33, 0, 327732, 34, 0, 327732, 43, 0, 327732, 44, 0, 327732, 45, 0, 327732, 46, 0, 327732, 47, 0, 327732, 48, 0, 131128, 16, 0, 131128, 17, 0, 327737, 11, 0, 327738, 11, 0, 327738, 12, 0, 327738, 13, 0, 327738, 14, 0, 327738, 15, 0, 327738, 16, 0, 327738, 17, 0, 327738, 18, 0, 327738, 19, 0, 327738, 20, 0, 327738, 21, 0, 327738, 22, 0, 327738, 23, 0, 327738, 24, 0, 327738, 25, 0, 327738, 26, 0, 327738, 27, 0, 327738, 28, 0, 327738, 29, 0, 327738, 30, 0, 327738, 31, 0, 327738, 32, 0, 327738, 33, 0, 327738, 34, 0, 327738, 35, 0, 327738, 36, 0, 327738, 37, 0, 327738, 38, 0, 327738, 39, 0, 327738, 40, 0, 327738, 41, 0, 327738, 42, 0, 327738, 43, 0, 327738, 44, 0, 327738, 45, 0, 327738, 46, 0, 327738, 47, 0, 327738, 48, 0, 131129, 18, 0, 131129, 17, 0, 131129, 16, 0, 131129, 15, 0, 131129, 14, 0, 131129, 13, 0, 131129, 12, 0, 327738, 49, 0, 327738, 50, 0, 327738, 51, 0, 327738, 52, 0, 327732, 49, 0, 65587, 52, 2, 327731, 52, 1, 327731, 49, 0, 327730, 49, 0, 327729, 49, 0, 327728, 49, 0, 327727, 49, 0, 327726, 49, 0, 327725, 49, 0, 327724, 49, 0, 327723, 49, 0, 327720, 49, 0, 327719, 49, 0, 327718, 49, 0, 327717, 49, 0, 327716, 49, 0, 327715, 49, 0, 131105, 50, 0, 131106, 50, 0, 131107, 50, 0, 131108, 50, 0, 131109, 50, 0, 131110, 50, 0, 131111, 50, 0, 131112, 50, 0, 131113, 50, 0, 131114, 50, 0, 131115, 50, 0, 131116, 50, 0, 131117, 50, 0, 131118, 50, 0, 131119, 50, 0, 131120, 50, 0, 131121, 50, 0, 131122, 50, 0, 131123, 50, 0, 131123, 51, 0, 131124, 50, 0, 131124, 51, 0, 131125, 20, 0, 131125, 21, 0, 131125, 22, 0, 131125, 23, 0, 131125, 32, 0, 131125, 33, 0, 131125, 48, 0, 131125, 49, 0, 131125, 50, 0, 131125, 51, 0, 131126, 20, 0, 131126, 21, 0, 131126, 22, 0, 131126, 23, 0, 131126, 32, 0, 131126, 33, 0, 131126, 48, 0, 131126, 49, 0, 131126, 50, 0, 131126, 51, 0, 131127, 48, 0, 131127, 49, 0, 131127, 50, 0, 131127, 51, 0, 131128, 26, 0, 131128, 27, 0, 131128, 28, 0, 131128, 38, 0, 131128, 48, 0, 131128, 49, 0, 131128, 50, 0, 131128, 51, 0, 131129, 26, 0, 131129, 27, 0, 131129, 28, 0, 131129, 38, 0, 131129, 48, 0, 131129, 49, 0, 131129, 50, 0, 131129, 51, 0, 131128, 25, 0, 131129, 25, 0, 131126, 30, 0, 131125, 30, 0, 131125, 31, 0, 131126, 31, 0, 131128, 35, 0, 131129, 35, 0, 131129, 36, 0, 131129, 37, 0, 131128, 37, 0, 131128, 36, 0, 131125, 40, 0, 131126, 40, 0, 131126, 41, 0, 131126, 42, 0, 131125, 42, 0, 131125, 41, 0, 131128, 45, 0, 131128, 46, 0, 131129, 46, 0, 131129, 45, 0, 131129, 47, 0, 131128, 47, 0, 131126, 43, 0, 131125, 43, 0, 327732, 35, 0, 327732, 38, 0, 327732, 39, 0, 327732, 40, 0, 327732, 41, 0, 327732, 42, 0, 131105, 36, 0, 131105, 37, 0, 131106, 36, 0, 131106, 37, 0, 131109, 32, 0, 131109, 33, 0, 131110, 32, 0, 131110, 33, 0, 131113, 36, 0, 131113, 37, 0, 131114, 36, 0, 131114, 37, 0, 131117, 32, 0, 131117, 33, 0, 131118, 32, 0, 131118, 33, 0, 131121, 36, 0, 131121, 37, 0, 131122, 36, 0, 131122, 37, 0, 131123, 36, 0, 131123, 37, 0, 131124, 36, 0, 131124, 37, 0, 131122, 51, 0, 131121, 51, 0, 131120, 51, 0, 131119, 51, 0, 131118, 51, 0, 131117, 51, 0, 131116, 51, 0, 131115, 51, 0, 131114, 51, 0, 131113, 51, 0, 131112, 51, 0, 131111, 51, 0, 131110, 51, 0, 131109, 51, 0, 131108, 51, 0, 131107, 51, 0, 131106, 51, 0, 131105, 51, 0, 262179, 48, 0, 262179, 47, 0, 262178, 47, 0, 262177, 47, 0, 262185, 49, 0, 262186, 49, 0, 131098, 48, 0, 131098, 49, 0, 131099, 48, 0, 131099, 49, 0, 131100, 49, 0, 131100, 48, 0, 131098, 51, 0, 131098, 50, 0, 131089, 53, 0, 131089, 52, 0, 131089, 51, 0, 131089, 50, 0, 131088, 50, 0, 131088, 51, 0, 131088, 52, 0, 131088, 53, 0, 131084, 52, 0, 131084, 53, 0, 131083, 52, 0, 131083, 53, 0, 131091, 52, 0, 131091, 53, 0, 131092, 53, 0, 131092, 52, 0, 131090, 52, 0, 131090, 53, 0, 131082, 48, 0, 131082, 49, 0, 131083, 49, 0, 131083, 48, 0, 131084, 48, 0, 131084, 49, 0, 131081, 48, 0, 131081, 49, 0, 131080, 49, 0, 131080, 48, 0, 131080, 50, 0, 131081, 50, 0, 131081, 51, 0, 131080, 51, 0, 131075, 49, 0, 131075, 48, 0, 131075, 52, 0, 131075, 53, 0, 131074, 48, 0, 131074, 49, 0, 131074, 53, 0, 131074, 52, 0, 131073, 53, 0, 131073, 52, 0, 131072, 52, 0, 131072, 53, 0, 196607, 52, 0, 196607, 53, 0, 131072, 51, 0, 131072, 50, 0, 131072, 49, 0, 131072, 48, 0, 196607, 48, 0, 196607, 49, 0, 196607, 50, 0, 196607, 51, 0, 327681, 48, 0, 327681, 49, 0, 327681, 50, 0, 327681, 51, 0, 589825, 48, 0, 589825, 49, 0, 131094, 48, 0, 131094, 49, 0, 458771, 48, 0, 458772, 48, 0, 458772, 49, 0, 458771, 49, 0, 458770, 48, 0, 458770, 49, 0, 458770, 50, 0, 458770, 51, 0, 458762, 50, 0, 458762, 51, 0, 458762, 52, 0, 458762, 53, 0, 458763, 50, 0, 458764, 50, 0, 458772, 50, 0, 458772, 51, 0, 458771, 51, 0, 458771, 50, 0, 196628, 48, 0, 196628, 49, 0, 196628, 51, 0, 196628, 50, 0, 131101, 49, 0, 131101, 48, 0, 458780, 50, 0, 458780, 51, 0, 131099, 50, 0, 131099, 51, 0, 131095, 48, 0, 131095, 49, 0)
+"cells": PackedInt32Array(65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 6, 65535, 0, 6, 0, 0, 7, 0, 0, 7, 65535, 0, 14, 65535, 0, 14, 0, 0, 15, 0, 0, 15, 65535, 0, 4, 0, 0, 4, 65535, 0, 5, 65535, 0, 5, 0, 0, 16, 65535, 0, 17, 65535, 0, 17, 0, 0, 16, 0, 0, 16, 65534, 0, 17, 65534, 0, 17, 1, 0, 16, 1, 0, 16, 65533, 0, 17, 65533, 0, 17, 2, 0, 16, 2, 0, 18, 2, 0, 18, 1, 0, 18, 0, 0, 18, 65535, 0, 19, 65535, 0, 19, 0, 0, 19, 1, 0, 19, 65534, 0, 19, 65533, 0, 18, 65533, 0, 18, 65534, 0, 19, 2, 0, 20, 1, 0, 20, 0, 0, 20, 65535, 0, 21, 65535, 0, 21, 0, 0, 21, 1, 0, 21, 2, 0, 20, 2, 0, 20, 65533, 0, 20, 65534, 0, 21, 65534, 0, 21, 65533, 0, 20, 9, 0, 21, 9, 0, 21, 10, 0, 20, 10, 0, 28, 0, 0, 28, 65535, 0, 29, 65535, 0, 29, 0, 0, 29, 9, 0, 29, 10, 0, 30, 10, 0, 30, 9, 0, 131102, 65535, 0, 131103, 65535, 0, 131102, 0, 0, 131103, 0, 0, 131110, 65535, 0, 131110, 0, 0, 131111, 65535, 0, 131111, 0, 0, 131109, 1, 0, 131110, 1, 0, 131111, 1, 0, 131112, 1, 0, 131112, 0, 0, 131112, 65535, 0, 131112, 65534, 0, 131111, 65534, 0, 131110, 65534, 0, 131109, 65534, 0, 37, 65535, 0, 37, 0, 0, 131109, 2, 0, 131110, 3, 0, 131110, 4, 0, 131110, 2, 0, 131109, 4, 0, 131111, 4, 0, 131111, 3, 0, 131112, 3, 0, 131111, 2, 0, 131112, 4, 0, 131112, 2, 0, 131111, 5, 0, 131110, 5, 0, 131110, 6, 0, 131109, 6, 0, 131110, 7, 0, 131111, 7, 0, 131111, 6, 0, 131112, 5, 0, 131112, 6, 0, 131112, 7, 0, 131109, 5, 0, 131109, 3, 0, 131109, 7, 0, 37, 8, 0, 37, 9, 0, 37, 10, 0, 37, 11, 0, 38, 11, 0, 38, 10, 0, 38, 9, 0, 38, 8, 0, 39, 8, 0, 39, 9, 0, 39, 10, 0, 39, 11, 0, 40, 10, 0, 40, 9, 0, 40, 11, 0, 40, 8, 0, 327721, 65533, 0, 327721, 65534, 0, 327721, 4, 0, 327721, 5, 0, 327721, 6, 0, 327721, 7, 0, 327722, 7, 0, 327723, 7, 0, 327724, 7, 0, 41, 8, 0, 41, 9, 0, 41, 10, 0, 42, 11, 0, 43, 11, 0, 43, 10, 0, 43, 9, 0, 43, 8, 0, 42, 8, 0, 42, 9, 0, 42, 10, 0, 41, 11, 0, 44, 10, 0, 44, 9, 0, 44, 8, 0, 44, 11, 0, 65577, 7, 0, 65578, 7, 0, 65579, 7, 0, 65580, 7, 0, 131117, 8, 0, 131117, 9, 0, 131117, 10, 0, 131117, 11, 0, 131118, 10, 0, 131118, 9, 0, 131118, 8, 0, 131118, 11, 0, 131119, 11, 0, 131119, 10, 0, 131119, 9, 0, 131119, 8, 0, 131120, 8, 0, 131120, 9, 0, 131120, 10, 0, 131120, 11, 0, 45, 12, 0, 45, 13, 0, 45, 14, 0, 46, 14, 0, 46, 13, 0, 47, 13, 0, 47, 12, 0, 46, 15, 0, 45, 15, 0, 47, 15, 0, 48, 15, 0, 48, 14, 0, 48, 13, 0, 47, 14, 0, 48, 12, 0, 46, 12, 0, 49, 12, 0, 50, 12, 0, 51, 12, 0, 52, 12, 0, 52, 13, 0, 52, 14, 0, 52, 15, 0, 51, 15, 0, 50, 15, 0, 50, 14, 0, 49, 14, 0, 49, 13, 0, 50, 13, 0, 51, 14, 0, 49, 15, 0, 51, 13, 0, 131125, 12, 0, 131125, 13, 0, 131125, 14, 0, 131126, 14, 0, 131126, 13, 0, 131126, 12, 0, 131126, 15, 0, 131125, 15, 0, 131127, 15, 0, 131127, 14, 0, 131128, 14, 0, 131128, 13, 0, 131128, 12, 0, 131128, 15, 0, 131127, 13, 0, 131127, 12, 0, 327725, 7, 0, 327726, 7, 0, 327727, 7, 0, 327728, 7, 0, 327729, 7, 0, 327729, 8, 0, 327729, 9, 0, 327729, 10, 0, 327729, 11, 0, 327730, 11, 0, 327731, 11, 0, 327732, 11, 0, 327733, 11, 0, 327734, 11, 0, 327735, 11, 0, 327736, 11, 0, 65585, 11, 0, 65586, 11, 0, 65587, 11, 0, 65588, 11, 0, 327721, 65535, 0, 327721, 0, 0, 327721, 1, 0, 327721, 2, 0, 327721, 3, 0, 327732, 21, 0, 327732, 22, 0, 327732, 23, 0, 327732, 24, 0, 327732, 25, 0, 327732, 26, 0, 327732, 27, 0, 131128, 18, 0, 327732, 28, 0, 327732, 29, 0, 327732, 30, 0, 327732, 31, 0, 327732, 32, 0, 327732, 33, 0, 327732, 34, 0, 327732, 43, 0, 327732, 44, 0, 327732, 45, 0, 327732, 46, 0, 327732, 47, 0, 327732, 48, 0, 131128, 16, 0, 131128, 17, 0, 327737, 11, 0, 327738, 11, 0, 327738, 12, 0, 327738, 13, 0, 327738, 14, 0, 327738, 15, 0, 327738, 16, 0, 327738, 17, 0, 327738, 18, 0, 327738, 19, 0, 327738, 20, 0, 327738, 21, 0, 327738, 22, 0, 327738, 23, 0, 327738, 24, 0, 327738, 25, 0, 327738, 26, 0, 327738, 27, 0, 327738, 28, 0, 327738, 29, 0, 327738, 30, 0, 327738, 31, 0, 327738, 32, 0, 327738, 33, 0, 327738, 34, 0, 327738, 35, 0, 327738, 36, 0, 327738, 37, 0, 327738, 38, 0, 327738, 39, 0, 327738, 40, 0, 327738, 41, 0, 327738, 42, 0, 327738, 43, 0, 327738, 44, 0, 327738, 45, 0, 327738, 46, 0, 327738, 47, 0, 327738, 48, 0, 131129, 18, 0, 131129, 17, 0, 131129, 16, 0, 131129, 15, 0, 131129, 14, 0, 131129, 13, 0, 131129, 12, 0, 327738, 49, 0, 327738, 50, 0, 327738, 51, 0, 327738, 52, 0, 327732, 49, 0, 65587, 52, 2, 327731, 52, 1, 327731, 49, 0, 327730, 49, 0, 327729, 49, 0, 327728, 49, 0, 327727, 49, 0, 327726, 49, 0, 327725, 49, 0, 327724, 49, 0, 327723, 49, 0, 327720, 49, 0, 327719, 49, 0, 327718, 49, 0, 327717, 49, 0, 327716, 49, 0, 327715, 49, 0, 131105, 50, 0, 131106, 50, 0, 131107, 50, 0, 131108, 50, 0, 131109, 50, 0, 131110, 50, 0, 131111, 50, 0, 131112, 50, 0, 131113, 50, 0, 131114, 50, 0, 131115, 50, 0, 131116, 50, 0, 131117, 50, 0, 131118, 50, 0, 131119, 50, 0, 131120, 50, 0, 131121, 50, 0, 131122, 50, 0, 131123, 50, 0, 131123, 51, 0, 131124, 50, 0, 131124, 51, 0, 131125, 20, 0, 131125, 21, 0, 131125, 22, 0, 131125, 23, 0, 131125, 32, 0, 131125, 33, 0, 131125, 48, 0, 131125, 49, 0, 131125, 50, 0, 131125, 51, 0, 131126, 20, 0, 131126, 21, 0, 131126, 22, 0, 131126, 23, 0, 131126, 32, 0, 131126, 33, 0, 131126, 48, 0, 131126, 49, 0, 131126, 50, 0, 131126, 51, 0, 131127, 48, 0, 131127, 49, 0, 131127, 50, 0, 131127, 51, 0, 131128, 26, 0, 131128, 27, 0, 131128, 28, 0, 131128, 38, 0, 131128, 48, 0, 131128, 49, 0, 131128, 50, 0, 131128, 51, 0, 131129, 26, 0, 131129, 27, 0, 131129, 28, 0, 131129, 38, 0, 131129, 48, 0, 131129, 49, 0, 131129, 50, 0, 131129, 51, 0, 131128, 25, 0, 131129, 25, 0, 131126, 30, 0, 131125, 30, 0, 131125, 31, 0, 131126, 31, 0, 131128, 35, 0, 131129, 35, 0, 131129, 36, 0, 131129, 37, 0, 131128, 37, 0, 131128, 36, 0, 131125, 40, 0, 131126, 40, 0, 131126, 41, 0, 131126, 42, 0, 131125, 42, 0, 131125, 41, 0, 131128, 45, 0, 131128, 46, 0, 131129, 46, 0, 131129, 45, 0, 131129, 47, 0, 131128, 47, 0, 131126, 43, 0, 131125, 43, 0, 327732, 35, 0, 327732, 38, 0, 327732, 39, 0, 327732, 40, 0, 327732, 41, 0, 327732, 42, 0, 131105, 36, 0, 131105, 37, 0, 131106, 36, 0, 131106, 37, 0, 131109, 32, 0, 131109, 33, 0, 131110, 32, 0, 131110, 33, 0, 131113, 36, 0, 131113, 37, 0, 131114, 36, 0, 131114, 37, 0, 131117, 32, 0, 131117, 33, 0, 131118, 32, 0, 131118, 33, 0, 131121, 36, 0, 131121, 37, 0, 131122, 36, 0, 131122, 37, 0, 131123, 36, 0, 131123, 37, 0, 131124, 36, 0, 131124, 37, 0, 131122, 51, 0, 131121, 51, 0, 131120, 51, 0, 131119, 51, 0, 131118, 51, 0, 131117, 51, 0, 131116, 51, 0, 131115, 51, 0, 131114, 51, 0, 131113, 51, 0, 131112, 51, 0, 131111, 51, 0, 131110, 51, 0, 131109, 51, 0, 131108, 51, 0, 131107, 51, 0, 131106, 51, 0, 131105, 51, 0, 262185, 49, 0, 262186, 49, 0, 131098, 48, 0, 131098, 49, 0, 131099, 48, 0, 131099, 49, 0, 131089, 53, 0, 131089, 52, 0, 131088, 52, 0, 131088, 53, 0, 131084, 52, 0, 131084, 53, 0, 131091, 52, 0, 131091, 53, 0, 131092, 53, 0, 131092, 52, 0, 131090, 52, 0, 131090, 53, 0, 131082, 48, 0, 131082, 49, 0, 131083, 49, 0, 131083, 48, 0, 131081, 48, 0, 131081, 49, 0, 131080, 49, 0, 131080, 48, 0, 131075, 49, 0, 131075, 48, 0, 131074, 48, 0, 131074, 49, 0, 131073, 53, 0, 131073, 52, 0, 131072, 52, 0, 131072, 53, 0, 196607, 52, 0, 196607, 53, 0, 131072, 51, 0, 131072, 50, 0, 131072, 49, 0, 131072, 48, 0, 196607, 48, 0, 196607, 49, 0, 196607, 50, 0, 196607, 51, 0, 327681, 48, 0, 327681, 49, 0, 327681, 50, 0, 327681, 51, 0, 458771, 48, 0, 458772, 48, 0, 458772, 49, 0, 458771, 49, 0, 458770, 48, 0, 458770, 49, 0, 458770, 50, 0, 458770, 51, 0, 458772, 50, 0, 458772, 51, 0, 458771, 51, 0, 458771, 50, 0, 196628, 48, 0, 196628, 49, 0, 196628, 51, 0, 196628, 50, 0, 131093, 48, 0, 131093, 49, 0, 131094, 49, 0, 131094, 48, 0, 131097, 48, 0, 131097, 49, 0, 196635, 50, 0, 196635, 51, 0, 458779, 50, 0, 458779, 51, 0, 458779, 52, 0, 196635, 52, 0, 196635, 53, 0, 196635, 54, 0, 196634, 54, 0, 196633, 54, 0, 196632, 54, 0, 196631, 54, 0, 196630, 54, 0, 196629, 54, 0, 131085, 52, 0, 131085, 53, 0, 196626, 48, 0, 196626, 49, 0, 196626, 50, 0, 196626, 51, 0, 196627, 51, 0, 196627, 50, 0, 196627, 49, 0, 196627, 48, 0, 196619, 51, 0, 196619, 52, 0, 196619, 53, 0, 458763, 51, 0, 458763, 53, 0, 458763, 52, 0, 196618, 54, 0, 196617, 54, 0, 196616, 54, 0, 196615, 54, 0, 196614, 54, 0, 196613, 54, 0, 196612, 54, 0, 196611, 54, 0, 196610, 54, 0, 196609, 54, 0, 327714, 49, 0, 131100, 50, 0, 131100, 51, 0, 131101, 51, 0, 131101, 50, 0, 327708, 47, 0, 327709, 47, 0, 327710, 47, 0, 327711, 47, 0, 327712, 47, 0, 327713, 47, 0, 327714, 47, 0, 327714, 48, 0, 327707, 47, 0, 327706, 47, 0, 327705, 47, 0, 196628, 54, 0, 196606, 48, 0, 196606, 49, 0, 196606, 50, 0, 196606, 51, 0, 196606, 52, 0, 196606, 53, 0, 196605, 53, 0, 196605, 52, 0, 196605, 51, 0, 196605, 50, 0, 196605, 49, 0, 196605, 48, 0, 196605, 54, 0, 196606, 54, 0, 196604, 48, 0, 196604, 49, 0, 196604, 50, 0, 196604, 51, 0, 196604, 52, 0, 196604, 53, 0, 196603, 53, 0, 196603, 52, 0, 196603, 51, 0, 196603, 50, 0, 196603, 49, 0, 196603, 48, 0, 327699, 47, 0, 327698, 47, 0, 327697, 47, 0, 327696, 47, 0, 327695, 47, 0, 327694, 47, 0, 327693, 47, 0, 327692, 47, 0, 327691, 47, 0, 327690, 47, 0, 327689, 47, 0, 131079, 49, 0, 131078, 49, 0, 131078, 48, 0, 131079, 48, 0, 458763, 50, 0, 196619, 50, 0, 196606, 55, 0, 196605, 55, 0, 196605, 56, 0, 196606, 56, 0, 196605, 58, 0, 196606, 57, 0, 196606, 58, 0, 196605, 57, 0, 196606, 59, 0, 196605, 59, 0, 196606, 60, 0, 196605, 60, 0, 196605, 61, 0, 196606, 61, 0, 196606, 62, 0, 196605, 62, 0, 196604, 62, 0, 196603, 62, 0, 196607, 62, 0, 131072, 62, 0, 131072, 63, 0, 196607, 63, 0, 196606, 63, 0, 196605, 63, 0, 196604, 63, 0, 196603, 63, 0, 196604, 64, 0, 196605, 64, 0, 196605, 65, 0, 196606, 65, 0, 196606, 64, 0, 196607, 65, 0, 196607, 64, 0, 196604, 65, 0, 196604, 66, 0, 196604, 67, 0, 196605, 67, 0, 196605, 68, 0, 196606, 68, 0, 196607, 68, 0, 196607, 67, 0, 196607, 66, 0, 196606, 66, 0, 196605, 66, 0, 196606, 67, 0, 196604, 68, 0, 196604, 69, 0, 196605, 69, 0, 196606, 69, 0, 196607, 69, 0, 196600, 62, 0, 196600, 63, 0, 196600, 64, 0, 196600, 65, 0, 196601, 62, 0, 196601, 63, 0, 196601, 64, 0, 196601, 65, 0, 196602, 62, 0, 196602, 63, 0, 196602, 64, 0, 196602, 65, 0, 196603, 64, 0, 196603, 65, 0, 196600, 66, 0, 196600, 67, 0, 196600, 68, 0, 196600, 69, 0, 196600, 70, 0, 196600, 71, 0, 196600, 72, 0, 196600, 73, 0, 196601, 66, 0, 196601, 67, 0, 196601, 68, 0, 196601, 69, 0, 196601, 70, 0, 196601, 71, 0, 196601, 72, 0, 196601, 73, 0, 196602, 66, 0, 196602, 67, 0, 196602, 68, 0, 196602, 69, 0, 196602, 70, 0, 196602, 71, 0, 196602, 72, 0, 196602, 73, 0, 196603, 66, 0, 196603, 67, 0, 196603, 68, 0, 196603, 69, 0, 196603, 70, 0, 196603, 71, 0, 196603, 72, 0, 196603, 73, 0, 131072, 64, 0, 131072, 65, 0, 131072, 66, 0, 131072, 67, 0, 131072, 68, 0, 131072, 69, 0, 131072, 70, 0, 131072, 71, 0, 131072, 72, 0, 131072, 73, 0, 131073, 62, 0, 131073, 63, 0, 131073, 64, 0, 131073, 65, 0, 131073, 66, 0, 131073, 67, 0, 131073, 68, 0, 131073, 69, 0, 131073, 70, 0, 131073, 71, 0, 131073, 72, 0, 131073, 73, 0, 131074, 62, 0, 131074, 63, 0, 131074, 64, 0, 131074, 65, 0, 131074, 66, 0, 131074, 67, 0, 131074, 68, 0, 131074, 69, 0, 131074, 70, 0, 131074, 71, 0, 131074, 72, 0, 131074, 73, 0, 131075, 62, 0, 131075, 63, 0, 131075, 64, 0, 131075, 65, 0, 131075, 66, 0, 131075, 67, 0, 131075, 68, 0, 131075, 69, 0, 131075, 70, 0, 131075, 71, 0, 131075, 72, 0, 131075, 73, 0, 196604, 70, 0, 196604, 71, 0, 196604, 72, 0, 196604, 73, 0, 196605, 70, 0, 196605, 71, 0, 196605, 72, 0, 196605, 73, 0, 196606, 70, 0, 196606, 71, 0, 196606, 72, 0, 196606, 73, 0, 196607, 70, 0, 196607, 71, 0, 196607, 72, 0, 196607, 73, 0, 327684, 62, 0, 327684, 63, 0, 327684, 64, 0, 327684, 65, 0, 327684, 66, 0, 327684, 69, 0, 327684, 71, 0, 327684, 70, 0, 327684, 72, 0, 327684, 73, 0, 327684, 61, 0, 327683, 61, 0, 327682, 61, 0, 327681, 61, 0, 327680, 61, 0, 393215, 61, 0, 393212, 61, 0, 393211, 61, 0, 393210, 61, 0, 393209, 61, 0, 393208, 61, 0, 393207, 61, 0, 393207, 62, 0, 393207, 63, 0, 393207, 64, 0, 393207, 65, 0, 393207, 66, 0, 393207, 67, 0, 393207, 68, 0, 393207, 69, 0, 393207, 70, 0, 393207, 71, 0, 393207, 72, 0, 393207, 73, 0, 393207, 74, 0, 196606, 74, 0, 196605, 74, 0, 196605, 75, 0, 196606, 75, 0, 196606, 76, 0, 196606, 77, 0, 196605, 77, 0, 196605, 76, 0, 196606, 78, 0, 196606, 79, 0, 196606, 80, 0, 196605, 80, 0, 196605, 79, 0, 196605, 78, 0, 327684, 74, 0, 393208, 74, 0, 327683, 74, 0, 196605, 81, 0, 196606, 81, 0, 196600, 80, 0, 196600, 81, 0, 196600, 82, 0, 196600, 83, 0, 196600, 84, 0, 196600, 85, 0, 196600, 86, 0, 196600, 87, 0, 196600, 88, 0, 196600, 89, 0, 196600, 90, 0, 196600, 91, 0, 196601, 80, 0, 196601, 81, 0, 196601, 82, 0, 196601, 83, 0, 196601, 84, 0, 196601, 85, 0, 196601, 86, 0, 196601, 87, 0, 196601, 88, 0, 196601, 89, 0, 196601, 90, 0, 196601, 91, 0, 196602, 80, 0, 196602, 81, 0, 196602, 82, 0, 196602, 83, 0, 196602, 84, 0, 196602, 85, 0, 196602, 86, 0, 196602, 87, 0, 196602, 88, 0, 196602, 89, 0, 196602, 90, 0, 196602, 91, 0, 196603, 80, 0, 196603, 81, 0, 196603, 82, 0, 196603, 83, 0, 196603, 84, 0, 196603, 85, 0, 196603, 86, 0, 196603, 87, 0, 196603, 88, 0, 196603, 89, 0, 196603, 90, 0, 196603, 91, 0, 196604, 80, 0, 196604, 81, 0, 196604, 82, 0, 196604, 83, 0, 196604, 84, 0, 196604, 85, 0, 196604, 86, 0, 196604, 87, 0, 196604, 88, 0, 196604, 89, 0, 196604, 90, 0, 196604, 91, 0, 196605, 82, 0, 196605, 83, 0, 196605, 84, 0, 196605, 85, 0, 196605, 86, 0, 196605, 87, 0, 196605, 88, 0, 196605, 89, 0, 196605, 90, 0, 196605, 91, 0, 196606, 82, 0, 196606, 83, 0, 196606, 84, 0, 196606, 85, 0, 196606, 86, 0, 196606, 87, 0, 196606, 88, 0, 196606, 89, 0, 196606, 90, 0, 196606, 91, 0, 196607, 80, 0, 196607, 81, 0, 196607, 82, 0, 196607, 83, 0, 196607, 84, 0, 196607, 85, 0, 196607, 86, 0, 196607, 87, 0, 196607, 88, 0, 196607, 89, 0, 196607, 90, 0, 196607, 91, 0, 131072, 80, 0, 131072, 81, 0, 131072, 82, 0, 131072, 83, 0, 131072, 84, 0, 131072, 85, 0, 131072, 86, 0, 131072, 87, 0, 131072, 88, 0, 131072, 89, 0, 131072, 90, 0, 131072, 91, 0, 131073, 80, 0, 131073, 81, 0, 131073, 82, 0, 131073, 83, 0, 131073, 84, 0, 131073, 85, 0, 131073, 86, 0, 131073, 87, 0, 131073, 88, 0, 131073, 89, 0, 131073, 90, 0, 131073, 91, 0, 131074, 80, 0, 131074, 81, 0, 131074, 82, 0, 131074, 83, 0, 131074, 84, 0, 131074, 85, 0, 131074, 86, 0, 131074, 87, 0, 131074, 88, 0, 131074, 89, 0, 131074, 90, 0, 131074, 91, 0, 131075, 80, 0, 131075, 81, 0, 131075, 82, 0, 131075, 83, 0, 131075, 84, 0, 131075, 85, 0, 131075, 86, 0, 131075, 87, 0, 131075, 88, 0, 131075, 89, 0, 131075, 90, 0, 131075, 91, 0, 393208, 79, 0, 393207, 79, 0, 393207, 80, 0, 393207, 81, 0, 393207, 82, 0, 393207, 83, 0, 393207, 84, 0, 393207, 85, 0, 393207, 86, 0, 393207, 87, 0, 393207, 88, 0, 393207, 89, 0, 393207, 90, 0, 393207, 91, 0, 393207, 92, 0, 393208, 92, 0, 327683, 79, 0, 327684, 79, 0, 327684, 81, 0, 327684, 80, 0, 327684, 82, 0, 327684, 83, 0, 327684, 84, 0, 327684, 87, 0, 327684, 88, 0, 327682, 79, 0, 327681, 79, 0, 327680, 79, 0, 393215, 79, 0, 393212, 79, 0, 393211, 79, 0, 393210, 79, 0, 393209, 79, 0, 327684, 89, 0, 327684, 90, 0, 327684, 91, 0, 327684, 92, 0, 327683, 92, 0, 196600, 98, 0, 196600, 99, 0, 196600, 100, 0, 196600, 101, 0, 196600, 102, 0, 196600, 103, 0, 196600, 104, 0, 196600, 105, 0, 196600, 106, 0, 196600, 107, 0, 196600, 108, 0, 196600, 109, 0, 196601, 98, 0, 196601, 99, 0, 196601, 100, 0, 196601, 101, 0, 196601, 102, 0, 196601, 103, 0, 196601, 104, 0, 196601, 105, 0, 196601, 106, 0, 196601, 107, 0, 196601, 108, 0, 196601, 109, 0, 196602, 98, 0, 196602, 99, 0, 196602, 100, 0, 196602, 101, 0, 196602, 102, 0, 196602, 103, 0, 196602, 104, 0, 196602, 105, 0, 196602, 106, 0, 196602, 107, 0, 196602, 108, 0, 196602, 109, 0, 196603, 98, 0, 196603, 99, 0, 196603, 100, 0, 196603, 101, 0, 196603, 102, 0, 196603, 103, 0, 196603, 104, 0, 196603, 105, 0, 196603, 106, 0, 196603, 107, 0, 196603, 108, 0, 196603, 109, 0, 196604, 98, 0, 196604, 99, 0, 196604, 100, 0, 196604, 101, 0, 196604, 102, 0, 196604, 103, 0, 196604, 104, 0, 196604, 105, 0, 196604, 106, 0, 196604, 107, 0, 196604, 108, 0, 196604, 109, 0, 196605, 92, 0, 196605, 93, 0, 196605, 94, 0, 196605, 95, 0, 196605, 96, 0, 196605, 97, 0, 196605, 98, 0, 196605, 99, 0, 196605, 100, 0, 196605, 101, 0, 196605, 102, 0, 196605, 103, 0, 196605, 104, 0, 196605, 105, 0, 196605, 106, 0, 196605, 107, 0, 196605, 108, 0, 196605, 109, 0, 196606, 92, 0, 196606, 93, 0, 196606, 94, 0, 196606, 95, 0, 196606, 96, 0, 196606, 97, 0, 196606, 98, 0, 196606, 99, 0, 196606, 100, 0, 196606, 101, 0, 196606, 102, 0, 196606, 103, 0, 196606, 104, 0, 196606, 105, 0, 196606, 106, 0, 196606, 107, 0, 196606, 108, 0, 196606, 109, 0, 196607, 98, 0, 196607, 99, 0, 196607, 100, 0, 196607, 101, 0, 196607, 102, 0, 196607, 103, 0, 196607, 104, 0, 196607, 105, 0, 196607, 106, 0, 196607, 107, 0, 196607, 108, 0, 196607, 109, 0, 131072, 98, 0, 131072, 99, 0, 131072, 100, 0, 131072, 101, 0, 131072, 102, 0, 131072, 103, 0, 131072, 104, 0, 131072, 105, 0, 131072, 106, 0, 131072, 107, 0, 131072, 108, 0, 131072, 109, 0, 131073, 98, 0, 131073, 99, 0, 131073, 100, 0, 131073, 101, 0, 131073, 102, 0, 131073, 103, 0, 131073, 104, 0, 131073, 105, 0, 131073, 106, 0, 131073, 107, 0, 131073, 108, 0, 131073, 109, 0, 131074, 98, 0, 131074, 99, 0, 131074, 100, 0, 131074, 101, 0, 131074, 102, 0, 131074, 103, 0, 131074, 104, 0, 131074, 105, 0, 131074, 106, 0, 131074, 107, 0, 131074, 108, 0, 131074, 109, 0, 131075, 98, 0, 131075, 99, 0, 131075, 100, 0, 131075, 101, 0, 131075, 102, 0, 131075, 103, 0, 131075, 104, 0, 131075, 105, 0, 131075, 106, 0, 131075, 107, 0, 131075, 108, 0, 131075, 109, 0, 393207, 97, 0, 393207, 98, 0, 393207, 99, 0, 393207, 100, 0, 393207, 101, 0, 393207, 102, 0, 393207, 103, 0, 393207, 104, 0, 393207, 105, 0, 393207, 106, 0, 393207, 107, 0, 393207, 108, 0, 393207, 109, 0, 393207, 110, 0, 393208, 97, 0, 393208, 110, 0, 393209, 97, 0, 393210, 97, 0, 393211, 97, 0, 393212, 97, 0, 393215, 97, 0, 327680, 97, 0, 327681, 97, 0, 327682, 97, 0, 327683, 97, 0, 327683, 110, 0, 327684, 97, 0, 327684, 98, 0, 327684, 99, 0, 327684, 100, 0, 327684, 101, 0, 327684, 102, 0, 327684, 105, 0, 327684, 106, 0, 327684, 107, 0, 327684, 108, 0, 327684, 109, 0, 327684, 110, 0, 327684, 85, 0, 327684, 86, 0, 131076, 103, 0, 131076, 104, 0, 131077, 103, 0, 131078, 103, 0, 131078, 104, 0, 131077, 104, 0, 131079, 104, 0, 131080, 104, 0, 131080, 103, 0, 131079, 103, 0, 131081, 103, 0, 131082, 103, 0, 131082, 104, 0, 131081, 104, 0, 131078, 84, 0, 131078, 85, 0, 131078, 86, 0, 131079, 86, 0, 131079, 87, 0, 131080, 86, 0, 131080, 85, 0, 131079, 85, 0, 131080, 87, 0, 131081, 86, 0, 131081, 85, 0, 131080, 84, 0, 131078, 87, 0, 131081, 87, 0, 131081, 84, 0, 131079, 84, 0, 131076, 67, 0, 131076, 68, 0, 131077, 67, 0, 131077, 68, 0, 131078, 67, 0, 131078, 68, 0, 131079, 67, 0, 131079, 68, 0, 131080, 67, 0, 131080, 68, 0, 131081, 67, 0, 131081, 68, 0, 131082, 67, 0, 131082, 68, 0, 131083, 67, 0, 131083, 68, 0, 131084, 68, 0, 131085, 68, 0, 131085, 67, 0, 131084, 67, 0, 131086, 67, 0, 131083, 104, 0, 131083, 103, 0, 131084, 98, 0, 131084, 99, 0, 131084, 100, 0, 131084, 101, 0, 131084, 106, 0, 131084, 107, 0, 131084, 108, 0, 131084, 109, 0, 131085, 98, 0, 131085, 99, 0, 131085, 100, 0, 131085, 101, 0, 131085, 106, 0, 131085, 107, 0, 131085, 108, 0, 131085, 109, 0, 131086, 98, 0, 131086, 99, 0, 131086, 100, 0, 131086, 101, 0, 131086, 107, 0, 131086, 108, 0, 131086, 109, 0, 131087, 98, 0, 131087, 99, 0, 131087, 100, 0, 131087, 101, 0, 131087, 107, 0, 131087, 108, 0, 131087, 109, 0, 131092, 98, 0, 131092, 99, 0, 131092, 100, 0, 131092, 107, 0, 131092, 108, 0, 131092, 109, 0, 131093, 98, 0, 131093, 99, 0, 131093, 100, 0, 131093, 107, 0, 131093, 108, 0, 131093, 109, 0, 131094, 98, 0, 131094, 99, 0, 131094, 100, 0, 131094, 101, 0, 131094, 106, 0, 131094, 107, 0, 131094, 108, 0, 131094, 109, 0, 131095, 98, 0, 131095, 99, 0, 131095, 100, 0, 131095, 106, 0, 131095, 107, 0, 131095, 108, 0, 131095, 109, 0, 327692, 97, 0, 327693, 97, 0, 327694, 97, 0, 327695, 97, 0, 327696, 97, 0, 327699, 97, 0, 327700, 97, 0, 327701, 97, 0, 327702, 97, 0, 327703, 97, 0, 327704, 97, 0, 327704, 98, 0, 327704, 99, 0, 327704, 100, 0, 327704, 101, 0, 327704, 102, 0, 327704, 105, 0, 327704, 106, 0, 327704, 107, 0, 327704, 108, 0, 327704, 109, 0, 327704, 110, 0, 327704, 103, 0, 327704, 104, 0, 327697, 97, 0, 327698, 97, 0, 327703, 110, 0, 327691, 97, 0, 327691, 98, 0, 327691, 99, 0, 327691, 100, 0, 327691, 101, 0, 327691, 102, 0, 131081, 78, 0, 131078, 75, 0, 131080, 76, 0, 131079, 76, 0, 131078, 78, 0, 131079, 78, 0, 131081, 77, 0, 131081, 76, 0, 131081, 75, 0, 131080, 75, 0, 131079, 75, 0, 131078, 76, 0, 131078, 77, 0, 131079, 77, 0, 131080, 77, 0, 131080, 78, 0, 131078, 94, 0, 131080, 95, 0, 131080, 94, 0, 131078, 93, 0, 131078, 96, 0, 131080, 96, 0, 131081, 96, 0, 131081, 95, 0, 131081, 94, 0, 131081, 93, 0, 131080, 93, 0, 131079, 93, 0, 131079, 94, 0, 131078, 95, 0, 131079, 95, 0, 131079, 96, 0, 131087, 106, 0, 131086, 106, 0, 131092, 106, 0, 131093, 106, 0, 131095, 101, 0, 131093, 101, 0, 131092, 101, 0, 131087, 104, 0, 131086, 104, 0, 131086, 103, 0, 131087, 103, 0, 196625, 105, 0, 196626, 105, 0, 196625, 102, 0, 196626, 102, 0, 196605, 110, 0, 196606, 110, 0, 196606, 111, 0, 196606, 112, 0, 196605, 112, 0, 196605, 111, 0, 196605, 113, 0, 196606, 113, 0, 196606, 114, 0, 196606, 115, 0, 196605, 114, 0, 196605, 115, 0, 196606, 116, 0, 196605, 116, 0, 131086, 68, 0, 131087, 68, 0, 131087, 67, 0, 131088, 67, 0, 131088, 68, 0)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="ColourJar" parent="ColourJars" index="0" instance=ExtResource("7_x3bxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2, 20)
+
+[node name="ColourJar2" parent="ColourJars" index="1" instance=ExtResource("7_x3bxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 6, 74)
+
+[node name="ColourJar3" parent="ColourJars" index="2" instance=ExtResource("7_x3bxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 7, 84)
+
+[node name="ColourJar4" parent="ColourJars" index="3" instance=ExtResource("7_x3bxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 7, 136)
+
+[node name="ColourJar5" parent="ColourJars" index="4" instance=ExtResource("7_x3bxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 7, 208)
+
+[node name="Detector2" parent="ColourJars/ColourJar5" index="3" instance=ExtResource("8_c012k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+_teamToDetect = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColourJars/ColourJar5/Detector2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+shape = SubResource("BoxShape3D_0sxo6")
+
+[connection signal="NotDetecting" from="ColourJars/ColourJar5/Detector2" to="ColourJars/ColourJar5" method="Unlock"]

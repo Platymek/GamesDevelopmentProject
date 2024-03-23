@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dku13efnbw0ji"]
+[gd_scene load_steps=23 format=3 uid="uid://dku13efnbw0ji"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.cs" id="1_0s63o"]
 [ext_resource type="PackedScene" uid="uid://bxce4j48bn415" path="res://Scenes/Actors/GlobalActors/TechnoCultist/Model/TechnoCultistBase.glb" id="1_8dnrc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="5_j2hgk"]
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="7_owejp"]
 [ext_resource type="PackedScene" uid="uid://xad3oshmxwi6" path="res://Scenes/Actors/Properties/Detectable/Detectable.tscn" id="8_53w5a"]
+[ext_resource type="PackedScene" uid="uid://cavwo54dab4w6" path="res://Scenes/Actors/Properties/DropShadow/DropShadow.tscn" id="9_ofss8"]
 
 [sub_resource type="Animation" id="Animation_ikhrj"]
 length = 0.001
@@ -367,6 +368,17 @@ radius = 2.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ptics"]
 radius = 1.0
 
+[sub_resource type="Gradient" id="Gradient_fwipb"]
+offsets = PackedFloat32Array(0.521311, 0.790164)
+colors = PackedColorArray(0.0784314, 0.188235, 0.266667, 0.658824, 0.0784314, 0.188235, 0.266667, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_km14e"]
+gradient = SubResource("Gradient_fwipb")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="TechnoCultist" type="CharacterBody3D"]
 script = ExtResource("1_0s63o")
 Team = 2
@@ -441,6 +453,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 pixel_size = 0.01
 billboard = 1
 text = "State"
+
+[node name="DropShadow" parent="." instance=ExtResource("9_ofss8")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.1, 0)
+collide_with_areas = true
+
+[node name="Shadow" type="Sprite3D" parent="DropShadow"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture = SubResource("GradientTexture2D_km14e")
 
 [connection signal="Detected" from="Chase" to="." method="OnDetectorDetected"]
 [connection signal="NotDetecting" from="Chase" to="." method="OnDetectorNotDetecting"]

@@ -475,12 +475,12 @@ radius = 0.7
 [sub_resource type="SphereShape3D" id="SphereShape3D_rsmlm"]
 radius = 1.5
 
-[sub_resource type="Gradient" id="Gradient_i24sj"]
+[sub_resource type="Gradient" id="Gradient_oavrb"]
 offsets = PackedFloat32Array(0.521311, 0.790164)
 colors = PackedColorArray(0.0784314, 0.188235, 0.266667, 0.658824, 0.0784314, 0.188235, 0.266667, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4y7i8"]
-gradient = SubResource("Gradient_i24sj")
+gradient = SubResource("Gradient_oavrb")
 width = 24
 height = 24
 fill = 1
