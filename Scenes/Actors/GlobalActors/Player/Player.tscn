@@ -490,12 +490,14 @@ fill_from = Vector2(0.5, 0.5)
 script = ExtResource("1_gojm8")
 _knockBackStrength = 4.0
 _launchHeight = 2.25
-_launchSpeedMultiplier = 3.0
+_launchSpeedMultiplier = 2.5
 State = "idle"
 FallingAcceleration = 32.0
 MaxHealth = 3
 RotationSpeed = 0.5
 HorizontalAirAcceleration = 16.0
+HorizontalAirDeceleration = 6.0
+HorizontalMaxSpeed = 5.0
 FallingMaxSpeed = 16.0
 Team = 1
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://brp2ublms7ifg"]
+[gd_scene load_steps=15 format=3 uid="uid://brp2ublms7ifg"]
 
 [ext_resource type="PackedScene" uid="uid://dku13efnbw0ji" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.tscn" id="1_kap87"]
-[ext_resource type="Script" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.cs" id="2_omsbt"]
+[ext_resource type="Script" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.cs" id="2_1lrmx"]
 [ext_resource type="PackedScene" uid="uid://dimrhge83roh1" path="res://Scenes/Actors/ForestActors/ColourSucker/Model/BackPack.glb" id="3_7qwon"]
-[ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="3_qlf0y"]
 [ext_resource type="PackedScene" uid="uid://bhh0mmoynvgmv" path="res://Scenes/Actors/ForestActors/ColourSucker/Model/Hoover.glb" id="4_swg8e"]
+[ext_resource type="PackedScene" uid="uid://cbssrs0b63wo8" path="res://Scenes/Actors/Properties/Emitter/Emitter.tscn" id="5_igiao"]
+[ext_resource type="PackedScene" uid="uid://v3ir74e6tdnn" path="res://Scenes/Actors/ForestActors/ColourSucker/Wave/Wave.tscn" id="6_h42sc"]
 
 [sub_resource type="Animation" id="Animation_ikhrj"]
 length = 0.001
@@ -95,62 +96,92 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Suction:monitorable")
+tracks/7/path = NodePath(".:State")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": ["idle"]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("GPUParticles3D:emitting")
+tracks/8/path = NodePath("Model/TechnoCultistBase/Hoover:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(-6, -0.999999, 2.00001)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath(".:State")
+tracks/9/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["idle"]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Model/TechnoCultistBase/Hoover:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-6, -0.999999, 2.00001)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.349066, 1.5708, 8.75002e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_wylry"]
+resource_name = "attack"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:State")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/TechnoCultistBase/Hoover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 2, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-6, -0.999999, 2.00001), Vector3(-5.99998, -0.999998, 7.00002), Vector3(1.84274e-05, -0.999998, 8), Vector3(1.84274e-05, -0.999998, 8), Vector3(-5.99998, -0.999998, 7.00002), Vector3(-6, -0.999999, 2.00001)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 2, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.349066, 1.5708, 8.75002e-07), Vector3(1.5241e-06, 1.5708, 0.698132), Vector3(2.36199e-06, 1.5708, 1.5708), Vector3(2.36199e-06, 1.5708, 1.5708), Vector3(1.5241e-06, 1.5708, 0.698132), Vector3(-0.349066, 1.5708, 8.75002e-07)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Emitter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Emit"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0gsbv"]
@@ -363,6 +394,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rjkim"]
 _data = {
 "RESET": SubResource("Animation_ikhrj"),
+"attack": SubResource("Animation_wylry"),
 "idle": SubResource("Animation_0gsbv"),
 "run": SubResource("Animation_2pcdu"),
 "shock": SubResource("Animation_fg05i")
@@ -373,58 +405,34 @@ length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Suction:monitorable")
+tracks/0/path = NodePath(".:State")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:State")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["run"]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Model/TechnoCultistBase/Hoover:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/TechnoCultistBase/Hoover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 2, 2.3, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-6, -0.999999, 2.00001), Vector3(-5.99998, -0.999998, 7.00002), Vector3(1.84274e-05, -0.999998, 8), Vector3(1.84274e-05, -0.999998, 8), Vector3(-5.99998, -0.999998, 7.00002), Vector3(-6, -0.999999, 2.00001)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/TechnoCultistBase/Hoover:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 2, 2.3, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
@@ -436,26 +444,12 @@ _data = {
 "attack": SubResource("Animation_p2xi7")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_8afef"]
-radius = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13qi0"]
-emission_shape = 2
-emission_sphere_radius = 1.0
-gravity = Vector3(0, 0, 4)
-collision_mode = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_du71c"]
-size = Vector3(0.1, 0.1, 0.1)
-
 [node name="TechnoCultist" instance=ExtResource("1_kap87")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-script = ExtResource("2_omsbt")
+script = ExtResource("2_1lrmx")
 FallingAcceleration = 32.0
+MaxHealth = 1
 FallingMaxSpeed = 16.0
-
-[node name="Model" parent="." index="0"]
-transform = Transform3D(-0.1, 0, 2.53518e-07, 0, 0.1, 0, -2.53518e-07, 0, -0.1, 0, 0, 0)
 
 [node name="BackPack" parent="Model/TechnoCultistBase" index="2" instance=ExtResource("3_7qwon")]
 transform = Transform3D(2, 0, -1.36424e-12, 0, 2, 0, 1.36424e-12, 0, 2, -7.34327e-06, -3, -3)
@@ -469,28 +463,9 @@ libraries = {
 "ColourSucker": SubResource("AnimationLibrary_74l3q")
 }
 
-[node name="Suction" parent="." index="7" instance=ExtResource("3_qlf0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Suction" index="0"]
-shape = SubResource("SphereShape3D_8afef")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
-emitting = false
-amount = 16
-visibility_aabb = AABB(-1, -2, -2, 2, 4, 4)
-process_material = SubResource("ParticleProcessMaterial_13qi0")
-draw_pass_1 = SubResource("BoxMesh_du71c")
-
-[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="GPUParticles3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2)
-strength = 128.0
-radius = 2.0
-
-[node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="GPUParticles3D/GPUParticlesAttractorSphere3D" index="0"]
-radius = 0.5
-
-[node name="DebugLabel" parent="." index="10"]
+[node name="DebugLabel" parent="." index="8"]
 visible = false
+
+[node name="Emitter" parent="." index="10" instance=ExtResource("5_igiao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04907e-07, 1, -1.2)
+_sceneToEmit = ExtResource("6_h42sc")

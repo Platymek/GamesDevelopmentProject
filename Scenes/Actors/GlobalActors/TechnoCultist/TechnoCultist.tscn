@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dku13efnbw0ji"]
+[gd_scene load_steps=24 format=3 uid="uid://dku13efnbw0ji"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.cs" id="1_0s63o"]
 [ext_resource type="PackedScene" uid="uid://bxce4j48bn415" path="res://Scenes/Actors/GlobalActors/TechnoCultist/Model/TechnoCultistBase.glb" id="1_8dnrc"]
@@ -132,6 +132,9 @@ tracks/9/keys = {
 "update": 1,
 "values": ["idle"]
 }
+
+[sub_resource type="Animation" id="Animation_g17jo"]
+resource_name = "attack"
 
 [sub_resource type="Animation" id="Animation_0gsbv"]
 resource_name = "idle"
@@ -343,6 +346,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rjkim"]
 _data = {
 "RESET": SubResource("Animation_ikhrj"),
+"attack": SubResource("Animation_g17jo"),
 "idle": SubResource("Animation_0gsbv"),
 "run": SubResource("Animation_2pcdu"),
 "shock": SubResource("Animation_fg05i")

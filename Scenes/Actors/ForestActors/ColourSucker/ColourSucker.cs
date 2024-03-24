@@ -16,8 +16,8 @@ public partial class ColourSucker : TechnoCultist
 			if (value == "attack")
 			{
 				_subState = "attack";
-               
-				AnimationPlayer.Play("ColourSucker/attack");
+			   
+				AnimationPlayer.Play("attack");
 			}
 		}
 	}

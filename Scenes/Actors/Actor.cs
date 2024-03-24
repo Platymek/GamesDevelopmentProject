@@ -26,6 +26,7 @@ public partial class Actor : CharacterBody3D
 	}
 
 	[Export] public Teams Team;
+	[Export] public bool Invincible = false;
 
 	public int Health;
 	public bool Dying;
@@ -90,8 +91,8 @@ public partial class Actor : CharacterBody3D
 		_accelerating = false;
 
 
-        // move based on velocity from previous frame
-        Collided = MoveAndSlide();
+		// move based on velocity from previous frame
+		Collided = MoveAndSlide();
 	}
 
 	
@@ -115,6 +116,8 @@ public partial class Actor : CharacterBody3D
 	// hurt an actor
 	public void Hurt(int damage = 1)
 	{
+		if (Invincible) return;
+		
 		OnHurt(damage);
 		
 		// if health 0 or below, kill
@@ -262,15 +265,15 @@ public partial class Actor : CharacterBody3D
 
 	protected void Fall(double delta)
 	{
-        float fallingSpeed = -Velocity.Y;
+		float fallingSpeed = -Velocity.Y;
 
-        fallingSpeed += FallingAcceleration * (float)delta;
+		fallingSpeed += FallingAcceleration * (float)delta;
 
-        if (fallingSpeed > FallingMaxSpeed)
-        {
-            fallingSpeed = FallingMaxSpeed;
-        }
+		if (fallingSpeed > FallingMaxSpeed)
+		{
+			fallingSpeed = FallingMaxSpeed;
+		}
 
-        Velocity = new Vector3(Velocity.X, -fallingSpeed, Velocity.Z);
-    }
+		Velocity = new Vector3(Velocity.X, -fallingSpeed, Velocity.Z);
+	}
 }

@@ -88,16 +88,16 @@ public partial class TechnoCultist : Actor
 			Fall(delta);
 		}
 
-        _debugLabel.Text = $"State: {State}";
+		_debugLabel.Text = $"State: {State}";
 	}
 
 
 	// Signals //
 
 	private void OnDetectorDetected()
-    {
-        if (State != "idle") return;
-        
+	{
+		if (State != "idle") return;
+		
 		State = "shock";
 	}
 
