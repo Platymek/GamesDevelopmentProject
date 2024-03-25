@@ -57,6 +57,7 @@ corner_radius_bottom_left = 8
 
 [resource]
 default_font_size = 48
+Button/colors/font_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 16
 Button/styles/focus = SubResource("StyleBoxFlat_skson")
 Button/styles/hover = SubResource("StyleBoxFlat_dy6b5")
@@ -65,11 +66,15 @@ Button/styles/pressed = SubResource("StyleBoxFlat_f28kl")
 CheckBox/constants/h_separation = 16
 HSeparator/constants/separation = 32
 HSeparator/styles/separator = SubResource("StyleBoxLine_3141q")
+Label/colors/font_color = Color(0, 0, 0, 1)
 MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 32
 MarginContainer/constants/margin_right = 32
 MarginContainer/constants/margin_top = 32
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_j4xt1")
+SubTitle/base_type = &"Label"
+SubTitle/colors/font_color = Color(1, 1, 1, 1)
 Title/base_type = &"Label"
+Title/colors/font_color = Color(1, 1, 1, 1)
 Title/font_sizes/font_size = 128
 VBoxContainer/constants/separation = 8

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.Emit;
 
 public partial class Global : Node
 {
@@ -81,6 +82,7 @@ public partial class Global : Node
 	public void LoadMenu(Menus menu)
 	{
 		GetTree().ChangeSceneToPacked(GetMenu(menu));
+		GetTree().Paused = false;
 	}
 
 	public LevelStats GetLevelStats(int area, int level)
@@ -88,15 +90,22 @@ public partial class Global : Node
 		return AreasNode.GetChild(area).GetChild<LevelStats>(level);
 	}
 
+	public void LoadLevel(LevelStats levelStats)
+    {
+		CurrentLevelStats = levelStats;
+
+        GetTree().ChangeSceneToPacked(levelStats.Level);
+    }
+
 	public void LoadLevel(int area, int level)
 	{
 		CurrentLevelStats = GetLevelStats(area, level);
 
-		CurrentLevel = level;
-		CurrentArea = area;
+        CurrentLevel = level;
+        CurrentArea = area;
 
-		GetTree().ChangeSceneToPacked(CurrentLevelStats.Level);
-	}
+		LoadLevel(CurrentLevelStats);
+    }
 
 	public void Exit()
 	{

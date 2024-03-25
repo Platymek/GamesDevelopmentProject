@@ -8,7 +8,7 @@ public partial class Level : Node3D
 
 	private Global _global;
 	private Control _hud;
-	private Control _pause;
+	private Menu _pause;
 	public Checkpoint LastCheckpoint;
 
 	public double Time;
@@ -23,6 +23,7 @@ public partial class Level : Node3D
 		{
 			_hud.Visible = !value;
 			_pause.Visible = value;
+			_pause.Focus();
 			GetTree().Paused = value;
 
 			_paused = value;
@@ -74,10 +75,6 @@ public partial class Level : Node3D
 			player.Hurt();
 			LastCheckpoint._cameraHint.OnNotDetecting();
 		}
-		//else
-		//{
-		//	actor.Kill();
-		//}
 	}
 	
 	// when the goal collision has been entered, send the player to the win screen

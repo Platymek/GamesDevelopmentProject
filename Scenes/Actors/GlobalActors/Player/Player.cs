@@ -23,6 +23,7 @@ public partial class Player : Actor
 		set
 		{
 			RefreshPrivileges();
+			Invincible = false;
 
 			switch (value)
 			{
@@ -65,6 +66,7 @@ public partial class Player : Actor
 
 					break;
 
+
 				case "reload":
 
 					_canMove = false;
@@ -83,6 +85,7 @@ public partial class Player : Actor
 					}
 
 					break;
+
 
 				case "fire":
 
@@ -105,6 +108,7 @@ public partial class Player : Actor
 
 					break;
 
+
 				case "reload_quick":
 
 					if (!Input.IsActionPressed("reload"))
@@ -114,6 +118,20 @@ public partial class Player : Actor
 					}
 
 					break;
+
+
+				case "hurt":
+
+                    Invincible = true;
+                    _canMove = false;
+                    _canFall = false;
+                    CanDecelerate = false;
+
+                    Halt();
+                    HaltFall();
+                    Speed = -_knockBackStrength;
+
+                    break;
 			}
 
 			// play state animation if it exists
@@ -475,4 +493,11 @@ public partial class Player : Actor
 	{
 		_level.Lose();
 	}
+
+    protected override void OnHurt(int damage)
+    {
+        base.OnHurt(damage);
+
+		State = "hurt";
+    }
 }

@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_51ibk"]
 
-[node name="Menu" instance=ExtResource("1_51ibk")]
+[node name="Menu" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_51ibk")]
+FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Retry")
 
 [node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -14,11 +15,18 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Retry"
 
-[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+[node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+text = "Back to Menu
+"
+
+[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
 layout_mode = 2
 
-[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Retry" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Retry" to="." method="OnRetryPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Menu" to="." method="OnMenuPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" to="." method="OnExitPressed"]

@@ -6,6 +6,7 @@ public partial class Menu : Control
 	// Properties //
 
 	[Signal] public delegate void PausePressedEventHandler();
+	[Export] public Button FocusedButton;
 
 	protected Global Global;
 	protected bool TimerOn;
@@ -18,22 +19,33 @@ public partial class Menu : Control
 		base._Ready();
 
 		Global = GetNode<Global>("/root/Global");
+		Focus();
 	}
 
 
 	// Signals //
 
-	private void OnPlayPressed()
+	private void OnRetryPressed()
+	{
+		Global.LoadLevel(Global.CurrentLevelStats);
+	}
+
+	private void OnPlayPressed(int area, int level)
 	{
 		Global.TimerOn = TimerOn;
 
 		// load ProtoLevel
-		Global.LoadLevel(1, 4);
+		Global.LoadLevel(area, level);
 	}
 
 	private void OnExitPressed()
 	{
 		Global.Exit();
+	}
+
+	private void OnMenuPressed()
+	{
+		Global.LoadMenu(Global.Menus.MainMenu);
 	}
 
 	private void OnTimerToggled(bool toggledOn)
@@ -44,5 +56,10 @@ public partial class Menu : Control
 	private void OnContinuePressed()
 	{
 		EmitSignal(SignalName.PausePressed);
+	}
+
+	public void Focus()
+	{
+		FocusedButton.GrabFocus();
 	}
 }

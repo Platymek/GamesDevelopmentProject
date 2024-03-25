@@ -33,11 +33,7 @@ shape = SubResource("BoxShape3D_ut3x5")
 
 [node name="Camera" parent="." index="3"]
 TrackX = true
-TrackY = true
 TrackZ = true
-
-[node name="Player" parent="Actors" index="0"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
 
 [node name="Section1,2" type="Node3D" parent="Actors" index="1"]
 
@@ -80,25 +76,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 [node name="BirdTrap8" parent="Actors/Section1,2" index="12" instance=ExtResource("3_w7dms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 4)
 
-[node name="BirdTrap9" parent="Actors/Section1,2" index="13" instance=ExtResource("3_w7dms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 20)
-
-[node name="BirdTrap10" parent="Actors/Section1,2" index="14" instance=ExtResource("3_w7dms")]
+[node name="BirdTrap10" parent="Actors/Section1,2" index="13" instance=ExtResource("3_w7dms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 20)
 
-[node name="TechnoCultist" parent="Actors/Section1,2" index="15" instance=ExtResource("4_2fu5w")]
+[node name="TechnoCultist" parent="Actors/Section1,2" index="14" instance=ExtResource("4_2fu5w")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 14, 14, 0)
 
-[node name="TechnoCultist2" parent="Actors/Section1,2" index="16" instance=ExtResource("4_2fu5w")]
+[node name="TechnoCultist2" parent="Actors/Section1,2" index="15" instance=ExtResource("4_2fu5w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 38, 14, -4)
 
-[node name="TechnoCultist3" parent="Actors/Section1,2" index="17" instance=ExtResource("4_2fu5w")]
+[node name="TechnoCultist3" parent="Actors/Section1,2" index="16" instance=ExtResource("4_2fu5w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 14, 4)
 
-[node name="TechnoCultist4" parent="Actors/Section1,2" index="18" instance=ExtResource("4_2fu5w")]
+[node name="TechnoCultist4" parent="Actors/Section1,2" index="17" instance=ExtResource("4_2fu5w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40, 14, 0)
 
-[node name="TechnoCultist5" parent="Actors/Section1,2" index="19" instance=ExtResource("4_2fu5w")]
+[node name="TechnoCultist5" parent="Actors/Section1,2" index="18" instance=ExtResource("4_2fu5w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, 18, 0)
 
 [node name="Section3" type="Node3D" parent="Actors" index="2"]
@@ -438,7 +431,7 @@ transform = Transform3D(1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0, 1, -5, 8, 6
 shape = SubResource("WorldBoundaryShape3D_7x77b")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraHints/Detector2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4995, 2.5, 72.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.4995, 2.5, 72.5)
 shape = SubResource("BoxShape3D_nnuxg")
 
 [node name="Detector3" parent="CameraHints" index="2" node_paths=PackedStringArray("camera") instance=ExtResource("8_c012k")]
@@ -451,7 +444,7 @@ TrackZ = true
 _teamToDetect = 1
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraHints/Detector3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 shape = SubResource("BoxShape3D_nnuxg")
 
 [connection signal="Detected" from="Checkpoints/Checkpoint2" to="Checkpoints/Checkpoint2" method="OnDetected"]
