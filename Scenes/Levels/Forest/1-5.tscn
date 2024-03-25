@@ -5,7 +5,7 @@
 [ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="3_w4ldl"]
 [ext_resource type="PackedScene" uid="uid://bgdbeqpic0tj6" path="res://Scenes/Actors/ForestActors/BirdTrap/BirdTrap.tscn" id="3_w7dms"]
 [ext_resource type="PackedScene" uid="uid://brp2ublms7ifg" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.tscn" id="4_2fu5w"]
-[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/NewForestTiles/NewForestTiles.tres" id="4_t4dah"]
+[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/Tiles/Tiles.tres" id="4_t4dah"]
 [ext_resource type="PackedScene" uid="uid://b468lw6msex5x" path="res://Scenes/Actors/GlobalActors/ColourJar/ColourJar.tscn" id="7_x3bxy"]
 [ext_resource type="Script" path="res://Scenes/Levels/Checkpoint.cs" id="8_c5may"]
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="8_c012k"]

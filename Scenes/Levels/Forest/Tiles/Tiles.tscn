@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://43vv82x14u0t"]
 
-[ext_resource type="Texture2D" uid="uid://ctacnd2jaflsy" path="res://Scenes/Levels/Forest/NewForestTiles/Ground_Ground.png" id="1_ul2p0"]
+[ext_resource type="Texture2D" uid="uid://ctacnd2jaflsy" path="res://Scenes/Levels/Forest/Tiles/Models/Ground_Ground.png" id="1_ul2p0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62f4g"]
 resource_name = "Ground"

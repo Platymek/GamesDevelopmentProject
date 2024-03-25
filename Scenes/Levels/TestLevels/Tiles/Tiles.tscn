@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cei8pp2217voc"]
 
-[ext_resource type="Texture2D" uid="uid://rqpe2q2nn3tu" path="res://Scenes/Levels/Forest/ForestTiles/TopTile_TopTile.png" id="1_eoayx"]
-[ext_resource type="Texture2D" uid="uid://b0aim3j0xga7j" path="res://Scenes/Levels/Forest/ForestTiles/MiddleTile_MiddleTile.png" id="1_nx725"]
+[ext_resource type="Texture2D" uid="uid://rqpe2q2nn3tu" path="res://Scenes/Levels/TestLevels/Tiles/Models/TopTile_TopTile.png" id="1_eoayx"]
+[ext_resource type="Texture2D" uid="uid://b0aim3j0xga7j" path="res://Scenes/Levels/TestLevels/Tiles/Models/MiddleTile_MiddleTile.png" id="1_nx725"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1l8i"]
 resource_name = "TopTile"

@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://8kox3wc55s0q"
-path="res://.godot/imported/Bush.glb-178d0881a6b74290c7c6c9cdd76e1180.scn"
+uid="uid://bn4kfyha1pb2y"
+path="res://.godot/imported/Ground.glb-50e5c864a480745f03b22791d56e21b5.scn"
 
 [deps]
 
-source_file="res://Scenes/Levels/Forest/NewForestTiles/Bush.glb"
-dest_files=["res://.godot/imported/Bush.glb-178d0881a6b74290c7c6c9cdd76e1180.scn"]
+source_file="res://Scenes/Levels/Forest/Tiles/Models/Ground.glb"
+dest_files=["res://.godot/imported/Ground.glb-50e5c864a480745f03b22791d56e21b5.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.5
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true

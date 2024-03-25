@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rqpe2q2nn3tu"
-path="res://.godot/imported/TopTile_TopTile.png-faa55241b13c074303e3c10f4ce6ddcb.ctex"
+uid="uid://b0aim3j0xga7j"
+path="res://.godot/imported/MiddleTile_MiddleTile.png-e4e1bafc8d87bfa89c050dd47e6da933.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,8 +11,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Scenes/Levels/Forest/ForestTiles/TopTile_TopTile.png"
-dest_files=["res://.godot/imported/TopTile_TopTile.png-faa55241b13c074303e3c10f4ce6ddcb.ctex"]
+source_file="res://Scenes/Levels/TestLevels/Tiles/Models/MiddleTile_MiddleTile.png"
+dest_files=["res://.godot/imported/MiddleTile_MiddleTile.png-e4e1bafc8d87bfa89c050dd47e6da933.ctex"]
 
 [params]
 

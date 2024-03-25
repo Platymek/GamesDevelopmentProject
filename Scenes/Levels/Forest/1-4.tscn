@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://doo5228kix4jo" path="res://Scenes/Levels/Level.tscn" id="1_p57k8"]
 [ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="2_6lf3g"]
-[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/NewForestTiles/NewForestTiles.tres" id="3_rn5x3"]
+[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/Tiles/Tiles.tres" id="3_rn5x3"]
 [ext_resource type="PackedScene" uid="uid://bgdbeqpic0tj6" path="res://Scenes/Actors/ForestActors/BirdTrap/BirdTrap.tscn" id="4_431dy"]
 [ext_resource type="PackedScene" uid="uid://b468lw6msex5x" path="res://Scenes/Actors/GlobalActors/ColourJar/ColourJar.tscn" id="5_exhm8"]
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="5_n6ax5"]

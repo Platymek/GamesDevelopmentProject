@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bn4kfyha1pb2y"
-path="res://.godot/imported/Ground.glb-54f2e020b294dbc58efb2316f2106ed1.scn"
+uid="uid://brykr1rm1rx8u"
+path="res://.godot/imported/111.glb-e74aa709e3a16b0ec4bfc311f1ca2810.scn"
 
 [deps]
 
-source_file="res://Scenes/Levels/Forest/NewForestTiles/Ground.glb"
-dest_files=["res://.godot/imported/Ground.glb-54f2e020b294dbc58efb2316f2106ed1.scn"]
+source_file="res://Scenes/Levels/TestLevels/Tiles/Models/111.glb"
+dest_files=["res://.godot/imported/111.glb-e74aa709e3a16b0ec4bfc311f1ca2810.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=0.5
+nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -29,6 +29,13 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"11tile": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/Areas/Forest/ForestTiles/11tile.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

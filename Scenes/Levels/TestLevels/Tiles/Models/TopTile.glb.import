@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://brykr1rm1rx8u"
-path="res://.godot/imported/111.glb-f714fef832e71ae53caa994debc6e8d7.scn"
+uid="uid://dob4jbcpd10kj"
+path="res://.godot/imported/TopTile.glb-4d5bb7392de53cba9172fd8904654cc2.scn"
 
 [deps]
 
-source_file="res://Scenes/Levels/Forest/ForestTiles/111.glb"
-dest_files=["res://.godot/imported/111.glb-f714fef832e71ae53caa994debc6e8d7.scn"]
+source_file="res://Scenes/Levels/TestLevels/Tiles/Models/TopTile.glb"
+dest_files=["res://.godot/imported/TopTile.glb-4d5bb7392de53cba9172fd8904654cc2.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.125
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -24,18 +24,11 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=true
+animation/import=false
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"11tile": {
-"use_external/enabled": true,
-"use_external/path": "res://Scenes/Areas/Forest/ForestTiles/11tile.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

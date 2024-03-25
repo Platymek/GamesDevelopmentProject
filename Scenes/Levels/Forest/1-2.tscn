@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b0gv2ht51tw38" path="res://Scenes/Actors/ForestActors/BrokenTree/BrokenTree.tscn" id="2_23jlu"]
 [ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="2_ajfag"]
 [ext_resource type="PackedScene" uid="uid://brp2ublms7ifg" path="res://Scenes/Actors/ForestActors/ColourSucker/ColourSucker.tscn" id="3_it2mh"]
-[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/NewForestTiles/NewForestTiles.tres" id="3_xoeyh"]
+[ext_resource type="MeshLibrary" uid="uid://cl2vrjlqrcam1" path="res://Scenes/Levels/Forest/Tiles/Tiles.tres" id="3_xoeyh"]
 [ext_resource type="PackedScene" uid="uid://b468lw6msex5x" path="res://Scenes/Actors/GlobalActors/ColourJar/ColourJar.tscn" id="6_cekpa"]
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="6_oa70l"]
 [ext_resource type="Script" path="res://Scenes/Levels/Checkpoint.cs" id="7_fqaeq"]

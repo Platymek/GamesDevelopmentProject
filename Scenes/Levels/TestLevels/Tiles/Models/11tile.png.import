@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctacnd2jaflsy"
-path="res://.godot/imported/Ground_Ground.png-c76aa4a140281745778ac0568b843f76.ctex"
+uid="uid://ckjuhfrxx7rgq"
+path="res://.godot/imported/11tile.png-d0f92ec18ef5a4a8665e310d7743ffb4.ctex"
 metadata={
 "vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Scenes/Levels/Forest/NewForestTiles/Ground_Ground.png"
-dest_files=["res://.godot/imported/Ground_Ground.png-c76aa4a140281745778ac0568b843f76.ctex"]
+source_file="res://Scenes/Levels/TestLevels/Tiles/Models/11tile.png"
+dest_files=["res://.godot/imported/11tile.png-d0f92ec18ef5a4a8665e310d7743ffb4.ctex"]
 
 [params]
 

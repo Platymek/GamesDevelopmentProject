@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bx43ulw7dthur"]
 
-[ext_resource type="MeshLibrary" uid="uid://23vjgen63i8" path="res://Scenes/Levels/Forest/ForestTiles/ForestTiles.tres" id="1_0awo0"]
+[ext_resource type="MeshLibrary" uid="uid://23vjgen63i8" path="res://Scenes/Levels/TestLevels/Tiles/Tiles.tres" id="1_0awo0"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level.cs" id="1_yc0k4"]
 [ext_resource type="PackedScene" uid="uid://b8a0k0kotmg6j" path="res://Scenes/Actors/GlobalActors/Camera/Camera.tscn" id="2_6y224"]
 [ext_resource type="PackedScene" uid="uid://cudu7cnjbdf0o" path="res://Scenes/Actors/GlobalActors/Player/Player.tscn" id="2_a5ko2"]

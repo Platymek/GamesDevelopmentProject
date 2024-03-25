@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dob4jbcpd10kj"
-path="res://.godot/imported/TopTile.glb-28d2475623d1493343786100ab0cb82a.scn"
+uid="uid://d0qp3f1tadx2j"
+path="res://.godot/imported/MiddleTile.glb-51a7f445a923ee9ca60202724afd00c8.scn"
 
 [deps]
 
-source_file="res://Scenes/Levels/Forest/ForestTiles/TopTile.glb"
-dest_files=["res://.godot/imported/TopTile.glb-28d2475623d1493343786100ab0cb82a.scn"]
+source_file="res://Scenes/Levels/TestLevels/Tiles/Models/MiddleTile.glb"
+dest_files=["res://.godot/imported/MiddleTile.glb-51a7f445a923ee9ca60202724afd00c8.scn"]
 
 [params]
 
@@ -24,7 +24,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
