@@ -1,59 +1,52 @@
 using Godot;
 using System;
-using static Actor;
 
 public partial class Hitbox : Area3D
 {
-	[Export] private int _bounceHeight = 0;
-	[Export] private bool _ignoreTeam = false;
-	[Export] private AnimationPlayer _animationPlayer;
-	[Export] private string _playAnimation;
-	[Export] private bool _playOnce;
+	[Export] private bool CopyOwnerTeam = true;
+	[Export] private Actor.Teams Team;
+	[Export] private float _bounceHeight;
 
-	private bool _played;
-	private Actor _owner;
+	[Signal] public delegate void HurtEventHandler();
 
 	public override void _Ready()
 	{
 		base._Ready();
 
-		_owner = Owner as Actor;
-	}
+
+        if (!CopyOwnerTeam || Owner is not Actor actor) return;
+
+		Team = actor.Team;
+    }
 
 	private void OnAreaEntered(Area3D area)
 	{
-		// check that area is hurtbox
 		if (area is not Hurtbox hurtbox) return;
-		if (hurtbox.Damage == 0) return;
+		if (Team == hurtbox.Team && Team != Actor.Teams.None) return;
 
-		if (_animationPlayer != null && (!_played || !_playOnce))
+		string myName = Name;
+		string yourName = hurtbox.Name;
+
+		if (Owner is not Actor me)
 		{
-			_played = true;
-			_animationPlayer.Play(_playAnimation);
+			EmitSignal(SignalName.Hurt);
+			hurtbox.ConfirmHurt();
+		}
+		else
+		{
+			me.Hurt(hurtbox.Damage);
+			myName = me.Name;
+
+            hurtbox.ConfirmHurt(me);
 		}
 
-
-		// check team
-		if (!_ignoreTeam)
+		if (hurtbox.Owner is Actor you)
 		{
-			if (area.Owner is Actor actor && hurtbox.CopyOwnerTeam)
-			{
-				if (_owner.Team == actor.Team || _ignoreTeam) return;
-			}
-			else
-			{
-				if (_owner.Team == hurtbox.Team || _ignoreTeam) return;
-			}
-		}
+			yourName = you.Name;
+            you.Jump(_bounceHeight);
+        }
 
-		if (area.Owner is Actor a)
-		{
-			// if not same team, bounce actor
-			a.Jump(_bounceHeight);
-		}
-		
-		_owner.Hurt(hurtbox.Damage);
-		
-		GD.Print($"{_owner} was hurt by {area.Owner.Name} with {hurtbox.Damage} damage");
+		GD.Print($"{myName}, of team {Team}, was hurt by {yourName}, of team {hurtbox.Team}, " +
+			$"with {hurtbox.Damage} damage and {_bounceHeight} bounce height");
 	}
 }

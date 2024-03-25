@@ -49,8 +49,7 @@ public partial class Global : Node
 
 		if(Input.IsActionJustPressed("Reset"))
 		{
-			TimerOn = true;
-			LoadLevel(1, 4);
+			LoadLevel(CurrentLevelStats);
 		}
 	}
 
@@ -81,8 +80,8 @@ public partial class Global : Node
 
 	public void LoadMenu(Menus menu)
 	{
-		GetTree().ChangeSceneToPacked(GetMenu(menu));
 		GetTree().Paused = false;
+		GetTree().ChangeSceneToPacked(GetMenu(menu));
 	}
 
 	public LevelStats GetLevelStats(int area, int level)
@@ -91,21 +90,21 @@ public partial class Global : Node
 	}
 
 	public void LoadLevel(LevelStats levelStats)
-    {
+	{
 		CurrentLevelStats = levelStats;
 
-        GetTree().ChangeSceneToPacked(levelStats.Level);
-    }
+		GetTree().ChangeSceneToPacked(levelStats.Level);
+	}
 
 	public void LoadLevel(int area, int level)
 	{
 		CurrentLevelStats = GetLevelStats(area, level);
 
-        CurrentLevel = level;
-        CurrentArea = area;
+		CurrentLevel = level;
+		CurrentArea = area;
 
 		LoadLevel(CurrentLevelStats);
-    }
+	}
 
 	public void Exit()
 	{

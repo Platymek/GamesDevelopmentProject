@@ -5,8 +5,6 @@ public partial class Actor : CharacterBody3D
 {
 	[Export] protected float FallingAcceleration;
 	[Export] protected int MaxHealth;
-	[Export] protected bool PlayAnimationOnDeath;
-	[Export] protected string DeathAnimation;
 	[Export] protected float RotationSpeed = 1;
 	
 	[Export] protected float HorizontalAcceleration = 16;
@@ -123,19 +121,7 @@ public partial class Actor : CharacterBody3D
 		// if health 0 or below, kill
 		if (Health > 0) return;
 		
-		if (PlayAnimationOnDeath)
-		{
-			if (!Dying)
-			{
-				GetNode<AnimationPlayer>("AnimationPlayer")
-					.Play(DeathAnimation);
-			}
-		}
-		else
-		{
-			Kill();
-		}
-
+		Kill();
 		Dying = true;
 	}
 

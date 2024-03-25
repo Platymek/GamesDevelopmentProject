@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://waas3t65t1y7"
-path="res://.godot/imported/TreeStump.glb-386f91664d94ca88b4c38244f47e313c.scn"
+path="res://.godot/imported/TreeStump.glb-1cb26b4f89b6ee08132b18ba1b662f83.scn"
 
 [deps]
 
-source_file="res://Scenes/Actors/ForestActors/BrokenTree/TreeStump.glb"
-dest_files=["res://.godot/imported/TreeStump.glb-386f91664d94ca88b4c38244f47e313c.scn"]
+source_file="res://Scenes/Actors/ForestActors/BrokenTree/Model/TreeStump.glb"
+dest_files=["res://.godot/imported/TreeStump.glb-1cb26b4f89b6ee08132b18ba1b662f83.scn"]
 
 [params]
 

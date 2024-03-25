@@ -466,6 +466,9 @@ libraries = {
 "ColourSucker": SubResource("AnimationLibrary_74l3q")
 }
 
+[node name="Hitbox" parent="." index="3"]
+_bounceHeight = 0.0
+
 [node name="DebugLabel" parent="." index="8"]
 visible = false
 

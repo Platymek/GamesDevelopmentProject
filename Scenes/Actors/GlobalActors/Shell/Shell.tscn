@@ -17,11 +17,12 @@ radius = 0.3
 script = ExtResource("1_06yew")
 _speed = 6.0
 _distance = 8.0
+MaxHealth = 1
 
 [node name="Hitbox" parent="." instance=ExtResource("2_cv878")]
 collision_layer = 2
-_bounceHeight = 3
-_ignoreTeam = true
+CopyOwnerTeam = false
+_bounceHeight = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("CylinderShape3D_jt5ns")

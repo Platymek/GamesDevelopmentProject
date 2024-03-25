@@ -14,32 +14,32 @@ public partial class Detector : Area3D
 	public Array<Node3D> DetectedActors = new();
 
 
-    // Node Functions //
+	// Node Functions //
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
 
 
 		foreach (var actor in DetectedActors)
 		{
-            if (actor.IsQueuedForDeletion())
+			if (actor.IsQueuedForDeletion())
 			{
-                DetectedActors.Remove(actor);
+				DetectedActors.Remove(actor);
 
-                // if first actor detected, send a signal
-                if (DetectedActors.Count == 0)
-                {
-                    EmitSignal(SignalName.NotDetecting);
-                }
-            }
+				// if first actor detected, send a signal
+				if (DetectedActors.Count == 0)
+				{
+					EmitSignal(SignalName.NotDetecting);
+				}
+			}
 		}
-    }
+	}
 
 
-    // Signals //
+	// Signals //
 
-    private void OnAreaEntered(Area3D area)
+	private void OnAreaEntered(Area3D area)
 	{
 		if (area is not Detectable detectable) return;
 
@@ -59,15 +59,15 @@ public partial class Detector : Area3D
 	{
 		if (area is not Detectable detectable) return;
 
-        if (_teamToDetect != detectable.Team) return;
+		if (_teamToDetect != detectable.Team) return;
 
 
 		DetectedActors.Remove(detectable.GetOwner<Node3D>());
 
-        // if first actor detected, send a signal
-        if (DetectedActors.Count == 0)
+		// if first actor detected, send a signal
+		if (DetectedActors.Count == 0)
 		{
 			EmitSignal(SignalName.NotDetecting);
-        }
+		}
 	}
 }

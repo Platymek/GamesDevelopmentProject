@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://b0gv2ht51tw38"]
 
 [ext_resource type="PackedScene" uid="uid://8ppyokme3ayb" path="res://Scenes/Actors/Properties/Hint/Hint.tscn" id="1_b8xrn"]
-[ext_resource type="PackedScene" uid="uid://waas3t65t1y7" path="res://Scenes/Actors/ForestActors/BrokenTree/TreeStump.glb" id="2_6613o"]
-[ext_resource type="PackedScene" uid="uid://8o48fxd044yn" path="res://Scenes/Actors/ForestActors/BrokenTree/TreeTrunk.glb" id="2_r5wjn"]
+[ext_resource type="PackedScene" uid="uid://8o48fxd044yn" path="res://Scenes/Actors/ForestActors/BrokenTree/Model/TreeTrunk.glb" id="3_d7uvh"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="3_tgsi1"]
+[ext_resource type="PackedScene" uid="uid://waas3t65t1y7" path="res://Scenes/Actors/ForestActors/BrokenTree/Model/TreeStump.glb" id="4_xby8o"]
 
 [sub_resource type="Gradient" id="Gradient_xndid"]
 offsets = PackedFloat32Array(0)
@@ -88,11 +88,8 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 pixel_size = 1.0
 texture = SubResource("GradientTexture1D_7jrw5")
 
-[node name="Hitbox" parent="." node_paths=PackedStringArray("_animationPlayer") instance=ExtResource("3_tgsi1")]
+[node name="Hitbox" parent="." instance=ExtResource("3_tgsi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
-_animationPlayer = NodePath("../AnimationPlayer")
-_playAnimation = "fall"
-_playOnce = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
@@ -102,13 +99,15 @@ shape = SubResource("BoxShape3D_374vy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 shape = SubResource("BoxShape3D_fbcno")
 
-[node name="TreeTrunk" parent="TrunkCollision" instance=ExtResource("2_r5wjn")]
+[node name="TreeTrunk" parent="TrunkCollision" instance=ExtResource("3_d7uvh")]
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -2.875, 0, 0.25, -1.2567e-07, 0, 1.3, 0)
 
-[node name="TreeStump" parent="TrunkCollision" instance=ExtResource("2_6613o")]
+[node name="TreeStump" parent="TrunkCollision" instance=ExtResource("4_xby8o")]
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, -4, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m2oe4")
 }
+
+[connection signal="Hurt" from="Hitbox" to="AnimationPlayer" method="play" flags=6 binds= [&"fall"]]

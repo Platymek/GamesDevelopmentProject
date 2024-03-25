@@ -8,31 +8,20 @@ public partial class Emitter : Node3D
 	[Export] private bool _copyTeamFromOwner = true;
 	[Export] private Actor.Teams Team;
 
-	// emit the packed scene
-	public void Emit()
-	{
-		Node3D nodeToEmit = _sceneToEmit.Instantiate<Node3D>();
 
-		// add to the same node as the owner of the emitter
-		Owner.AddSibling(nodeToEmit);
+    // Node Functions //
 
-		// set the position and rotation to that of the emitter itself
-		nodeToEmit.GlobalPosition = GlobalPosition;
-		nodeToEmit.GlobalRotation = GlobalRotation;
+    public override void _Ready()
+    {
+        base._Ready();
 
-		if (nodeToEmit is not Actor actor) return;
 
-		if (_copyTeamFromOwner)
-		{
-			actor.Team = (Owner as Actor).Team;
-		}
-		else
-		{
-			actor.Team = Team;
-		}
-	}
+        if (!_copyTeamFromOwner || Owner is not Actor owner) return;
 
-	public override void _Process(double delta)
+        Team = owner.Team;
+    }
+
+    public override void _Process(double delta)
 	{
 		base._Process(delta);
 
@@ -44,4 +33,25 @@ public partial class Emitter : Node3D
 		
 		Emit();
 	}
+
+
+    // Other Functions //
+
+    // emit the packed scene
+    public void Emit()
+    {
+        Node3D nodeToEmit = _sceneToEmit.Instantiate<Node3D>();
+
+        if (nodeToEmit is Actor actor)
+        {
+            actor.Team = Team;
+        }
+
+        // add to the same node as the owner of the emitter
+        Owner.AddSibling(nodeToEmit);
+
+        // set the position and rotation to that of the emitter itself
+        nodeToEmit.GlobalPosition = GlobalPosition;
+        nodeToEmit.GlobalRotation = GlobalRotation;
+    }
 }
