@@ -554,7 +554,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
 _knockBackStrength = 6.0
-_launchHeight = 2.25
+_launchHeight = 2.5
 _launchSpeedMultiplier = 2.5
 State = "idle"
 FallingAcceleration = 32.0
@@ -674,7 +674,6 @@ one_shot = true
 
 [node name="DropShadow" parent="." instance=ExtResource("10_ko3ud")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.1, 0)
-collide_with_areas = true
 
 [node name="Shadow" type="Sprite3D" parent="DropShadow"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

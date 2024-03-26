@@ -24,9 +24,12 @@ public partial class HUD : Control
 		_emptyJars = GetNode<Control>("EmptyJars");
 		_fullJars = GetNode<Control>("FullJars");
 
-		_time.Visible = GetNode<Global>("/root/Global").TimerOn;
+		_time.Visible = GetNode<Global>("/root/Global").TimeTrialMode;
+        _emptyJars.Visible = !GetNode<Global>("/root/Global").TimeTrialMode;
+        _fullJars.Visible = !GetNode<Global>("/root/Global").TimeTrialMode;
 
-		for (int i = 1; 
+
+        for (int i = 1; 
 			i < GetNode<Global>("/root/Global").CurrentLevelStats.NumberOfCollectables; 
 			i++)
 		{

@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://86smsak8h86y"]
+
+[ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_ld6u7"]
+[ext_resource type="Script" path="res://Scenes/Menus/YouWinTimeTrial/YouWinTimeTrial.cs" id="2_srcsr"]
+
+[node name="YouWinTimeTrial" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_ld6u7")]
+script = ExtResource("2_srcsr")
+FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Retry")
+
+[node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "Well Done!"
+horizontal_alignment = 1
+
+[node name="YourTimeWas" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="1"]
+layout_mode = 2
+theme_type_variation = &"SubTitle"
+text = "Your time was"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="2"]
+layout_mode = 2
+theme_type_variation = &"SubTitle"
+text = "0s"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Subtitle" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle" index="0"]
+layout_mode = 2
+theme_type_variation = &"SubTitle"
+text = "Can you get under"
+horizontal_alignment = 1
+
+[node name="TimeRequirement" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle" index="1"]
+layout_mode = 2
+theme_type_variation = &"SubTitle"
+text = "0s?"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="5"]
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+text = "Back to Level Select"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Retry" to="." method="OnRetryPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Menu" to="." method="OnMenuPressed"]

@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://86smsak8h86y"]
+[gd_scene load_steps=2 format=3 uid="uid://nkd4hsg3amji"]
 
 [ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_n3ahl"]
-[ext_resource type="Script" path="res://Scenes/Menus/YouWin/YouWin.cs" id="2_xd48h"]
 
 [node name="YouWin" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_n3ahl")]
-script = ExtResource("2_xd48h")
-FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Retry")
+FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Next")
 
 [node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -13,61 +11,12 @@ theme_type_variation = &"Title"
 text = "Well Done!"
 horizontal_alignment = 1
 
-[node name="YourTimeWas" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="1"]
+[node name="Next" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
 layout_mode = 2
-theme_type_variation = &"SubTitle"
-text = "Your time was"
-horizontal_alignment = 1
+text = "Next Level"
 
-[node name="Time" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="2"]
+[node name="LevelSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
 layout_mode = 2
-theme_type_variation = &"SubTitle"
-text = "0s"
-horizontal_alignment = 1
+text = "Back to Level Select"
 
-[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="3"]
-layout_mode = 2
-
-[node name="Subtitle" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="4"]
-layout_mode = 2
-
-[node name="Subtitle" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle" index="0"]
-layout_mode = 2
-theme_type_variation = &"SubTitle"
-text = "Can you get under"
-horizontal_alignment = 1
-
-[node name="TimeRequirement" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/Subtitle" index="1"]
-layout_mode = 2
-theme_type_variation = &"SubTitle"
-text = "0s?"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="5"]
-layout_mode = 2
-
-[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Retry" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
-layout_mode = 2
-text = "Retry"
-
-[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#CheckBox" type="CheckBox" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
-layout_mode = 2
-text = "Timer"
-alignment = 1
-
-[node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
-layout_mode = 2
-text = "Back to Menu
-"
-
-[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
-layout_mode = 2
-
-[node name="AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
-layout_mode = 2
-text = "Exit"
-
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Retry" to="." method="OnRetryPressed"]
-[connection signal="toggled" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#CheckBox" to="." method="OnTimerToggled"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Menu" to="." method="OnMenuPressed"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/AspectRatioContainer_CenterContainer_VBoxContainer_CenterContainer_Panel_MarginContainer_Buttons#Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/LevelSelect" to="." method="OnContinueGamePressed"]

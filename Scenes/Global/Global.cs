@@ -1,17 +1,30 @@
 using Godot;
-using System;
-using System.Reflection.Emit;
+using Godot.Collections;
 
 public partial class Global : Node
 {
 	// Properties //
 
-	private Node AreasNode;
+	public enum SceneTypes
+    {
+		Level,
+		Story,
+	}
 
-	public LevelStats CurrentLevelStats;
+	[Export] public Array<SceneTypes> Scenes;
+	[Export] public SaveFile SaveFile;
+	public int CurrentSceneIndex;
+
+
+    private Areas AreasNode;
+    private Node StoriesNode;
+
+    public LevelStats CurrentLevelStats;
+	public StoryStats CurrentStoryStats;
 	public int CurrentLevel;
 	public int CurrentArea;
-	public bool TimerOn;
+	public int CurrentStory;
+	public bool TimeTrialMode;
 	public double PreviousTime;
 
 	public enum Menus
@@ -19,7 +32,9 @@ public partial class Global : Node
 		MainMenu,
 		YouWin,
 		YouLose,
-	}
+		SceneSelect,
+        YouWinTimeTrial,
+    }
 
 
 	// Node Functions //
@@ -28,8 +43,15 @@ public partial class Global : Node
 	{
 		base._Ready();
 
-		AreasNode = GetNode("Areas");
-	}
+		AreasNode = GetNode<Areas>("Areas");
+        StoriesNode = GetNode("Stories");
+		CurrentSceneIndex = 0;
+
+		if (SaveFile == null)
+		{
+			SaveFile = new SaveFile();
+		}
+    }
 
 	public override void _Process(double delta)
 	{
@@ -47,16 +69,66 @@ public partial class Global : Node
 				: DisplayServer.WindowMode.Windowed);
 		}
 
-		if(Input.IsActionJustPressed("Reset"))
+		if (Input.IsActionJustPressed("Reset"))
 		{
 			LoadLevel(CurrentLevelStats);
 		}
 	}
 
 
-	// Other Functions //
+    // Other Functions //
 
-	public PackedScene GetMenu(Menus menu)
+    public void Exit()
+    {
+        GetTree().Quit();
+    }
+
+	public void LoadSceneIndex(int index)
+	{
+		int levelIndex = 0;
+		int storyIndex = 0;
+
+		for (int i = 0; i <= index; i++)
+		{
+			SceneTypes sceneType = Scenes[i];
+
+			switch (sceneType)
+			{
+				case SceneTypes.Level:
+
+					CurrentLevelStats = GetLevelStats(
+						(int)AreasNode.Levels[levelIndex].X,
+                        (int)AreasNode.Levels[levelIndex].Y);
+
+					levelIndex++;
+
+                    break;
+
+
+                case SceneTypes.Story:
+
+                    CurrentStoryStats = GetStoryStats(storyIndex);
+
+					storyIndex++;
+
+                    break;
+            }
+		}
+	}
+
+	public void Progress()
+	{
+        if (CurrentSceneIndex == SaveFile.SceneProgress
+            && CurrentSceneIndex != Scenes.Count - 1)
+        {
+            SaveFile.SceneProgress++;
+        }
+    }
+
+
+	// Menu Functions //
+
+    public PackedScene GetMenu(Menus menu)
 	{
 		switch (menu)
 		{
@@ -64,7 +136,11 @@ public partial class Global : Node
 
 				return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/MainMenu/MainMenu.tscn");
 
-			case Menus.YouWin:
+            case Menus.YouWinTimeTrial:
+
+                return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/YouWinTimeTrial/YouWinTimeTrial.tscn");
+
+            case Menus.YouWin:
 
 				return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/YouWin/YouWin.tscn");
 
@@ -72,7 +148,11 @@ public partial class Global : Node
 
 				return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/YouLose/YouLose.tscn");
 
-			default:
+			case Menus.SceneSelect:
+
+                return ResourceLoader.Load<PackedScene>("res://Scenes/Menus/SceneSelect/SceneSelect.tscn");
+
+            default:
 
 				return null;
 		}
@@ -82,32 +162,56 @@ public partial class Global : Node
 	{
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToPacked(GetMenu(menu));
-	}
+    }
 
-	public LevelStats GetLevelStats(int area, int level)
-	{
-		return AreasNode.GetChild(area).GetChild<LevelStats>(level);
-	}
 
-	public void LoadLevel(LevelStats levelStats)
-	{
-		CurrentLevelStats = levelStats;
+    // Level Functions //
 
-		GetTree().ChangeSceneToPacked(levelStats.Level);
-	}
+    public LevelStats GetLevelStats(int area, int level)
+    {
+        return AreasNode.GetChild(area).GetChild<LevelStats>(level);
+    }
 
-	public void LoadLevel(int area, int level)
-	{
-		CurrentLevelStats = GetLevelStats(area, level);
+    public void LoadLevel(LevelStats levelStats)
+    {
+        CurrentLevelStats = levelStats;
 
-		CurrentLevel = level;
-		CurrentArea = area;
+        GetTree().ChangeSceneToPacked(levelStats.Level);
+    }
 
-		LoadLevel(CurrentLevelStats);
-	}
+    public void LoadLevel(int area, int level)
+    {
+        CurrentLevelStats = GetLevelStats(area, level);
 
-	public void Exit()
-	{
-		GetTree().Quit();
-	}
+        CurrentLevel = level;
+        CurrentArea = area;
+
+        LoadLevel(CurrentLevelStats);
+    }
+
+
+	// Story Functions //
+
+    public StoryStats GetStoryStats(int index)
+    {
+        return StoriesNode.GetChild<StoryStats>(index);
+    }
+
+    public void LoadStory(StoryStats storyStats)
+    {
+        CurrentStoryStats = storyStats;
+
+        GetTree().ChangeSceneToPacked(
+			ResourceLoader.Load<PackedScene>(
+				"res://Scenes/Menus/Story/Story.tscn"));
+    }
+
+    public void LoadStory(int index)
+    {
+        CurrentStoryStats = GetStoryStats(index);
+
+        CurrentStory = index;
+
+        LoadStory(CurrentStoryStats);
+    }
 }

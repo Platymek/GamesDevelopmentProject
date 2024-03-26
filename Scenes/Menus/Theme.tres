@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b5elv26uyd1hp"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b5elv26uyd1hp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skson"]
 bg_color = Color(0.0627451, 0.796078, 0.192157, 1)
@@ -48,6 +48,13 @@ expand_margin_right = 8.0
 color = Color(0.34902, 0.364706, 0.376471, 1)
 thickness = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dde80"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4xt1"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 8
@@ -71,6 +78,8 @@ MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 32
 MarginContainer/constants/margin_right = 32
 MarginContainer/constants/margin_top = 32
+PanelBackdrop/base_type = &"PanelContainer"
+PanelBackdrop/styles/panel = SubResource("StyleBoxFlat_dde80")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_j4xt1")
 SubTitle/base_type = &"Label"
 SubTitle/colors/font_color = Color(1, 1, 1, 1)

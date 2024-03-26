@@ -228,12 +228,11 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ro6ui")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iatc5"]
-size = Vector3(16, 16, 4)
+size = Vector3(10, 10, 4)
 
 [node name="NewForestTiles" type="Node3D"]
 
 [node name="Ground" type="Node3D" parent="."]
-visible = false
 
 [node name="generated(Clone)" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
@@ -241,6 +240,7 @@ mesh = SubResource("ArrayMesh_3f25r")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground/generated(Clone)"]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/generated(Clone)/StaticBody3D"]
 shape = SubResource("BoxShape3D_8gk08")
@@ -261,6 +261,7 @@ skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TreeTrunk/TreeTrunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 5.68434e-14, 0, 0, 1, 0, 0, 0)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TreeTrunk/TreeTrunk/StaticBody3D"]
 shape = SubResource("BoxShape3D_iatc5")

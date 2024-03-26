@@ -81,7 +81,9 @@ public partial class Level : Node3D
 	private void OnGoalAreaEntered()
 	{
 		_global.PreviousTime = Time;
-		_global.LoadMenu(Global.Menus.YouWin);
+		_global.Progress();
+
+        _global.LoadMenu(Global.Menus.YouWin);
 	}
 
 	

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://buha7jrvxhr21"]
+
+[ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_miwkl"]
+[ext_resource type="Script" path="res://Scenes/Menus/Story/Story.cs" id="2_1cce1"]
+[ext_resource type="Texture2D" uid="uid://fa83l1jg5n58" path="res://Scenes/Menus/Story/1/1.svg" id="2_5l7oc"]
+
+[node name="Story" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_miwkl")]
+script = ExtResource("2_1cce1")
+FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/Next")
+
+[node name="PanelContainer" type="PanelContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
+layout_mode = 2
+theme_type_variation = &"PanelBackdrop"
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/PanelContainer" index="0"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/PanelContainer/MarginContainer/CenterContainer2" index="0"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Frame" type="TextureRect" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/PanelContainer/MarginContainer/CenterContainer2" index="1"]
+layout_mode = 2
+texture = ExtResource("2_5l7oc")
+stretch_mode = 2
+
+[node name="Caption" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "There were once many colourful birds who used their powerful colours to share and inspire"
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer" index="0"]
+layout_mode = 2
+
+[node name="Next" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer" index="1"]
+layout_mode = 2
+text = "Next
+"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/Next" to="." method="LoadNextFrame"]

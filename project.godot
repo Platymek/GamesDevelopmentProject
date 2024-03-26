@@ -150,6 +150,11 @@ pause={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Solid"
+3d_physics/layer_2="Shadows"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.129412, 0.129412, 0.129412, 1)

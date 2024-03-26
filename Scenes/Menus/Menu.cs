@@ -25,17 +25,19 @@ public partial class Menu : Control
 
 	// Signals //
 
+	private void OnContinueGamePressed()
+	{
+		Global.LoadMenu(Global.Menus.SceneSelect);
+	}
+
 	private void OnRetryPressed()
 	{
 		Global.LoadLevel(Global.CurrentLevelStats);
 	}
 
-	private void OnPlayPressed(int area, int level)
+	private void OnStoryPressed(int index)
 	{
-		Global.TimerOn = TimerOn;
-
-		// load ProtoLevel
-		Global.LoadLevel(area, level);
+		Global.LoadStory(index);
 	}
 
 	private void OnExitPressed()

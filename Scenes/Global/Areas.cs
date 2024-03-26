@@ -3,5 +3,5 @@ using System;
 
 public partial class Areas : Node
 {
-	[Export] Vector2[] Levels;
+	[Export] public Vector2[] Levels;
 }

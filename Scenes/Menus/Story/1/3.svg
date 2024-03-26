@@ -1,0 +1,187 @@
+<svg width='256' height='256' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+<defs/>
+<g>
+<path stroke='none' fill='#FFFFFF' d='M 0 0 m 0 32 q 0 -13.25 9.35 -22.6 q 9.4 -9.4 22.65 -9.4 l 0 32 l -32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 32 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 64 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 448 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 0 480 m 32 32 q -13.25 0 -22.6 -9.35 q -9.4 -9.4 -9.4 -22.65 l 32 0 l 0 32'/>
+<path stroke='none' fill='#FFFFFF' d='M 32 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 32 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 64 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 64 288 m 18.6 18.6 q -6.2 6.3 -10.3 13.4 l 23.7 0 l 0 -23.7 q -7.1 4.1 -13.4 10.3'/>
+<path stroke='none' fill='#595D60' d='M 64 320 m 0 30 l 0 2 l 32 0 l 0 -32 l -23.7 0 q -7.8 13.5 -8.3 30'/>
+<path stroke='none' fill='#595D60' d='M 64 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 64 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 64 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 64 448 m 32 32 q -13.25 0 -22.6 -9.35 q -9.4 -9.4 -9.4 -22.65 l 32 0 l 0 32'/>
+<path stroke='none' fill='#FFFFFF' d='M 64 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 96 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 96 288 m 32 0 l -2 0 q -16.5 0.5 -30 8.3 l 0 23.7 l 32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 96 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 96 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 96 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 96 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 96 448 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 96 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 128 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 64 m 18.6 18.6 q -6.2 6.3 -10.3 13.4 l 23.7 0 l 0 -23.7 q -7.1 4.1 -13.4 10.3'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 96 m 0 30 l 0 2 l 32 0 l 0 -32 l -23.7 0 q -7.8 13.5 -8.3 30'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 128 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 128 288 m 2 0 l -2 0 l 0 32 l 32 0 l 0 -23.7 q -13.5 -7.8 -30 -8.3'/>
+<path stroke='none' fill='#595D60' d='M 128 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 128 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 128 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 128 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 128 448 m 32 32 q -13.25 0 -22.6 -9.35 q -9.4 -9.4 -9.4 -22.65 l 32 0 l 0 32'/>
+<path stroke='none' fill='#FFFFFF' d='M 128 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 160 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 64 m 32 0 l -2 0 q -16.5 0.5 -30 8.3 l 0 23.7 l 32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 160 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 160 288 m 23.7 32 q -4.1 -7.1 -10.3 -13.4 q -6.3 -6.2 -13.4 -10.3 l 0 23.7 l 23.7 0'/>
+<path stroke='none' fill='#595D60' d='M 160 320 m 32 32 l 0 -2 q -0.5 -16.5 -8.3 -30 l -23.7 0 l 0 32 l 32 0'/>
+<path stroke='none' fill='#595D60' d='M 160 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 160 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 160 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#595D60' d='M 160 448 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 160 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 192 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 64 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 192 128 m 18.6 18.6 q -6.2 6.3 -10.3 13.4 l 23.7 0 l 0 -23.7 q -7.1 4.1 -13.4 10.3'/>
+<path stroke='none' fill='#FFFFFF' d='M 192 160 m 0 30 l 0 2 l 32 0 l 0 -32 l -23.7 0 q -7.8 13.5 -8.3 30'/>
+<path stroke='none' fill='#FFFFFF' d='M 192 192 m 0 0 l 0 2 q 0.5 16.5 8.3 30 l 23.7 0 l 0 -32 l -32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 192 224 m 8.3 0 q 4.1 7.1 10.3 13.4 q 6.3 6.2 13.4 10.3 l 0 -23.7 l -23.7 0'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 192 448 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 192 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 224 64 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 224 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 128 m 32 0 l -2 0 q -16.5 0.5 -30 8.3 l 0 23.7 l 32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 224 m 30 32 l 2 0 l 0 -32 l -32 0 l 0 23.7 q 13.5 7.8 30 8.3'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 256 m 0 32 q 0 -13.25 9.35 -22.6 q 9.4 -9.4 22.65 -9.4 l 0 32 l -32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 288 m 32 32 q -13.25 0 -22.6 -9.35 q -9.4 -9.4 -9.4 -22.65 l 32 0 l 0 32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 320 m 0 32 q 0 -13.25 9.35 -22.6 q 9.4 -9.4 22.65 -9.4 l 0 32 l -32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 352 m 32 32 q -13.25 0 -22.6 -9.35 q -9.4 -9.4 -9.4 -22.65 l 32 0 l 0 32'/>
+<path stroke='none' fill='#AFB5C7' d='M 224 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 224 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 224 448 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 224 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 256 64 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 256 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 128 m 2 0 l -2 0 l 0 32 l 32 0 l 0 -23.7 q -13.5 -7.8 -30 -8.3'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 256 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 288 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 320 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 352 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+<path stroke='none' fill='#AFB5C7' d='M 256 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 256 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 256 448 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 256 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 288 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 64 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 288 128 m 23.7 32 q -4.1 -7.1 -10.3 -13.4 q -6.3 -6.2 -13.4 -10.3 l 0 23.7 l 23.7 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 288 160 m 32 32 l 0 -2 q -0.5 -16.5 -8.3 -30 l -23.7 0 l 0 32 l 32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 288 192 m 32 2 l 0 -2 l -32 0 l 0 32 l 23.7 0 q 7.8 -13.5 8.3 -30'/>
+<path stroke='none' fill='#FFFFFF' d='M 288 224 m 0 23.7 q 7.1 -4.1 13.4 -10.3 q 6.2 -6.3 10.3 -13.4 l -23.7 0 l 0 23.7'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 288 448 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 288 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 320 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 64 m 2 0 l -2 0 l 0 32 l 32 0 l 0 -23.7 q -13.5 -7.8 -30 -8.3'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 320 192 m 0 32 q 0 -13.25 9.35 -22.6 q 9.4 -9.4 22.65 -9.4 l 0 32 l -32 0'/>
+<path stroke='none' fill='#F7D117' d='M 320 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 320 256 m 32 32 q -13.25 0 -22.6 -9.35 q -9.4 -9.4 -9.4 -22.65 l 32 0 l 0 32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 320 448 m 0 32 l 2 0 q 16.5 -0.5 30 -8.3 l 0 -23.7 l -32 0 l 0 32'/>
+<path stroke='none' fill='#FFFFFF' d='M 320 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 352 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 64 m 23.7 32 q -4.1 -7.1 -10.3 -13.4 q -6.3 -6.2 -13.4 -10.3 l 0 23.7 l 23.7 0'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 96 m 32 32 l 0 -2 q -0.5 -16.5 -8.3 -30 l -23.7 0 l 0 32 l 32 0'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 352 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 352 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 352 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 416 m 32 2 l 0 -2 l -32 0 l 0 32 l 23.7 0 q 7.8 -13.5 8.3 -30'/>
+<path stroke='none' fill='#AFB5C7' d='M 352 448 m 0 23.7 q 7.1 -4.1 13.4 -10.3 q 6.2 -6.3 10.3 -13.4 l -23.7 0 l 0 23.7'/>
+<path stroke='none' fill='#FFFFFF' d='M 352 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 384 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 384 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 384 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 384 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 384 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 416 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 416 192 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 416 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#F7D117' d='M 416 256 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+<path stroke='none' fill='#FFFFFF' d='M 416 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 448 0 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 448 480 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 0 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 32 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 64 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 96 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 352 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 384 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 416 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 448 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32'/>
+<path stroke='none' fill='#FFFFFF' d='M 480 480 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0'/>
+</g>
+</svg>
