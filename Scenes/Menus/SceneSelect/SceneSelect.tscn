@@ -62,10 +62,10 @@ layout_mode = 2
 
 [node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="8"]
 layout_mode = 2
-text = "Back To Menu"
+text = "Exit To Desktop"
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Play" to="." method="Play" binds= [false]]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeTrial" to="." method="Play" binds= [true]]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Next" to="." method="Next"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Previous" to="." method="Previous"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Menu" to="." method="OnMenuPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Menu" to="." method="OnExitPressed"]

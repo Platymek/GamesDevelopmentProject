@@ -149,8 +149,55 @@ public partial class Global : Node
         }
     }
 
+    public void SaveTimeTrial(int time)
+    {
+        if (SaveFile.TimeTrialTimes.ContainsKey(CurrentSceneIndex))
+        {
+            if (SaveFile.TimeTrialTimes[CurrentSceneIndex] > time)
+            {
+                SaveFile.TimeTrialTimes[CurrentSceneIndex] = time;
+                Save();
+            }
 
-	// Menu Functions //
+            return;
+        }
+
+        SaveFile.TimeTrialTimes.Add(CurrentSceneIndex, time);
+        Save();
+    }
+
+    public void SaveMaxJars(int maxJars)
+    {
+        if (SaveFile.MaxJars.ContainsKey(CurrentSceneIndex))
+        {
+            if (SaveFile.MaxJars[CurrentSceneIndex] < maxJars)
+            {
+                SaveFile.MaxJars[CurrentSceneIndex] = maxJars;
+                Save();
+            }
+
+            return;
+        }
+
+        SaveFile.MaxJars.Add(CurrentSceneIndex, maxJars);
+        GD.Print(maxJars);
+        Save();
+    }
+
+    public void Save()
+    {
+        ResourceSaver.Save(SaveFile, "user://save.tres");
+    }
+
+    public void Load()
+    {
+		if (!FileAccess.FileExists("user://save.tres")) return;
+
+        SaveFile = ResourceLoader.Load<SaveFile>("user://save.tres");
+    }
+
+
+    // Menu Functions //
 
     public PackedScene GetMenu(Menus menu)
 	{

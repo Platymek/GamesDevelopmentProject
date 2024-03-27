@@ -28,6 +28,13 @@ public partial class Menu : Control
 	private void OnContinueGamePressed()
 	{
 		Global.LoadMenu(Global.Menus.SceneSelect);
+		Global.Load();
+	}
+
+	private void NewGamePressed()
+	{
+		Global.SaveFile = new SaveFile();
+		Global.LoadMenu(Global.Menus.SceneSelect);
 	}
 
 	private void OnRetryPressed()

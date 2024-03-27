@@ -13,6 +13,7 @@ public partial class Level : Node3D
 
 	public double Time;
 	public bool[] Collectables;
+	public int TotalCollected;
 
 	private bool _paused;
 	private bool Paused
@@ -43,6 +44,7 @@ public partial class Level : Node3D
         Collectables = new bool[_global.CurrentLevelStats.NumberOfCollectables];
 
 		Time = 0;
+		TotalCollected = 0;
 		Paused = false;
 	}
 
@@ -86,10 +88,13 @@ public partial class Level : Node3D
 
 		if (!_global.TimeTrialMode)
         {
+			GD.Print(TotalCollected);
+			_global.SaveMaxJars(TotalCollected);
             _global.LoadMenu(Global.Menus.YouWin);
 			return;
         }
 
+        _global.SaveTimeTrial((int)Time);
         _global.LoadMenu(Global.Menus.YouWinTimeTrial);
     }
 
@@ -106,8 +111,9 @@ public partial class Level : Node3D
 		GD.Print(index);
 
 		Collectables[index] = true;
+		TotalCollected++;
 
-		EmitSignal(SignalName.JarCollected, index);
+        EmitSignal(SignalName.JarCollected, index);
 	}
 
 	public void Pause()

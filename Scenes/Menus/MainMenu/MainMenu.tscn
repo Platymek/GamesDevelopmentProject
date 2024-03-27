@@ -38,4 +38,5 @@ layout_mode = 2
 text = "Exit"
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue" to="." method="OnContinueGamePressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/NewGame" to="." method="NewGamePressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Exit" to="." method="OnExitPressed"]

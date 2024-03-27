@@ -47,10 +47,10 @@ public partial class SceneSelect : Menu
 		if (Global.CurrentSceneIndex == Global.SaveFile.SceneProgress)
 		{
 			_next.Visible = false;
-            _timeToBeat.Visible = false;
-            _timeTrial.Visible = false;
-            _summary.Visible = false;
-        }
+			_timeToBeat.Visible = false;
+			_timeTrial.Visible = false;
+			_summary.Visible = false;
+		}
 
 		// if first scene, remove previous button
 		if (Global.CurrentSceneIndex == 0)
@@ -65,14 +65,28 @@ public partial class SceneSelect : Menu
 
 				_title.Text = Global.CurrentLevelStats.Title;
 
-				_summary.Text 
-					= $"Most Jars: 0/{Global.CurrentLevelStats.NumberOfCollectables}\n"
-					+ $"Best Time: 0s";
+				if (_summary.Visible)
+				{
+					if (Global.SaveFile.MaxJars.ContainsKey(Global.CurrentSceneIndex))
+					{
+						_summary.Text
+							= $"Most Jars: {Global.SaveFile.MaxJars[Global.CurrentSceneIndex]}"
+							+ $"/{Global.CurrentLevelStats.NumberOfCollectables}\n";
+
+						GD.Print(Global.SaveFile.MaxJars[Global.CurrentSceneIndex]);
+					}
+
+					if (Global.SaveFile.TimeTrialTimes.ContainsKey(Global.CurrentSceneIndex))
+					{
+						_summary.Text
+							+= $"Best Time: {Global.SaveFile.TimeTrialTimes[Global.CurrentSceneIndex]}s";
+					}
+				}
 
 				_timeToBeat.Text
 					= $"Time to beat: {Global.CurrentLevelStats.Time}s";
 
-                break;
+				break;
 
 
 			case Global.SceneTypes.Story:
