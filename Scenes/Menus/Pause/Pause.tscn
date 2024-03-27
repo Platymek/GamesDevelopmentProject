@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjyh4d4koleoq"]
+[gd_scene load_steps=3 format=3 uid="uid://bjyh4d4koleoq"]
 
 [ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_274gp"]
+[ext_resource type="Script" path="res://Scenes/Menus/Pause/Pause.cs" id="2_wovx1"]
 
 [node name="Pause" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_274gp")]
+script = ExtResource("2_wovx1")
+_hints = PackedStringArray("Pause and unpause for a bunch of hints!", "Hold reload for a faster second reload", "High Jump by Jumping whilst not moving", "You can reload in mid-air", "Reloading makes you turn instantly in any direction", "Reloading will always keep your momentum on the ground", "You can bounce off bullets", "Press R or Select for an instant retry")
 FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue")
 
 [node name="Label" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
@@ -11,20 +14,31 @@ theme_type_variation = &"Title"
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Continue" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
+[node name="HintLabel" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+text = "Hint"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
 layout_mode = 2
 text = "Continue"
 
-[node name="Restart" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
+[node name="Restart" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
 layout_mode = 2
 text = "Restart
 "
 
-[node name="SceneSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+[node name="SceneSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
 layout_mode = 2
 text = "Back to Level Select
 "
 
+[connection signal="visibility_changed" from="." to="." method="OnVisibilityChanged"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue" to="." method="OnContinuePressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Restart" to="." method="OnRetryPressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/SceneSelect" to="." method="OnContinueGamePressed"]

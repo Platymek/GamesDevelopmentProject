@@ -22,7 +22,6 @@ public partial class Level : Node3D
 
 		set
 		{
-			_hud.Visible = !value;
 			_pause.Visible = value;
 			_pause.Focus();
 			GetTree().Paused = value;

@@ -454,6 +454,19 @@ _teamToDetect = 1
 transform = Transform3D(8.74228e-08, -1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 1, 8.74228e-08, 4.37114e-08, 0, -1, -5.5005)
 shape = SubResource("BoxShape3D_jqeth")
 
+[node name="Hints" type="Node3D" parent="." index="10"]
+
+[node name="Label3D" type="Label3D" parent="Hints" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 192, 0.1, 20)
+pixel_size = 0.02
+text = "You can reload
+ in mid-air!
+
+Try jumping,
+then reloading,
+then jumping, 
+then reloading..."
+
 [connection signal="Detected" from="Checkpoints/Checkpoint2" to="Checkpoints/Checkpoint2" method="OnDetected"]
 [connection signal="Detected" from="Checkpoints/Checkpoint3" to="Checkpoints/Checkpoint3" method="OnDetected"]
 [connection signal="Detected" from="Checkpoints/Checkpoint4" to="Checkpoints/Checkpoint4" method="OnDetected"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn5ni53d42opk"]
+[gd_scene load_steps=19 format=3 uid="uid://cn5ni53d42opk"]
 
 [ext_resource type="Theme" uid="uid://b5elv26uyd1hp" path="res://Scenes/Menus/Theme.tres" id="1_32uc5"]
 [ext_resource type="Script" path="res://Scenes/Levels/HUD/HUD.cs" id="2_e71wi"]
@@ -7,12 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://1utstt2moydl" path="res://Scenes/Levels/HUD/Health.svg" id="5_x14au"]
 [ext_resource type="Texture2D" uid="uid://dlocl6sohh4qj" path="res://Scenes/Levels/HUD/ShellEmpty.svg" id="6_a2onf"]
 [ext_resource type="Texture2D" uid="uid://bewgqeruqjgwm" path="res://Scenes/Levels/HUD/Shell.svg" id="7_ykjul"]
+[ext_resource type="Shader" path="res://Scenes/Levels/HUD/ReloadPrompt.gdshader" id="8_6si1l"]
 [ext_resource type="Texture2D" uid="uid://ihsikvufbjno" path="res://Scenes/Levels/HUD/JarEmpty.svg" id="8_qfa6h"]
 [ext_resource type="Texture2D" uid="uid://djfg1gwccr5di" path="res://Scenes/Levels/HUD/Jar.svg" id="9_rdfne"]
+[ext_resource type="Texture2D" uid="uid://cyatu88h2fiwk" path="res://KennyInputPrompts/Nintendo Switch/Vector/switch_buttons_down.svg" id="10_20jtd"]
+[ext_resource type="Texture2D" uid="uid://dwqakesk3ilo8" path="res://KennyInputPrompts/Keyboard & Mouse/Vector/keyboard_space.svg" id="11_exb3x"]
+[ext_resource type="Texture2D" uid="uid://cb6askp22slpc" path="res://KennyInputPrompts/Nintendo Switch/Vector/switch_button_r.svg" id="12_8ogxn"]
+[ext_resource type="Texture2D" uid="uid://cx73rnrhslgmf" path="res://KennyInputPrompts/Nintendo Switch/Vector/switch_buttons_left.svg" id="12_cp3g6"]
+[ext_resource type="Texture2D" uid="uid://cvtcwyartqhxe" path="res://KennyInputPrompts/Keyboard & Mouse/Vector/mouse_left.svg" id="13_7ca74"]
+[ext_resource type="Texture2D" uid="uid://dm36ks6y44sqr" path="res://KennyInputPrompts/Keyboard & Mouse/Vector/mouse_right.svg" id="13_7hfdi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8tl5"]
 shader = ExtResource("3_tjywx")
 shader_parameter/dropOffPoint = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6y84"]
+shader = ExtResource("8_6si1l")
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -90,6 +100,26 @@ fill_mode = 1
 texture_under = ExtResource("6_a2onf")
 texture_progress = ExtResource("7_ykjul")
 
+[node name="Hint" type="Label" parent="Shells"]
+material = SubResource("ShaderMaterial_n6y84")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = 30.0
+offset_right = 4.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Reload"
+horizontal_alignment = 1
+
 [node name="EmptyJars" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -119,6 +149,93 @@ grow_vertical = 0
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="FullJars"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("9_rdfne")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -120.0
+offset_right = -51.0
+offset_bottom = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="JumpHint" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/JumpHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Jump"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/JumpHint"]
+layout_mode = 2
+texture = ExtResource("10_20jtd")
+expand_mode = 2
+
+[node name="Slash" type="Label" parent="VBoxContainer/JumpHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/JumpHint"]
+layout_mode = 2
+texture = ExtResource("11_exb3x")
+expand_mode = 2
+
+[node name="ShootHint" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ShootHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Shoot"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShootHint"]
+layout_mode = 2
+texture = ExtResource("12_cp3g6")
+expand_mode = 2
+
+[node name="Slash" type="Label" parent="VBoxContainer/ShootHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShootHint"]
+layout_mode = 2
+texture = ExtResource("13_7ca74")
+expand_mode = 2
+
+[node name="ReloadHint" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ReloadHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Reload"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ReloadHint"]
+layout_mode = 2
+texture = ExtResource("12_8ogxn")
+expand_mode = 2
+
+[node name="Slash" type="Label" parent="VBoxContainer/ReloadHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ReloadHint"]
+layout_mode = 2
+texture = ExtResource("13_7hfdi")
+expand_mode = 2

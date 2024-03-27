@@ -7,6 +7,7 @@ public partial class HUD : Control
 
 	private TextureProgressBar _health;
 	private TextureProgressBar _shells;
+	private Label _reloadHint;
 	private Label _time;
 	private Level _level;
 	private Control _emptyJars;
@@ -21,7 +22,9 @@ public partial class HUD : Control
 
 		_health = GetNode<TextureProgressBar>("Health");
 		_shells = GetNode<TextureProgressBar>("Shells");
-		_time	= GetNode<Label>("Time");
+		_reloadHint = _shells.GetNode<Label>("Hint");
+
+        _time	= GetNode<Label>("Time");
 		_level	= GetParent<Level>();
 		_emptyJars = GetNode<Control>("EmptyJars");
 		_fullJars = GetNode<Control>("FullJars");
@@ -49,6 +52,8 @@ public partial class HUD : Control
 
 		_health.Value = _player.Health;
 		_shells.Value = _player.Ammo;
+
+		_reloadHint.Visible = _player.Ammo == 0;
 
         _time.Text = $"Time: {Mathf.Round(_level.Time)}";
 	}
