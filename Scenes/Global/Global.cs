@@ -14,6 +14,7 @@ public partial class Global : Node
 	[Export] public Array<SceneTypes> Scenes;
 	[Export] public SaveFile SaveFile;
 	public int CurrentSceneIndex;
+	private SceneTypes _currentSceneType;
 
 
     private Areas AreasNode;
@@ -83,7 +84,7 @@ public partial class Global : Node
         GetTree().Quit();
     }
 
-	public void LoadSceneIndex(int index)
+	public void LoadSceneStats(int index)
 	{
 		int levelIndex = 0;
 		int storyIndex = 0;
@@ -101,6 +102,7 @@ public partial class Global : Node
                         (int)AreasNode.Levels[levelIndex].Y);
 
 					levelIndex++;
+                    _currentSceneType = SceneTypes.Level;
 
                     break;
 
@@ -110,11 +112,33 @@ public partial class Global : Node
                     CurrentStoryStats = GetStoryStats(storyIndex);
 
 					storyIndex++;
+                    _currentSceneType = SceneTypes.Story;
 
                     break;
             }
 		}
-	}
+    }
+
+	public void LoadScene(int index)
+	{
+		LoadSceneStats(index);
+
+        switch (_currentSceneType)
+        {
+            case SceneTypes.Level:
+
+                LoadLevel(CurrentLevelStats);
+
+                break;
+
+
+            case SceneTypes.Story:
+
+                LoadStory(CurrentStoryStats);
+
+                break;
+        }
+    }
 
 	public void Progress()
 	{

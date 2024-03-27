@@ -7,7 +7,7 @@ public partial class Level : Node3D
 	[Signal] public delegate void JarCollectedEventHandler(int index);
 
 	private Global _global;
-	private Control _hud;
+	private HUD _hud;
 	private Menu _pause;
 	public Checkpoint LastCheckpoint;
 
@@ -38,8 +38,9 @@ public partial class Level : Node3D
 		_global = GetNode<Global>("/root/Global");
 		_hud = GetNode<HUD>("Hud");
 		_pause = GetNode<Menu>("Pause");
+        GetNode<Node3D>("ColourJars").Visible = !_global.TimeTrialMode;
 
-		Collectables = new bool[_global.CurrentLevelStats.NumberOfCollectables];
+        Collectables = new bool[_global.CurrentLevelStats.NumberOfCollectables];
 
 		Time = 0;
 		Paused = false;
@@ -83,8 +84,14 @@ public partial class Level : Node3D
 		_global.PreviousTime = Time;
 		_global.Progress();
 
-        _global.LoadMenu(Global.Menus.YouWin);
-	}
+		if (!_global.TimeTrialMode)
+        {
+            _global.LoadMenu(Global.Menus.YouWin);
+			return;
+        }
+
+        _global.LoadMenu(Global.Menus.YouWinTimeTrial);
+    }
 
 	
 	// Other Functions //

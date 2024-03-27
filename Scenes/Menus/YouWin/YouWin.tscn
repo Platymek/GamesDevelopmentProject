@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://nkd4hsg3amji"]
+[gd_scene load_steps=3 format=3 uid="uid://nkd4hsg3amji"]
 
 [ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_n3ahl"]
+[ext_resource type="Script" path="res://Scenes/Menus/YouWin/YouWin.cs" id="2_w5yuv"]
 
 [node name="YouWin" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_n3ahl")]
+script = ExtResource("2_w5yuv")
 FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Next")
 
 [node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
@@ -19,4 +21,5 @@ text = "Next Level"
 layout_mode = 2
 text = "Back to Level Select"
 
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Next" to="." method="NextLevelPressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/LevelSelect" to="." method="OnContinueGamePressed"]

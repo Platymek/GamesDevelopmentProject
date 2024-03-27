@@ -39,14 +39,20 @@ public partial class SceneSelect : Menu
 		
 
 		CurrentSceneType = Global.Scenes[Global.CurrentSceneIndex];
-		Global.LoadSceneIndex(Global.CurrentSceneIndex);
+		Global.LoadSceneStats(Global.CurrentSceneIndex);
 
 
+		// if first time playing the level, hide the level stats such as how many jars collected
+		// and time trial reqs as well as next level button
 		if (Global.CurrentSceneIndex == Global.SaveFile.SceneProgress)
 		{
 			_next.Visible = false;
-		}
+            _timeToBeat.Visible = false;
+            _timeTrial.Visible = false;
+            _summary.Visible = false;
+        }
 
+		// if first scene, remove previous button
 		if (Global.CurrentSceneIndex == 0)
 		{
 			_previous.Visible = false;
@@ -66,7 +72,8 @@ public partial class SceneSelect : Menu
 				_timeToBeat.Text
 					= $"Time to beat: {Global.CurrentLevelStats.Time}s";
 
-				break;
+                break;
+
 
 			case Global.SceneTypes.Story:
 
@@ -87,21 +94,7 @@ public partial class SceneSelect : Menu
 	{
 		Global.TimeTrialMode = timeTrialMode;
 
-
-		switch (CurrentSceneType)
-		{
-			case Global.SceneTypes.Level:
-
-				Global.LoadLevel(Global.CurrentLevelStats);
-
-				break;
-
-			case Global.SceneTypes.Story:
-
-				Global.LoadStory(Global.CurrentStoryStats);
-
-				break;
-		}
+		Global.LoadScene(Global.CurrentSceneIndex);
 	}
 
 	private void Next()

@@ -20,19 +20,11 @@ layout_mode = 2
 text = "Restart
 "
 
-[node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+[node name="SceneSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
 layout_mode = 2
-text = "Back to Menu
+text = "Back to Level Select
 "
-
-[node name="Splitter" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
-layout_mode = 2
-
-[node name="Exit" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
-layout_mode = 2
-text = "Exit"
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue" to="." method="OnContinuePressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Restart" to="." method="OnRetryPressed"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Menu" to="." method="OnMenuPressed"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/SceneSelect" to="." method="OnContinueGamePressed"]

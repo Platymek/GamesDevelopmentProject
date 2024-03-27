@@ -79,7 +79,7 @@ public partial class Player : Actor
 						Angle = _aimAngle;
 					}
 
-					if (Velocity.Y < 0)
+					if (Velocity.Y <= 0)
 					{
 						HaltFall();
 					}
