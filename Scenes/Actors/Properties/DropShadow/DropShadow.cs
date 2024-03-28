@@ -3,6 +3,8 @@ using System;
 
 public partial class DropShadow : RayCast3D
 {
+	[Export] private bool _alwaysShow = false;
+	
 	private Node3D _shadow;
 
 	// Called when the node enters the scene tree for the first time.
@@ -18,7 +20,7 @@ public partial class DropShadow : RayCast3D
 	{
 		base._Process(delta);
 
-		_shadow.Visible = IsColliding();
+		_shadow.Visible = IsColliding() || _alwaysShow;
 		_shadow.GlobalPosition = GetCollisionPoint() + Vector3.Up * 0.2f;
 	}
 }

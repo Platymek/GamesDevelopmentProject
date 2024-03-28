@@ -155,6 +155,7 @@ pause={
 
 3d_physics/layer_1="Solid"
 3d_physics/layer_2="Shadows"
+3d_physics/layer_3="AimAssist"
 
 [rendering]
 

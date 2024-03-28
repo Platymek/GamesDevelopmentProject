@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=31 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/GlobalActors/Player/Model/tankBase.glb" id="1_gbn4w"]
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/Player/Player.cs" id="1_gojm8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.cs" id="9_qcm6b"]
 [ext_resource type="PackedScene" uid="uid://xad3oshmxwi6" path="res://Scenes/Actors/Properties/Detectable/Detectable.tscn" id="10_75tex"]
 [ext_resource type="PackedScene" uid="uid://cavwo54dab4w6" path="res://Scenes/Actors/Properties/DropShadow/DropShadow.tscn" id="10_ko3ud"]
+[ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="14_p3s3m"]
 
 [sub_resource type="Animation" id="Animation_usvlc"]
 length = 0.001
@@ -551,12 +552,17 @@ height = 24
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sl5mr"]
+height = 1.0
+radius = 9.0
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
 _knockBackStrength = 6.0
 _launchHeight = 2.5
 _launchSpeedMultiplier = 2.5
 State = "idle"
+AimAssistStrength = 0.3
 FallingAcceleration = 32.0
 MaxHealth = 3
 RotationSpeed = 0.5
@@ -589,12 +595,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8, 
 
 [node name="TankTurret" type="Node3D" parent="Model/TankBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
-
-[node name="AimReticle" parent="Model/TankBase/TankTurret" instance=ExtResource("10_ko3ud")]
-transform = Transform3D(80, 0, 0, 0, -3.49691e-06, -80, 0, 80, -3.49691e-06, 0, 0, -12)
-
-[node name="Target" parent="Model/TankBase/TankTurret/AimReticle" instance=ExtResource("7_jwp6q")]
-transform = Transform3D(-4.37114e-09, -4.37114e-09, 0.1, -0.1, -4.37114e-09, -4.37114e-09, 4.37114e-09, -0.1, -4.37114e-09, 0, 0, 0)
 
 [node name="TankTurretModel" parent="Model/TankBase/TankTurret" instance=ExtResource("3_mno7v")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
@@ -642,6 +642,7 @@ font_size = 64
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
 
 [node name="Pointer" type="Node3D" parent="."]
+visible = false
 
 [node name="PointerModel" parent="Pointer" instance=ExtResource("8_pbnn7")]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
@@ -673,7 +674,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="DropShadow" parent="." instance=ExtResource("10_ko3ud")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.1, 0)
+transform = Transform3D(8, 0, 0, 0, 16, 0, 0, 0, 8, 0, -0.1, 0)
 
 [node name="Shadow" type="Sprite3D" parent="DropShadow"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -681,6 +682,27 @@ texture = SubResource("GradientTexture2D_4y7i8")
 
 [node name="SetRespawnTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="AimAssistDetector" parent="." instance=ExtResource("14_p3s3m")]
+collision_layer = 4
+collision_mask = 4
+_teamToDetect = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AimAssistDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+shape = SubResource("CylinderShape3D_sl5mr")
+
+[node name="AimReticle" type="Node3D" parent="."]
+
+[node name="Target" parent="AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(-3.49691e-08, -3.49691e-08, 0.8, -7.10543e-15, 0.8, 3.49691e-08, -0.8, -7.10543e-15, -3.49691e-08, 0, 1, -5)
+
+[node name="AimReticle" parent="AimReticle" instance=ExtResource("10_ko3ud")]
+transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, 1, 0)
+collision_mask = 1
+
+[node name="Target" parent="AimReticle/AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(-4.37114e-09, -4.37114e-09, 0.1, -0.1, -4.37114e-09, -4.37114e-09, 4.37114e-09, -0.1, -4.37114e-09, 0, 0, 0)
 
 [connection signal="timeout" from="InputBuffer" to="." method="OnInputBufferTimeout"]
 [connection signal="timeout" from="SetRespawnTimer" to="." method="OnSetRespawnTimerTimeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dku13efnbw0ji"]
+[gd_scene load_steps=25 format=3 uid="uid://dku13efnbw0ji"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.cs" id="1_0s63o"]
 [ext_resource type="PackedScene" uid="uid://bxce4j48bn415" path="res://Scenes/Actors/GlobalActors/TechnoCultist/Model/TechnoCultistBase.glb" id="1_8dnrc"]
@@ -383,6 +383,9 @@ height = 24
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8v7sy"]
+radius = 1.0
+
 [node name="TechnoCultist" type="CharacterBody3D"]
 script = ExtResource("1_0s63o")
 Team = 2
@@ -421,7 +424,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_ahgth")
 
 [node name="Hitbox" parent="." instance=ExtResource("5_h0yno")]
-_bounceHeight = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -465,6 +467,15 @@ collide_with_areas = true
 [node name="Shadow" type="Sprite3D" parent="DropShadow"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 texture = SubResource("GradientTexture2D_km14e")
+
+[node name="AimAssistDetectable" parent="." instance=ExtResource("8_53w5a")]
+collision_layer = 4
+collision_mask = 4
+Team = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AimAssistDetectable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_8v7sy")
 
 [connection signal="Detected" from="Chase" to="." method="OnDetectorDetected"]
 [connection signal="NotDetecting" from="Chase" to="." method="OnDetectorNotDetecting"]

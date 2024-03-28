@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 public partial class Player : Actor
 {
@@ -90,10 +92,7 @@ public partial class Player : Actor
 				case "fire":
 
 					// snap angle in direction of stick
-					if (Moving)
-					{
-						Angle = _aimAngle;
-					}
+					Angle = AimAssistAngle;
 
 					_canMove = false;
 					_canFall = false;
@@ -106,7 +105,10 @@ public partial class Player : Actor
 					HaltFall();
 					Speed = -_knockBackStrength;
 
-					break;
+					// snap aim reticle to zero
+                    _aimReticle.Rotation = Vector3.Zero;
+
+                    break;
 
 
 				case "reload_quick":
@@ -174,8 +176,10 @@ public partial class Player : Actor
 	private Emitter _explosionEmitter;
 	private Node3D _pointer;
 	private Timer _inputBufferTimer;
+	private Detector _aimAssistDetector;
+    private Node3D _aimReticle;
 
-	private Label3D _velocityLabel;
+    private Label3D _velocityLabel;
 	private Label3D _stateLabel;
 	private Label3D _ammoLabel;
 	private Label3D _bufferLabel;
@@ -221,6 +225,34 @@ public partial class Player : Actor
 		}
 	}
 
+	[Export (PropertyHint.Range, "0,1")] private float AimAssistStrength = 0.2f;
+	private float AimAssistAngle
+	{
+		get
+		{
+			float aimAssistAngle = _aimAngle;
+			List<float> anglesToEnemies = new();
+			Vector2 myPosition2D = new(-Position.Z, -Position.X);
+
+            foreach (Node3D a in _aimAssistDetector.DetectedActors)
+            {
+                Vector2 aPosition2D = new(-a.Position.Z, -a.Position.X);
+
+                float angle = myPosition2D.AngleToPoint(aPosition2D);
+				anglesToEnemies.Add(angle);
+			}
+
+			if (anglesToEnemies.Count > 0)
+			{
+                aimAssistAngle = SnapAngle(aimAssistAngle, anglesToEnemies.ToArray(),
+					AimAssistStrength * Mathf.Pi);
+
+            }
+
+            return aimAssistAngle;
+		}
+	}
+
 	private bool Moving =>
 		Input.GetVector(
 			"Down", "Up",
@@ -246,7 +278,11 @@ public partial class Player : Actor
 			("Pointer");
 		_inputBufferTimer = GetNode<Timer>
 			("InputBuffer");
-
+        _aimAssistDetector = GetNode<Detector>
+            ("AimAssistDetector");
+        _aimReticle = GetNode<Node3D>
+            ("AimReticle"); 
+		
 		_aimAngle = Angle;
 		_state = "idle";
 		_canReload = true;
@@ -271,17 +307,33 @@ public partial class Player : Actor
 	{
 		base._Process(delta);
 
+		// if the stick is being moved, the shooting aims in the direction
+		// that the player is pointing the stick. Otherwise, directly forward
 		if (Moving)
 		{
 			_aimAngle = StickAngle;
 		}
+		else
+		{
+			_aimAngle = Angle;
+		}
 
+		// point floor pointer
 		_pointer.Rotation = Vector3.Up * (_aimAngle - Angle);
-		
-		
-		// Input Buffer //
 
-		string[] actions = new[] { "reload", "launch", "fire" };
+		// point aiming reticle
+        _aimReticle.Rotation = Vector3.Up * Mathf.LerpAngle(
+			_aimReticle.Rotation.Y, AimAssistAngle - Angle, 
+			(float)delta * 20f);
+
+		// hide static aim reticle if auto aim reticle detected
+		_aimReticle.GetNode<Node3D>("Target").Visible =
+			!_aimReticle.GetNode<RayCast3D>("AimReticle").IsColliding();
+
+
+        // Input Buffer //
+
+        string[] actions = new[] { "reload", "launch", "fire" };
 
 		foreach (string action in actions)
 		{
@@ -295,12 +347,6 @@ public partial class Player : Actor
 		
 
 		// Horizontal Movement //
-
-		// get horizontal velocity
-		var currentVelocity = new Vector2(Velocity.X, Velocity.Z);
-
-		// get current speed
-		float currentSpeed = currentVelocity.Length();
 
 		// if the stick is being moved
 		if (_canMove)
@@ -471,8 +517,9 @@ public partial class Player : Actor
 		foreach (float snapAngle in snapAngles)
 		{
 			float angleDifference = Mathf.Abs(Mathf.AngleDifference(snapAngle, angle));
+            GD.Print($"{angleDifference}, {tolerance} : {angleDifference < tolerance}");
 
-			if (angleDifference < tolerance)
+            if (angleDifference < tolerance)
 			{
 				return snapAngle;
 			}
