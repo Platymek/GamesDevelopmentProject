@@ -38,9 +38,9 @@ public partial class Level : Node3D
 		_global = GetNode<Global>("/root/Global");
 		_hud = GetNode<HUD>("Hud");
 		_pause = GetNode<Menu>("Pause");
-        GetNode<Node3D>("ColourJars").Visible = !_global.TimeTrialMode;
+		GetNode<Node3D>("ColourJars").Visible = !_global.TimeTrialMode;
 
-        Collectables = new bool[_global.CurrentLevelStats.NumberOfCollectables];
+		Collectables = new bool[_global.CurrentLevelStats.NumberOfCollectables];
 
 		Time = 0;
 		TotalCollected = 0;
@@ -86,16 +86,16 @@ public partial class Level : Node3D
 		_global.Progress();
 
 		if (!_global.TimeTrialMode)
-        {
+		{
 			GD.Print(TotalCollected);
 			_global.SaveMaxJars(TotalCollected);
-            _global.LoadMenu(Global.Menus.YouWin);
+			_global.LoadMenu(Global.Menus.YouWin);
 			return;
-        }
+		}
 
-        _global.SaveTimeTrial((int)Time);
-        _global.LoadMenu(Global.Menus.YouWinTimeTrial);
-    }
+		_global.SaveTimeTrial((int)Time);
+		_global.LoadMenu(Global.Menus.YouWinTimeTrial);
+	}
 
 	
 	// Other Functions //
@@ -112,7 +112,7 @@ public partial class Level : Node3D
 		Collectables[index] = true;
 		TotalCollected++;
 
-        EmitSignal(SignalName.JarCollected, index);
+		EmitSignal(SignalName.JarCollected, index);
 	}
 
 	public void Pause()

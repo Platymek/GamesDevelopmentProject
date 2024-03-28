@@ -37,6 +37,9 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -16, 0)
 shape = SubResource("WorldBoundaryShape3D_5cgvc")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera"]
+current = true
+
 [node name="Actors" type="Node3D" parent="."]
 process_mode = 1
 

@@ -31,9 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"color9": {
+"Target": {
 "use_external/enabled": true,
-"use_external/path": "res://Scenes/Actors/Player/Model/color9.tres"
+"use_external/path": "res://Scenes/Actors/GlobalActors/Player/Model/Target.tres"
 }
 }
 }

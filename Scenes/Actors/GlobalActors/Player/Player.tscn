@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cudu7cnjbdf0o"]
+[gd_scene load_steps=35 format=3 uid="uid://cudu7cnjbdf0o"]
 
 [ext_resource type="PackedScene" uid="uid://c2l5j6kqkpjw7" path="res://Scenes/Actors/GlobalActors/Player/Model/tankBase.glb" id="1_gbn4w"]
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/Player/Player.cs" id="1_gojm8"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://xad3oshmxwi6" path="res://Scenes/Actors/Properties/Detectable/Detectable.tscn" id="10_75tex"]
 [ext_resource type="PackedScene" uid="uid://cavwo54dab4w6" path="res://Scenes/Actors/Properties/DropShadow/DropShadow.tscn" id="10_ko3ud"]
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="14_p3s3m"]
+[ext_resource type="AudioStream" uid="uid://b6e71gk5w3pyo" path="res://Scenes/Actors/GlobalActors/Player/Model/jump.wav" id="15_i51kj"]
+[ext_resource type="AudioStream" uid="uid://bitavu5moraem" path="res://Scenes/Actors/GlobalActors/Player/Model/hurt.wav" id="16_gafkf"]
+[ext_resource type="AudioStream" uid="uid://cbb8owy1g218b" path="res://Scenes/Actors/GlobalActors/Player/Model/reload.wav" id="17_jxpbx"]
+[ext_resource type="AudioStream" uid="uid://ymuung6rg7sf" path="res://Scenes/Actors/GlobalActors/Player/Model/shoot.wav" id="18_toqxx"]
 
 [sub_resource type="Animation" id="Animation_usvlc"]
 length = 0.001
@@ -174,7 +178,7 @@ tracks/0/path = NodePath("Model/TankBase/TankTurret:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
+"times": PackedFloat32Array(0, 0.05, 0.3),
 "transitions": PackedFloat32Array(3, 0.25, 1),
 "update": 0,
 "values": [Vector3(0, 14, 0), Vector3(0, 14, 3), Vector3(0, 14, 0)]
@@ -186,7 +190,7 @@ tracks/1/path = NodePath("Model/TankBase/TankTurret:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
+"times": PackedFloat32Array(0, 0.05, 0.3),
 "transitions": PackedFloat32Array(3, 0.25, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.523599, 0, 0), Vector3(0, 0, 0)]
@@ -198,7 +202,7 @@ tracks/2/path = NodePath(".:State")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["idle"]
@@ -226,6 +230,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sounds/Shoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_iwqnp"]
@@ -278,6 +296,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["idle"]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sounds/Hurt")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_gn55w"]
@@ -431,6 +463,20 @@ tracks/4/keys = {
 "update": 1,
 "values": ["idle"]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sounds/Jump")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_x6qwp"]
 resource_name = "reload"
@@ -472,6 +518,20 @@ tracks/2/keys = {
 "update": 1,
 "values": ["reload_quick"]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Reload")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_nmh4e"]
 resource_name = "reload_quick"
@@ -482,7 +542,7 @@ tracks/0/path = NodePath("Model/TankBase:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0)]
@@ -494,7 +554,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -508,10 +568,24 @@ tracks/2/path = NodePath(".:State")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["idle"]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Reload")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eumyy"]
@@ -554,7 +628,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sl5mr"]
 height = 1.0
-radius = 9.0
+radius = 6.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gojm8")
@@ -562,7 +636,7 @@ _knockBackStrength = 6.0
 _launchHeight = 2.5
 _launchSpeedMultiplier = 2.5
 State = "idle"
-AimAssistStrength = 0.3
+AimAssistStrength = 0.17
 FallingAcceleration = 32.0
 MaxHealth = 3
 RotationSpeed = 0.5
@@ -694,15 +768,29 @@ shape = SubResource("CylinderShape3D_sl5mr")
 
 [node name="AimReticle" type="Node3D" parent="."]
 
-[node name="Target" parent="AimReticle" instance=ExtResource("7_jwp6q")]
-transform = Transform3D(-3.49691e-08, -3.49691e-08, 0.8, -7.10543e-15, 0.8, 3.49691e-08, -0.8, -7.10543e-15, -3.49691e-08, 0, 1, -5)
-
 [node name="AimReticle" parent="AimReticle" instance=ExtResource("10_ko3ud")]
-transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, 1, 0)
+transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, 1, -0.9)
 collision_mask = 1
 
-[node name="Target" parent="AimReticle/AimReticle" instance=ExtResource("7_jwp6q")]
-transform = Transform3D(-4.37114e-09, -4.37114e-09, 0.1, -0.1, -4.37114e-09, -4.37114e-09, 4.37114e-09, -0.1, -4.37114e-09, 0, 0, 0)
+[node name="Target2" parent="AimReticle/AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(0.125, 0, 0, 0, -5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, -1.05, 4.47035e-08)
+
+[node name="Target" parent="AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("15_i51kj")
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("16_gafkf")
+
+[node name="Reload" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("17_jxpbx")
+
+[node name="Shoot" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("18_toqxx")
 
 [connection signal="timeout" from="InputBuffer" to="." method="OnInputBufferTimeout"]
 [connection signal="timeout" from="SetRespawnTimer" to="." method="OnSetRespawnTimerTimeout"]

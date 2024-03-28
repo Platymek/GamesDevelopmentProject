@@ -91,22 +91,21 @@ public partial class Player : Actor
 
 				case "fire":
 
-					// snap angle in direction of stick
-					Angle = AimAssistAngle;
+                    // snap angle in direction of stick
+                    Angle = AimAssistAngle;
 
 					_canMove = false;
 					_canFall = false;
 					CanDecelerate = false;
+					_canAccelerate = false;
+					_canTurn = false;
 
-					// fire a shell
-					_shellEmitter.Emit();
+                    // fire a shell
+                    _shellEmitter.Emit();
 
 					Halt();
 					HaltFall();
 					Speed = -_knockBackStrength;
-
-					// snap aim reticle to zero
-                    _aimReticle.Rotation = Vector3.Zero;
 
                     break;
 
@@ -517,7 +516,6 @@ public partial class Player : Actor
 		foreach (float snapAngle in snapAngles)
 		{
 			float angleDifference = Mathf.Abs(Mathf.AngleDifference(snapAngle, angle));
-            GD.Print($"{angleDifference}, {tolerance} : {angleDifference < tolerance}");
 
             if (angleDifference < tolerance)
 			{

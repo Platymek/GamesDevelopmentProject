@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5ffdafypp36a"]
+[gd_scene load_steps=10 format=3 uid="uid://c5ffdafypp36a"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/Actor.cs" id="1_7sa8p"]
 [ext_resource type="PackedScene" uid="uid://bxqrkvflqlplr" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.tscn" id="2_n6o3g"]
 [ext_resource type="PackedScene" uid="uid://n3errh542nv0" path="res://Scenes/Actors/GlobalActors/Explosion/Model/Explosion.glb" id="3_hhpdp"]
 [ext_resource type="PackedScene" uid="uid://clafq6s6n5mdm" path="res://Scenes/Actors/GlobalActors/Explosion/Model/Dust.glb" id="4_rpfsi"]
+[ext_resource type="AudioStream" uid="uid://7mrhdqon2tey" path="res://Scenes/Actors/GlobalActors/Explosion/Model/sfx.wav" id="5_gx348"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i26r1"]
 radius = 1.5
@@ -123,6 +124,20 @@ tracks/4/keys = {
 "method": &"Hurt"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uv81r"]
 _data = {
@@ -161,3 +176,7 @@ libraries = {
 "": SubResource("AnimationLibrary_uv81r")
 }
 autoplay = "explode"
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_gx348")
+max_db = 6.0

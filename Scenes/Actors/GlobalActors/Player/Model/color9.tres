@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjtt41ufwtakh"]
-
-[resource]
-resource_name = "color9"
-albedo_color = Color(0.913725, 0.164706, 0.333333, 1)
-roughness = 0.5
-billboard_mode = 1
-billboard_keep_scale = true
