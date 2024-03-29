@@ -18,7 +18,7 @@ expand_margin_right = 16.0
 expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy6b5"]
-bg_color = Color(0.352941, 0.443137, 0.517647, 1)
+bg_color = Color(0.2, 0.6, 1, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -27,15 +27,6 @@ expand_margin_left = 8.0
 expand_margin_right = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i1un"]
-bg_color = Color(0.129412, 0.129412, 0.129412, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 8.0
-expand_margin_right = 8.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f28kl"]
 bg_color = Color(0, 0.341176, 0.65098, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -44,8 +35,17 @@ corner_radius_bottom_left = 8
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f28kl"]
+bg_color = Color(0.0784314, 0.188235, 0.266667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_3141q"]
-color = Color(0.34902, 0.364706, 0.376471, 1)
+color = Color(0, 0.341176, 0.65098, 1)
 thickness = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dde80"]
@@ -56,14 +56,14 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4xt1"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.968627, 0.819608, 0.0901961, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_fhmip"]
-color = Color(0.34902, 0.364706, 0.376471, 1)
+color = Color(0, 0.341176, 0.65098, 1)
 thickness = 8
 vertical = true
 
@@ -78,7 +78,9 @@ Button/styles/pressed = SubResource("StyleBoxFlat_f28kl")
 CheckBox/constants/h_separation = 16
 HSeparator/constants/separation = 32
 HSeparator/styles/separator = SubResource("StyleBoxLine_3141q")
-Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.0784314, 0.188235, 0.266667, 1)
+Label/constants/outline_size = 24
 MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 32
 MarginContainer/constants/margin_right = 32
@@ -90,6 +92,7 @@ SubTitle/base_type = &"Label"
 SubTitle/colors/font_color = Color(1, 1, 1, 1)
 Title/base_type = &"Label"
 Title/colors/font_color = Color(1, 1, 1, 1)
+Title/constants/outline_size = 48
 Title/font_sizes/font_size = 128
 VBoxContainer/constants/separation = 8
 VSeparator/constants/separation = 32

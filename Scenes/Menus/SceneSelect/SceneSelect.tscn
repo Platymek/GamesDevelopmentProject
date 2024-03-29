@@ -16,7 +16,6 @@ FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/Cen
 [node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Level Name"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -42,13 +41,14 @@ layout_mode = 2
 [node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="1"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="2"]
-layout_mode = 2
-text = "Play"
-
-[node name="TimeTrial" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="3"]
+[node name="TimeTrial" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="2"]
 layout_mode = 2
 text = "Time Trial"
+
+[node name="Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="3"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../HBoxContainer/Next")
+text = "Play"
 
 [node name="TimeToBeat" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="4"]
 layout_mode = 2
@@ -80,8 +80,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Exit To Desktop"
 
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Play" to="." method="Play" binds= [false]]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeTrial" to="." method="Play" binds= [true]]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Play" to="." method="Play" binds= [false]]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Previous" to="." method="Previous"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Next" to="." method="Next"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Menu" to="." method="OnExitPressed"]

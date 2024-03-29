@@ -19,7 +19,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8tl5"]
 shader = ExtResource("3_tjywx")
-shader_parameter/dropOffPoint = 0.5
+shader_parameter/dropOffPoint = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n6y84"]
 shader = ExtResource("8_6si1l")
@@ -61,7 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.372549, 0.14902, 0.513726, 0.25098)
+color = Color(0.372549, 0.14902, 0.513726, 0.603922)
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
@@ -74,6 +74,7 @@ offset_right = 320.0
 offset_bottom = -53.0
 grow_vertical = 0
 theme_type_variation = &"Title"
+theme_override_constants/outline_size = 0
 text = "Time"
 
 [node name="Health" type="TextureProgressBar" parent="."]
@@ -181,6 +182,7 @@ alignment = 2
 [node name="Label" type="Label" parent="VBoxContainer/JumpHint"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 text = "Jump"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/JumpHint"]
@@ -191,6 +193,7 @@ expand_mode = 2
 [node name="Slash" type="Label" parent="VBoxContainer/JumpHint"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 text = "/"
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/JumpHint"]
@@ -205,6 +208,7 @@ alignment = 2
 [node name="Label" type="Label" parent="VBoxContainer/ShootHint"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 text = "Shoot"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShootHint"]
@@ -215,6 +219,7 @@ expand_mode = 2
 [node name="Slash" type="Label" parent="VBoxContainer/ShootHint"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 text = "/"
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShootHint"]
@@ -229,6 +234,7 @@ alignment = 2
 [node name="Label" type="Label" parent="VBoxContainer/ReloadHint"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 text = "Reload"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ReloadHint"]
@@ -239,6 +245,7 @@ expand_mode = 2
 [node name="Slash" type="Label" parent="VBoxContainer/ReloadHint"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 text = "/"
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ReloadHint"]
