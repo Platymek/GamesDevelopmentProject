@@ -7,13 +7,13 @@ public partial class SceneSelect : Menu
 
 	public Global.SceneTypes CurrentSceneType;
 
-	private Label _title;
-	private Label _summary;
-	private Label _timeToBeat;
+	[Export] private Label _title;
+	[Export] private Label _summary;
+	[Export] private Label _timeToBeat;
 
-	private Button _next;
-	private Button _previous;
-	private Button _timeTrial;
+	[Export] private Button _next;
+	[Export] private Button _previous;
+	[Export] private Button _timeTrial;
 
 
 	// Node Functions //
@@ -22,21 +22,6 @@ public partial class SceneSelect : Menu
 	{
 		base._Ready();
 
-
-		_title = GetNode<Label>("AspectRatioContainer/CenterContainer/VBoxContainer" +
-			"/CenterContainer/PanelContainer/MarginContainer/Buttons/Title");
-		_summary = GetNode<Label>("AspectRatioContainer/CenterContainer/VBoxContainer" +
-			"/CenterContainer/PanelContainer/MarginContainer/Buttons/Summary");
-		_timeToBeat = GetNode<Label>("AspectRatioContainer/CenterContainer/VBoxContainer" +
-			"/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeToBeat");
-
-		_next = GetNode<Button>("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer" +
-			"/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Next");
-		_previous = GetNode<Button>("AspectRatioContainer/CenterContainer/VBoxContainer" +
-			"/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Previous");
-		_timeTrial = GetNode<Button>("AspectRatioContainer/CenterContainer/VBoxContainer" +
-			"/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeTrial"); 
-		
 
 		CurrentSceneType = Global.Scenes[Global.CurrentSceneIndex];
 		Global.LoadSceneStats(Global.CurrentSceneIndex);

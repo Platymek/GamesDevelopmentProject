@@ -24,7 +24,7 @@ shader_parameter/dropOffPoint = 0.5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n6y84"]
 shader = ExtResource("8_6si1l")
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" node_paths=PackedStringArray("_health", "_shells", "_reloadHint", "_time", "_emptyJars", "_fullJars")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +33,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_32uc5")
 script = ExtResource("2_e71wi")
+_health = NodePath("Health")
+_shells = NodePath("Shells")
+_reloadHint = NodePath("Shells/Hint")
+_time = NodePath("Time")
+_emptyJars = NodePath("EmptyJars")
+_fullJars = NodePath("FullJars")
 
 [node name="Top" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_v8tl5")

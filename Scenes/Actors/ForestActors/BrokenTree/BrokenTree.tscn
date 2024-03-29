@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0gv2ht51tw38"]
+[gd_scene load_steps=13 format=3 uid="uid://b0gv2ht51tw38"]
 
 [ext_resource type="PackedScene" uid="uid://8ppyokme3ayb" path="res://Scenes/Actors/Properties/Hint/Hint.tscn" id="1_b8xrn"]
 [ext_resource type="PackedScene" uid="uid://8o48fxd044yn" path="res://Scenes/Actors/ForestActors/BrokenTree/Model/TreeTrunk.glb" id="3_d7uvh"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="3_tgsi1"]
 [ext_resource type="PackedScene" uid="uid://waas3t65t1y7" path="res://Scenes/Actors/ForestActors/BrokenTree/Model/TreeStump.glb" id="4_xby8o"]
-[ext_resource type="PackedScene" uid="uid://xad3oshmxwi6" path="res://Scenes/Actors/Properties/Detectable/Detectable.tscn" id="5_kxkft"]
+[ext_resource type="AudioStream" uid="uid://dypowaaenh722" path="res://Scenes/Actors/ForestActors/BrokenTree/Model/fall.wav" id="5_m1kn3"]
 
 [sub_resource type="Gradient" id="Gradient_xndid"]
 offsets = PackedFloat32Array(0)
@@ -25,19 +25,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TrunkCollision:position")
+tracks/0/path = NodePath("Model:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 7, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TrunkCollision:rotation")
+tracks/1/path = NodePath("Model:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,10 +49,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AimAssist:monitorable")
+tracks/2/path = NodePath("TrunkCollisionFirst:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TrunkCollisionLast:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -64,38 +76,64 @@ resource_name = "fall"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TrunkCollision:position")
+tracks/0/path = NodePath("Model:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 7, 0), Vector3(0, 7, 0), Vector3(7, -2, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TrunkCollision:rotation")
+tracks/1/path = NodePath("Model:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -1.5708)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.5708)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AimAssist:monitorable")
+tracks/2/path = NodePath("TrunkCollisionFirst:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TrunkCollisionLast:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FallSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2oe4"]
@@ -103,9 +141,6 @@ _data = {
 "RESET": SubResource("Animation_xqhwl"),
 "fall": SubResource("Animation_5fhia")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3st6c"]
-size = Vector3(4, 14, 4)
 
 [node name="BrokenTree" type="StaticBody3D"]
 
@@ -117,34 +152,34 @@ pixel_size = 1.0
 texture = SubResource("GradientTexture1D_7jrw5")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_tgsi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 shape = SubResource("BoxShape3D_374vy")
 
-[node name="TrunkCollision" type="CollisionShape3D" parent="."]
+[node name="TrunkCollisionFirst" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 shape = SubResource("BoxShape3D_fbcno")
 
-[node name="TreeTrunk" parent="TrunkCollision" instance=ExtResource("3_d7uvh")]
-transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -2.875, 0, 0.25, -1.2567e-07, 0, 1.3, 0)
-
-[node name="TreeStump" parent="TrunkCollision" instance=ExtResource("4_xby8o")]
-transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, -4, 0)
+[node name="TrunkCollisionLast" type="CollisionShape3D" parent="."]
+transform = Transform3D(-3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 0, 0, 1, 7, -2, 0)
+shape = SubResource("BoxShape3D_fbcno")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m2oe4")
 }
 
-[node name="AimAssist" parent="." instance=ExtResource("5_kxkft")]
-collision_layer = 4
-collision_mask = 4
-Team = 2
+[node name="Model" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AimAssist"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
-shape = SubResource("BoxShape3D_3st6c")
+[node name="TreeTrunk" parent="Model" instance=ExtResource("3_d7uvh")]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -2.875, 0, 0.25, -1.2567e-07, 0, 8.2, 0)
+
+[node name="TreeStump" parent="Model" instance=ExtResource("4_xby8o")]
+transform = Transform3D(0.25, -1.98001e-14, -4.47035e-07, -4.47035e-07, -1.09278e-08, -0.25, -6.28036e-16, 0.25, -1.09278e-08, 0, 3, 0)
+
+[node name="FallSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_m1kn3")
 
 [connection signal="Hurt" from="Hitbox" to="AnimationPlayer" method="play" flags=6 binds= [&"fall"]]

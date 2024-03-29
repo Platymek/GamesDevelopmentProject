@@ -389,6 +389,10 @@ be found hidden in
 each level, indicated
 by the bottom left icon"
 
+[node name="VoxelGI" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132, 3.5, 0)
+size = Vector3(290, 27, 20)
+
 [connection signal="Detected" from="Checkpoints/Checkpoint2" to="Checkpoints/Checkpoint2" method="OnDetected"]
 [connection signal="Detected" from="Checkpoints/Checkpoint3" to="Checkpoints/Checkpoint3" method="OnDetected"]
 [connection signal="Detected" from="Checkpoints/Checkpoint4" to="Checkpoints/Checkpoint4" method="OnDetected"]

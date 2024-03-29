@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dku13efnbw0ji"]
+[gd_scene load_steps=26 format=3 uid="uid://dku13efnbw0ji"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/TechnoCultist/TechnoCultist.cs" id="1_0s63o"]
 [ext_resource type="PackedScene" uid="uid://bxce4j48bn415" path="res://Scenes/Actors/GlobalActors/TechnoCultist/Model/TechnoCultistBase.glb" id="1_8dnrc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="7_owejp"]
 [ext_resource type="PackedScene" uid="uid://xad3oshmxwi6" path="res://Scenes/Actors/Properties/Detectable/Detectable.tscn" id="8_53w5a"]
 [ext_resource type="PackedScene" uid="uid://cavwo54dab4w6" path="res://Scenes/Actors/Properties/DropShadow/DropShadow.tscn" id="9_ofss8"]
+[ext_resource type="AudioStream" uid="uid://wdvbt4t4owip" path="res://Scenes/Actors/GlobalActors/TechnoCultist/Model/shock.wav" id="10_o4ces"]
 
 [sub_resource type="Animation" id="Animation_ikhrj"]
 length = 0.001
@@ -342,6 +343,20 @@ tracks/5/keys = {
 "update": 1,
 "values": ["run"]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ShockSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rjkim"]
 _data = {
@@ -476,6 +491,9 @@ Team = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AimAssistDetectable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_8v7sy")
+
+[node name="ShockSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_o4ces")
 
 [connection signal="Detected" from="Chase" to="." method="OnDetectorDetected"]
 [connection signal="NotDetecting" from="Chase" to="." method="OnDetectorNotDetecting"]

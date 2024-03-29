@@ -16,8 +16,9 @@
 process_mode = 3
 script = ExtResource("1_dedyj")
 
-[node name="Hud" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_0bp4c")]
+[node name="Hud" parent="." node_paths=PackedStringArray("_player", "_level") instance=ExtResource("2_0bp4c")]
 _player = NodePath("../Actors/Player")
+_level = NodePath("..")
 
 [node name="Pause" parent="." instance=ExtResource("3_h3nho")]
 process_mode = 2
@@ -68,6 +69,8 @@ TrackX = false
 TrackY = false
 TrackZ = false
 _teamToDetect = 1
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
 
 [connection signal="JarCollected" from="." to="Hud" method="OnLevelJarCollected"]
 [connection signal="PausePressed" from="Pause" to="." method="Pause"]

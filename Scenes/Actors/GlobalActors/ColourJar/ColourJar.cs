@@ -4,6 +4,7 @@ using System;
 public partial class ColourJar : Node3D
 {
 	[Export] bool _unlocked = true;
+	[Export] AudioStreamPlayer3D _sfx;
 	bool _readyToBeUnlocked = false;
 
 
@@ -23,8 +24,9 @@ public partial class ColourJar : Node3D
 		if (!Visible || !_readyToBeUnlocked) return;
 
 		Visible = false;
+		_sfx.Play();
 
-		GetParent().GetParent<Level>().CollectJar(GetIndex());
+		GetOwner<Level>().CollectJar(GetIndex());
 	}
 
 

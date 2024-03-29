@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b468lw6msex5x"]
+[gd_scene load_steps=19 format=3 uid="uid://b468lw6msex5x"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/GlobalActors/ColourJar/ColourJar.cs" id="1_pcoxn"]
 [ext_resource type="PackedScene" uid="uid://br0t110k78v1k" path="res://Scenes/Actors/GlobalActors/ColourJar/Model/ColourJar.glb" id="1_x133g"]
 [ext_resource type="PackedScene" uid="uid://cavwo54dab4w6" path="res://Scenes/Actors/Properties/DropShadow/DropShadow.tscn" id="2_y2egc"]
 [ext_resource type="PackedScene" uid="uid://bpgrc0sckc2ky" path="res://Scenes/Actors/Properties/Detector/Detector.tscn" id="3_ntew3"]
+[ext_resource type="AudioStream" uid="uid://110r3hrnfby" path="res://Scenes/Actors/GlobalActors/ColourJar/Model/collect.wav" id="5_sahlg"]
+[ext_resource type="PackedScene" uid="uid://ghekig23v8ic" path="res://Scenes/Actors/GlobalActors/ColourJar/Model/Twinkle.glb" id="6_jasnc"]
 
 [sub_resource type="Gradient" id="Gradient_jiekd"]
 offsets = PackedFloat32Array(0.521311, 0.790164)
@@ -56,8 +58,180 @@ shadow_mesh = SubResource("ArrayMesh_u2swh")
 [sub_resource type="SphereShape3D" id="SphereShape3D_fq1fe"]
 radius = 1.0
 
-[node name="ColourJar" type="Node3D"]
+[sub_resource type="Animation" id="Animation_tc8dv"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColourJar:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0), Vector3(0, -0.2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nlfbm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColourJar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_edo63"]
+_data = {
+"RESET": SubResource("Animation_nlfbm"),
+"idle": SubResource("Animation_tc8dv")
+}
+
+[sub_resource type="Animation" id="Animation_4isfu"]
+resource_name = "twinkle"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twinkles:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twinkles/Twinkle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4), Vector3(0, 1, 0.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twinkles/Twinkle2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4), Vector3(0, -1, 0.4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twinkles/Twinkle3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4), Vector3(1, 0, 0.4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twinkles/Twinkle4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4), Vector3(-1, 0, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_hj0ia"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twinkles:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twinkles/Twinkle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twinkles/Twinkle2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twinkles/Twinkle3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twinkles/Twinkle4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uqhew"]
+_data = {
+"RESET": SubResource("Animation_hj0ia"),
+"twinkle": SubResource("Animation_4isfu")
+}
+
+[node name="ColourJar" type="Node3D" node_paths=PackedStringArray("_sfx")]
 script = ExtResource("1_pcoxn")
+_sfx = NodePath("Collect")
 
 [node name="DropShadow" parent="." instance=ExtResource("2_y2egc")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -1, 0)
@@ -79,5 +253,35 @@ _teamToDetect = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detector"]
 shape = SubResource("SphereShape3D_fq1fe")
 
+[node name="JarAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_edo63")
+}
+autoplay = "idle"
+
+[node name="TwinkleAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uqhew")
+}
+
+[node name="Collect" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_sahlg")
+
+[node name="Twinkles" type="Node3D" parent="."]
+visible = false
+
+[node name="Twinkle" parent="Twinkles" instance=ExtResource("6_jasnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="Twinkle3" parent="Twinkles" instance=ExtResource("6_jasnc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="Twinkle2" parent="Twinkles" instance=ExtResource("6_jasnc")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="Twinkle4" parent="Twinkles" instance=ExtResource("6_jasnc")]
+transform = Transform3D(1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0, 1, 0, 0, 0.4)
+
+[connection signal="visibility_changed" from="." to="TwinkleAnimations" method="play" binds= [&"twinkle"]]
 [connection signal="Detected" from="Detector" to="." method="OnDetectorDetected"]
 [connection signal="NotDetecting" from="Detector" to="." method="OnDetectorNotDetecting"]

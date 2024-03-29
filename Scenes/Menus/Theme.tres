@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b5elv26uyd1hp"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b5elv26uyd1hp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skson"]
 bg_color = Color(0.0627451, 0.796078, 0.192157, 1)
@@ -62,6 +62,11 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fhmip"]
+color = Color(0.34902, 0.364706, 0.376471, 1)
+thickness = 8
+vertical = true
+
 [resource]
 default_font_size = 48
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -87,3 +92,5 @@ Title/base_type = &"Label"
 Title/colors/font_color = Color(1, 1, 1, 1)
 Title/font_sizes/font_size = 128
 VBoxContainer/constants/separation = 8
+VSeparator/constants/separation = 32
+VSeparator/styles/separator = SubResource("StyleBoxLine_fhmip")

@@ -3,8 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://bsrhk4ar32lat" path="res://Scenes/Menus/Menu.tscn" id="1_ov83n"]
 [ext_resource type="Script" path="res://Scenes/Menus/SceneSelect/SceneSelect.cs" id="2_xfnf6"]
 
-[node name="SceneSelect" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_ov83n")]
+[node name="SceneSelect" node_paths=PackedStringArray("_title", "_summary", "_timeToBeat", "_next", "_previous", "_timeTrial", "FocusedButton") instance=ExtResource("1_ov83n")]
 script = ExtResource("2_xfnf6")
+_title = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Title")
+_summary = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Summary")
+_timeToBeat = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeToBeat")
+_next = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Next")
+_previous = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Previous")
+_timeTrial = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeTrial")
 FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Play")
 
 [node name="Title" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
@@ -33,29 +39,39 @@ layout_mode = 2
 [node name="HSeparator3" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="0"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="1"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="2"]
 layout_mode = 2
 text = "Play"
 
-[node name="TimeTrial" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="2"]
+[node name="TimeTrial" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="3"]
 layout_mode = 2
 text = "Time Trial"
 
-[node name="TimeToBeat" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="3"]
+[node name="TimeToBeat" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="4"]
 layout_mode = 2
 text = "Time to beat: 00:00:00"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="4"]
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="5"]
 layout_mode = 2
 
-[node name="Next" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="5"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="6"]
 layout_mode = 2
-text = "Next"
+alignment = 1
 
-[node name="Previous" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="6"]
+[node name="Previous" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
 text = "Previous"
+
+[node name="VSeparator" type="VSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Next" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer" index="2"]
+layout_mode = 2
+text = "Next"
 
 [node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="7"]
 layout_mode = 2
@@ -66,6 +82,6 @@ text = "Exit To Desktop"
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Play" to="." method="Play" binds= [false]]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeTrial" to="." method="Play" binds= [true]]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Next" to="." method="Next"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Previous" to="." method="Previous"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Previous" to="." method="Previous"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Next" to="." method="Next"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Menu" to="." method="OnExitPressed"]
