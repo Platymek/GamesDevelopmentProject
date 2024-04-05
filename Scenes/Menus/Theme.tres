@@ -7,42 +7,42 @@ border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.258824, 0.752941, 0.984314, 1)
+border_color = Color(0.2, 0, 0, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-expand_margin_left = 16.0
+expand_margin_left = 24.0
 expand_margin_top = 8.0
-expand_margin_right = 16.0
+expand_margin_right = 24.0
 expand_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy6b5"]
-bg_color = Color(0.2, 0.6, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq2ly"]
+bg_color = Color(0.784314, 0.439216, 0.501961, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i1un"]
-bg_color = Color(0, 0.341176, 0.65098, 1)
+bg_color = Color(0.709804, 0.160784, 0.321569, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f28kl"]
-bg_color = Color(0.0784314, 0.188235, 0.266667, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lunhc"]
+bg_color = Color(0.415686, 0.054902, 0.0823529, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_3141q"]
 color = Color(0, 0.341176, 0.65098, 1)
@@ -56,7 +56,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4xt1"]
-bg_color = Color(0.968627, 0.819608, 0.0901961, 1)
+bg_color = Color(0.2, 0.6, 1, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -70,16 +70,18 @@ vertical = true
 [resource]
 default_font_size = 48
 Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.2, 0, 0, 1)
 Button/constants/h_separation = 16
+Button/constants/outline_size = 24
 Button/styles/focus = SubResource("StyleBoxFlat_skson")
-Button/styles/hover = SubResource("StyleBoxFlat_dy6b5")
+Button/styles/hover = SubResource("StyleBoxFlat_cq2ly")
 Button/styles/normal = SubResource("StyleBoxFlat_2i1un")
-Button/styles/pressed = SubResource("StyleBoxFlat_f28kl")
+Button/styles/pressed = SubResource("StyleBoxFlat_lunhc")
 CheckBox/constants/h_separation = 16
 HSeparator/constants/separation = 32
 HSeparator/styles/separator = SubResource("StyleBoxLine_3141q")
 Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0.0784314, 0.188235, 0.266667, 1)
+Label/colors/font_outline_color = Color(0.2, 0, 0, 1)
 Label/constants/outline_size = 24
 MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 32
@@ -95,5 +97,5 @@ Title/colors/font_color = Color(1, 1, 1, 1)
 Title/constants/outline_size = 48
 Title/font_sizes/font_size = 128
 VBoxContainer/constants/separation = 8
-VSeparator/constants/separation = 32
+VSeparator/constants/separation = 64
 VSeparator/styles/separator = SubResource("StyleBoxLine_fhmip")

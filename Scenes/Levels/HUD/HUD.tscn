@@ -37,8 +37,9 @@ _health = NodePath("Health")
 _shells = NodePath("Shells")
 _reloadHint = NodePath("Shells/Hint")
 _time = NodePath("Time")
-_emptyJars = NodePath("EmptyJars")
-_fullJars = NodePath("FullJars")
+_emptyJars = NodePath("Jars/EmptyJars")
+_fullJars = NodePath("Jars/FullJars")
+metadata/_edit_use_anchors_ = true
 
 [node name="Top" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_v8tl5")
@@ -65,17 +66,11 @@ color = Color(0.372549, 0.14902, 0.513726, 0.603922)
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = -120.0
-offset_right = 320.0
-offset_bottom = -53.0
-grow_vertical = 0
-theme_type_variation = &"Title"
-theme_override_constants/outline_size = 0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 259.0
 text = "Time"
+horizontal_alignment = 1
 
 [node name="Health" type="TextureProgressBar" parent="."]
 modulate = Color(0.709804, 0.160784, 0.321569, 1)
@@ -89,21 +84,110 @@ value = 1.0
 texture_under = ExtResource("4_agc0l")
 texture_progress = ExtResource("5_x14au")
 
-[node name="Shells" type="TextureProgressBar" parent="."]
-modulate = Color(0.968627, 0.819608, 0.0901961, 1)
+[node name="Hints" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -264.0
+offset_left = -280.0
 offset_top = 64.0
-offset_right = -8.0
-offset_bottom = 224.0
+offset_right = -60.0
+offset_bottom = 215.0
 grow_horizontal = 0
+alignment = 2
+
+[node name="JumpHint" type="HBoxContainer" parent="Hints"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Hints/JumpHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Jump"
+
+[node name="TextureRect" type="TextureRect" parent="Hints/JumpHint"]
+layout_mode = 2
+texture = ExtResource("10_20jtd")
+expand_mode = 2
+
+[node name="Slash" type="Label" parent="Hints/JumpHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="Hints/JumpHint"]
+layout_mode = 2
+texture = ExtResource("11_exb3x")
+expand_mode = 2
+
+[node name="ShootHint" type="HBoxContainer" parent="Hints"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Hints/ShootHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Shoot"
+
+[node name="TextureRect" type="TextureRect" parent="Hints/ShootHint"]
+layout_mode = 2
+texture = ExtResource("12_cp3g6")
+expand_mode = 2
+
+[node name="Slash" type="Label" parent="Hints/ShootHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="Hints/ShootHint"]
+layout_mode = 2
+texture = ExtResource("13_7ca74")
+expand_mode = 2
+
+[node name="ReloadHint" type="HBoxContainer" parent="Hints"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Hints/ReloadHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Reload"
+
+[node name="TextureRect" type="TextureRect" parent="Hints/ReloadHint"]
+layout_mode = 2
+texture = ExtResource("12_8ogxn")
+expand_mode = 2
+
+[node name="Slash" type="Label" parent="Hints/ReloadHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="Hints/ReloadHint"]
+layout_mode = 2
+texture = ExtResource("13_7hfdi")
+expand_mode = 2
+
+[node name="Shells" type="TextureProgressBar" parent="."]
+modulate = Color(0.968627, 0.819608, 0.0901961, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 800.0
+offset_right = 116.0
+offset_bottom = 920.0
+grow_horizontal = 2
 scale = Vector2(0.8, 0.8)
 max_value = 2.0
 value = 1.0
-fill_mode = 1
 texture_under = ExtResource("6_a2onf")
 texture_progress = ExtResource("7_ykjul")
 
@@ -115,10 +199,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = 30.0
-offset_right = 4.0
-offset_bottom = 97.0
+offset_left = -222.0
+offset_right = 38.0
+offset_bottom = 67.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -127,128 +210,26 @@ theme_override_constants/outline_size = 4
 text = "Reload"
 horizontal_alignment = 1
 
-[node name="EmptyJars" type="HBoxContainer" parent="."]
+[node name="Jars" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = -96.0
-offset_right = 104.0
-offset_bottom = -56.0
-grow_vertical = 0
+offset_top = 160.0
+offset_right = 144.0
+offset_bottom = 256.0
+
+[node name="EmptyJars" type="HBoxContainer" parent="Jars"]
+layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="EmptyJars"]
+[node name="TextureRect" type="TextureRect" parent="Jars/EmptyJars"]
 layout_mode = 2
 texture = ExtResource("8_qfa6h")
 
-[node name="FullJars" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = -248.0
-offset_right = 224.0
-offset_bottom = -56.0
-grow_vertical = 0
+[node name="FullJars" type="HBoxContainer" parent="Jars"]
+layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="FullJars"]
+[node name="TextureRect" type="TextureRect" parent="Jars/FullJars"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("9_rdfne")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -120.0
-offset_right = -51.0
-offset_bottom = -53.0
-grow_horizontal = 0
-grow_vertical = 0
-alignment = 2
-
-[node name="JumpHint" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/JumpHint"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-text = "Jump"
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/JumpHint"]
-layout_mode = 2
-texture = ExtResource("10_20jtd")
-expand_mode = 2
-
-[node name="Slash" type="Label" parent="VBoxContainer/JumpHint"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-text = "/"
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/JumpHint"]
-layout_mode = 2
-texture = ExtResource("11_exb3x")
-expand_mode = 2
-
-[node name="ShootHint" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/ShootHint"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-text = "Shoot"
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShootHint"]
-layout_mode = 2
-texture = ExtResource("12_cp3g6")
-expand_mode = 2
-
-[node name="Slash" type="Label" parent="VBoxContainer/ShootHint"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-text = "/"
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShootHint"]
-layout_mode = 2
-texture = ExtResource("13_7ca74")
-expand_mode = 2
-
-[node name="ReloadHint" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/ReloadHint"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-text = "Reload"
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ReloadHint"]
-layout_mode = 2
-texture = ExtResource("12_8ogxn")
-expand_mode = 2
-
-[node name="Slash" type="Label" parent="VBoxContainer/ReloadHint"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-text = "/"
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ReloadHint"]
-layout_mode = 2
-texture = ExtResource("13_7hfdi")
-expand_mode = 2

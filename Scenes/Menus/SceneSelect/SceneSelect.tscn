@@ -7,7 +7,7 @@
 script = ExtResource("2_xfnf6")
 _title = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Title")
 _summary = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Summary")
-_timeToBeat = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeToBeat")
+_timeToBeat = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/TimeToBeat")
 _next = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Next")
 _previous = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/HBoxContainer/Previous")
 _timeTrial = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/TimeTrial")
@@ -29,7 +29,12 @@ text = "Most Jars: 0/5
 Best Time: 00:00:00"
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
+[node name="TimeToBeat" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
+layout_mode = 2
+text = "Time to beat: 00:00:00"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer" index="0"]
@@ -50,15 +55,10 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../HBoxContainer/Next")
 text = "Play"
 
-[node name="TimeToBeat" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="4"]
-layout_mode = 2
-text = "Time to beat: 00:00:00"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="5"]
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="4"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="6"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="5"]
 layout_mode = 2
 alignment = 1
 
@@ -73,10 +73,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Next"
 
-[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="7"]
+[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="6"]
 layout_mode = 2
 
-[node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="8"]
+[node name="Menu" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="7"]
 layout_mode = 2
 text = "Exit To Desktop"
 
