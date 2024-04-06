@@ -1,7 +1,8 @@
 [gd_resource type="Environment" load_steps=8 format=3 uid="uid://b0trs8a13sm7c"]
 
 [sub_resource type="Gradient" id="Gradient_pud48"]
-colors = PackedColorArray(0.223372, 0.000168722, 0.288537, 1, 0.968627, 0.945098, 0.792157, 1)
+offsets = PackedFloat32Array(0.135135, 1)
+colors = PackedColorArray(0.260662, 0.0937287, 0.36558, 1, 0.988235, 0.964706, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a583p"]
 gradient = SubResource("Gradient_pud48")
@@ -32,6 +33,7 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
 ssil_enabled = true
+ssil_radius = 16.0
 sdfgi_use_occlusion = true
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_a583p")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://doo5228kix4jo"]
+[gd_scene load_steps=12 format=3 uid="uid://doo5228kix4jo"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level.cs" id="1_dedyj"]
 [ext_resource type="PackedScene" uid="uid://cn5ni53d42opk" path="res://Scenes/Levels/HUD/HUD.tscn" id="2_0bp4c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8a0k0kotmg6j" path="res://Scenes/Actors/GlobalActors/Camera/Camera.tscn" id="6_ostv1"]
 [ext_resource type="PackedScene" uid="uid://cudu7cnjbdf0o" path="res://Scenes/Actors/GlobalActors/Player/Player.tscn" id="7_m4tha"]
 [ext_resource type="Script" path="res://Scenes/Levels/CameraHint.cs" id="8_i4j7t"]
+[ext_resource type="Environment" uid="uid://b0trs8a13sm7c" path="res://Scenes/Levels/DefaultEnvironment.tres" id="8_tykgt"]
 [ext_resource type="Script" path="res://Scenes/Levels/Checkpoint.cs" id="8_utlui"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5cgvc"]
@@ -49,6 +50,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 
 _level = NodePath("../..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("8_tykgt")
 
 [node name="GridMap" type="GridMap" parent="."]
 
@@ -71,6 +73,12 @@ TrackZ = false
 _teamToDetect = 1
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0794593, -0.786566, 0.612373, 0.5, 0.5, 0.707107, -0.862372, 0.362372, 0.353553, 5, 2, 0)
+light_bake_mode = 1
+shadow_enabled = true
+sky_mode = 1
 
 [connection signal="JarCollected" from="." to="Hud" method="OnLevelJarCollected"]
 [connection signal="PausePressed" from="Pause" to="." method="Pause"]

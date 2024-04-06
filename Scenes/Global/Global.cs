@@ -146,6 +146,7 @@ public partial class Global : Node
             && CurrentSceneIndex != Scenes.Count - 1)
         {
             SaveFile.SceneProgress++;
+            Save();
         }
     }
 
@@ -180,7 +181,6 @@ public partial class Global : Node
         }
 
         SaveFile.MaxJars.Add(CurrentSceneIndex, maxJars);
-        GD.Print(maxJars);
         Save();
     }
 
