@@ -42,9 +42,8 @@ public partial class Story : Menu
 		{
 			Global.LoadMenu(Global.Menus.SceneSelect);
 			Global.Progress();
-			Global.CurrentSceneIndex++;
 
-			return;
+            return;
 		}
 
 

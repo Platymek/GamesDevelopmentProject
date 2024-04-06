@@ -5,5 +5,4 @@
 [resource]
 resource_name = "tankBase"
 albedo_texture = ExtResource("1_3wvbu")
-roughness = 0.0
-texture_filter = 0
+grow_amount = 0.09

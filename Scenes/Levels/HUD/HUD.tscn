@@ -73,14 +73,14 @@ text = "Time"
 horizontal_alignment = 1
 
 [node name="Health" type="TextureProgressBar" parent="."]
-modulate = Color(0.709804, 0.160784, 0.321569, 1)
+modulate = Color(0.701961, 0, 0.0235294, 1)
 layout_mode = 1
 offset_left = 64.0
 offset_top = 64.0
-offset_right = 256.0
-offset_bottom = 128.0
-max_value = 3.0
-value = 1.0
+offset_right = 448.0
+offset_bottom = 448.0
+max_value = 5.0
+value = 2.0
 texture_under = ExtResource("4_agc0l")
 texture_progress = ExtResource("5_x14au")
 
@@ -222,6 +222,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="Jars/EmptyJars"]
+modulate = Color(0.0627451, 0.796078, 0.192157, 1)
 layout_mode = 2
 texture = ExtResource("8_qfa6h")
 
@@ -231,5 +232,6 @@ theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="Jars/FullJars"]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.0627451, 0.796078, 0.192157, 1)
 layout_mode = 2
 texture = ExtResource("9_rdfne")

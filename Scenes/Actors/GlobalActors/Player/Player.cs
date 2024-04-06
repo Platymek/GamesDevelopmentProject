@@ -103,7 +103,11 @@ public partial class Player : Actor
                     // fire a shell
                     _shellEmitter.Emit();
 
-					Halt();
+					// snap angle back to aim angle
+                    Angle = _aimAngle;
+
+					// halt all momentum and knockback player
+                    Halt();
 					HaltFall();
 					Speed = -_knockBackStrength;
 
@@ -312,15 +316,12 @@ public partial class Player : Actor
 		{
 			_aimAngle = StickAngle;
 		}
-		else
-		{
-			_aimAngle = Angle;
-		}
 
-		// point floor pointer
-		_pointer.Rotation = Vector3.Up * (_aimAngle - Angle);
+        // point floor pointer and turret
+        _pointer.Rotation = Vector3.Up * (_aimAngle - Angle);
+        _turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
-		// point aiming reticle
+        // point aiming reticle
         _aimReticle.Rotation = Vector3.Up * Mathf.LerpAngle(
 			_aimReticle.Rotation.Y, AimAssistAngle - Angle, 
 			(float)delta * 20f);
@@ -343,32 +344,19 @@ public partial class Player : Actor
 				break;
 			}
 		}
-		
 
-		// Horizontal Movement //
 
-		// if the stick is being moved
-		if (_canMove)
+        // Horizontal Movement //
+
+        // if the stick is being moved
+        if (_canMove && Moving 
+			&& Speed < HorizontalMaxSpeed)
 		{
-			if (Moving)
-			{
-				// rotate turret in direction of stick
-				_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
-
-				if (Speed < HorizontalMaxSpeed)
-				{
-					Accelerate(delta);
-				}
-			}
-			else
-			{
-				// rotate turret in direction of stick
-				_turret.Rotation = Vector3.Up * 0;
-			}
+			Accelerate(delta);
 		}
 
 		// turn towards stick angle
-		if (Moving && _canTurn)
+		if (_canTurn)
 		{
 			TurnTowards(_aimAngle, delta);
 		}

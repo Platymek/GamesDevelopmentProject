@@ -175,11 +175,15 @@ public partial class Actor : CharacterBody3D
 		}
 	}
 	
-	protected void Accelerate(double delta)
+	protected void Accelerate(double delta, float maxSpeed = 0)
 	{
 		_accelerating = true;
 
-		bool aboveMaxSpeed = Speed > HorizontalMaxSpeed;
+		maxSpeed = maxSpeed == 0
+			? HorizontalMaxSpeed
+			: maxSpeed;
+
+        bool aboveMaxSpeed = Speed > maxSpeed;
 		
 		if (!IsOnFloor())
 		{
@@ -193,9 +197,9 @@ public partial class Actor : CharacterBody3D
 			Speed += (float)delta * HorizontalAcceleration;
 		}
 
-		if (!aboveMaxSpeed && Speed > HorizontalMaxSpeed)
+		if (!aboveMaxSpeed && Speed > maxSpeed)
 		{
-			Speed = HorizontalMaxSpeed;
+			Speed = maxSpeed;
 		}
 	}
 	

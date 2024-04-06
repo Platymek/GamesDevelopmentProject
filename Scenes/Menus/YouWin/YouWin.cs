@@ -3,7 +3,14 @@ using System;
 
 public partial class YouWin : Menu
 {
-	private void NextLevelPressed()
+    public override void _Ready()
+    {
+        base._Ready();
+
+        Global.Progress();
+    }
+
+    private void NextLevelPressed()
 	{
 		Global.CurrentSceneIndex++;
 		Global.LoadScene(Global.CurrentSceneIndex);
