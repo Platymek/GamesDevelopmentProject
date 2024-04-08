@@ -16,7 +16,10 @@ public partial class Player : Actor
 
 	[Export] private Level _level;
 
-	private string _state;
+    [Export(PropertyHint.Range, "0,1")] private float AimAssistStrength = 0.2f;
+
+
+    private string _state;
 
 	[Export] private string State
 	{
@@ -52,6 +55,7 @@ public partial class Player : Actor
 					CanDecelerate = false;
 					_explosionEmitter.Emit();
 
+					// high jump if not moving the stick
 					if (Moving)
 					{
 						Jump(_launchHeight);
@@ -170,26 +174,30 @@ public partial class Player : Actor
 	private string _inputBuffer;
 	private Vector3 _respawnPoint;
 
-	private Node3D _turret;
-	private AnimationPlayer _animationPlayer;
-	private Emitter _shellEmitter;
-	private Emitter _explosionEmitter;
-	private Node3D _pointer;
-	private Timer _inputBufferTimer;
-	private Detector _aimAssistDetector;
-    private Node3D _aimReticle;
+    [ExportGroup("Nodes")]
 
-    private Label3D _velocityLabel;
-	private Label3D _stateLabel;
-	private Label3D _ammoLabel;
-	private Label3D _bufferLabel;
+    [Export] private Node3D _turret;
+	[Export] private AnimationPlayer _animationPlayer;
+	[Export] private Emitter _shellEmitter;
+	[Export] private Emitter _explosionEmitter;
+	[Export] private Timer _inputBufferTimer;
+	[Export] private Detector _aimAssistDetector;
+    [Export] private Node3D _aimReticle;
+
+	[Export] private Node3D _jumpPointer;
+	[Export] private float _jumpPointerAngle = -60;
+
+    [Export] private Label3D _velocityLabel;
+	[Export] private Label3D _stateLabel;
+	[Export] private Label3D _ammoLabel;
+	[Export] private Label3D _bufferLabel;
 
 	// privileges
-	private bool _canMove;
-	private bool _canAccelerate;
-	private bool _canTurn;
-	private bool _canFall;
-	private bool _canReload;
+	 private bool _canMove;
+	 private bool _canAccelerate;
+	 private bool _canTurn;
+	 private bool _canFall;
+	 private bool _canReload;
 
 	// Node Functions //
 
@@ -225,7 +233,6 @@ public partial class Player : Actor
 		}
 	}
 
-	[Export (PropertyHint.Range, "0,1")] private float AimAssistStrength = 0.2f;
 	private float AimAssistAngle
 	{
 		get
@@ -266,39 +273,13 @@ public partial class Player : Actor
 	{
 		base._Ready();
 
-		_turret = GetNode<Node3D>
-			("Model/TankBase/TankTurret");
-		_animationPlayer = GetNode<AnimationPlayer>
-			("AnimationPlayer");
-		_shellEmitter = GetNode<Emitter>
-			("ShellEmitter");
-		_explosionEmitter = GetNode<Emitter>
-			("ExplosionEmitter");
-		_pointer = GetNode<Node3D>
-			("Pointer");
-		_inputBufferTimer = GetNode<Timer>
-			("InputBuffer");
-        _aimAssistDetector = GetNode<Detector>
-            ("AimAssistDetector");
-        _aimReticle = GetNode<Node3D>
-            ("AimReticle"); 
-		
+		// initialise properties
 		_aimAngle = Angle;
 		_state = "idle";
 		_canReload = true;
 		Ammo = _ammoLimit;
 
 		RefreshPrivileges();
-
-		// for debug
-		_velocityLabel = GetNode<Label3D>
-			("Debug/VelocityLabel");
-		_stateLabel = GetNode<Label3D>
-			("Debug/StateLabel");
-		_ammoLabel = GetNode<Label3D>
-			("Debug/AmmoLabel");
-		_bufferLabel = GetNode<Label3D>
-			("Debug/BufferLabel");
 	}
 
 	// Called every frame. 'delta' is the elapsed time
@@ -312,10 +293,9 @@ public partial class Player : Actor
 		if (Moving)
 		{
 			_aimAngle = StickAngle;
-		}
+        }
 
         // point floor pointer and turret
-        _pointer.Rotation = Vector3.Up * (_aimAngle - Angle);
         _turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
         // point aiming reticle
@@ -326,6 +306,20 @@ public partial class Player : Actor
 		// hide static aim reticle if auto aim reticle detected
 		_aimReticle.GetNode<Node3D>("Target").Visible =
 			!_aimReticle.GetNode<RayCast3D>("AimReticle").IsColliding();
+
+		// if moving, move jump pointer arrow to show that the player
+		// will be jumping forward
+
+		Vector3 jpRotation = _jumpPointer.Rotation;
+
+        jpRotation.X = Mathf.LerpAngle(
+            _jumpPointer.Rotation.X, 
+			Moving
+				? Mathf.DegToRad(_jumpPointerAngle)
+				: 0,
+            (float)delta * 20f);
+
+		_jumpPointer.Rotation = jpRotation;
 
 
         // Input Buffer //

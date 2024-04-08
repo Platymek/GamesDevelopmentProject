@@ -7,4 +7,5 @@ resource_name = "Target"
 albedo_texture = ExtResource("1_lx14b")
 roughness = 0.5
 texture_filter = 0
+disable_receive_shadows = true
 billboard_mode = 2

@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c5ffdafypp36a" path="res://Scenes/Actors/GlobalActors/Explosion/Explosion.tscn" id="4_jcyle"]
 [ext_resource type="PackedScene" uid="uid://cqnvtchxc244r" path="res://Scenes/Actors/GlobalActors/Shell/Shell.tscn" id="6_6vglx"]
 [ext_resource type="PackedScene" uid="uid://2ibwncah0bwg" path="res://Scenes/Actors/GlobalActors/Player/Model/Target.glb" id="7_jwp6q"]
-[ext_resource type="PackedScene" uid="uid://cgkpgl5iuj7xw" path="res://Scenes/Actors/GlobalActors/Player/Model/Pointer.glb" id="8_pbnn7"]
 [ext_resource type="PackedScene" uid="uid://c0cfmsv5le6rw" path="res://Scenes/Actors/Properties/Hitbox/Hitbox.tscn" id="9_dmpoc"]
 [ext_resource type="Script" path="res://Scenes/Actors/Properties/Hurtbox/Hurtbox.cs" id="9_qcm6b"]
 [ext_resource type="PackedScene" uid="uid://xad3oshmxwi6" path="res://Scenes/Actors/Properties/Detectable/Detectable.tscn" id="10_75tex"]
@@ -18,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bitavu5moraem" path="res://Scenes/Actors/GlobalActors/Player/Model/hurt.wav" id="16_gafkf"]
 [ext_resource type="AudioStream" uid="uid://cbb8owy1g218b" path="res://Scenes/Actors/GlobalActors/Player/Model/reload.wav" id="17_jxpbx"]
 [ext_resource type="AudioStream" uid="uid://ymuung6rg7sf" path="res://Scenes/Actors/GlobalActors/Player/Model/shoot.wav" id="18_toqxx"]
+[ext_resource type="PackedScene" uid="uid://doiuw3ao26blb" path="res://Scenes/Actors/GlobalActors/Player/Model/highArrow.glb" id="19_86coq"]
 
 [sub_resource type="Animation" id="Animation_usvlc"]
 length = 0.001
@@ -477,6 +477,18 @@ tracks/5/keys = {
 "method": &"play"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("JumpPointer/highArrow:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 4.71239, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_x6qwp"]
 resource_name = "reload"
@@ -630,13 +642,25 @@ fill_from = Vector2(0.5, 0.5)
 height = 1.0
 radius = 9.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_turret", "_animationPlayer", "_shellEmitter", "_explosionEmitter", "_inputBufferTimer", "_aimAssistDetector", "_aimReticle", "_jumpPointer", "_velocityLabel", "_stateLabel", "_ammoLabel", "_bufferLabel")]
 script = ExtResource("1_gojm8")
 _knockBackStrength = 6.0
 _launchHeight = 2.5
 _launchSpeedMultiplier = 2.5
-State = "idle"
 AimAssistStrength = 0.17
+State = "idle"
+_turret = NodePath("Model/TankBase/TankTurret")
+_animationPlayer = NodePath("AnimationPlayer")
+_shellEmitter = NodePath("ShellEmitter")
+_explosionEmitter = NodePath("ExplosionEmitter")
+_inputBufferTimer = NodePath("InputBuffer")
+_aimAssistDetector = NodePath("AimAssistDetector")
+_aimReticle = NodePath("AimReticle")
+_jumpPointer = NodePath("JumpPointer")
+_velocityLabel = NodePath("Debug/VelocityLabel")
+_stateLabel = NodePath("Debug/StateLabel")
+_ammoLabel = NodePath("Debug/AmmoLabel")
+_bufferLabel = NodePath("Debug/BufferLabel")
 FallingAcceleration = 32.0
 MaxHealth = 5
 HorizontalAirAcceleration = 16.0
@@ -710,17 +734,6 @@ billboard = 1
 text = "Buffer"
 font_size = 64
 
-[node name="AnglePointer" type="Node3D" parent="."]
-
-[node name="PointerModel" parent="AnglePointer" instance=ExtResource("8_pbnn7")]
-transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
-
-[node name="Pointer" type="Node3D" parent="."]
-visible = false
-
-[node name="PointerModel" parent="Pointer" instance=ExtResource("8_pbnn7")]
-transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, -1.4)
-
 [node name="Hitbox" parent="." instance=ExtResource("9_dmpoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
@@ -793,6 +806,12 @@ pitch_scale = 1.5
 
 [node name="Shoot" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("18_toqxx")
+
+[node name="JumpPointer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="highArrow" parent="JumpPointer" instance=ExtResource("19_86coq")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 2, 5.96046e-08)
 
 [connection signal="timeout" from="InputBuffer" to="." method="OnInputBufferTimeout"]
 [connection signal="timeout" from="SetRespawnTimer" to="." method="OnSetRespawnTimerTimeout"]

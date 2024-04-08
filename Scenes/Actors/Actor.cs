@@ -214,9 +214,8 @@ public partial class Actor : CharacterBody3D
 		if (!IsOnFloor())
         {
             Vector2 myVelocity2D = new(-Velocity.Z, -Velocity.X);
-			GD.Print(myVelocity2D.Angle());
 
-            // accelerate forwards regardless of stick angle
+            // deccelerate in opposite direction of velocity
             Velocity -= Vector3.Forward.Rotated(Vector3.Up, myVelocity2D.Angle())
 				* (float)delta * HorizontalAirDeceleration;
 		}
