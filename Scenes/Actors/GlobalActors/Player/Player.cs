@@ -35,17 +35,14 @@ public partial class Player : Actor
 					if (!IsOnFloor())
 					{
 						State = "falling";
-						CanDecelerate = false;
 						_canAccelerate = false;
+						CanDecelerate = false;
 						return;
 					}
 					else
 					{
 						_canReload = true;
 					}
-
-					// rotate turret in direction of stick
-					_turret.Rotation = Vector3.Up * (_aimAngle - Angle);
 
 					break;
 
@@ -349,7 +346,8 @@ public partial class Player : Actor
         // Horizontal Movement //
 
         // if the stick is being moved
-        if (_canMove && Moving 
+        if (_canMove 
+			&& Moving 
 			&& Speed < HorizontalMaxSpeed)
 		{
 			Accelerate(delta);
@@ -361,6 +359,7 @@ public partial class Player : Actor
 			TurnTowards(_aimAngle, delta);
 		}
 		
+
 		// Vertical Movement //
 
 		if (!IsOnFloor() && _canFall)
@@ -373,7 +372,7 @@ public partial class Player : Actor
 			Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
 		}
 		
-		
+
 		// States //
 
 		switch (State)

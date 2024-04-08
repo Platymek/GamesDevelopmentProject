@@ -639,11 +639,11 @@ State = "idle"
 AimAssistStrength = 0.17
 FallingAcceleration = 32.0
 MaxHealth = 5
-RotationSpeed = 0.5
 HorizontalAirAcceleration = 16.0
-HorizontalAirDeceleration = 6.0
+HorizontalAirDeceleration = 16.0
 HorizontalMaxSpeed = 5.0
 FallingMaxSpeed = 16.0
+FallingRotationSpeed = 0.25
 Team = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
