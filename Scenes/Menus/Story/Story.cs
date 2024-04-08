@@ -37,11 +37,12 @@ public partial class Story : Menu
 
 	private void LoadNextFrame()
     {
-		// if reached end of story, load menu and exit
+		// if reached end of story, load menu on next scene and exit
 		if (_currentFrameIndex >= Global.CurrentStoryStats.Frames.Length)
-		{
-			Global.LoadMenu(Global.Menus.SceneSelect);
-			Global.Progress();
+        {
+            Global.Progress();
+            Global.NextSceneIfPossible();
+            Global.LoadMenu(Global.Menus.SceneSelect);
 
             return;
 		}

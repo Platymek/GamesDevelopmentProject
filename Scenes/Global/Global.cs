@@ -84,6 +84,18 @@ public partial class Global : Node
         GetTree().Quit();
     }
 
+    // increment the scene index if possible
+    public bool NextSceneIfPossible()
+    {
+        // if reached the scene limit, return false
+        if (CurrentSceneIndex >= Scenes.Count) return false;
+
+        // else, increment the current scene index and return true
+        CurrentSceneIndex++;
+        return true;
+    }
+
+    // load the stats of the current scene regardless of its type
 	public void LoadSceneStats(int index)
 	{
 		int levelIndex = 0;
@@ -119,6 +131,7 @@ public partial class Global : Node
 		}
     }
 
+    // load a scene based on the index
 	public void LoadScene(int index)
 	{
 		LoadSceneStats(index);
@@ -140,6 +153,7 @@ public partial class Global : Node
         }
     }
 
+    // increment the scene progress if possible and save
 	public void Progress()
 	{
         if (CurrentSceneIndex == SaveFile.SceneProgress
@@ -150,8 +164,10 @@ public partial class Global : Node
         }
     }
 
+    // update or write the time trial time and save
     public void SaveTimeTrial(int time)
     {
+        // if time has been previously saved, update
         if (SaveFile.TimeTrialTimes.ContainsKey(CurrentSceneIndex))
         {
             if (SaveFile.TimeTrialTimes[CurrentSceneIndex] > time)
@@ -159,36 +175,43 @@ public partial class Global : Node
                 SaveFile.TimeTrialTimes[CurrentSceneIndex] = time;
                 Save();
             }
-
-            return;
+        }
+        else
+        {
+            // else, add a new time
+            SaveFile.TimeTrialTimes.Add(CurrentSceneIndex, time);
         }
 
-        SaveFile.TimeTrialTimes.Add(CurrentSceneIndex, time);
         Save();
     }
 
+    // update or write the max jar count and save
     public void SaveMaxJars(int maxJars)
     {
+        // if max jars has been previously saved, update
         if (SaveFile.MaxJars.ContainsKey(CurrentSceneIndex))
         {
             if (SaveFile.MaxJars[CurrentSceneIndex] < maxJars)
             {
                 SaveFile.MaxJars[CurrentSceneIndex] = maxJars;
-                Save();
             }
-
-            return;
+        }
+        else
+        {
+            // else, add a new max jars count
+            SaveFile.MaxJars.Add(CurrentSceneIndex, maxJars);
         }
 
-        SaveFile.MaxJars.Add(CurrentSceneIndex, maxJars);
         Save();
     }
 
+    // save the save file
     public void Save()
     {
         ResourceSaver.Save(SaveFile, "user://save.tres");
     }
 
+    // load the save file
     public void Load()
     {
 		if (!FileAccess.FileExists("user://save.tres")) return;
@@ -199,6 +222,7 @@ public partial class Global : Node
 
     // Menu Functions //
 
+    // get a menu based on the Menus enum
     public PackedScene GetMenu(Menus menu)
 	{
 		switch (menu)
@@ -229,6 +253,7 @@ public partial class Global : Node
 		}
 	}
 
+    // get a menu and load it
 	public void LoadMenu(Menus menu)
 	{
 		GetTree().Paused = false;
@@ -238,11 +263,13 @@ public partial class Global : Node
 
     // Level Functions //
 
+    // get level stats based on the area and level index
     public LevelStats GetLevelStats(int area, int level)
     {
         return AreasNode.GetChild(area).GetChild<LevelStats>(level);
     }
 
+    // load a level from its stats
     public void LoadLevel(LevelStats levelStats)
     {
         CurrentLevelStats = levelStats;
@@ -250,6 +277,7 @@ public partial class Global : Node
         GetTree().ChangeSceneToPacked(levelStats.Level);
     }
 
+    // load a level based on the area and level index
     public void LoadLevel(int area, int level)
     {
         CurrentLevelStats = GetLevelStats(area, level);

@@ -60,14 +60,19 @@ public partial class Menu : Control
 	private void OnTimerToggled(bool toggledOn)
 	{
 		TimerOn = toggledOn;
-	}
+    }
 
-	private void OnContinuePressed()
-	{
-		EmitSignal(SignalName.PausePressed);
-	}
+    private void OnContinuePressed()
+    {
+        EmitSignal(SignalName.PausePressed);
+    }
 
-	public void Focus()
+    private void OnFullscreenPressed()
+    {
+		Input.ActionPress("Fullscreen", 1);
+    }
+
+    public void Focus()
 	{
 		FocusedButton.GrabFocus();
 	}

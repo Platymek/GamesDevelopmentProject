@@ -480,7 +480,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("JumpPointer/highArrow:rotation")
+tracks/6/path = NodePath("VisualAssists/JumpPointer/highArrow:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -651,12 +651,12 @@ AimAssistStrength = 0.17
 State = "idle"
 _turret = NodePath("Model/TankBase/TankTurret")
 _animationPlayer = NodePath("AnimationPlayer")
-_shellEmitter = NodePath("ShellEmitter")
-_explosionEmitter = NodePath("ExplosionEmitter")
+_shellEmitter = NodePath("Emitters/ShellEmitter")
+_explosionEmitter = NodePath("Emitters/ExplosionEmitter")
 _inputBufferTimer = NodePath("InputBuffer")
-_aimAssistDetector = NodePath("AimAssistDetector")
-_aimReticle = NodePath("AimReticle")
-_jumpPointer = NodePath("JumpPointer")
+_aimAssistDetector = NodePath("VisualAssists/AimAssistDetector")
+_aimReticle = NodePath("VisualAssists/AimReticle")
+_jumpPointer = NodePath("VisualAssists/JumpPointer")
 _velocityLabel = NodePath("Debug/VelocityLabel")
 _stateLabel = NodePath("Debug/StateLabel")
 _ammoLabel = NodePath("Debug/AmmoLabel")
@@ -674,14 +674,6 @@ Team = 1
 libraries = {
 "": SubResource("AnimationLibrary_eumyy")
 }
-
-[node name="ShellEmitter" parent="." instance=ExtResource("2_b1j4c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.9)
-_sceneToEmit = ExtResource("6_6vglx")
-
-[node name="ExplosionEmitter" parent="." instance=ExtResource("2_b1j4c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 1.6)
-_sceneToEmit = ExtResource("4_jcyle")
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -760,36 +752,8 @@ shape = SubResource("SphereShape3D_rsmlm")
 wait_time = 0.5
 one_shot = true
 
-[node name="DropShadow" parent="." instance=ExtResource("10_ko3ud")]
-transform = Transform3D(8, 0, 0, 0, 16, 0, 0, 0, 8, 0, -0.1, 0)
-
-[node name="Shadow" type="Sprite3D" parent="DropShadow"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-texture = SubResource("GradientTexture2D_4y7i8")
-
 [node name="SetRespawnTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="AimAssistDetector" parent="." instance=ExtResource("14_p3s3m")]
-collision_layer = 4
-collision_mask = 4
-_teamToDetect = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AimAssistDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
-shape = SubResource("CylinderShape3D_sl5mr")
-
-[node name="AimReticle" type="Node3D" parent="."]
-
-[node name="AimReticle" parent="AimReticle" instance=ExtResource("10_ko3ud")]
-transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, 1, -0.9)
-collision_mask = 1
-
-[node name="Target2" parent="AimReticle/AimReticle" instance=ExtResource("7_jwp6q")]
-transform = Transform3D(0.125, 0, 0, 0, -5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, -1.05, 4.47035e-08)
-
-[node name="Target" parent="AimReticle" instance=ExtResource("7_jwp6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
 
 [node name="Sounds" type="Node3D" parent="."]
 
@@ -807,11 +771,51 @@ pitch_scale = 1.5
 [node name="Shoot" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("18_toqxx")
 
-[node name="JumpPointer" type="Node3D" parent="."]
+[node name="VisualAssists" type="Node3D" parent="."]
+
+[node name="JumpPointer" type="Node3D" parent="VisualAssists"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="highArrow" parent="JumpPointer" instance=ExtResource("19_86coq")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 2, 5.96046e-08)
+[node name="highArrow" parent="VisualAssists/JumpPointer" instance=ExtResource("19_86coq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 5.96046e-08)
+
+[node name="AimReticle" type="Node3D" parent="VisualAssists"]
+
+[node name="AimReticle" parent="VisualAssists/AimReticle" instance=ExtResource("10_ko3ud")]
+transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, 1, -0.9)
+collision_mask = 1
+
+[node name="Target2" parent="VisualAssists/AimReticle/AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(0.125, 0, 0, 0, -5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, -1.05, 4.47035e-08)
+
+[node name="Target" parent="VisualAssists/AimReticle" instance=ExtResource("7_jwp6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="DropShadow" parent="VisualAssists" instance=ExtResource("10_ko3ud")]
+transform = Transform3D(8, 0, 0, 0, 16, 0, 0, 0, 8, 0, -0.1, 0)
+
+[node name="Shadow" type="Sprite3D" parent="VisualAssists/DropShadow"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture = SubResource("GradientTexture2D_4y7i8")
+
+[node name="AimAssistDetector" parent="VisualAssists" instance=ExtResource("14_p3s3m")]
+collision_layer = 4
+collision_mask = 4
+_teamToDetect = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisualAssists/AimAssistDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+shape = SubResource("CylinderShape3D_sl5mr")
+
+[node name="Emitters" type="Node3D" parent="."]
+
+[node name="ShellEmitter" parent="Emitters" instance=ExtResource("2_b1j4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.9)
+_sceneToEmit = ExtResource("6_6vglx")
+
+[node name="ExplosionEmitter" parent="Emitters" instance=ExtResource("2_b1j4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 1.6)
+_sceneToEmit = ExtResource("4_jcyle")
 
 [connection signal="timeout" from="InputBuffer" to="." method="OnInputBufferTimeout"]
 [connection signal="timeout" from="SetRespawnTimer" to="." method="OnSetRespawnTimerTimeout"]

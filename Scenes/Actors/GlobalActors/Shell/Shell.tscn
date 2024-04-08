@@ -15,7 +15,7 @@ radius = 0.3
 
 [node name="Shell" type="CharacterBody3D"]
 script = ExtResource("1_06yew")
-_speed = 7.0
+_speed = 6.0
 _distance = 6.0
 MaxHealth = 1
 

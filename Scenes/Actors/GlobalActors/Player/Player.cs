@@ -174,6 +174,7 @@ public partial class Player : Actor
 	private string _inputBuffer;
 	private Vector3 _respawnPoint;
 
+
     [ExportGroup("Nodes")]
 
     [Export] private Node3D _turret;

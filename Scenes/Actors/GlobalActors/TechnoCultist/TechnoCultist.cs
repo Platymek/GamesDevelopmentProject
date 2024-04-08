@@ -4,54 +4,46 @@ using System.Diagnostics;
 
 public partial class TechnoCultist : Actor
 {
-	// Properties //
+    // Properties //
 
-	protected AnimationPlayer AnimationPlayer;
-	private Detector _chaseDetector;
-	private Detector _attackDetector;
 
-	private Label3D _debugLabel;
+    private string _state = "idle";
 
-	private string _state = "idle";
+    [Export]
+    protected virtual string State
+    {
+        get => _state;
 
-	[Export] protected virtual string State
-	{
-		get => _state;
+        set
+        {
 
-		set
-		{
-			Halt();
-			
-			_state = value;
+            Halt();
 
-			if (AnimationPlayer == null) return;
+            _state = value;
 
-			if (AnimationPlayer.HasAnimation(value))
-			{
-				AnimationPlayer.Play(value);
-			}
-			else
-			{
-				AnimationPlayer.Play("RESET");
-			}
-		}
-	}
+            if (AnimationPlayer == null) return;
+
+            if (AnimationPlayer.HasAnimation(value))
+            {
+                AnimationPlayer.Play(value);
+            }
+            else
+            {
+                AnimationPlayer.Play("RESET");
+            }
+        }
+    }
+
+
+    [ExportGroup("Nodes")]
+
+    [Export] protected AnimationPlayer AnimationPlayer;
+	[Export] private Detector _chaseDetector;
+	[Export] private Detector _attackDetector;
+	[Export] private Label3D _debugLabel;
 
 
 	// Node Functions //
-
-	public override void _Ready()
-	{
-		base._Ready();
-
-		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		_chaseDetector = GetNode<Detector>("Chase");
-		_attackDetector = GetNode<Detector>("Attack");
-
-		_debugLabel = GetNode<Label3D>("DebugLabel");
-
-		State = "idle";
-	}
 
 	public override void _Process(double delta)
 	{
@@ -105,7 +97,7 @@ public partial class TechnoCultist : Actor
 	{
 		if (State == "attack") return;
 
-		State = "idle";
+        State = "idle";
 	}
 
 	private void OnAttackDetected()

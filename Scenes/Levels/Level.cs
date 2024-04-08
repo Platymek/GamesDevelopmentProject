@@ -83,12 +83,11 @@ public partial class Level : Node3D
 	private void OnGoalAreaEntered()
 	{
 		_global.PreviousTime = Time;
-		_global.Progress();
 
 		if (!_global.TimeTrialMode)
-		{
-			GD.Print(TotalCollected);
-			_global.SaveMaxJars(TotalCollected);
+        {
+            _global.Progress();
+            _global.SaveMaxJars(TotalCollected);
 			_global.LoadMenu(Global.Menus.YouWin);
 			return;
 		}

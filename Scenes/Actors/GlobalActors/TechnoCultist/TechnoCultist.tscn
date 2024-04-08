@@ -401,8 +401,12 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8v7sy"]
 radius = 1.0
 
-[node name="TechnoCultist" type="CharacterBody3D"]
+[node name="TechnoCultist" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayer", "_chaseDetector", "_attackDetector", "_debugLabel")]
 script = ExtResource("1_0s63o")
+AnimationPlayer = NodePath("AnimationPlayer")
+_chaseDetector = NodePath("Chase")
+_attackDetector = NodePath("Attack")
+_debugLabel = NodePath("DebugLabel")
 HorizontalMaxSpeed = 6.0
 Team = 2
 
