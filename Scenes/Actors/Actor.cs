@@ -16,7 +16,9 @@ public partial class Actor : CharacterBody3D
 	[Export] protected float HorizontalMaxSpeed = 4;
 	[Export] protected float FallingMaxSpeed = 4;
 
-	public enum Teams
+    [Export] private float FallingRotationSpeed = .5f;
+
+    public enum Teams
 	{
 		None,
 		Player,
@@ -147,7 +149,10 @@ public partial class Actor : CharacterBody3D
 		// if the difference is 0, no rotation is needed
 		if (angleDifference == 0) return;
 
-		float rotationSpeed = Mathf.Tau * RotationSpeed * (float)delta;
+		float rotationSpeed = Mathf.Tau * (float)delta
+			* (IsOnFloor()
+				? RotationSpeed
+				: FallingRotationSpeed);
 		
 		// if the difference in angle is smaller than the rotation speed
 		// snap to target angle and return
@@ -175,15 +180,11 @@ public partial class Actor : CharacterBody3D
 		}
 	}
 	
-	protected void Accelerate(double delta, float maxSpeed = 0)
+	protected void Accelerate(double delta)
 	{
 		_accelerating = true;
 
-		maxSpeed = maxSpeed == 0
-			? HorizontalMaxSpeed
-			: maxSpeed;
-
-        bool aboveMaxSpeed = Speed > maxSpeed;
+        bool aboveMaxSpeed = Speed > HorizontalMaxSpeed;
 		
 		if (!IsOnFloor())
 		{
@@ -197,9 +198,9 @@ public partial class Actor : CharacterBody3D
 			Speed += (float)delta * HorizontalAcceleration;
 		}
 
-		if (!aboveMaxSpeed && Speed > maxSpeed)
+		if (!aboveMaxSpeed && Speed > HorizontalMaxSpeed)
 		{
-			Speed = maxSpeed;
+			Speed = HorizontalMaxSpeed;
 		}
 	}
 	
@@ -211,10 +212,13 @@ public partial class Actor : CharacterBody3D
 		bool positivez = Velocity.Z > 0;
 			
 		if (!IsOnFloor())
-		{
-			// accelerate forwards regardless of stick angle
-			Velocity -= Vector3.Forward.Rotated(Vector3.Up, Angle)
-						* (float)delta * HorizontalAirDeceleration;
+        {
+            Vector2 myVelocity2D = new(-Velocity.Z, -Velocity.X);
+			GD.Print(myVelocity2D.Angle());
+
+            // accelerate forwards regardless of stick angle
+            Velocity -= Vector3.Forward.Rotated(Vector3.Up, myVelocity2D.Angle())
+				* (float)delta * HorizontalAirDeceleration;
 		}
 		else
 		{

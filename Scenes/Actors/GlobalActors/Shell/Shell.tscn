@@ -16,7 +16,7 @@ radius = 0.3
 [node name="Shell" type="CharacterBody3D"]
 script = ExtResource("1_06yew")
 _speed = 7.0
-_distance = 8.0
+_distance = 6.0
 MaxHealth = 1
 
 [node name="Hitbox" parent="." instance=ExtResource("2_cv878")]

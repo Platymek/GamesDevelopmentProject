@@ -403,6 +403,7 @@ radius = 1.0
 
 [node name="TechnoCultist" type="CharacterBody3D"]
 script = ExtResource("1_0s63o")
+HorizontalMaxSpeed = 6.0
 Team = 2
 
 [node name="Model" type="Node3D" parent="."]
@@ -452,7 +453,7 @@ shape = SubResource("CylinderShape3D_jqdiw")
 _teamToDetect = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
 shape = SubResource("CylinderShape3D_57xtn")
 
 [node name="Attack" parent="." instance=ExtResource("7_owejp")]
