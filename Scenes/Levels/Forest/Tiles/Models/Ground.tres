@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c3ww1closl4ns"]
+
+[ext_resource type="Texture2D" uid="uid://ctacnd2jaflsy" path="res://Scenes/Levels/Forest/Tiles/Models/Ground_Ground.png" id="1_vgs5o"]
+
+[resource]
+resource_name = "Ground"
+albedo_texture = ExtResource("1_vgs5o")
+roughness = 0.5
+texture_filter = 0
