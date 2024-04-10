@@ -42,6 +42,7 @@ _fullJars = NodePath("Jars/FullJars")
 metadata/_edit_use_anchors_ = true
 
 [node name="Top" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_v8tl5")
 layout_mode = 1
 anchors_preset = 15
@@ -55,6 +56,7 @@ scale = Vector2(1, -1)
 color = Color(0.258824, 0.752941, 0.984314, 0.25098)
 
 [node name="Bottom" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_v8tl5")
 layout_mode = 1
 anchors_preset = 15
@@ -66,19 +68,19 @@ color = Color(0.372549, 0.14902, 0.513726, 0.603922)
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
+offset_left = 64.0
 offset_top = 192.0
-offset_right = 256.0
+offset_right = 320.0
 offset_bottom = 259.0
 text = "Time"
-horizontal_alignment = 1
 
 [node name="Health" type="TextureProgressBar" parent="."]
 modulate = Color(0.701961, 0, 0.0235294, 1)
 layout_mode = 1
 offset_left = 64.0
 offset_top = 64.0
-offset_right = 448.0
-offset_bottom = 448.0
+offset_right = 544.0
+offset_bottom = 160.0
 max_value = 5.0
 value = 2.0
 texture_under = ExtResource("4_agc0l")
@@ -89,12 +91,23 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -280.0
-offset_top = 64.0
+offset_left = -407.0
+offset_top = 80.0
 offset_right = -60.0
-offset_bottom = 215.0
+offset_bottom = 284.0
 grow_horizontal = 0
 alignment = 2
+
+[node name="HighJumpHint" type="HBoxContainer" parent="Hints"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Hints/HighJumpHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "High: Jump, Not Moving"
+horizontal_alignment = 2
 
 [node name="JumpHint" type="HBoxContainer" parent="Hints"]
 layout_mode = 2
@@ -177,14 +190,17 @@ expand_mode = 2
 [node name="Shells" type="TextureProgressBar" parent="."]
 modulate = Color(0.968627, 0.819608, 0.0901961, 1)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -76.0
-offset_top = 800.0
+offset_top = -216.0
 offset_right = 116.0
-offset_bottom = 920.0
+offset_bottom = -96.0
 grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 max_value = 2.0
 value = 1.0

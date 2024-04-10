@@ -5,8 +5,8 @@
 
 [node name="Pause" node_paths=PackedStringArray("FocusedButton") instance=ExtResource("1_274gp")]
 script = ExtResource("2_wovx1")
-_hints = PackedStringArray("Pause and unpause for a bunch of hints!", "Hold reload for a faster second reload", "High Jump by Jumping whilst not moving", "You can reload in mid-air", "Reloading makes you turn instantly in any direction", "Reloading will always keep your momentum on the ground", "You can bounce off bullets", "Press R or Select for an instant retry")
-FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue")
+_hints = PackedStringArray("Pause and unpause for a bunch of hints! Look at the top right for controls...", "Hold reload for a faster second reload", "High Jump by Jumping whilst not moving", "You can reload in mid-air", "Reloading makes you turn instantly in any direction", "Reloading will always keep your momentum on the ground", "You can bounce off bullets", "Press R or Select for an instant retry")
+FocusedButton = NodePath("AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Continue")
 
 [node name="Label" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -15,7 +15,7 @@ text = "Paused"
 horizontal_alignment = 1
 
 [node name="HintLabel" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="0"]
-custom_minimum_size = Vector2(480, 0)
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 text = "Hint"
 horizontal_alignment = 1
@@ -24,21 +24,27 @@ autowrap_mode = 2
 [node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="1"]
 layout_mode = 2
 
-[node name="Continue" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer" index="0"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="0"]
 layout_mode = 2
 text = "Continue"
 
-[node name="Restart" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="3"]
+[node name="Restart" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="1"]
 layout_mode = 2
 text = "Restart
 "
 
-[node name="SceneSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons" index="4"]
+[node name="SceneSelect" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer" index="2"]
 layout_mode = 2
 text = "Back to Level Select
 "
 
 [connection signal="visibility_changed" from="." to="." method="OnVisibilityChanged"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Continue" to="." method="OnContinuePressed"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/Restart" to="." method="OnRetryPressed"]
-[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/SceneSelect" to="." method="OnContinueGamePressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Continue" to="." method="OnContinuePressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/Restart" to="." method="OnRetryPressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/CenterContainer/PanelContainer/MarginContainer/Buttons/CenterContainer/VBoxContainer/SceneSelect" to="." method="OnContinueGamePressed"]

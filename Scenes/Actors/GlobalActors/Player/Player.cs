@@ -123,7 +123,9 @@ public partial class Player : Actor
 						return;
 					}
 
-					break;
+                    CanDecelerate = false;
+
+                    break;
 
 
 				case "hurt":

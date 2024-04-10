@@ -57,8 +57,6 @@ public partial class SceneSelect : Menu
 						_summary.Text
 							= $"Most Jars: {Global.SaveFile.MaxJars[Global.CurrentSceneIndex]}"
 							+ $"/{Global.CurrentLevelStats.NumberOfCollectables}\n";
-
-						GD.Print(Global.SaveFile.MaxJars[Global.CurrentSceneIndex]);
 					}
 
 					if (Global.SaveFile.TimeTrialTimes.ContainsKey(Global.CurrentSceneIndex))

@@ -88,7 +88,7 @@ public partial class Global : Node
     public bool NextSceneIfPossible()
     {
         // if reached the scene limit, return false
-        if (CurrentSceneIndex >= Scenes.Count) return false;
+        if (CurrentSceneIndex >= Scenes.Count - 1) return false;
 
         // else, increment the current scene index and return true
         CurrentSceneIndex++;

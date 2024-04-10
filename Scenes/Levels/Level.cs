@@ -85,9 +85,9 @@ public partial class Level : Node3D
 		_global.PreviousTime = Time;
 
 		if (!_global.TimeTrialMode)
-        {
-            _global.Progress();
-            _global.SaveMaxJars(TotalCollected);
+		{
+			_global.Progress();
+			_global.SaveMaxJars(TotalCollected);
 			_global.LoadMenu(Global.Menus.YouWin);
 			return;
 		}
@@ -106,8 +106,6 @@ public partial class Level : Node3D
 
 	public void CollectJar(int index)
 	{
-		GD.Print(index);
-
 		Collectables[index] = true;
 		TotalCollected++;
 

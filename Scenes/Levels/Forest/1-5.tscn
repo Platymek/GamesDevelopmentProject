@@ -45,9 +45,6 @@ shape = SubResource("BoxShape3D_ut3x5")
 TrackX = true
 TrackZ = true
 
-[node name="Actors" parent="." index="4"]
-visible = false
-
 [node name="Section1,2" type="Node3D" parent="Actors" index="1"]
 
 [node name="BrokenTree" parent="Actors/Section1,2" index="0" instance=ExtResource("2_8uj2k")]
@@ -394,9 +391,6 @@ _teamToDetect = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint4" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("BoxShape3D_gh73t")
-
-[node name="ColourJars" parent="." index="8"]
-visible = false
 
 [node name="ColourJar" parent="ColourJars" index="0" instance=ExtResource("7_x3bxy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2, 20)
