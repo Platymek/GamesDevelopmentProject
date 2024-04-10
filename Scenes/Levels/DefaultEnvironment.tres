@@ -32,7 +32,6 @@ sky = SubResource("Sky_k2cmd")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
-ssil_enabled = true
 ssil_radius = 16.0
 sdfgi_use_occlusion = true
 adjustment_enabled = true

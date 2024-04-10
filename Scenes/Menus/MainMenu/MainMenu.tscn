@@ -14,8 +14,8 @@ horizontal_alignment = 1
 [node name="Subtitle" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="1"]
 layout_mode = 2
 theme_type_variation = &"SubTitle"
-text = "A Prototype by 
-Hector Selby Reimundez"
+theme_override_font_sizes/font_size = 32
+text = "© Hector Selby Reimundez, 2024"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/CenterContainer/VBoxContainer" index="2"]

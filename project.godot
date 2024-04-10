@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GamesDevelopmentProject"
+config/name="Love Tank!"
 config/tags=PackedStringArray("uni")
 run/main_scene="res://Scenes/Menus/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-boot_splash/bg_color=Color(0.0784314, 0.188235, 0.266667, 1)
+boot_splash/bg_color=Color(0.380392, 0.686275, 1, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

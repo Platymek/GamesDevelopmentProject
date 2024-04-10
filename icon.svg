@@ -1,1 +1,40 @@
-<svg height="128" width="128" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="124" height="124" rx="14" fill="#363d52" stroke="#212532" stroke-width="4"/><g transform="scale(.101) translate(122 122)"><g fill="#fff"><path d="M105 673v33q407 354 814 0v-33z"/><path fill="#478cbf" d="m105 673 152 14q12 1 15 14l4 67 132 10 8-61q2-11 15-15h162q13 4 15 15l8 61 132-10 4-67q3-13 15-14l152-14V427q30-39 56-81-35-59-83-108-43 20-82 47-40-37-88-64 7-51 8-102-59-28-123-42-26 43-46 89-49-7-98 0-20-46-46-89-64 14-123 42 1 51 8 102-48 27-88 64-39-27-82-47-48 49-83 108 26 42 56 81zm0 33v39c0 276 813 276 813 0v-39l-134 12-5 69q-2 10-14 13l-162 11q-12 0-16-11l-10-65H447l-10 65q-4 11-16 11l-162-11q-12-3-14-13l-5-69z"/><path d="M483 600c3 34 55 34 58 0v-86c-3-34-55-34-58 0z"/><circle cx="725" cy="526" r="90"/><circle cx="299" cy="526" r="90"/></g><g fill="#414042"><circle cx="307" cy="532" r="60"/><circle cx="717" cy="532" r="60"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="160 128 192 224">
+<defs/>
+<g>
+<path stroke="none" fill="#0057A6" d="M 160 192 m 18.6 18.6 q -6.2 6.3 -10.3 13.4 l 23.7 0 l 0 -23.7 q -7.1 4.1 -13.4 10.3"/>
+<path stroke="none" fill="#0057A6" d="M 160 224 m 0 30 l 0 2 l 32 0 l 0 -32 l -23.7 0 q -7.8 13.5 -8.3 30"/>
+<path stroke="none" fill="#0057A6" d="M 160 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 160 288 m 32 0 l 0 16 q 0 6.6 -4.7 11.3 q -4.7 4.7 -11.3 4.7 q -6.65 0 -11.3 -4.7 q -4.7 -4.7 -4.7 -11.3 l 0 -16 l 32 0"/>
+<path stroke="none" fill="#3399FF" d="M 192 128 m 18.6 18.6 q -6.2 6.3 -10.3 13.4 l 23.7 0 l 0 -23.7 q -7.1 4.1 -13.4 10.3"/>
+<path stroke="none" fill="#3399FF" d="M 192 160 m 0 30 l 0 2 l 32 0 l 0 -32 l -23.7 0 q -7.8 13.5 -8.3 30"/>
+<path stroke="none" fill="#0057A6" d="M 192 192 m 32 0 l -2 0 q -16.5 0.5 -30 8.3 l 0 23.7 l 32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 192 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 192 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 192 288 m 32 0 l 0 16 q 0 6.6 -4.7 11.3 q -4.7 4.7 -11.3 4.7 q -6.65 0 -11.3 -4.7 q -4.7 -4.7 -4.7 -11.3 l 0 -16 l 32 0"/>
+<path stroke="none" fill="#FF7E14" d="M 192 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#F7D117" d="M 224 128 m 32 0 l -2 0 q -16.5 0.5 -30 8.3 l 0 23.7 l 32 0 l 0 -32"/>
+<path stroke="none" fill="#F7D117" d="M 224 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 224 192 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 224 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 224 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#0057A6" d="M 224 288 m 32 0 l 0 16 q 0 6.6 -4.7 11.3 q -4.7 4.7 -11.3 4.7 q -6.65 0 -11.3 -4.7 q -4.7 -4.7 -4.7 -11.3 l 0 -16 l 32 0"/>
+<path stroke="none" fill="#FF7E14" d="M 224 320 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#F7D117" d="M 256 128 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#143044" d="M 256 160 m 0 32 l 0 -16 q 0 -6.6 4.7 -11.3 q 4.7 -4.7 11.3 -4.7 q 6.65 0 11.3 4.7 q 4.7 4.7 4.7 11.3 l 0 16 l -32 0"/>
+<path stroke="none" fill="#10CB31" d="M 256 192 m 32 0 l 0 16 q 0 6.6 -4.7 11.3 q -4.7 4.7 -11.3 4.7 q -6.65 0 -11.3 -4.7 q -4.7 -4.7 -4.7 -11.3 l 0 -16 l 32 0"/>
+<path stroke="none" fill="#F7D117" d="M 256 224 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#3399FF" d="M 256 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#3399FF" d="M 256 288 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#FF7E14" d="M 256 320 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#F7D117" d="M 288 128 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#F7D117" d="M 288 160 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#F7D117" d="M 288 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#FF7E14" d="M 288 224 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0"/>
+<path stroke="none" fill="#3399FF" d="M 288 256 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#3399FF" d="M 288 288 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0"/>
+<path stroke="none" fill="#FF7E14" d="M 288 320 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#FF7E14" d="M 320 160 m 0 0 q 13.25 0 22.6 9.35 q 9.4 9.4 9.4 22.65 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#FF7E14" d="M 320 192 m 0 0 l 32 0 l 0 32 l -32 0 l 0 -32"/>
+<path stroke="none" fill="#FF7E14" d="M 320 224 m 32 0 q 0 13.25 -9.35 22.6 q -9.4 9.4 -22.65 9.4 l 0 -32 l 32 0"/>
+</g>
+</svg>

@@ -73,7 +73,7 @@ TrackZ = false
 _teamToDetect = 1
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
-subdiv = 0
+subdiv = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0794593, -0.786566, 0.612373, 0.5, 0.5, 0.707107, -0.862372, 0.362372, 0.353553, 5, 2, 0)
