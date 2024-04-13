@@ -88,13 +88,25 @@ public partial class Level : Node3D
 		{
 			_global.Progress();
 			_global.SaveMaxJars(TotalCollected);
-			_global.LoadMenu(Global.Menus.YouWin);
+
+			CallDeferred(MethodName.LoadYouWin);
+
 			return;
 		}
 
 		_global.SaveTimeTrial((int)Time);
-		_global.LoadMenu(Global.Menus.YouWinTimeTrial);
-	}
+        CallDeferred(MethodName.LoadYouWinTimeTrial);
+    }
+
+	private void LoadYouWin()
+    {
+        _global.LoadMenu(Global.Menus.YouWin);
+    }
+
+	private void LoadYouWinTimeTrial()
+    {
+        _global.LoadMenu(Global.Menus.YouWinTimeTrial);
+    }
 
 	
 	// Other Functions //

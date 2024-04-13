@@ -6,6 +6,6 @@ public partial class YouWin : Menu
     private void NextLevelPressed()
     {
         Global.NextSceneIfPossible();
-        Global.LoadScene(Global.CurrentSceneIndex);
+        Global.LoadMenu(Global.Menus.SceneSelect);
 	}
 }
