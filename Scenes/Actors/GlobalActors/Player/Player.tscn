@@ -696,6 +696,7 @@ transform = Transform3D(-4.37114e-08, -7.10543e-15, 1, 2.98023e-08, 1, -1.77636e
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
 shape = SubResource("CylinderShape3D_seomg")
 
 [node name="Debug" type="Node3D" parent="."]
@@ -727,11 +728,13 @@ font_size = 64
 
 [node name="Hitbox" parent="." instance=ExtResource("9_dmpoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("CylinderShape3D_ik2jv")
 
 [node name="Hurtbox" type="Area3D" parent="."]
+visible = false
 script = ExtResource("9_qcm6b")
 Team = 1
 
@@ -776,7 +779,7 @@ stream = ExtResource("18_toqxx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="highArrow" parent="VisualAssists/JumpPointer" instance=ExtResource("19_86coq")]
-transform = Transform3D(9.65599e-07, 0, -1, 0, 1, 0, 1, 0, 9.65599e-07, 0, 2, 5.96046e-08)
+transform = Transform3D(9.09963e-07, 0, -1, 0, 1, 0, 1, 0, 9.09963e-07, 0, 2, 5.96046e-08)
 
 [node name="AimReticle" type="Node3D" parent="VisualAssists"]
 

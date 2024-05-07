@@ -240,25 +240,33 @@ public partial class Player : Actor
 	{
 		get
 		{
+			// initialise aim assist angle to the angle the player is aiming
 			float aimAssistAngle = _aimAngle;
+
+			// create list of angles to each enemy detected
 			List<float> anglesToEnemies = new();
 			Vector2 myPosition2D = new(-Position.Z, -Position.X);
 
+			// convert each enemy position to an angle and add to list
             foreach (Node3D a in _aimAssistDetector.DetectedActors)
             {
+				// player and enemy positions must first be converted to 2D
                 Vector2 aPosition2D = new(-a.Position.Z, -a.Position.X);
 
                 float angle = myPosition2D.AngleToPoint(aPosition2D);
 				anglesToEnemies.Add(angle);
 			}
 
+			// if any enemies have actually been detected, use the snap angle
+			// function to snap the aim to their location
 			if (anglesToEnemies.Count > 0)
 			{
                 aimAssistAngle = SnapAngle(aimAssistAngle, anglesToEnemies.ToArray(),
 					AimAssistStrength * Mathf.Pi);
-
             }
 
+			// will return the snapped angle or the regular aiming angle if
+			// no enemies were detected at all
             return aimAssistAngle;
 		}
 	}

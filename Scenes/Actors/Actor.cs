@@ -16,9 +16,9 @@ public partial class Actor : CharacterBody3D
 	[Export] protected float HorizontalMaxSpeed = 4;
 	[Export] protected float FallingMaxSpeed = 4;
 
-    [Export] private float FallingRotationSpeed = .5f;
+	[Export] private float FallingRotationSpeed = .5f;
 
-    public enum Teams
+	public enum Teams
 	{
 		None,
 		Player,
@@ -184,7 +184,7 @@ public partial class Actor : CharacterBody3D
 	{
 		_accelerating = true;
 
-        bool aboveMaxSpeed = Speed > HorizontalMaxSpeed;
+		bool aboveMaxSpeed = Speed > HorizontalMaxSpeed;
 		
 		if (!IsOnFloor())
 		{
@@ -212,11 +212,11 @@ public partial class Actor : CharacterBody3D
 		bool positivez = Velocity.Z > 0;
 			
 		if (!IsOnFloor())
-        {
-            Vector2 myVelocity2D = new(-Velocity.Z, -Velocity.X);
+		{
+			Vector2 myVelocity2D = new(-Velocity.Z, -Velocity.X);
 
-            // deccelerate in opposite direction of velocity
-            Velocity -= Vector3.Forward.Rotated(Vector3.Up, myVelocity2D.Angle())
+			// deccelerate in opposite direction of velocity
+			Velocity -= Vector3.Forward.Rotated(Vector3.Up, myVelocity2D.Angle())
 				* (float)delta * HorizontalAirDeceleration;
 		}
 		else

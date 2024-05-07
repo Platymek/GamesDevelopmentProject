@@ -4,40 +4,42 @@ using System.Diagnostics;
 
 public partial class TechnoCultist : Actor
 {
-    // Properties //
+	// Properties //
 
 
-    private string _state = "idle";
+	private string _state = "idle";
 
-    [Export]
-    protected virtual string State
-    {
-        get => _state;
+	[Export]
+	protected virtual string State
+	{
+		get => _state;
 
-        set
-        {
+		set
+		{
+			// if the state is changes, stop all velocity
+			Halt();
 
-            Halt();
+			_state = value;
 
-            _state = value;
+			// if the animation player exists, play the animation
+			// with the same name as the state
+			if (AnimationPlayer == null) return;
 
-            if (AnimationPlayer == null) return;
-
-            if (AnimationPlayer.HasAnimation(value))
-            {
-                AnimationPlayer.Play(value);
-            }
-            else
-            {
-                AnimationPlayer.Play("RESET");
-            }
-        }
-    }
+			if (AnimationPlayer.HasAnimation(value))
+			{
+				AnimationPlayer.Play(value);
+			}
+			else
+			{
+				AnimationPlayer.Play("RESET");
+			}
+		}
+	}
 
 
-    [ExportGroup("Nodes")]
+	[ExportGroup("Nodes")]
 
-    [Export] protected AnimationPlayer AnimationPlayer;
+	[Export] protected AnimationPlayer AnimationPlayer;
 	[Export] private Detector _chaseDetector;
 	[Export] private Detector _attackDetector;
 	[Export] private Label3D _debugLabel;
@@ -53,12 +55,14 @@ public partial class TechnoCultist : Actor
 		{
 			case "run":
 
+				// if no more players are being detected
 				if (_chaseDetector.DetectedActors.Count <= 0)
 				{
 					State = "idle";
 					break;
 				}
 
+				// select first detected player
 				Node3D nodeToChase = _chaseDetector.DetectedActors[0];
 
 				var chasePosition = new Vector2(
@@ -67,14 +71,17 @@ public partial class TechnoCultist : Actor
 				var myPosition = new Vector2(
 					Position.Z, Position.X);
 				
+				// get angle to player and turn towards them
 				TurnTowards(chasePosition.AngleToPoint(myPosition), 
 					delta);
 				
+				// accelerate regardless of whether or not facing player
 				Accelerate(delta);
 
 				break;
 		}
 
+		// if no floor is detected, fall
 		if (!IsOnFloor())
 		{
 			Fall(delta);
@@ -97,7 +104,7 @@ public partial class TechnoCultist : Actor
 	{
 		if (State == "attack") return;
 
-        State = "idle";
+		State = "idle";
 	}
 
 	private void OnAttackDetected()

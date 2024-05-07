@@ -64,7 +64,7 @@ public partial class Detector : Area3D
 
 		DetectedActors.Remove(detectable.GetOwner<Node3D>());
 
-		// if first actor detected, send a signal
+		// if last actor stopped detecting, send a signal
 		if (DetectedActors.Count == 0)
 		{
 			EmitSignal(SignalName.NotDetecting);
